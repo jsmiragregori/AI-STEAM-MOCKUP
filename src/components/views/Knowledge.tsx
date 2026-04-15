@@ -93,15 +93,15 @@ export default function Knowledge() {
           <div className="flex flex-wrap gap-4 mt-6">
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerResources.length}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Recursos OER</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Recursos OER</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{badges.reduce((a, b) => a + b.issued, 0).toLocaleString()}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Insignias Emitidas</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Insignias Emitidas</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerResources.reduce((a, r) => a + r.downloads, 0).toLocaleString()}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Descargas Totales</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Descargas Totales</p>
             </div>
           </div>
         </div>
@@ -193,9 +193,9 @@ export default function Knowledge() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
                       <h3 className="font-bold text-eu-text text-sm group-hover:text-eu-blue transition-colors">{r.title}</h3>
-                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${levelColors[r.level]}`}>{r.level}</span>
+                      <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${levelColors[r.level]}`}>{r.level}</span>
                     </div>
-                    <div className="flex flex-wrap gap-3 text-[11px] text-gray-500">
+                    <div className="flex flex-wrap gap-3 text-sm text-gray-500">
                       <span>{r.type}</span>
                       <span>Sector: {r.sector}</span>
                       <span>Autor: {r.author}</span>
@@ -206,7 +206,7 @@ export default function Knowledge() {
                   </div>
                   <div className="text-right shrink-0">
                     <p className="text-lg font-extrabold text-eu-teal">{r.downloads.toLocaleString()}</p>
-                    <p className="text-[10px] text-gray-400">descargas</p>
+                    <p className="text-sm text-gray-400">descargas</p>
                     <button className="mt-1 flex items-center gap-1 text-eu-blue text-xs font-bold hover:underline cursor-pointer bg-transparent border-none">
                       <Download className="w-3 h-3" /> Descargar
                     </button>
@@ -238,23 +238,23 @@ export default function Knowledge() {
                     <Award className="w-7 h-7" />
                   </div>
                   <h3 className="font-bold text-eu-text text-sm text-center mb-1">{badge.name}</h3>
-                  <p className="text-[11px] text-gray-500 text-center mb-3">{badge.description}</p>
+                  <p className="text-sm text-gray-500 text-center mb-3">{badge.description}</p>
                   <div className="flex justify-center gap-2 mb-3">
-                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${levelColors[badge.level]}`}>{badge.level}</span>
-                    <span className="text-[10px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{badge.sector}</span>
+                    <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${levelColors[badge.level]}`}>{badge.level}</span>
+                    <span className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{badge.sector}</span>
                   </div>
                   <div className="bg-eu-bg rounded-lg p-3 mb-3">
-                    <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Criterios</p>
+                    <p className="text-sm font-bold text-gray-500 uppercase mb-1">Criterios</p>
                     <ul className="space-y-1">
                       {badge.criteria.map((c) => (
-                        <li key={c} className="text-[10px] text-gray-600 flex items-start gap-1">
+                        <li key={c} className="text-sm text-gray-600 flex items-start gap-1">
                           <span className="text-eu-teal mt-0.5">✓</span> {c}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <p className="text-center text-eu-teal font-extrabold text-lg mt-auto">{badge.issued}</p>
-                  <p className="text-center text-[10px] text-gray-400">insignias emitidas</p>
+                  <p className="text-center text-sm text-gray-400">insignias emitidas</p>
                 </div>
               ))}
             </div>
@@ -303,9 +303,9 @@ export default function Knowledge() {
                       <p className="text-sm text-gray-500">{c.org} · <span className="text-eu-teal font-semibold">{c.sector}</span></p>
                     </div>
                     <div className="flex gap-2">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${levelColors[c.level]}`}>{c.level}</span>
-                      <span className="text-[10px] bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded">Resuelto</span>
-                      <span className="text-[10px] bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{c.year}</span>
+                      <span className={`text-sm font-bold px-2 py-0.5 rounded ${levelColors[c.level]}`}>{c.level}</span>
+                      <span className="text-sm bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded">Resuelto</span>
+                      <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{c.year}</span>
                     </div>
                   </div>
                   <p className="text-sm text-gray-700 mb-3">{c.result}</p>

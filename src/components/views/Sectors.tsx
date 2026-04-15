@@ -195,15 +195,15 @@ export default function Sectors() {
                 <div className="hidden sm:flex items-center gap-6 shrink-0">
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-teal">{sector.challenges}</p>
-                    <p className="text-[10px] text-gray-500 uppercase font-semibold">Retos</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">Retos</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-blue">{sector.partners}</p>
-                    <p className="text-[10px] text-gray-500 uppercase font-semibold">Socios</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">Socios</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-orange">{sector.courses}</p>
-                    <p className="text-[10px] text-gray-500 uppercase font-semibold">Módulos</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">Módulos</p>
                   </div>
                 </div>
                 {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />}
@@ -217,7 +217,7 @@ export default function Sectors() {
                     <p className="text-sm text-gray-700 mb-4">{sector.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {sector.keywords.map((kw) => (
-                        <span key={kw} className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${sector.tagBg} ${sector.tagText}`}>
+                        <span key={kw} className={`text-sm font-semibold px-2 py-0.5 rounded-full ${sector.tagBg} ${sector.tagText}`}>
                           {kw}
                         </span>
                       ))}
@@ -255,10 +255,10 @@ export default function Sectors() {
                       ))}
                     </ul>
                     <div className="mt-4 pt-3 border-t border-eu-border">
-                      <p className="text-[10px] text-gray-500 font-semibold uppercase mb-1">Socios Destacados</p>
+                      <p className="text-sm text-gray-500 font-semibold uppercase mb-1">Socios Destacados</p>
                       <div className="flex flex-wrap gap-1">
                         {sector.featuredPartners.map((p) => (
-                          <span key={p} className="text-[10px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-bold">{p}</span>
+                          <span key={p} className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-bold">{p}</span>
                         ))}
                       </div>
                     </div>

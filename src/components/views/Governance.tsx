@@ -177,7 +177,7 @@ export default function Governance() {
                     <p className="font-semibold text-sm text-eu-text group-hover:text-eu-blue truncate">{doc.title}</p>
                     <div className="flex items-center gap-2 mt-0.5">
                       <span className="text-xs text-gray-500">{doc.date}</span>
-                      <span className="text-[10px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{doc.type}</span>
+                      <span className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{doc.type}</span>
                     </div>
                   </div>
                   <FileSignature className="w-4 h-4 text-gray-300 group-hover:text-eu-blue shrink-0 ml-3" />
@@ -239,7 +239,7 @@ export default function Governance() {
                   <div key={i} className="flex items-start gap-3 p-3 bg-eu-bg rounded-lg border border-eu-border">
                     <div className="bg-eu-teal text-white rounded-lg px-2 py-1 text-center shrink-0">
                       <span className="block text-xs font-extrabold leading-none">{e.date.split(' ')[0]}</span>
-                      <span className="block text-[9px] font-semibold uppercase">{e.date.split(' ')[1]}</span>
+                      <span className="block text-xs font-semibold uppercase">{e.date.split(' ')[1]}</span>
                     </div>
                     <div>
                       <p className="font-bold text-sm text-eu-text">{e.title}</p>

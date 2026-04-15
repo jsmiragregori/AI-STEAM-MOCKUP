@@ -194,7 +194,7 @@ export default function News() {
                         {item.category}
                       </span>
                       {item.sector && (
-                        <span className="flex items-center gap-1 text-[10px] text-gray-400 font-semibold">
+                        <span className="flex items-center gap-1 text-sm text-gray-400 font-semibold">
                           <Tag className="w-2.5 h-2.5" /> {item.sector}
                         </span>
                       )}
@@ -208,7 +208,7 @@ export default function News() {
                   </h3>
                   <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.excerpt}</p>
                   <div className="flex items-center justify-between">
-                    {item.partner && <span className="text-[11px] text-gray-400 font-semibold">{item.partner}</span>}
+                    {item.partner && <span className="text-sm text-gray-400 font-semibold">{item.partner}</span>}
                     <a href="#" className="inline-flex items-center text-sm font-bold text-eu-blue hover:underline ml-auto">
                       Leer más <ArrowRight className="ml-1 w-3.5 h-3.5" />
                     </a>
@@ -236,7 +236,7 @@ export default function News() {
                       <div className="flex items-start gap-3">
                         <div className="bg-eu-blue text-white rounded-lg p-2 text-center min-w-12.5 shrink-0">
                           <span className="block text-lg font-extrabold leading-none">{event.dateNum}</span>
-                          <span className="block text-[10px] font-semibold uppercase mt-0.5">{event.dateMonth}</span>
+                          <span className="block text-sm font-semibold uppercase mt-0.5">{event.dateMonth}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="font-bold text-sm text-eu-text mb-1 leading-snug">{event.title}</h4>
@@ -244,9 +244,9 @@ export default function News() {
                             <MapPin className="w-3 h-3 shrink-0" /> {event.location}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${typeColors[event.type]}`}>{event.type}</span>
+                            <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${typeColors[event.type]}`}>{event.type}</span>
                             {event.register && (
-                              <a href="#" className="text-[10px] font-bold text-eu-blue hover:underline flex items-center gap-0.5">
+                              <a href="#" className="text-sm font-bold text-eu-blue hover:underline flex items-center gap-0.5">
                                 Inscribirse <ExternalLink className="w-2.5 h-2.5" />
                               </a>
                             )}

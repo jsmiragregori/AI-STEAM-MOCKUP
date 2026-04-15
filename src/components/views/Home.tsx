@@ -225,14 +225,14 @@ export default function Home({ setActiveTab }: HomeProps) {
             ].map((ch, i) => (
               <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-orange-100 text-orange-800' : 'bg-purple-100 text-purple-800'}`}>
+                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-orange-100 text-orange-800' : 'bg-purple-100 text-purple-800'}`}>
                     Reto {ch.level}
                   </span>
-                  <span className="text-[10px] text-eu-teal font-bold">● {ch.status}</span>
+                  <span className="text-sm text-eu-teal font-bold">● {ch.status}</span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
                 <p className="text-xs text-gray-500 mb-3">{ch.org}</p>
-                <span className="text-[10px] bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{ch.sector}</span>
+                <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{ch.sector}</span>
               </div>
             ))}
           </div>
@@ -245,7 +245,7 @@ export default function Home({ setActiveTab }: HomeProps) {
           <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Consorcio AI-SECRETT · 21 socios en 12 países</p>
           <div className="flex flex-wrap justify-center gap-4 items-center">
             {['UVEG', 'CEICE', 'UMU', 'UPV', 'NTNU', 'HSW', 'FIDIT', 'INESC', 'TUV.IT', 'JOIST', 'C-LINK', 'LC', 'COGN', 'ESAD-GV', 'IF.E', 'Ud\'A', 'LPGA', 'VARM', 'CINK', 'KEA', 'PREDA'].map((p) => (
-              <div key={p} className="bg-eu-bg border border-eu-border rounded px-3 py-1.5 text-[11px] font-bold text-gray-600">{p}</div>
+              <div key={p} className="bg-eu-bg border border-eu-border rounded px-3 py-1.5 text-sm font-bold text-gray-600">{p}</div>
             ))}
           </div>
         </div>
