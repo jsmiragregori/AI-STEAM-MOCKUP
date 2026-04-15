@@ -78,7 +78,7 @@ export default function Home({ setActiveTab }: HomeProps) {
                 onClick={() => setActiveTab('red')}
                 className="border-2 border-white/50 text-white px-6 py-3 rounded-md font-bold hover:bg-white/10 transition-colors"
               >
-                Únete como Socio
+                Solicita adhesión a la Red
               </button>
             </div>
           </div>
