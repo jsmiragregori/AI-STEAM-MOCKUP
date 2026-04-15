@@ -121,19 +121,19 @@ export default function Network() {
           <div className="flex flex-wrap gap-4">
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{partners.length}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Socios Consorcio</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Socios Consorcio</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{stakeholders.length}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Stakeholders Red</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Stakeholders Red</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{countries.length}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Países</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Países</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{partners.length + stakeholders.length}</p>
-              <p className="text-[11px] text-white/70 font-semibold uppercase mt-0.5">Total Organizaciones</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Total Organizaciones</p>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function Network() {
                   <Icon className={`w-6 h-6 ${meta.color} mx-auto mb-2`} />
                   <p className={`font-bold text-sm ${meta.color}`}>{meta.label}</p>
                   <p className="text-2xl font-extrabold text-gray-800 mt-1">{total}</p>
-                  <p className="text-[10px] text-gray-500 mt-0.5">{partnerCounts[key]} socios · {stakeholderCounts[key]} stakeholders</p>
+                  <p className="text-sm text-gray-500 mt-0.5">{partnerCounts[key]} socios · {stakeholderCounts[key]} stakeholders</p>
                 </div>
               );
             })}
@@ -209,15 +209,15 @@ export default function Network() {
                       </div>
                       <div className="flex items-center gap-1.5">
                         <span className="text-sm">{countryFlag[p.country] ?? '🌍'}</span>
-                        <span className="text-[9px] bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">CONSORCIO</span>
+                        <span className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">CONSORCIO</span>
                       </div>
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{p.name}</p>
-                    <p className="text-[11px] font-mono text-gray-500 mb-2">{p.acronym} · {p.city}</p>
-                    <p className="text-[10px] text-eu-teal font-semibold mb-2">{p.role}</p>
+                    <p className="text-sm font-mono text-gray-500 mb-2">{p.acronym} · {p.city}</p>
+                    <p className="text-sm text-eu-teal font-semibold mb-2">{p.role}</p>
                     <div className="flex flex-wrap gap-1">
                       {p.sectors.map((s) => (
-                        <span key={s} className="text-[9px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s}</span>
+                        <span key={s} className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s}</span>
                       ))}
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function Network() {
                       <span className="text-xl">{countryFlag[c] ?? '🌍'}</span>
                       <div>
                         <p className="font-bold text-xs text-eu-text">{c}</p>
-                        <p className="text-[10px] text-gray-500">{count} {count === 1 ? 'socio' : 'socios'}</p>
+                        <p className="text-sm text-gray-500">{count} {count === 1 ? 'socio' : 'socios'}</p>
                       </div>
                     </div>
                   );
@@ -290,13 +290,13 @@ export default function Network() {
                       <div className={`w-9 h-9 rounded-lg ${meta.bg} flex items-center justify-center`}>
                         <Icon className={`w-4 h-4 ${meta.color}`} />
                       </div>
-                      <span className="text-[9px] bg-eu-orange/10 text-eu-orange font-bold px-1.5 py-0.5 rounded">STAKEHOLDER</span>
+                      <span className="text-xs bg-eu-orange/10 text-eu-orange font-bold px-1.5 py-0.5 rounded">STAKEHOLDER</span>
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{s.name}</p>
-                    <p className="text-[11px] text-gray-500 mb-1">{s.type}</p>
-                    <p className="text-[10px] text-eu-teal font-semibold mb-2">📍 {s.region}</p>
-                    <p className="text-[11px] text-gray-600 mb-2">{s.desc}</p>
-                    <span className="text-[9px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s.sector}</span>
+                    <p className="text-sm text-gray-500 mb-1">{s.type}</p>
+                    <p className="text-sm text-eu-teal font-semibold mb-2">📍 {s.region}</p>
+                    <p className="text-sm text-gray-600 mb-2">{s.desc}</p>
+                    <span className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s.sector}</span>
                   </div>
                 );
               })}

@@ -200,9 +200,9 @@ export default function Marketplace() {
               Retos reales aportados por empresas, administraciones y centros de investigación. Los equipos de estudiantes de FP y Máster proponen soluciones usando IA.
             </p>
             <div className="flex gap-5 mt-5">
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{open}</p><p className="text-[11px] text-white/70 uppercase font-semibold">Abiertos</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p><p className="text-[11px] text-white/70 uppercase font-semibold">En Resolución</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{solved}</p><p className="text-[11px] text-white/70 uppercase font-semibold">Resueltos</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{open}</p><p className="text-sm text-white/70 uppercase font-semibold">Abiertos</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p><p className="text-sm text-white/70 uppercase font-semibold">En Resolución</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{solved}</p><p className="text-sm text-white/70 uppercase font-semibold">Resueltos</p></div>
             </div>
           </div>
           <button
@@ -337,31 +337,31 @@ export default function Marketplace() {
             <div key={ch.id} className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col hover:border-eu-blue transition-colors">
               <div className="p-5 flex-1">
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[ch.level]}`}>
+                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[ch.level]}`}>
                     Reto {ch.level}
                   </span>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${statusStyles[ch.status]}`}>
+                  <span className={`text-sm font-bold px-2 py-0.5 rounded ${statusStyles[ch.status]}`}>
                     {ch.status}
                   </span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
                 <p className="text-xs text-gray-500 mb-1 font-semibold">{ch.country} {ch.entity}</p>
-                <p className="text-[10px] text-gray-400 mb-3">{ch.entityType}</p>
+                <p className="text-sm text-gray-400 mb-3">{ch.entityType}</p>
                 <p className="text-xs text-gray-600 mb-4 line-clamp-2">{ch.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {ch.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="flex items-center gap-1 text-[10px] bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">
+                    <span key={t} className="flex items-center gap-1 text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">
                       <Tag className="w-2.5 h-2.5" />{t}
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center gap-4 text-[10px] text-gray-500">
+                <div className="flex items-center gap-4 text-sm text-gray-500">
                   <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />Plazo: {ch.deadline}</span>
                   <span className="flex items-center gap-1"><Users className="w-3 h-3" />{ch.teams} {ch.teams === 1 ? 'equipo' : 'equipos'}</span>
                 </div>
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
-                <span className="text-[10px] font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{ch.sector}</span>
+                <span className="text-sm font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{ch.sector}</span>
                 <button className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline">
                   Ver y Aplicar →
                 </button>

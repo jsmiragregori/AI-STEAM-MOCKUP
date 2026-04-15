@@ -223,29 +223,29 @@ export default function Training() {
             <div key={course.id} className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col overflow-hidden hover:border-eu-blue transition-colors">
               <div className="p-5 flex-1">
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded ${levelColors[course.level]}`}>
+                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelColors[course.level]}`}>
                     {course.level}
                   </span>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${statusColors[course.status]}`}>
+                  <span className={`text-sm font-bold px-2 py-0.5 rounded ${statusColors[course.status]}`}>
                     {course.status}
                   </span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-2 leading-snug">{course.title}</h3>
                 <p className="text-xs text-gray-500 mb-3">{course.description}</p>
-                <div className="flex flex-wrap gap-2 text-[10px] text-gray-600 mb-3">
+                <div className="flex flex-wrap gap-2 text-sm text-gray-600 mb-3">
                   <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{course.hours}h</span>
                   <span className="flex items-center gap-1"><Users className="w-3 h-3" />{course.enrolled} matriculados</span>
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-yellow-500" />{course.rating}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  <span className="text-[10px] bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.sector}</span>
-                  <span className="text-[10px] bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.modality}</span>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.sector}</span>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.modality}</span>
                 </div>
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
                 <div className="flex items-center gap-1.5">
                   <Award className="w-3 h-3 text-eu-orange" />
-                  <span className="text-[10px] font-bold text-eu-orange">{course.badge}</span>
+                  <span className="text-sm font-bold text-eu-orange">{course.badge}</span>
                 </div>
                 <button className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline">
                   Ver curso →
