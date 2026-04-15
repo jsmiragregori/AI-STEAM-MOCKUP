@@ -8,8 +8,10 @@ import Marketplace from './components/views/Marketplace';
 import Knowledge from './components/views/Knowledge';
 import Governance from './components/views/Governance';
 import News from './components/views/News';
+import Sectors from './components/views/Sectors';
+import Training from './components/views/Training';
 
-export type Tab = 'inicio' | 'red' | 'banco-retos' | 'conocimiento' | 'gobernanza' | 'actualidad';
+export type Tab = 'inicio' | 'red' | 'sectores' | 'banco-retos' | 'formacion' | 'conocimiento' | 'gobernanza' | 'actualidad';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('inicio');
@@ -19,7 +21,9 @@ export default function App() {
     switch (activeTab) {
       case 'inicio': return <Home setActiveTab={setActiveTab} />;
       case 'red': return <Network />;
+      case 'sectores': return <Sectors />;
       case 'banco-retos': return <Marketplace />;
+      case 'formacion': return <Training />;
       case 'conocimiento': return <Knowledge />;
       case 'gobernanza': return <Governance />;
       case 'actualidad': return <News />;
@@ -30,13 +34,13 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-eu-bg font-sans text-eu-text">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
-      
+
       <main className="flex-grow pt-[112px]">
         {renderView()}
       </main>
 
       <Footer />
-      
+
       {!cookiesAccepted && (
         <CookieBanner onAccept={() => setCookiesAccepted(true)} />
       )}
