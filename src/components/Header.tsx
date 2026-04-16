@@ -53,9 +53,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
           {/* Institutional Shortcuts */}
           <div className="hidden lg:flex items-center gap-2 border-l border-eu-border pl-4 ml-2">
-            <button className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors">
+            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
               Aules
-            </button>
+            </a>
             <button className="bg-eu-orange/10 border border-eu-orange text-eu-orange px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-orange hover:text-white transition-colors">
               ConsensUE
             </button>

@@ -16,11 +16,11 @@ const sectors = [
 ];
 
 const stats = [
-  { id: 1, name: 'Socios Adheridos', value: '142', icon: Users },
+  { id: 1, name: 'Stakeholders', value: '142', icon: Users },
   { id: 2, name: 'Retos FP Activos', value: '85', icon: Zap },
   { id: 3, name: 'Retos Máster', value: '42', icon: BookOpen },
   { id: 4, name: 'Micro-credenciales', value: '1.200', icon: Award },
-  { id: 5, name: 'Países del Consorcio', value: '12', icon: Globe },
+  { id: 5, name: 'Países del Consorcio', value: '11', icon: Globe },
   { id: 6, name: 'Módulos Formativos', value: '68', icon: Layers },
 ];
 
@@ -32,6 +32,7 @@ const platforms = [
     color: 'border-eu-teal',
     iconBg: 'bg-eu-teal',
     tag: 'Formación',
+    href: 'https://aules.edu.gva.es/',
   },
   {
     name: 'AI-STEAM Network',
@@ -107,21 +108,35 @@ export default function Home({ setActiveTab }: HomeProps) {
             Tres plataformas complementarias para una red de conocimiento e innovación educativa única en Europa.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {platforms.map((p) => (
-              <div key={p.name} className={`bg-white rounded-xl border-t-4 ${p.color} border border-eu-border p-6 shadow-sm flex flex-col`}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-10 h-10 ${p.iconBg} rounded-lg flex items-center justify-center text-white font-bold text-sm`}>
-                    {p.name.substring(0, 2)}
+            {platforms.map((p) => {
+              const cardContent = (
+                <>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`w-10 h-10 ${p.iconBg} rounded-lg flex items-center justify-center text-white font-bold text-sm`}>
+                      {p.name.substring(0, 2)}
+                    </div>
+                    <div>
+                      <p className="font-bold text-eu-text">{p.name}</p>
+                      <p className="text-xs text-gray-500">{p.subtitle}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-bold text-eu-text">{p.name}</p>
-                    <p className="text-xs text-gray-500">{p.subtitle}</p>
-                  </div>
+                  <p className="text-sm text-gray-600 flex-1 mb-4">{p.desc}</p>
+                  <span className="self-start text-xs font-bold px-2 py-1 bg-eu-bg rounded text-eu-teal">{p.tag}</span>
+                </>
+              );
+
+              const cardClass = `bg-white rounded-xl border-t-4 ${p.color} border border-eu-border p-6 shadow-sm flex flex-col ${p.href ? 'hover:shadow-lg hover:border-t-4 transition-all cursor-pointer' : ''}`;
+
+              return p.href ? (
+                <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className={cardClass}>
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={p.name} className={cardClass}>
+                  {cardContent}
                 </div>
-                <p className="text-sm text-gray-600 flex-1 mb-4">{p.desc}</p>
-                <span className="self-start text-xs font-bold px-2 py-1 bg-eu-bg rounded text-eu-teal">{p.tag}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -172,7 +187,7 @@ export default function Home({ setActiveTab }: HomeProps) {
                 </div>
               </div>
               <p className="text-sm text-gray-700 mb-5">
-                Máster universitario internacional sobre IA aplicada a la creatividad y la triple transición. Contenidos co-creados con los socios de la red en 12 países europeos.
+                Máster universitario internacional sobre IA aplicada a la creatividad y la triple transición. Contenidos co-creados con los socios de la red en 11 países europeos.
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> 2 ediciones anuales (formato blended)</li>
@@ -242,9 +257,9 @@ export default function Home({ setActiveTab }: HomeProps) {
       {/* Partners strip */}
       <section className="px-6 py-10 bg-white border-t border-eu-border">
         <div className="max-w-7xl mx-auto">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Consorcio AI-SECRETT · 21 socios en 12 países</p>
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Consorcio AI-SECRETT · 23 miembros en 11 países</p>
           <div className="flex flex-wrap justify-center gap-4 items-center">
-            {['UVEG', 'CEICE', 'UMU', 'UPV', 'NTNU', 'HSW', 'FIDIT', 'INESC', 'TUV.IT', 'JOIST', 'C-LINK', 'LC', 'COGN', 'ESAD-GV', 'IF.E', 'Ud\'A', 'LPGA', 'VARM', 'CINK', 'KEA', 'PREDA'].map((p) => (
+            {['UVEG', 'CEICE', 'UMU', 'UPV', 'NTNU', 'HSW', 'FIDIT', 'INESC', 'TUV.IT', 'JOIST', 'C-LINK', 'LC', 'COGN', 'ESAD-GV', 'IF.E', 'Ud\'A', 'LPGA', 'VARM', 'CINK', 'KEA', 'PREDA', 'RCE'].map((p) => (
               <div key={p} className="bg-eu-bg border border-eu-border rounded px-3 py-1.5 text-sm font-bold text-gray-600">{p}</div>
             ))}
           </div>

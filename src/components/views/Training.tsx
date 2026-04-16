@@ -172,7 +172,9 @@ export default function Training() {
               </p>
             </div>
             <a
-              href="#"
+              href="https://aules.edu.gva.es/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors"
             >
               <BookOpen className="w-4 h-4" /> Acceder a Aules <ExternalLink className="w-3 h-3" />

@@ -53,7 +53,7 @@ const governanceBodies = [
     name: 'Red de Stakeholders',
     abbr: 'SN',
     type: 'Órgano participativo',
-    members: 'Todos los socios adheridos a la red AI-STEAM',
+    members: 'Todos los stakeholders adheridos a la red AI-STEAM',
     freq: 'Semestral + Online continua',
     desc: 'Plataforma participativa donde los socios no-consorcio proponen retos, votan prioridades temáticas y co-diseñan el currículo a través de ConsensUE.',
     color: 'border-eu-orange bg-orange-50',
