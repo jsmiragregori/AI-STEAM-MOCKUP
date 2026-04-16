@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface Sector {
   id: string;
@@ -142,6 +143,7 @@ const sectors: Sector[] = [
 ];
 
 export default function Sectors() {
+  const { t } = useLanguage();
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggle = (id: string) => setExpanded(expanded === id ? null : id);
@@ -155,22 +157,22 @@ export default function Sectors() {
       {/* Header */}
       <div className="bg-eu-blue text-white px-6 py-12">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-extrabold mb-3">Los 7 Sectores Estratégicos</h1>
+          <h1 className="text-3xl font-extrabold mb-3">{t('sectors.title')}</h1>
           <p className="text-white/80 max-w-3xl text-base mb-8">
-            El conocimiento de la red AI-STEAM se organiza en torno a 7 sectores clave para la triple transición digital, verde y social de Europa. Cada sector genera retos, recursos y módulos formativos para el Máster AI-SECRETT y los ciclos formativos de CEICE.
+            {t('sectors.description')}
           </p>
           <div className="flex flex-wrap gap-6">
             <div className="bg-white/10 rounded-xl px-6 py-4 text-center">
               <p className="text-3xl font-extrabold text-eu-yellow">{totalChallenges}</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Retos Totales</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{t('sectors.stats.totalChallenges')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4 text-center">
               <p className="text-3xl font-extrabold text-eu-yellow">{totalPartners}</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Organizaciones</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{t('sectors.stats.organizations')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4 text-center">
               <p className="text-3xl font-extrabold text-eu-yellow">{totalCourses}</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Módulos Formativos</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{t('sectors.stats.trainingModules')}</p>
             </div>
           </div>
         </div>
