@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Building2, GraduationCap, HeartHandshake, Globe, MapPin, UserPlus } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 type NetworkTab = 'socios' | 'stakeholders';
 type HelixCategory = 'todos' | 'universidad' | 'empresa' | 'admin' | 'sociedad';
@@ -83,6 +84,7 @@ const countryName: Record<string, string> = {
 };
 
 export default function Network() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<NetworkTab>('socios');
   const [activeCategory, setActiveCategory] = useState<HelixCategory>('todos');
   const [filterCountry, setFilterCountry] = useState<string | null>(null);
@@ -119,26 +121,26 @@ export default function Network() {
       {/* Header */}
       <div className="bg-eu-blue text-white px-6 py-12">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-extrabold mb-3">El Ecosistema AI-STEAM</h1>
+          <h1 className="text-3xl font-extrabold mb-3">{t('network.title')}</h1>
           <p className="text-white/80 max-w-3xl text-base mb-6">
-            Una red de innovación cuádruple hélice que conecta universidades, empresas, administraciones y sociedad civil. El consorcio AI-SECRETT impulsa la red, abierta a la adhesión de stakeholders de toda España y Europa.
+            {t('network.description')}
           </p>
           <div className="flex flex-wrap gap-4">
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{partners.length}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Socios Consorcio</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('network.stats.consortiumPartners')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{stakeholders.length}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Stakeholders Red</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('network.stats.stakeholdersNetwork')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{countries.length}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Países</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('network.stats.countries')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{partners.length + stakeholders.length}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Total Organizaciones</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('network.stats.totalOrganizations')}</p>
             </div>
           </div>
         </div>
