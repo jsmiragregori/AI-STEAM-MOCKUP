@@ -223,9 +223,9 @@ export default function Home({ setActiveTab }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { title: 'Optimización energética en museos con IA', org: 'Generalitat Valenciana (CEICE)', level: 'FP', sector: 'Administración', status: 'Abierto' },
-              { title: 'Detección de plagas en cítricos vía Computer Vision', org: 'AVA-ASAJA Cooperativa', level: 'Máster', sector: 'Agroalimentario', status: 'En Resolución' },
-              { title: 'IA en triaje de urgencias pediátricas', org: 'Hospital La Fe – Valencia', level: 'Máster', sector: 'Salud', status: 'Abierto' },
+              { title: 'Optimización energética en museos con IA', org: 'Generalitat Valenciana (CEICE)', level: 'FP', sector: 'Energy and Environment', status: 'Abierto' },
+              { title: 'Detección de plagas en cítricos vía Computer Vision', org: 'AVA-ASAJA Cooperativa', level: 'Máster', sector: 'Agrifood', status: 'En Resolución' },
+              { title: 'IA en triaje de urgencias pediátricas', org: 'Hospital La Fe – Valencia', level: 'Máster', sector: 'Non-Touristic Services', status: 'Abierto' },
             ].map((ch, i) => (
               <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
                 <div className="flex items-center justify-between mb-3">

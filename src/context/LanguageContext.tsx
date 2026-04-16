@@ -4,10 +4,11 @@ import { translations, Language } from '../translations';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string) => string | Record<string, string>;
+  translations: typeof translations;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
@@ -26,7 +27,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   // Función t() para acceder a traducciones con notación de punto
-  const t = (key: string): string => {
+  const t = (key: string): string | Record<string, string> => {
     const keys = key.split('.');
     let value: any = translations[language];
 
@@ -38,11 +39,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    return typeof value === 'string' ? value : key;
+    return value;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, translations }}>
       {children}
     </LanguageContext.Provider>
   );
