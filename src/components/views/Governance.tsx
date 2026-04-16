@@ -363,7 +363,7 @@ export default function Governance() {
                       <p className="text-xs font-bold uppercase text-eu-orange mb-1">Límite clave</p>
                       <div className="flex items-start gap-2 bg-orange-50 rounded-lg p-3">
                         <CheckCircle className="w-4 h-4 text-eu-orange mt-0.5 shrink-0" />
-                        <p className="text-sm text-eu-orange font-semibold">CEICE tiene autoridad para <strong>admitir nuevos miembros de la red</strong> y validar la relevancia social de los retos, sin necesidad de aprobación académica. La adhesión es rápida y no burocrática.</p>
+                        <p className="text-sm text-eu-orange font-semibold">La <strong>admisión de nuevos miembros</strong> y la validación de relevancia de los retos se deciden colectivamente a través de la Red de Stakeholders (SN) en ConsensUE. CEICE, como orquestadora, tiene voz principal en este proceso, pero no actúa unilateralmente. La adhesión es rápida y no burocrática.</p>
                       </div>
                     </div>
                     <div>
@@ -457,7 +457,7 @@ export default function Governance() {
                       step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network',
                       title: 'Input: Retos y Casos de Uso', actor: 'Organizaciones de la red (empresas, administraciones, ONGs)',
                       color: 'bg-eu-orange', border: 'border-eu-orange',
-                      desc: 'Los miembros del ecosistema aportan retos y casos de uso reales a través de ConsensUE. CEICE valida su relevancia social sin burocracia académica y los publica en el Banco de Retos de AI-STEAM Network.',
+                      desc: 'Los miembros del ecosistema aportan retos y casos de uso reales a través de ConsensUE. La Red de Stakeholders (SN), con CEICE como orquestadora con voz principal, valida colectivamente su relevancia mediante el proceso participativo de ConsensUE y los publica en el Banco de Retos de AI-STEAM Network.',
                       outputs: ['Reto publicado con descripción del problema', 'Datos y recursos disponibles para el equipo', 'Plazo y criterios de éxito definidos'],
                     },
                     {
