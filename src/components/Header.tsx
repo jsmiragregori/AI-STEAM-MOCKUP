@@ -1,4 +1,6 @@
 import { Tab } from '../App';
+import { useLanguage } from '../context/LanguageContext';
+import { Language } from '../translations';
 
 interface HeaderProps {
   activeTab: Tab;
@@ -6,15 +8,17 @@ interface HeaderProps {
 }
 
 export default function Header({ activeTab, setActiveTab }: HeaderProps) {
-  const navItems: { id: Tab; label: string }[] = [
-    { id: 'inicio', label: 'Inicio' },
-    { id: 'red', label: 'La Red' },
-    { id: 'sectores', label: 'Sectores' },
-    { id: 'banco-retos', label: 'Banco de Retos' },
-    { id: 'formacion', label: 'Formación' },
-    { id: 'conocimiento', label: 'Conocimiento' },
-    { id: 'actualidad', label: 'Actualidad' },
-    { id: 'gobernanza', label: 'Gobernanza' },
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems: { id: Tab; key: string }[] = [
+    { id: 'inicio', key: 'nav.inicio' },
+    { id: 'red', key: 'nav.red' },
+    { id: 'sectores', key: 'nav.sectores' },
+    { id: 'banco-retos', key: 'nav.bancoRetos' },
+    { id: 'formacion', key: 'nav.formacion' },
+    { id: 'conocimiento', key: 'nav.conocimiento' },
+    { id: 'actualidad', key: 'nav.actualidad' },
+    { id: 'gobernanza', key: 'nav.gobernanza' },
   ];
 
   return (
@@ -30,8 +34,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             AI
           </div>
           <div>
-            <span className="font-bold text-xl text-eu-blue block leading-none">AI-STEAM Network</span>
-            <span className="text-sm text-gray-500 font-medium tracking-wide uppercase">Generalitat Valenciana · CEICE · Digital Europe</span>
+            <span className="font-bold text-xl text-eu-blue block leading-none">{t('header.title')}</span>
+            <span className="text-sm text-gray-500 font-medium tracking-wide uppercase">{t('header.subtitle')}</span>
           </div>
         </div>
 
@@ -39,25 +43,46 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         <div className="flex items-center gap-4">
           {/* Language Selector */}
           <div className="hidden sm:flex items-center text-sm font-semibold text-gray-700 gap-2">
-            <span className="cursor-pointer hover:text-eu-blue px-2 py-1 rounded hover:bg-gray-100">EN</span>
+            <button
+              onClick={() => setLanguage('en' as Language)}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
+                language === 'en' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+              }`}
+            >
+              EN
+            </button>
             <span className="text-gray-400">|</span>
-            <span className="cursor-pointer text-eu-text font-bold px-2 py-1 rounded bg-gray-100">ES</span>
+            <button
+              onClick={() => setLanguage('es' as Language)}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
+                language === 'es' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+              }`}
+            >
+              ES
+            </button>
             <span className="text-gray-400">|</span>
-            <span className="cursor-pointer hover:text-eu-blue px-2 py-1 rounded hover:bg-gray-100">VA</span>
+            <button
+              onClick={() => setLanguage('va' as Language)}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
+                language === 'va' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+              }`}
+            >
+              VA
+            </button>
           </div>
 
           {/* SSO Button */}
           <button className="bg-eu-blue text-white border-none px-4 py-2 rounded font-semibold text-[13px] cursor-pointer hover:bg-blue-800 transition-colors">
-            Acceso Área Privada
+            {t('header.privateAccess')}
           </button>
 
           {/* Institutional Shortcuts */}
           <div className="hidden lg:flex items-center gap-2 border-l border-eu-border pl-4 ml-2">
             <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
-              Aules
+              {t('header.aules')}
             </a>
             <button className="bg-eu-orange/10 border border-eu-orange text-eu-orange px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-orange hover:text-white transition-colors">
-              ConsensUE
+              {t('header.consensUE')}
             </button>
           </div>
         </div>
@@ -76,7 +101,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             }`}
             aria-current={activeTab === item.id ? 'page' : undefined}
           >
-            {item.label}
+            {t(item.key)}
           </button>
         ))}
       </nav>
