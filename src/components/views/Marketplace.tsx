@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Calendar, Users, Tag } from 'lucide-react';
+import ChallengeDetail from './ChallengeDetail';
 
 type LevelFilter = 'Todos' | 'Máster' | 'FP';
 type StatusFilter = 'Todos' | 'Abierto' | 'En Resolución' | 'Resuelto';
@@ -176,6 +177,12 @@ export default function Marketplace() {
   const [sectorFilter, setSectorFilter] = useState<SectorFilter>('Todos');
   const [search, setSearch] = useState('');
   const [showSubmit, setShowSubmit] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const selectedChallenge = selectedId ? challenges.find((c) => c.id === selectedId) ?? null : null;
+  if (selectedChallenge) {
+    return <ChallengeDetail challenge={selectedChallenge} onBack={() => setSelectedId(null)} />;
+  }
 
   const filtered = challenges.filter((c) => {
     if (levelFilter !== 'Todos' && c.level !== levelFilter) return false;
@@ -362,7 +369,10 @@ export default function Marketplace() {
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
                 <span className="text-sm font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{ch.sector}</span>
-                <button className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline">
+                <button
+                  onClick={() => setSelectedId(ch.id)}
+                  className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline"
+                >
                   Ver y Aplicar →
                 </button>
               </div>
