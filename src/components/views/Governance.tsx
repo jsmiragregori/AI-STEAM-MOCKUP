@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   FileSignature, Users, Landmark, ExternalLink, ShieldCheck,
   ArrowRight, CheckCircle, AlertCircle, BookOpen, FileText,
   Zap, Shield, GraduationCap, Building2, Globe, ArrowDown,
 } from 'lucide-react';
+import { LanguageContext } from '../../context/LanguageContext';
 
 type GovTab = 'estructura' | 'dual-track' | 'lbd' | 'documentos' | 'participar';
 
@@ -71,15 +72,17 @@ const transparencyDocs = [
 
 export default function Governance() {
   const [activeTab, setActiveTab] = useState<GovTab>('estructura');
+  const languageContext = useContext(LanguageContext);
+  const t = languageContext?.translations.governance || {};
 
   return (
     <div className="animate-in fade-in duration-300">
       {/* Header */}
       <div className="bg-eu-blue text-white px-6 py-12">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-extrabold mb-3">Gobernanza y Transparencia</h1>
+          <h1 className="text-3xl font-extrabold mb-3">{t.title}</h1>
           <p className="text-white/80 max-w-3xl text-base">
-            La AI-STEAM Network opera bajo un modelo de gobernanza de <strong>Doble Vía</strong> (Dual Track): un espacio académico liderado por UVEG y un espacio ecosistema orquestado por la Generalitat Valenciana (CEICE). Ambos están conectados por la metodología <strong>Learning by Developing (LbD)</strong>, que transforma los retos reales de las organizaciones en resultados académicos de alto impacto.
+            {t.description}
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             {[
@@ -101,22 +104,22 @@ export default function Governance() {
         {/* Tabs */}
         <div className="flex flex-wrap gap-1 border-b border-eu-border mb-8">
           {([
-            { id: 'estructura', label: 'Estructura y Órganos' },
-            { id: 'dual-track', label: 'Arquitectura Dual Track' },
-            { id: 'lbd', label: 'Metodología LbD' },
-            { id: 'documentos', label: 'Documentación' },
-            { id: 'participar', label: 'Participar' },
-          ] as { id: GovTab; label: string }[]).map((t) => (
+            { id: 'estructura', label: t.tabEstructura },
+            { id: 'dual-track', label: t.tabDualTrack },
+            { id: 'lbd', label: t.tabLbd },
+            { id: 'documentos', label: t.tabDocumentos },
+            { id: 'participar', label: t.tabParticipar },
+          ] as { id: GovTab; label: string }[]).map((tab) => (
             <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id)}
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
               className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer whitespace-nowrap ${
-                activeTab === t.id
+                activeTab === tab.id
                   ? 'border-eu-blue text-eu-blue'
                   : 'border-transparent text-gray-600 hover:text-eu-text'
               }`}
             >
-              {t.label}
+              {tab.label}
             </button>
           ))}
         </div>

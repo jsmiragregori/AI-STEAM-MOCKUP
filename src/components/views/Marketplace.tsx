@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Search, Plus, Calendar, Users, Tag } from 'lucide-react';
 import ChallengeDetail from './ChallengeDetail';
+import { LanguageContext } from '../../context/LanguageContext';
 
 type LevelFilter = 'Todos' | 'Máster' | 'FP';
 type StatusFilter = 'Todos' | 'Abierto' | 'En Resolución' | 'Resuelto';
-type SectorFilter = 'Todos' | 'Industria' | 'Salud' | 'Medio Ambiente' | 'Educación' | 'Agroalimentario' | 'Turismo y Cultura' | 'Administración';
+type SectorFilter = 'Todos' | 'Manufacturing' | 'Mobility and Transport' | 'Energy and Environment' | 'Agrifood' | 'Cultural and Creative Industries' | 'Housing' | 'Non-Touristic Services';
 
 interface Challenge {
   id: string;
@@ -30,7 +31,7 @@ const challenges: Challenge[] = [
     entityType: 'Administración Pública',
     level: 'FP',
     status: 'Abierto',
-    sector: 'Administración',
+    sector: 'Energy and Environment',
     description: 'Desarrollo de un modelo predictivo para optimizar el consumo de HVAC en la red de museos públicos valencianos. Se busca reducir el consumo un 25% sin afectar al confort de visitantes.',
     posted: '10 Mar 2026',
     deadline: '30 Jun 2026',
@@ -60,7 +61,7 @@ const challenges: Challenge[] = [
     entityType: 'PYME Agroalimentaria',
     level: 'FP',
     status: 'Abierto',
-    sector: 'Agroalimentario',
+    sector: 'Manufacturing',
     description: 'Reducción de paradas no planificadas en líneas de embotellado de vino mediante sensórica vibratoria y modelos LSTM para la predicción de fallos en rodamientos y motores.',
     posted: '01 Feb 2026',
     deadline: '30 Ago 2026',
@@ -75,7 +76,7 @@ const challenges: Challenge[] = [
     entityType: 'Institución Sanitaria Pública',
     level: 'Máster',
     status: 'Abierto',
-    sector: 'Salud',
+    sector: 'Non-Touristic Services',
     description: 'Modelo de apoyo a la decisión clínica para el triaje en urgencias pediátricas basado en constantes vitales, motivo de consulta (NLP) e historial clínico previo (HL7 FHIR).',
     posted: '05 Mar 2026',
     deadline: '30 Sep 2026',
@@ -90,7 +91,7 @@ const challenges: Challenge[] = [
     entityType: 'Administración Pública',
     level: 'Máster',
     status: 'En Resolución',
-    sector: 'Turismo y Cultura',
+    sector: 'Cultural and Creative Industries',
     description: 'Uso de NLP y OCR para catalogar y enriquecer semánticamente 50.000 documentos históricos en español, inglés y neerlandés del archivo colonial de Gran Canaria.',
     posted: '20 Nov 2025',
     deadline: '20 May 2026',
@@ -105,7 +106,7 @@ const challenges: Challenge[] = [
     entityType: 'Administración Regional',
     level: 'Máster',
     status: 'Abierto',
-    sector: 'Medio Ambiente',
+    sector: 'Energy and Environment',
     description: 'Modelos de series temporales para predecir la concentración de nitratos y fosfatos en el lago Vänern usando datos de sensores remotos y registros históricos de 15 años.',
     posted: '01 Mar 2026',
     deadline: '30 Sep 2026',
@@ -120,7 +121,7 @@ const challenges: Challenge[] = [
     entityType: 'Startup',
     level: 'FP',
     status: 'Abierto',
-    sector: 'Turismo y Cultura',
+    sector: 'Cultural and Creative Industries',
     description: 'Motor de recomendación personalizado para turismo cultural en Canarias que integre criterios de sostenibilidad, preferencias de usuario y datos de afluencia en tiempo real.',
     posted: '12 Feb 2026',
     deadline: '12 Ago 2026',
@@ -135,7 +136,7 @@ const challenges: Challenge[] = [
     entityType: 'Administración Pública',
     level: 'FP',
     status: 'Resuelto',
-    sector: 'Educación',
+    sector: 'Non-Touristic Services',
     description: 'Sistema de extracción y validación automática de datos en expedientes académicos de la CV mediante OCR + LLM. Reducción del tiempo de tramitación del 70%.',
     posted: '01 Sep 2025',
     deadline: '28 Feb 2026',
@@ -150,7 +151,7 @@ const challenges: Challenge[] = [
     entityType: 'Centro de Investigación',
     level: 'Máster',
     status: 'Abierto',
-    sector: 'Medio Ambiente',
+    sector: 'Energy and Environment',
     description: 'Clasificador multilingüe (ES/PT/EN) para identificar narrativas de desinformación sobre cambio climático en Twitter/X y Mastodon usando modelos transformer y grafos de conocimiento.',
     posted: '20 Feb 2026',
     deadline: '20 Oct 2026',
@@ -172,6 +173,9 @@ const levelStyles: Record<string, string> = {
 };
 
 export default function Marketplace() {
+  const languageContext = useContext(LanguageContext);
+  const t = languageContext?.translations.marketplace || {};
+
   const [levelFilter, setLevelFilter] = useState<LevelFilter>('Todos');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('Todos');
   const [sectorFilter, setSectorFilter] = useState<SectorFilter>('Todos');
@@ -202,21 +206,21 @@ export default function Marketplace() {
       <div className="bg-eu-blue text-white px-6 py-10">
         <div className="max-w-7xl mx-auto flex flex-wrap items-start justify-between gap-6">
           <div>
-            <h1 className="text-3xl font-extrabold mb-2">Banco de Retos</h1>
+            <h1 className="text-3xl font-extrabold mb-2">{t.title}</h1>
             <p className="text-white/80 max-w-2xl text-base">
-              Retos reales aportados por empresas, administraciones y centros de investigación. Los equipos de estudiantes de FP y Máster proponen soluciones usando IA.
+              {t.description}
             </p>
             <div className="flex gap-5 mt-5">
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{open}</p><p className="text-sm text-white/70 uppercase font-semibold">Abiertos</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p><p className="text-sm text-white/70 uppercase font-semibold">En Resolución</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{solved}</p><p className="text-sm text-white/70 uppercase font-semibold">Resueltos</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{open}</p><p className="text-sm text-white/70 uppercase font-semibold">{t.openChallenges}</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p><p className="text-sm text-white/70 uppercase font-semibold">{t.inProgressChallenges}</p></div>
+              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{solved}</p><p className="text-sm text-white/70 uppercase font-semibold">{t.resolvedChallenges}</p></div>
             </div>
           </div>
           <button
             onClick={() => setShowSubmit(!showSubmit)}
             className="flex items-center gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors border-none cursor-pointer"
           >
-            <Plus className="w-4 h-4" /> Publicar Reto
+            <Plus className="w-4 h-4" /> {t.publishChallenge}
           </button>
         </div>
       </div>
@@ -225,8 +229,8 @@ export default function Marketplace() {
         {/* Submit Form */}
         {showSubmit && (
           <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mb-8">
-            <h2 className="text-xl font-bold text-eu-text mb-1">Publicar un Nuevo Reto</h2>
-            <p className="text-sm text-gray-600 mb-5">Comparte un desafío real de tu organización con los estudiantes de la red. Es gratuito y los equipos trabajarán con mentorización de la universidad.</p>
+            <h2 className="text-xl font-bold text-eu-text mb-1">{t.publishNew}</h2>
+            <p className="text-sm text-gray-600 mb-5">{t.shareChallenge}</p>
             <form className="space-y-4 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="block text-[13px] font-bold text-eu-text mb-1">Título del Reto *</label>
@@ -244,13 +248,13 @@ export default function Marketplace() {
                 <div>
                   <label className="block text-[13px] font-bold text-eu-text mb-1">Sector *</label>
                   <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                    <option>Industria y Manufactura</option>
-                    <option>Salud y Bienestar</option>
-                    <option>Medio Ambiente</option>
-                    <option>Educación</option>
-                    <option>Agroalimentario</option>
-                    <option>Turismo y Cultura</option>
-                    <option>Administración Pública</option>
+                    <option>Manufacturing</option>
+                    <option>Mobility and Transport</option>
+                    <option>Energy and Environment</option>
+                    <option>Agrifood</option>
+                    <option>Cultural and Creative Industries</option>
+                    <option>Housing</option>
+                    <option>Non-Touristic Services</option>
                   </select>
                 </div>
                 <div>
@@ -264,10 +268,10 @@ export default function Marketplace() {
               </div>
               <div className="flex justify-end gap-3">
                 <button type="button" onClick={() => setShowSubmit(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
-                  Cancelar
+                  {t.cancel}
                 </button>
                 <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-orange-600 transition-colors cursor-pointer">
-                  Enviar Reto
+                  {t.submit}
                 </button>
               </div>
             </form>
@@ -278,7 +282,7 @@ export default function Marketplace() {
         <div className="bg-white rounded-xl border border-eu-border shadow-sm p-5 mb-6">
           <div className="flex flex-wrap gap-4 items-end">
             <div className="flex-1 min-w-50">
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">Buscar</label>
+              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{t.searchLabel}</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -291,45 +295,45 @@ export default function Marketplace() {
               </div>
             </div>
             <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">Nivel</label>
+              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{t.filterLevel}</label>
               <select
                 value={levelFilter}
                 onChange={(e) => setLevelFilter(e.target.value as LevelFilter)}
                 className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
               >
-                <option value="Todos">Todos</option>
-                <option value="FP">FP</option>
-                <option value="Máster">Máster</option>
+                <option value="Todos">{t.all}</option>
+                <option value="FP">{t.fpLevel}</option>
+                <option value="Máster">{t.masterLevel}</option>
               </select>
             </div>
             <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">Estado</label>
+              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{t.filterStatus}</label>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
                 className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
               >
-                <option value="Todos">Todos</option>
-                <option value="Abierto">Abierto</option>
-                <option value="En Resolución">En Resolución</option>
-                <option value="Resuelto">Resuelto</option>
+                <option value="Todos">{t.all}</option>
+                <option value="Abierto">{t.open}</option>
+                <option value="En Resolución">{t.inProgress}</option>
+                <option value="Resuelto">{t.resolved}</option>
               </select>
             </div>
             <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">Sector</label>
+              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{t.filterSector}</label>
               <select
                 value={sectorFilter}
                 onChange={(e) => setSectorFilter(e.target.value as SectorFilter)}
                 className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
               >
-                <option value="Todos">Todos</option>
-                <option>Industria</option>
-                <option>Salud</option>
-                <option>Medio Ambiente</option>
-                <option>Educación</option>
-                <option>Agroalimentario</option>
-                <option>Turismo y Cultura</option>
-                <option>Administración</option>
+                <option value="Todos">{t.all}</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Mobility and Transport">Mobility and Transport</option>
+                <option value="Energy and Environment">Energy and Environment</option>
+                <option value="Agrifood">Agrifood</option>
+                <option value="Cultural and Creative Industries">Cultural and Creative Industries</option>
+                <option value="Housing">Housing</option>
+                <option value="Non-Touristic Services">Non-Touristic Services</option>
               </select>
             </div>
           </div>
