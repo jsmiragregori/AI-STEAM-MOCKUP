@@ -20,7 +20,7 @@ const stats = [
   { id: 2, name: 'Retos Totales', value: '127', icon: Zap },
   { id: 3, name: 'Miembros del Consorcio', value: '23', icon: BookOpen },
   { id: 4, name: 'Micro-credenciales', value: '1.200', icon: Award },
-  { id: 5, name: 'Países del Consorcio', value: '11', icon: Globe },
+  { id: 5, name: 'Países', value: '11', icon: Globe },
   { id: 6, name: 'Módulos Formativos', value: '68', icon: Layers },
 ];
 
