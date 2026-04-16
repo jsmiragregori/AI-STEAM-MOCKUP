@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FileText, Download, Award, ArrowRight, Search, BookOpen, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 type KnowledgeTab = 'flujo' | 'oer' | 'insignias' | 'repositorio';
 
@@ -28,25 +29,25 @@ interface Badge {
 }
 
 const oerResources: OERResource[] = [
-  { id: 'o1', title: 'Guía de Ética en IA para FP', type: 'Guía', sector: 'Educación', level: 'FP', license: 'CC-BY-SA 4.0', author: 'CEICE / IF.E', date: 'Mar 2026', downloads: 1420, lang: 'ES / VA' },
-  { id: 'o2', title: 'Manual de Gemelos Digitales v2.1', type: 'Manual', sector: 'Industria', level: 'Máster', license: 'CC-BY 4.0', author: 'INESC TEC / HSW', date: 'Feb 2026', downloads: 876, lang: 'EN / ES' },
-  { id: 'o3', title: 'Dataset Plagas Cítricos CV (10K imágenes)', type: 'Dataset', sector: 'Agroalimentario', level: 'Máster', license: 'CC-BY-NC 4.0', author: 'AVA-ASAJA / UVEG', date: 'Ene 2026', downloads: 543, lang: 'ES' },
+  { id: 'o1', title: 'Guía de Ética en IA para FP', type: 'Guía', sector: 'nts', level: 'FP', license: 'CC-BY-SA 4.0', author: 'CEICE / IF.E', date: 'Mar 2026', downloads: 1420, lang: 'ES / VA' },
+  { id: 'o2', title: 'Manual de Gemelos Digitales v2.1', type: 'Manual', sector: 'mfg', level: 'Máster', license: 'CC-BY 4.0', author: 'INESC TEC / HSW', date: 'Feb 2026', downloads: 876, lang: 'EN / ES' },
+  { id: 'o3', title: 'Dataset Plagas Cítricos CV (10K imágenes)', type: 'Dataset', sector: 'agr', level: 'Máster', license: 'CC-BY-NC 4.0', author: 'AVA-ASAJA / UVEG', date: 'Ene 2026', downloads: 543, lang: 'ES' },
   { id: 'o4', title: 'Plantilla Análisis de Sesgo en Modelos de IA', type: 'Plantilla', sector: 'Todos', level: 'Todos', license: 'CC-BY-SA 4.0', author: 'COGN / LC', date: 'Dic 2025', downloads: 2105, lang: 'EN / ES / FR' },
-  { id: 'o5', title: 'Introducción a ML con Python para FP – Vídeo (12h)', type: 'Vídeo', sector: 'Educación', level: 'FP', license: 'CC-BY 4.0', author: 'UMU / CEICE', date: 'Nov 2025', downloads: 3210, lang: 'ES / VA' },
-  { id: 'o6', title: 'Guía Reglamento IA UE para la Administración', type: 'Guía', sector: 'Administración', level: 'Docentes', license: 'CC-BY-SA 4.0', author: 'LC / CEICE', date: 'Feb 2026', downloads: 789, lang: 'ES / EN' },
-  { id: 'o7', title: 'Manual de NLP para Análisis Clínico', type: 'Manual', sector: 'Salud', level: 'Máster', license: 'CC-BY-NC-SA 4.0', author: "Ud'A / UVEG", date: 'Mar 2026', downloads: 412, lang: 'IT / EN' },
-  { id: 'o8', title: 'Dataset Imágenes Patrimonio Cultural (5K)', type: 'Dataset', sector: 'Turismo y Cultura', level: 'Máster', license: 'CC-BY 4.0', author: 'LPGA / ESAD-GV', date: 'Ene 2026', downloads: 298, lang: 'ES / EN' },
+  { id: 'o5', title: 'Introducción a ML con Python para FP – Vídeo (12h)', type: 'Vídeo', sector: 'nts', level: 'FP', license: 'CC-BY 4.0', author: 'UMU / CEICE', date: 'Nov 2025', downloads: 3210, lang: 'ES / VA' },
+  { id: 'o6', title: 'Guía Reglamento IA UE para la Administración', type: 'Guía', sector: 'nts', level: 'Docentes', license: 'CC-BY-SA 4.0', author: 'LC / CEICE', date: 'Feb 2026', downloads: 789, lang: 'ES / EN' },
+  { id: 'o7', title: 'Manual de NLP para Análisis Clínico', type: 'Manual', sector: 'nts', level: 'Máster', license: 'CC-BY-NC-SA 4.0', author: "Ud'A / UVEG", date: 'Mar 2026', downloads: 412, lang: 'IT / EN' },
+  { id: 'o8', title: 'Dataset Imágenes Patrimonio Cultural (5K)', type: 'Dataset', sector: 'cci', level: 'Máster', license: 'CC-BY 4.0', author: 'LPGA / ESAD-GV', date: 'Ene 2026', downloads: 298, lang: 'ES / EN' },
 ];
 
 const badges: Badge[] = [
-  { id: 'b1', name: 'AI-Industry Badge', description: 'Competencias en IA aplicada a entornos industriales y mantenimiento predictivo', sector: 'Industria', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Completar módulo IND-FP-01', 'Superar evaluación práctica', 'Resolver 1 reto del Banco'] },
-  { id: 'b2', name: 'HealthAI Badge', description: 'Aplicación de ML en diagnóstico y gestión clínica con perspectiva ética', sector: 'Salud', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Completar módulo SAL-MST-02', 'Trabajo de investigación clínica', 'Validación TÜV'] },
-  { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competencia digital en IA para docentes de FP y educación secundaria', sector: 'Educación', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['Curso online 30h', 'Diseño de unidad didáctica IA', 'Evaluación por pares'] },
-  { id: 'b4', name: 'GreenAI Badge', description: 'IA para monitorización ambiental, energía y economía circular', sector: 'Medio Ambiente', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['Módulo MED-FP-03', 'Proyecto de sensórica ambiental', 'Informe de impacto'] },
-  { id: 'b5', name: 'AgroAI Badge', description: 'Técnicas de IA para agricultura de precisión y trazabilidad alimentaria', sector: 'Agroalimentario', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['Módulo AGR-FP-01', 'Práctica con drones y sensores', 'Reto Banco de Retos'] },
-  { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimonio, diseño y turismo cultural', sector: 'Turismo y Cultura', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Módulo TUR-MST-04', 'Proyecto creativo con IA', 'Exposición pública'] },
-  { id: 'b7', name: 'GovAI Badge', description: 'IA en servicios públicos: automatización, transparencia y ética', sector: 'Administración', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curso GovAI 40h', 'Caso práctico de tramitación', 'Test Reglamento IA UE'] },
-  { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelado, simulación y análisis de gemelos digitales industriales', sector: 'Industria', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Módulo IND-MST-05', 'Proyecto con plataforma de simulación', 'Validación TÜV'] },
+  { id: 'b1', name: 'AI-Industry Badge', description: 'Competencias en IA aplicada a entornos industriales y mantenimiento predictivo', sector: 'mfg', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Completar módulo IND-FP-01', 'Superar evaluación práctica', 'Resolver 1 reto del Banco'] },
+  { id: 'b2', name: 'HealthAI Badge', description: 'Aplicación de ML en diagnóstico y gestión clínica con perspectiva ética', sector: 'nts', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Completar módulo SAL-MST-02', 'Trabajo de investigación clínica', 'Validación TÜV'] },
+  { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competencia digital en IA para docentes de FP y educación secundaria', sector: 'nts', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['Curso online 30h', 'Diseño de unidad didáctica IA', 'Evaluación por pares'] },
+  { id: 'b4', name: 'GreenAI Badge', description: 'IA para monitorización ambiental, energía y economía circular', sector: 'ene', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['Módulo MED-FP-03', 'Proyecto de sensórica ambiental', 'Informe de impacto'] },
+  { id: 'b5', name: 'AgroAI Badge', description: 'Técnicas de IA para agricultura de precisión y trazabilidad alimentaria', sector: 'agr', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['Módulo AGR-FP-01', 'Práctica con drones y sensores', 'Reto Banco de Retos'] },
+  { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimonio, diseño y turismo cultural', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Módulo TUR-MST-04', 'Proyecto creativo con IA', 'Exposición pública'] },
+  { id: 'b7', name: 'GovAI Badge', description: 'IA en servicios públicos: automatización, transparencia y ética', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curso GovAI 40h', 'Caso práctico de tramitación', 'Test Reglamento IA UE'] },
+  { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelado, simulación y análisis de gemelos digitales industriales', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Módulo IND-MST-05', 'Proyecto con plataforma de simulación', 'Validación TÜV'] },
 ];
 
 const typeIcons: Record<string, string> = {
@@ -74,11 +75,18 @@ const flowSteps = [
 ];
 
 export default function Knowledge() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<KnowledgeTab>('flujo');
   const [oerSearch, setOerSearch] = useState('');
 
+  const getSectorName = (sectorId: string): string => {
+    if (sectorId === 'Todos') return 'Todos';
+    const sectorNames = t('sectors.sectorNames') as Record<string, string>;
+    return sectorNames[sectorId] || sectorId;
+  };
+
   const filteredOER = oerResources.filter((r) =>
-    oerSearch === '' || r.title.toLowerCase().includes(oerSearch.toLowerCase()) || r.sector.toLowerCase().includes(oerSearch.toLowerCase())
+    oerSearch === '' || r.title.toLowerCase().includes(oerSearch.toLowerCase()) || getSectorName(r.sector).toLowerCase().includes(oerSearch.toLowerCase())
   );
 
   return (
@@ -197,7 +205,7 @@ export default function Knowledge() {
                     </div>
                     <div className="flex flex-wrap gap-3 text-sm text-gray-500">
                       <span>{r.type}</span>
-                      <span>Sector: {r.sector}</span>
+                      <span>Sector: {getSectorName(r.sector)}</span>
                       <span>Autor: {r.author}</span>
                       <span>{r.date}</span>
                       <span className="font-mono text-eu-teal">{r.license}</span>
@@ -241,7 +249,7 @@ export default function Knowledge() {
                   <p className="text-sm text-gray-500 text-center mb-3">{badge.description}</p>
                   <div className="flex justify-center gap-2 mb-3">
                     <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${levelColors[badge.level]}`}>{badge.level}</span>
-                    <span className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{badge.sector}</span>
+                    <span className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{getSectorName(badge.sector)}</span>
                   </div>
                   <div className="bg-eu-bg rounded-lg p-3 mb-3">
                     <p className="text-sm font-bold text-gray-500 uppercase mb-1">Criterios</p>
@@ -271,7 +279,7 @@ export default function Knowledge() {
                 {
                   title: 'Automatización de expedientes académicos con IA',
                   org: 'CEICE – Generalitat Valenciana',
-                  sector: 'Educación / Administración',
+                  sector: 'nts',
                   level: 'FP',
                   result: 'Sistema OCR + LLM en producción. Reducción del 70% en tiempo de tramitación. 5 equipos participantes.',
                   oer: 'Guía técnica y dataset publicados bajo CC-BY-SA',
@@ -280,7 +288,7 @@ export default function Knowledge() {
                 {
                   title: 'Predicción de fallos en embotelladoras de vino',
                   org: 'Bodegas Murviedro SA',
-                  sector: 'Agroalimentario / Industria',
+                  sector: 'agr',
                   level: 'FP',
                   result: 'Modelo LSTM con 92% de precisión. Reducción de paradas del 35%. Implementado en 2 líneas de producción.',
                   oer: 'Notebook Python + dataset vibrómetro publicados en Aules',
@@ -289,7 +297,7 @@ export default function Knowledge() {
                 {
                   title: 'Catálogo semántico de museos canarios',
                   org: 'LPGA – Las Palmas de Gran Canaria',
-                  sector: 'Turismo y Cultura',
+                  sector: 'cci',
                   level: 'Máster',
                   result: '12.000 obras catalogadas automáticamente. Motor de búsqueda semántica desplegado en web municipal.',
                   oer: 'Modelo NLP multilingüe y ontología publicados en HuggingFace + Aules',
@@ -300,7 +308,7 @@ export default function Knowledge() {
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>
                       <h3 className="font-bold text-eu-text text-base mb-0.5">{c.title}</h3>
-                      <p className="text-sm text-gray-500">{c.org} · <span className="text-eu-teal font-semibold">{c.sector}</span></p>
+                      <p className="text-sm text-gray-500">{c.org} · <span className="text-eu-teal font-semibold">{getSectorName(c.sector)}</span></p>
                     </div>
                     <div className="flex gap-2">
                       <span className={`text-sm font-bold px-2 py-0.5 rounded ${levelColors[c.level]}`}>{c.level}</span>

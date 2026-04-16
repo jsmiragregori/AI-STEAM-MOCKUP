@@ -1,4 +1,7 @@
 import { ArrowLeft, Calendar, Users, Tag, Building2, Clock, CheckCircle, FileText, Star, ChevronRight, Download, MessageSquare, Target, Database, Award } from 'lucide-react';
+import { useContext } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
+import { challengeExtras } from '../../challengeExtras';
 
 interface Challenge {
   id: string;
@@ -562,7 +565,13 @@ interface ChallengeDetailProps {
 }
 
 export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailProps) {
-  const extra = extras[challenge.id];
+  const languageContext = useContext(LanguageContext);
+  const t = languageContext?.translations.challengeDetail || {};
+  const currentLanguage = languageContext?.language || 'es';
+
+  // Get challenge data in current language
+  const extra = challengeExtras[currentLanguage as keyof typeof challengeExtras]?.[challenge.id as keyof typeof challengeExtras.es] ||
+    challengeExtras.es[challenge.id as keyof typeof challengeExtras.es];
   const st = statusStyles[challenge.status];
 
   return (
@@ -574,11 +583,11 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
             onClick={onBack}
             className="flex items-center gap-2 text-eu-blue font-bold text-sm hover:underline bg-transparent border-none cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" /> Volver al Banco de Retos
+            <ArrowLeft className="w-4 h-4" /> {t.backButton || 'Volver al Banco de Retos'}
           </button>
           <div className="flex items-center gap-2">
             <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[challenge.level]}`}>
-              Reto {challenge.level}
+              {t.challengeLevel} {challenge.level}
             </span>
             <span className={`flex items-center gap-1.5 text-sm font-bold px-2 py-0.5 rounded ${st.bg} ${st.text}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${st.dot}`}></span>
@@ -618,44 +627,44 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
             <div className="flex items-center gap-3">
               <Calendar className="w-4 h-4 text-eu-yellow shrink-0" />
               <div>
-                <p className="text-xs text-white/50 uppercase font-bold">Plazo de entrega</p>
+                <p className="text-xs text-white/50 uppercase font-bold">{t.deadline || 'Plazo de entrega'}</p>
                 <p className="font-bold text-white">{challenge.deadline}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Clock className="w-4 h-4 text-eu-yellow shrink-0" />
               <div>
-                <p className="text-xs text-white/50 uppercase font-bold">Publicado</p>
+                <p className="text-xs text-white/50 uppercase font-bold">{t.posted || 'Publicado'}</p>
                 <p className="font-bold text-white">{challenge.posted}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Users className="w-4 h-4 text-eu-yellow shrink-0" />
               <div>
-                <p className="text-xs text-white/50 uppercase font-bold">Equipos inscritos</p>
-                <p className="font-bold text-white">{challenge.teams} {challenge.teams === 1 ? 'equipo' : 'equipos'}</p>
+                <p className="text-xs text-white/50 uppercase font-bold">{t.teamsEnrolled || 'Equipos inscritos'}</p>
+                <p className="font-bold text-white">{challenge.teams} {challenge.teams === 1 ? (t.team || 'equipo') : (t.teams || 'equipos')}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Users className="w-4 h-4 text-eu-yellow shrink-0" />
               <div>
-                <p className="text-xs text-white/50 uppercase font-bold">Composición de equipo</p>
+                <p className="text-xs text-white/50 uppercase font-bold">{t.teamComposition || 'Composición de equipo'}</p>
                 <p className="font-bold text-white text-sm">{extra?.teamSize ?? '—'}</p>
               </div>
             </div>
             {challenge.status === 'Abierto' && (
               <button className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-orange-600 transition-colors border-none cursor-pointer text-sm">
-                Inscribir mi equipo →
+                {t.enrollButton || 'Inscribir mi equipo →'}
               </button>
             )}
             {challenge.status === 'En Resolución' && (
               <div className="mt-2 w-full bg-yellow-400/20 text-yellow-200 font-bold py-2.5 rounded-lg text-sm text-center">
-                Inscripciones cerradas
+                {t.enrollmentClosed || 'Inscripciones cerradas'}
               </div>
             )}
             {challenge.status === 'Resuelto' && (
               <div className="mt-2 w-full bg-white/10 text-white/60 font-bold py-2.5 rounded-lg text-sm text-center">
-                Reto completado
+                {t.challengeCompleted || 'Reto completado'}
               </div>
             )}
           </div>
@@ -670,12 +679,12 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {/* Descripción */}
           <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
             <h2 className="text-lg font-bold text-eu-text mb-3 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-eu-blue" /> Descripción del Reto
+              <FileText className="w-5 h-5 text-eu-blue" /> {t.descriptionTitle || 'Descripción del Reto'}
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">{extra?.fullDescription ?? challenge.description}</p>
             {extra?.context && (
               <div className="bg-eu-bg border-l-4 border-eu-teal rounded-r-lg p-4">
-                <p className="text-xs font-bold text-eu-teal uppercase mb-1">Contexto y datos disponibles</p>
+                <p className="text-xs font-bold text-eu-teal uppercase mb-1">{t.contextLabel || 'Contexto y datos disponibles'}</p>
                 <p className="text-sm text-gray-600">{extra.context}</p>
               </div>
             )}
@@ -685,7 +694,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.objectives && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Target className="w-5 h-5 text-eu-orange" /> Objetivos y Resultados Esperados
+                <Target className="w-5 h-5 text-eu-orange" /> {t.objectivesTitle || 'Objetivos y Resultados Esperados'}
               </h2>
               <ul className="space-y-2.5">
                 {extra.objectives.map((obj, i) => (
@@ -702,10 +711,10 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Database className="w-5 h-5 text-eu-blue" /> Datos y Recursos Disponibles
+                <Database className="w-5 h-5 text-eu-blue" /> {t.resourcesTitle || 'Datos y Recursos Disponibles'}
               </h2>
               <div className="mb-5">
-                <p className="text-xs font-bold text-gray-500 uppercase mb-3">Datasets proporcionados</p>
+                <p className="text-xs font-bold text-gray-500 uppercase mb-3">{t.datasetsLabel || 'Datasets proporcionados'}</p>
                 <div className="space-y-2">
                   {extra.datasets.map((d, i) => (
                     <div key={i} className="flex items-center justify-between bg-eu-bg rounded-lg px-4 py-2.5 border border-eu-border">
@@ -722,7 +731,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
                 </div>
               </div>
               <div>
-                <p className="text-xs font-bold text-gray-500 uppercase mb-3">Tecnologías recomendadas</p>
+                <p className="text-xs font-bold text-gray-500 uppercase mb-3">{t.toolsLabel || 'Tecnologías recomendadas'}</p>
                 <div className="flex flex-wrap gap-2">
                   {extra.tools.map((t) => (
                     <span key={t} className="text-xs bg-eu-bg border border-eu-border px-2.5 py-1 rounded-full font-semibold text-gray-600">{t}</span>
@@ -736,7 +745,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.deliverables && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-eu-teal" /> Entregables Requeridos
+                <FileText className="w-5 h-5 text-eu-teal" /> {t.deliverablesTitle || 'Entregables Requeridos'}
               </h2>
               <div className="space-y-2.5">
                 {extra.deliverables.map((d, i) => (
@@ -756,7 +765,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.evalCriteria && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Star className="w-5 h-5 text-eu-yellow" /> Criterios de Evaluación
+                <Star className="w-5 h-5 text-eu-yellow" /> {t.evaluationTitle || 'Criterios de Evaluación'}
               </h2>
               <div className="space-y-4">
                 {extra.evalCriteria.map((c, i) => (
@@ -779,7 +788,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.eligibility && extra.eligibility.length > 0 && extra.eligibility[0] !== 'Reto cerrado — en producción desde enero 2026' && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Users className="w-5 h-5 text-eu-teal" /> Elegibilidad y Requisitos
+                <Users className="w-5 h-5 text-eu-teal" /> {t.eligibilityTitle || 'Elegibilidad y Requisitos'}
               </h2>
               <ul className="space-y-2">
                 {extra.eligibility.map((e, i) => (
@@ -796,7 +805,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.faq && extra.faq.length > 0 && (
             <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-lg font-bold text-eu-text mb-4 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-eu-orange" /> Preguntas Frecuentes
+                <MessageSquare className="w-5 h-5 text-eu-orange" /> {t.faqTitle || 'Preguntas Frecuentes'}
               </h2>
               <div className="space-y-4">
                 {extra.faq.map((f, i) => (
@@ -817,7 +826,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.milestones && (
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-eu-blue" /> Hitos del Reto
+                <Calendar className="w-4 h-4 text-eu-blue" /> {t.milestonesTitle || 'Hitos del Reto'}
               </h3>
               <div className="relative">
                 <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-eu-border"></div>
@@ -842,7 +851,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.mentors && (
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Users className="w-4 h-4 text-eu-blue" /> Mentores del Reto
+                <Users className="w-4 h-4 text-eu-blue" /> {t.mentorsTitle || 'Mentores del Reto'}
               </h3>
               <div className="space-y-4">
                 {extra.mentors.map((m, i) => (
@@ -865,7 +874,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.recognition && (
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Award className="w-4 h-4 text-eu-orange" /> Reconocimiento
+                <Award className="w-4 h-4 text-eu-orange" /> {t.recognitionTitle || 'Reconocimiento'}
               </h3>
               <ul className="space-y-2.5">
                 {extra.recognition.map((r, i) => (
@@ -883,12 +892,12 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {/* CTA bottom */}
           {challenge.status === 'Abierto' && (
             <div className="bg-eu-blue rounded-xl p-6 text-white text-center">
-              <p className="font-bold mb-1">¿Te interesa este reto?</p>
-              <p className="text-xs text-white/70 mb-4">Inscríbete antes del {challenge.deadline}</p>
+              <p className="font-bold mb-1">{t.interestCTA || '¿Te interesa este reto?'}</p>
+              <p className="text-xs text-white/70 mb-4">{t.enrollBeforeDeadline || 'Inscríbete antes del'} {challenge.deadline}</p>
               <button className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-orange-600 transition-colors border-none cursor-pointer text-sm">
-                Inscribir mi equipo →
+                {t.enrollButton || 'Inscribir mi equipo →'}
               </button>
-              <p className="text-xs text-white/50 mt-3">Acceso con cuenta del Área Privada AI-STEAM</p>
+              <p className="text-xs text-white/50 mt-3">{t.privateAreaAccess || 'Acceso con cuenta del Área Privada AI-STEAM'}</p>
             </div>
           )}
         </div>
