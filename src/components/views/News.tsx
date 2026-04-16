@@ -30,7 +30,7 @@ const news: NewsItem[] = [
     title: 'AI-SECRETT recibe financiación del programa Europa Digital: 4,2M€ para la red AI-STEAM',
     date: '10 Abr 2026',
     category: 'Institucional',
-    excerpt: 'El consorcio liderado por UVEG y CEICE obtiene financiación confirmada del programa Digital Europe para desplegar la red AI-STEAM en 12 países y crear más de 60 módulos formativos para FP y Máster.',
+    excerpt: 'El consorcio liderado por UVEG y CEICE obtiene financiación confirmada del programa Digital Europe para desplegar la red AI-STEAM en 11 países y crear más de 60 módulos formativos para FP y Máster.',
     partner: 'UVEG / CEICE',
     featured: true,
   },

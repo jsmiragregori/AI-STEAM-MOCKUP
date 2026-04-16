@@ -48,6 +48,7 @@ const partners: Partner[] = [
   { id: 'lc', name: 'The Lisbon Council', acronym: 'LC', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Administración', 'Educación'], role: 'Socio Beneficiario' },
   { id: 'kea', name: 'KEA European Affairs', acronym: 'KEA', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'Socio Beneficiario' },
   { id: 'ife', name: 'Inspiring Futures Europe', acronym: 'IF.E', country: 'ES', city: 'Madrid', category: 'sociedad', sectors: ['Educación'], role: 'Socio Beneficiario' },
+  { id: 'rce', name: 'Relais Culture Europe', acronym: 'RCE', country: 'FR', city: 'París', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'Socio Asociado' },
 ];
 
 // Stakeholders adheridos a la red (pueden unirse nuevos)
@@ -75,19 +76,23 @@ const categoryMeta = {
   sociedad: { label: 'Sociedad Civil y ONG', icon: HeartHandshake, color: 'text-pink-700', bg: 'bg-pink-100', border: 'border-pink-300' },
 };
 
-const countryFlag: Record<string, string> = {
-  ES: '🇪🇸', IT: '🇮🇹', DE: '🇩🇪', NO: '🇳🇴', FR: '🇫🇷',
-  HR: '🇭🇷', PT: '🇵🇹', SE: '🇸🇪', BE: '🇧🇪', GR: '🇬🇷', BA: '🇧🇦',
+
+const countryName: Record<string, string> = {
+  ES: 'España', IT: 'Italia', DE: 'Alemania', NO: 'Noruega', FR: 'Francia',
+  HR: 'Croacia', PT: 'Portugal', SE: 'Suecia', BE: 'Bélgica', GR: 'Grecia', BA: 'Bosnia y Herzegovina',
 };
 
 export default function Network() {
   const [activeTab, setActiveTab] = useState<NetworkTab>('socios');
   const [activeCategory, setActiveCategory] = useState<HelixCategory>('todos');
+  const [filterCountry, setFilterCountry] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
 
-  const filteredPartners = activeCategory === 'todos'
-    ? partners
-    : partners.filter((p) => p.category === activeCategory);
+  const filteredPartners = partners.filter((p) => {
+    const matchCategory = activeCategory === 'todos' || p.category === activeCategory;
+    const matchCountry = filterCountry === null || p.country === filterCountry;
+    return matchCategory && matchCountry;
+  });
 
   const filteredStakeholders = activeCategory === 'todos'
     ? stakeholders
@@ -165,13 +170,13 @@ export default function Network() {
         {/* Tabs: Socios / Stakeholders */}
         <div className="flex gap-1 border-b border-eu-border mb-6">
           <button
-            onClick={() => { setActiveTab('socios'); setActiveCategory('todos'); }}
+            onClick={() => { setActiveTab('socios'); setActiveCategory('todos'); setFilterCountry(null); }}
             className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer ${activeTab === 'socios' ? 'border-eu-blue text-eu-blue' : 'border-transparent text-gray-600 hover:text-eu-text'}`}
           >
             Socios del Consorcio AI-SECRETT ({partners.length})
           </button>
           <button
-            onClick={() => { setActiveTab('stakeholders'); setActiveCategory('todos'); }}
+            onClick={() => { setActiveTab('stakeholders'); setActiveCategory('todos'); setFilterCountry(null); }}
             className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer ${activeTab === 'stakeholders' ? 'border-eu-blue text-eu-blue' : 'border-transparent text-gray-600 hover:text-eu-text'}`}
           >
             Stakeholders de la Red ({stakeholders.length})
@@ -182,7 +187,7 @@ export default function Network() {
         {activeTab === 'socios' && (
           <>
             <p className="text-sm text-gray-600 mb-5 max-w-3xl">
-              Los socios del consorcio AI-SECRETT son los <strong>21 beneficiarios</strong> del proyecto europeo, seleccionados en la convocatoria inicial. Su composición es fija durante la vida del proyecto.
+              Los socios del consorcio AI-SECRETT son los <strong>23 miembros</strong> (22 beneficiarios + 1 socio asociado) del proyecto europeo, seleccionados en la convocatoria inicial. Su composición es fija durante la vida del proyecto.
             </p>
 
             {/* Category filters */}
@@ -208,7 +213,11 @@ export default function Network() {
                         <Icon className={`w-4 h-4 ${meta.color}`} />
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-sm">{countryFlag[p.country] ?? '🌍'}</span>
+                        <img
+                          src={`https://flagcdn.com/20x15/${p.country.toLowerCase()}.png`}
+                          alt={countryName[p.country] ?? p.country}
+                          className="rounded-sm"
+                        />
                         <span className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">CONSORCIO</span>
                       </div>
                     </div>
@@ -227,23 +236,55 @@ export default function Network() {
 
             {/* Geographic Coverage */}
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
-              <h2 className="text-xl font-bold text-eu-text mb-5 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-eu-teal" /> Cobertura Geográfica del Consorcio
-              </h2>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex items-center justify-between mb-5">
+                <h2 className="text-xl font-bold text-eu-text flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-eu-teal" /> Cobertura Geográfica del Consorcio
+                </h2>
+                {filterCountry && (
+                  <button
+                    onClick={() => { setFilterCountry(null); setActiveCategory('todos'); }}
+                    className="text-xs font-bold text-eu-blue hover:underline cursor-pointer bg-transparent border-none"
+                  >
+                    ✕ Quitar filtro
+                  </button>
+                )}
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {countries.map((c) => {
                   const count = partners.filter((p) => p.country === c).length;
+                  const isActive = filterCountry === c;
                   return (
-                    <div key={c} className="bg-eu-bg border border-eu-border rounded-lg px-4 py-2.5 flex items-center gap-2">
-                      <span className="text-xl">{countryFlag[c] ?? '🌍'}</span>
-                      <div>
-                        <p className="font-bold text-xs text-eu-text">{c}</p>
-                        <p className="text-sm text-gray-500">{count} {count === 1 ? 'socio' : 'socios'}</p>
-                      </div>
-                    </div>
+                    <button
+                      key={c}
+                      onClick={() => { setFilterCountry(isActive ? null : c); setActiveCategory('todos'); }}
+                      className={`rounded-xl p-4 flex flex-col items-center gap-2 border-2 transition-all cursor-pointer text-center ${
+                        isActive
+                          ? 'bg-eu-blue border-eu-blue shadow-md'
+                          : 'bg-eu-bg border-eu-border hover:border-eu-blue hover:shadow-sm'
+                      }`}
+                    >
+                      <img
+                        src={`https://flagcdn.com/48x36/${c.toLowerCase()}.png`}
+                        alt={countryName[c] ?? c}
+                        className="w-10 h-auto rounded-sm shadow-sm"
+                      />
+                      <p className={`font-bold text-xs leading-tight ${isActive ? 'text-white' : 'text-eu-text'}`}>
+                        {countryName[c] ?? c}
+                      </p>
+                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                        isActive ? 'bg-white/20 text-white' : 'bg-eu-blue/10 text-eu-blue'
+                      }`}>
+                        {count} {count === 1 ? 'miembro' : 'miembros'}
+                      </span>
+                    </button>
                   );
                 })}
               </div>
+              {filterCountry && (
+                <p className="text-xs text-gray-500 mt-4">
+                  Filtrando socios de <strong>{countryName[filterCountry]}</strong>. Los resultados se muestran en la lista superior.
+                </p>
+              )}
             </div>
           </>
         )}

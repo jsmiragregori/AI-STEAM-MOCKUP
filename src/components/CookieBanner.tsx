@@ -4,7 +4,7 @@ interface CookieBannerProps {
 
 export default function CookieBanner({ onAccept }: CookieBannerProps) {
   return (
-    <div className="fixed bottom-20 left-6 right-6 bg-[rgba(0,0,0,0.85)] text-white p-3 px-6 rounded-lg text-xs flex justify-between items-center z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-[rgba(0,0,0,0.85)] text-white p-3 px-6 flex justify-between items-center z-50">
       <div>
         <strong>Aviso Legal:</strong> Utilizamos cookies técnicas necesarias para el funcionamiento del portal. El tratamiento de datos cumple con el RGPD.
       </div>
