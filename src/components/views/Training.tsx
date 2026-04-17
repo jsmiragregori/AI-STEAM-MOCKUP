@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { BookOpen, Award, ExternalLink, Clock, Users, Star } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
-type TrainingLevel = 'Todos' | 'FP' | 'Máster' | 'Docentes';
+type TrainingLevel = 'Todos' | 'FP' | 'Máster' | 'Docentes' | 'All' | 'VET' | 'Master' | 'Teachers' | 'Tots' | 'Màster';
 
 interface Course {
   id: string;
@@ -153,9 +154,38 @@ const credentialFrameworks = [
 ];
 
 export default function Training() {
-  const [filter, setFilter] = useState<TrainingLevel>('Todos');
+  const { t, language } = useLanguage();
+  const trainingT = t('training');
 
-  const filtered = filter === 'Todos' ? courses : courses.filter((c) => c.level === filter);
+  const levels = {
+    es: ['Todos', 'FP', 'Máster', 'Docentes'] as TrainingLevel[],
+    en: ['All', 'VET', 'Master', 'Teachers'] as TrainingLevel[],
+    va: ['Tots', 'FP', 'Màster', 'Docents'] as TrainingLevel[],
+  };
+
+  const levelList = levels[language as keyof typeof levels];
+  const [filter, setFilter] = useState<TrainingLevel>(levelList[0]);
+
+  const getCourses = (language: string, trainingT: any): Course[] => {
+    const coursesObj = trainingT?.courses || {};
+    return Object.values(coursesObj).map((course: any, idx: number) => ({
+      id: `c${idx + 1}`,
+      title: course.title,
+      level: course.level as any,
+      sector: course.sector,
+      hours: [60, 90, 30, 45, 80, 50, 70, 40][idx],
+      enrolled: [312, 87, 524, 198, 54, 143, 72, 211][idx],
+      rating: [4.7, 4.9, 4.8, 4.6, 4.8, 4.5, 4.7, 4.4][idx],
+      partner: ['UVEG / CEICE', 'Ud\'A / UVEG', 'CEICE / Inspiring Futures Europe', 'AVA-ASAJA / CINK', 'INESC TEC / HSW', 'Region Värmland / NTNU', 'KEA / ESAD-GV / LPGA', 'LC / CEICE'][idx],
+      badge: course.badge,
+      description: course.desc,
+      modality: ['Semipresencial', 'Online', 'Online', 'Semipresencial', 'Online', 'Online', 'Online', 'Online'][idx] as any,
+      status: course.status as any,
+    }));
+  };
+
+  const courses = getCourses(language, trainingT);
+  const filtered = filter === levelList[0] ? courses : courses.filter((c) => c.level === filter);
 
   const totalEnrolled = courses.reduce((a, c) => a + c.enrolled, 0);
 
@@ -166,9 +196,9 @@ export default function Training() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div>
-              <h1 className="text-3xl font-extrabold mb-3">Oferta Formativa AI-STEAM</h1>
+              <h1 className="text-3xl font-extrabold mb-3">{trainingT?.title}</h1>
               <p className="text-white/80 max-w-2xl text-base">
-                Cursos, módulos y micro-credenciales para FP, Máster y formación docente. Todos los contenidos están co-diseñados con los socios de la red y disponibles en Aules (Moodle).
+                {trainingT?.description}
               </p>
             </div>
             <a
@@ -177,25 +207,25 @@ export default function Training() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors"
             >
-              <BookOpen className="w-4 h-4" /> Acceder a Aules <ExternalLink className="w-3 h-3" />
+              <BookOpen className="w-4 h-4" /> {trainingT?.accessAules} <ExternalLink className="w-3 h-3" />
             </a>
           </div>
           <div className="flex flex-wrap gap-6 mt-8">
             <div className="bg-white/10 rounded-xl px-6 py-4">
               <p className="text-2xl font-extrabold text-eu-yellow">{courses.length}</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Módulos Activos</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.activeModules}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4">
               <p className="text-2xl font-extrabold text-eu-yellow">{totalEnrolled.toLocaleString()}</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Matriculados</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.enrolled}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4">
               <p className="text-2xl font-extrabold text-eu-yellow">1.200+</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Micro-credenciales Emitidas</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.microCredentialsIssued}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4">
               <p className="text-2xl font-extrabold text-eu-yellow">12</p>
-              <p className="text-xs text-white/70 font-semibold uppercase mt-1">Países</p>
+              <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.countries}</p>
             </div>
           </div>
         </div>
@@ -204,7 +234,7 @@ export default function Training() {
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Filter tabs */}
         <div className="flex flex-wrap gap-2 mb-8">
-          {(['Todos', 'FP', 'Máster', 'Docentes'] as TrainingLevel[]).map((l) => (
+          {levelList.map((l) => (
             <button
               key={l}
               onClick={() => setFilter(l)}
@@ -250,7 +280,7 @@ export default function Training() {
                   <span className="text-sm font-bold text-eu-orange">{course.badge}</span>
                 </div>
                 <button className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline">
-                  Ver curso →
+                  {trainingT?.courseViewMore}
                 </button>
               </div>
             </div>
@@ -259,9 +289,9 @@ export default function Training() {
 
         {/* Credentials Framework */}
         <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mb-8">
-          <h2 className="text-xl font-bold text-eu-text mb-2">Marco de Credenciales y Certificación</h2>
+          <h2 className="text-xl font-bold text-eu-text mb-2">{trainingT?.credentialsFramework}</h2>
           <p className="text-sm text-gray-600 mb-6">
-            AI-STEAM Network emite micro-credenciales interoperables reconocidas en todo el Espacio Europeo de Educación. El marco de certificación ha sido diseñado por TUV.IT y COGN en el marco del consorcio AI-SECRETT.
+            {trainingT?.credentialsDesc}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {credentialFrameworks.map((cf) => (
@@ -276,13 +306,13 @@ export default function Training() {
 
         {/* Dual-path Diagram */}
         <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
-          <h2 className="text-xl font-bold text-eu-text mb-6">Itinerarios Formativos</h2>
+          <h2 className="text-xl font-bold text-eu-text mb-6">{trainingT?.trainingPaths}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* FP Path */}
             <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-eu-orange rounded-lg flex items-center justify-center text-white text-xs font-extrabold">FP</span>
-                Itinerario FP – CEICE
+                {trainingT?.fpPath}
               </h3>
               <ol className="space-y-3">
                 {[
@@ -303,7 +333,7 @@ export default function Training() {
             <div className="bg-purple-50 border border-purple-200 rounded-xl p-5">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-extrabold">M</span>
-                Itinerario Máster AI-SECRETT
+                {trainingT?.masterPath}
               </h3>
               <ol className="space-y-3">
                 {[
