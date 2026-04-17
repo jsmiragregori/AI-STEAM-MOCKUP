@@ -161,6 +161,17 @@ const challenges: Challenge[] = [
   },
 ];
 
+const getTranslatedChallenges = (baseChalls: Challenge[], marketplaceT: any): Challenge[] => {
+  const challengeData = marketplaceT?.challengeData || {};
+  return baseChalls.map((ch) => ({
+    ...ch,
+    title: challengeData[ch.id]?.title || ch.title,
+    description: challengeData[ch.id]?.description || ch.description,
+    entityType: challengeData[ch.id]?.entityType || ch.entityType,
+    tags: challengeData[ch.id]?.tags || ch.tags,
+  }));
+};
+
 const statusStyles: Record<string, string> = {
   'Abierto': 'bg-green-100 text-green-800',
   'En Resolución': 'bg-yellow-100 text-yellow-800',
@@ -218,12 +229,13 @@ export default function Marketplace() {
   const [showSubmit, setShowSubmit] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const selectedChallenge = selectedId ? challenges.find((c) => c.id === selectedId) ?? null : null;
+  const translatedChallenges = getTranslatedChallenges(challenges, marketplaceT);
+  const selectedChallenge = selectedId ? translatedChallenges.find((c) => c.id === selectedId) ?? null : null;
   if (selectedChallenge) {
     return <ChallengeDetail challenge={selectedChallenge} onBack={() => setSelectedId(null)} />;
   }
 
-  const filtered = challenges.filter((c) => {
+  const filtered = translatedChallenges.filter((c) => {
     if (levelFilter !== 'Todos' && c.level !== levelFilter) return false;
     if (statusFilter !== 'Todos' && c.status !== statusFilter) return false;
     if (sectorFilter !== 'Todos' && c.sector !== sectorFilter) return false;
@@ -231,9 +243,9 @@ export default function Marketplace() {
     return true;
   });
 
-  const open = challenges.filter((c) => c.status === 'Abierto').length;
-  const inProgress = challenges.filter((c) => c.status === 'En Resolución').length;
-  const solved = challenges.filter((c) => c.status === 'Resuelto').length;
+  const open = translatedChallenges.filter((c) => c.status === 'Abierto').length;
+  const inProgress = translatedChallenges.filter((c) => c.status === 'En Resolución').length;
+  const solved = translatedChallenges.filter((c) => c.status === 'Resuelto').length;
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -375,7 +387,7 @@ export default function Marketplace() {
         </div>
 
         {/* Results count */}
-        <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (marketplaceT?.resultsCount || 'Showing {{count}} of {{total}} challenges').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(challenges.length)) }} />
+        <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (marketplaceT?.resultsCount || 'Showing {{count}} of {{total}} challenges').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(translatedChallenges.length)) }} />
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
