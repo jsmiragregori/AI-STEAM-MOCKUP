@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpen, Award, ExternalLink, Clock, Users, Star } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -229,6 +229,10 @@ export default function Training() {
 
   const levelList = levels[language as keyof typeof levels];
   const [filter, setFilter] = useState<TrainingLevel>(levelList[0]);
+
+  useEffect(() => {
+    setFilter(levelList[0]);
+  }, [language]);
 
   const getCourses = (language: string, trainingT: any): Course[] => {
     const coursesObj = trainingT?.courses || {};
