@@ -258,9 +258,18 @@ export default function Marketplace() {
               {marketplaceT.description}
             </p>
             <div className="flex gap-5 mt-5">
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{open}</p><p className="text-sm text-white/70 uppercase font-semibold">{marketplaceT.openChallenges}</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p><p className="text-sm text-white/70 uppercase font-semibold">{marketplaceT.inProgressChallenges}</p></div>
-              <div className="text-center"><p className="text-2xl font-extrabold text-eu-yellow">{solved}</p><p className="text-sm text-white/70 uppercase font-semibold">{marketplaceT.resolvedChallenges}</p></div>
+              <div className="bg-white/10 rounded-xl px-6 py-4">
+                <p className="text-2xl font-extrabold text-eu-yellow">{open}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.openChallenges}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl px-6 py-4">
+                <p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.inProgressChallenges}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl px-6 py-4">
+                <p className="text-2xl font-extrabold text-eu-yellow">{solved}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.resolvedChallenges}</p>
+              </div>
             </div>
           </div>
           <button
