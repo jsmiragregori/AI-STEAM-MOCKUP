@@ -213,9 +213,9 @@ export default function Governance() {
         {activeTab === 'dual-track' && (
           <div className="space-y-8">
             <div>
-              <h2 className="text-xl font-bold text-eu-text mb-2">Modelo de Gobernanza de Doble Vía (Dual Track)</h2>
+              <h2 className="text-xl font-bold text-eu-text mb-2">{(t.tabContent_dualtrack as any)?.title}</h2>
               <p className="text-sm text-gray-600 mb-6 max-w-3xl">
-                Para garantizar la operabilidad jurídica y pedagógica, la AI-STEAM Network implementa un modelo de gobernanza de <strong>Doble Vía</strong> que funciona en paralelo. Cada Track tiene su propio responsable, alcance, marco normativo y límites de autoridad. Esta separación es deliberada: protege la autonomía universitaria del Track A y permite la flexibilidad del ecosistema en el Track B.
+                {(t.tabContent_dualtrack as any)?.desc}
               </p>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -225,31 +225,31 @@ export default function Governance() {
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center font-extrabold text-lg">A</div>
                       <div>
-                        <h3 className="font-extrabold text-lg">Track A – Espacio Académico</h3>
-                        <p className="text-white/70 text-sm">Liderado por UVEG + Laurea</p>
+                        <h3 className="font-extrabold text-lg">{(t.tabContent_dualtrack as any)?.trackA?.title}</h3>
+                        <p className="text-white/70 text-sm">{(t.tabContent_dualtrack as any)?.trackA?.subtitle}</p>
                       </div>
                     </div>
                   </div>
                   <div className="p-6 space-y-4">
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">Alcance</p>
-                      <p className="text-sm text-gray-600">Currículo del Máster AI-SECRETT, micro-credenciales con ECTS, evaluaciones académicas, rigor científico y calidad pedagógica.</p>
+                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">{(t.tabContent_dualtrack as any)?.trackA?.scope_label}</p>
+                      <p className="text-sm text-gray-600">{(t.tabContent_dualtrack as any)?.trackA?.scope_desc}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">Marco normativo</p>
-                      <p className="text-sm text-gray-600">Acuerdo de Consorcio AI-SECRETT + estándares de calidad universitaria (Proceso de Bolonia) + ISO 21001.</p>
+                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">{(t.tabContent_dualtrack as any)?.trackA?.framework_label}</p>
+                      <p className="text-sm text-gray-600">{(t.tabContent_dualtrack as any)?.trackA?.framework_desc}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">Límite clave</p>
+                      <p className="text-xs font-bold uppercase text-eu-blue mb-1">{(t.tabContent_dualtrack as any)?.trackA?.limit_label}</p>
                       <div className="flex items-start gap-2 bg-blue-50 rounded-lg p-3">
                         <AlertCircle className="w-4 h-4 text-eu-blue mt-0.5 shrink-0" />
-                        <p className="text-sm text-eu-blue font-semibold">Los socios industriales y gubernamentales <strong>no tienen derecho a voto</strong> en la evaluación académica ni en la emisión de títulos. La autonomía universitaria es inviolable en este espacio.</p>
+                        <p className="text-sm text-eu-blue font-semibold">{(t.tabContent_dualtrack as any)?.trackA?.limit_desc}</p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-blue mb-2">Órganos activos</p>
+                      <p className="text-xs font-bold uppercase text-eu-blue mb-2">{(t.tabContent_dualtrack as any)?.trackA?.bodies_label}</p>
                       <div className="flex flex-wrap gap-2">
-                        {['Comité Científico (SCC)', 'Comité Directivo (SC)', 'Asamblea General (GA)'].map((o) => (
+                        {((t.tabContent_dualtrack as any)?.trackA?.bodies || []).map((o: string) => (
                           <span key={o} className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-2 py-1 rounded">{o}</span>
                         ))}
                       </div>
@@ -263,31 +263,31 @@ export default function Governance() {
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center font-extrabold text-lg">B</div>
                       <div>
-                        <h3 className="font-extrabold text-lg">Track B – Espacio Ecosistema</h3>
-                        <p className="text-white/70 text-sm">Orquestado por CEICE (GVA)</p>
+                        <h3 className="font-extrabold text-lg">{(t.tabContent_dualtrack as any)?.trackB?.title}</h3>
+                        <p className="text-white/70 text-sm">{(t.tabContent_dualtrack as any)?.trackB?.subtitle}</p>
                       </div>
                     </div>
                   </div>
                   <div className="p-6 space-y-4">
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">Alcance</p>
-                      <p className="text-sm text-gray-600">Foros de política educativa, banco de retos, networking, eventos, repositorio de conocimiento y participación de stakeholders.</p>
+                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">{(t.tabContent_dualtrack as any)?.trackB?.scope_label}</p>
+                      <p className="text-sm text-gray-600">{(t.tabContent_dualtrack as any)?.trackB?.scope_desc}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">Marco normativo</p>
-                      <p className="text-sm text-gray-600">Acuerdo de Colaboración con <strong>Regla de Gasto Cero</strong>. Espacio abierto y flexible, sin burocracia académica.</p>
+                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">{(t.tabContent_dualtrack as any)?.trackB?.framework_label}</p>
+                      <p className="text-sm text-gray-600">{(t.tabContent_dualtrack as any)?.trackB?.framework_desc}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">Límite clave</p>
+                      <p className="text-xs font-bold uppercase text-eu-orange mb-1">{(t.tabContent_dualtrack as any)?.trackB?.limit_label}</p>
                       <div className="flex items-start gap-2 bg-orange-50 rounded-lg p-3">
                         <CheckCircle className="w-4 h-4 text-eu-orange mt-0.5 shrink-0" />
-                        <p className="text-sm text-eu-orange font-semibold">La <strong>admisión de nuevos miembros</strong> y la validación de relevancia de los retos se deciden colectivamente a través de la Red de Stakeholders (SN) en ConsensUE. CEICE, como orquestadora, tiene voz principal en este proceso, pero no actúa unilateralmente. La adhesión es rápida y no burocrática.</p>
+                        <p className="text-sm text-eu-orange font-semibold">{(t.tabContent_dualtrack as any)?.trackB?.limit_desc}</p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-eu-orange mb-2">Órganos activos</p>
+                      <p className="text-xs font-bold uppercase text-eu-orange mb-2">{(t.tabContent_dualtrack as any)?.trackB?.bodies_label}</p>
                       <div className="flex flex-wrap gap-2">
-                        {['Red de Stakeholders (SN)', 'Junta Estratégica (SB)', 'ConsensUE (Decidim)'].map((o) => (
+                        {((t.tabContent_dualtrack as any)?.trackB?.bodies || []).map((o: string) => (
                           <span key={o} className="text-xs bg-eu-orange/10 text-eu-orange font-bold px-2 py-1 rounded">{o}</span>
                         ))}
                       </div>
@@ -299,15 +299,15 @@ export default function Governance() {
               {/* Zonas de datos */}
               <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
                 <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-eu-blue" /> Arquitectura de Datos: Zonas Diferenciadas
+                  <ShieldCheck className="w-5 h-5 text-eu-blue" /> {(t.tabContent_dualtrack as any)?.dataArch?.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-5">La separación de Tracks se refleja también en la arquitectura de datos, garantizando el cumplimiento del RGPD y la compartimentación de información sensible.</p>
+                <p className="text-sm text-gray-600 mb-5">{(t.tabContent_dualtrack as any)?.dataArch?.desc}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                    <p className="text-xs font-extrabold uppercase text-eu-blue mb-2">🔓 Zona Pública / Red (Track B)</p>
-                    <p className="text-xs text-gray-600 mb-3">Visible para todos los miembros autenticados de la red. Responsable de datos: CEICE.</p>
+                    <p className="text-xs font-extrabold uppercase text-eu-blue mb-2">{(t.tabContent_dualtrack as any)?.dataArch?.publicZone?.title}</p>
+                    <p className="text-xs text-gray-600 mb-3">{(t.tabContent_dualtrack as any)?.dataArch?.publicZone?.desc}</p>
                     <ul className="space-y-1.5">
-                      {['Foros y debates sectoriales', 'Banco de Retos y casos de uso', 'Repositorio de buenas prácticas y OER', 'Directorio de organizaciones de la red', 'Agenda de eventos y noticias'].map((i) => (
+                      {((t.tabContent_dualtrack as any)?.dataArch?.publicZone?.items || []).map((i: string) => (
                         <li key={i} className="flex items-center gap-2 text-xs text-gray-700">
                           <span className="w-1.5 h-1.5 rounded-full bg-eu-blue shrink-0"></span>{i}
                         </li>
@@ -315,10 +315,10 @@ export default function Governance() {
                     </ul>
                   </div>
                   <div className="bg-purple-50 border border-purple-200 rounded-xl p-5">
-                    <p className="text-xs font-extrabold uppercase text-purple-700 mb-2">🔒 Zona Privada / Académica (Track A)</p>
-                    <p className="text-xs text-gray-600 mb-3">Accesible solo para estudiantes matriculados y facultad. Responsable de datos: UVEG.</p>
+                    <p className="text-xs font-extrabold uppercase text-purple-700 mb-2">{(t.tabContent_dualtrack as any)?.dataArch?.privateZone?.title}</p>
+                    <p className="text-xs text-gray-600 mb-3">{(t.tabContent_dualtrack as any)?.dataArch?.privateZone?.desc}</p>
                     <ul className="space-y-1.5">
-                      {['Expedientes académicos y calificaciones', 'Exámenes y actividades de evaluación', 'Materiales docentes del Máster AI-SECRETT', 'Datos personales de estudiantes (protegidos por reglamento universitario)', 'Gestión de ECTS y micro-credenciales'].map((i) => (
+                      {((t.tabContent_dualtrack as any)?.dataArch?.privateZone?.items || []).map((i: string) => (
                         <li key={i} className="flex items-center gap-2 text-xs text-gray-700">
                           <span className="w-1.5 h-1.5 rounded-full bg-purple-600 shrink-0"></span>{i}
                         </li>
@@ -331,16 +331,11 @@ export default function Governance() {
               {/* Acuerdo de Colaboración */}
               <div className="bg-eu-bg rounded-xl border border-eu-border p-6">
                 <h3 className="font-bold text-eu-text mb-3 flex items-center gap-2">
-                  <FileSignature className="w-5 h-5 text-eu-teal" /> Acuerdo de Colaboración – Regla de Gasto Cero
+                  <FileSignature className="w-5 h-5 text-eu-teal" /> {(t.tabContent_dualtrack as any)?.agreement?.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-4">La adhesión al Track B (Espacio Ecosistema) se formaliza mediante el <strong>Acuerdo de Colaboración</strong>, que establece los siguientes principios:</p>
+                <p className="text-sm text-gray-600 mb-4">{(t.tabContent_dualtrack as any)?.agreement?.desc}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {[
-                    { title: 'Gasto Cero', desc: 'Cada signatario asume sus propios gastos con cargo a sus recursos ordinarios. La adhesión es gratuita.' },
-                    { title: 'Vigencia 4 años', desc: 'El acuerdo tiene una duración de 4 años desde la firma, renovable por mutuo acuerdo escrito.' },
-                    { title: 'Reunión anual', desc: 'Los signatarios convocan una reunión anual (presencial o virtual) para evaluar los resultados de la colaboración.' },
-                    { title: 'Resolución de disputas', desc: 'Aplicación del Reglamento (UE) 2021/694 (Digital Europe) y, subsidiariamente, la legislación española.' },
-                  ].map((c) => (
+                  {((t.tabContent_dualtrack as any)?.agreement?.items || []).map((c: any) => (
                     <div key={c.title} className="bg-white rounded-lg border border-eu-border p-4">
                       <p className="font-bold text-eu-teal text-sm mb-1">{c.title}</p>
                       <p className="text-xs text-gray-600">{c.desc}</p>
@@ -358,49 +353,30 @@ export default function Governance() {
         {activeTab === 'lbd' && (
           <div className="space-y-8">
             <div>
-              <h2 className="text-xl font-bold text-eu-text mb-2">Metodología Learning by Developing (LbD)</h2>
+              <h2 className="text-xl font-bold text-eu-text mb-2">{(t.tabContent_lbd as any)?.title}</h2>
               <p className="text-sm text-gray-600 mb-2 max-w-3xl">
-                La AI-STEAM Network <strong>no es un repositorio pasivo</strong>. La interacción entre los dos Tracks (Académico y Ecosistema) está gobernada por la metodología <strong>LbD (Learning by Developing)</strong>, que convierte los retos reales de las organizaciones en motores de aprendizaje académico con impacto mutuo.
+                {(t.tabContent_lbd as any)?.intro_desc}
               </p>
               <p className="text-sm text-gray-500 mb-6 max-w-3xl">
-                Este modelo replica el éxito de <strong>DigiNet</strong> (red educativa finlandesa en salud digital y bienestar), adaptándolo al contexto de la IA aplicada a la triple transición europea.
+                {(t.tabContent_lbd as any)?.diginetDesc}
               </p>
 
               {/* Flujo LbD */}
               <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mb-8">
-                <h3 className="font-bold text-eu-text mb-6">El ciclo LbD: de la empresa al estudiante y de vuelta</h3>
+                <h3 className="font-bold text-eu-text mb-6">{(t.tabContent_lbd as any)?.cycleTitle}</h3>
                 <div className="space-y-0">
-                  {[
-                    {
-                      step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network',
-                      title: 'Input: Retos y Casos de Uso', actor: 'Organizaciones de la red (empresas, administraciones, ONGs)',
-                      color: 'bg-eu-orange', border: 'border-eu-orange',
-                      desc: 'Los miembros del ecosistema aportan retos y casos de uso reales a través de ConsensUE. La Red de Stakeholders (SN), con CEICE como orquestadora con voz principal, valida colectivamente su relevancia mediante el proceso participativo de ConsensUE y los publica en el Banco de Retos de AI-STEAM Network.',
-                      outputs: ['Reto publicado con descripción del problema', 'Datos y recursos disponibles para el equipo', 'Plazo y criterios de éxito definidos'],
-                    },
-                    {
-                      step: '2', track: 'Track A', platform: 'Comité Científico + UVEG',
-                      title: 'Procesamiento Académico', actor: 'Comité Científico + Equipo docente UVEG/Laurea',
-                      color: 'bg-eu-blue', border: 'border-eu-blue',
-                      desc: 'El Comité Científico transforma el reto en material didáctico o en una propuesta de TFM (Trabajo de Fin de Máster). Se asigna a estudiantes del Máster AI-SECRETT como parte de su evaluación oficial con créditos ECTS.',
-                      outputs: ['Reto convertido en TFM o módulo de proyecto', 'ECTS asignados al estudiante', 'Mentoría académica e industrial coordinada'],
-                    },
-                    {
-                      step: '3', track: 'Track B + Track A', platform: 'AI-STEAM Network + Aules',
-                      title: 'Output: Beneficio Triple', actor: 'Organización proponente + Estudiante + Red AI-STEAM',
-                      color: 'bg-eu-teal', border: 'border-eu-teal',
-                      desc: 'Al completar el reto, cada parte recibe su beneficio específico. Si el resultado no es confidencial, se publica como caso de éxito en la sección de Conocimiento para visibilidad europea.',
-                      outputs: ['Empresa: solución prototipada o informe de viabilidad', 'Estudiante: ECTS + micro-credencial Open Badge 3.0', 'Red: caso de éxito publicado con visibilidad EU'],
-                    },
-                  ].map((phase, i) => (
+                  {((t.tabContent_lbd as any)?.phases || []).map((phase: any, i: number) => {
+                    const phaseColors = { '1': 'bg-eu-orange border-eu-orange', '2': 'bg-eu-blue border-eu-blue', '3': 'bg-eu-teal border-eu-teal' };
+                    const [color, border] = (phaseColors[phase.step as keyof typeof phaseColors] || 'bg-eu-gray border-eu-gray').split(' ');
+                    return (
                     <div key={phase.step} className="relative">
-                      <div className={`flex gap-5 p-5 rounded-xl border-2 ${phase.border} bg-white mb-2`}>
-                        <div className={`w-10 h-10 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg shrink-0`}>
+                      <div className={`flex gap-5 p-5 rounded-xl border-2 ${border} bg-white mb-2`}>
+                        <div className={`w-10 h-10 rounded-full ${color} text-white flex items-center justify-center font-extrabold text-lg shrink-0`}>
                           {phase.step}
                         </div>
                         <div className="flex-1">
                           <div className="flex flex-wrap items-center gap-2 mb-1">
-                            <span className={`text-xs font-extrabold uppercase px-2 py-0.5 rounded ${phase.color} text-white`}>{phase.track}</span>
+                            <span className={`text-xs font-extrabold uppercase px-2 py-0.5 rounded ${color} text-white`}>{phase.track}</span>
                             <span className="text-xs text-gray-400">·</span>
                             <span className="text-xs font-semibold text-gray-500">{phase.platform}</span>
                           </div>
@@ -422,35 +398,17 @@ export default function Governance() {
                         </div>
                       )}
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Las tres plataformas en el flujo LbD */}
               <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
-                <h3 className="font-bold text-eu-text mb-2">Las tres plataformas en el flujo LbD</h3>
-                <p className="text-sm text-gray-600 mb-5">Cada plataforma tiene un rol específico y una autoridad responsable. El contenido fluye unidireccionalmente del ecosistema al aprendizaje.</p>
+                <h3 className="font-bold text-eu-text mb-2">{(t.tabContent_lbd as any)?.platformsTitle}</h3>
+                <p className="text-sm text-gray-600 mb-5">{(t.tabContent_lbd as any)?.platformsDesc}</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    {
-                      name: 'ConsensUE', tech: 'Decidim', track: 'Track B',
-                      owner: 'CEICE (Orquestadora)', color: 'bg-eu-orange', border: 'border-eu-orange', text: 'text-eu-orange',
-                      role: 'Participación democrática',
-                      desc: 'Punto de entrada de propuestas. Deliberación comunitaria, votación de prioridades y co-diseño del currículo.',
-                    },
-                    {
-                      name: 'AI-STEAM Network', tech: 'Portal web', track: 'Track A + B',
-                      owner: 'CEICE + UVEG', color: 'bg-eu-blue', border: 'border-eu-blue', text: 'text-eu-blue',
-                      role: 'Validación y repositorio',
-                      desc: 'Banco de Retos validados, Conocimiento OER, directorio de la red. Punto de encuentro de los dos Tracks.',
-                    },
-                    {
-                      name: 'Aules', tech: 'Moodle LMS', track: 'Track A',
-                      owner: 'CEICE (infra) + UVEG (contenido)', color: 'bg-eu-teal', border: 'border-eu-teal', text: 'text-eu-teal',
-                      role: 'Entrega formativa',
-                      desc: 'Módulos del Máster AI-SECRETT y FP, gestión de ECTS, emisión de micro-credenciales Open Badge 3.0.',
-                    },
-                  ].map((p, i) => (
+                  {((t.tabContent_lbd as any)?.platforms || []).map((p: any, i: number) => (
                     <div key={p.name} className="relative">
                       <div className={`rounded-xl border-2 ${p.border} p-5 h-full`}>
                         <div className={`inline-block text-xs font-extrabold uppercase px-2 py-0.5 rounded mb-2 ${p.color} text-white`}>{p.track}</div>
