@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, ArrowRight, Rss, Tag, MapPin, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -106,6 +106,10 @@ export default function News() {
 
   const categoryList = categories[language as keyof typeof categories];
   const [categoryFilter, setCategoryFilter] = useState<NewsCategory>(categoryList[0]);
+
+  useEffect(() => {
+    setCategoryFilter(categoryList[0]);
+  }, [language]);
 
   const { news, events } = getNewsAndEvents(language, newsT);
 
@@ -272,7 +276,7 @@ export default function News() {
                   { key: 'linkedin', label: newsT?.socialLinks?.linkedin, url: '#' },
                   { key: 'twitter', label: newsT?.socialLinks?.twitter, url: '#' },
                   { key: 'youtube', label: newsT?.socialLinks?.youtube, url: '#' },
-                  { key: 'zenodo', label: newsT?.socialLinks?.zenodo, url: '#' },
+                  { key: 'sobstack', label: newsT?.socialLinks?.sobstack, url: '#' },
                 ].map((link) => (
                   <a key={link.key} href={link.url} className="flex items-center gap-2 text-sm text-eu-blue hover:underline font-medium">
                     <ExternalLink className="w-3.5 h-3.5 shrink-0" /> {link.label}
