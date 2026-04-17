@@ -4,7 +4,7 @@ import { translations, Language } from '../translations';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string | Record<string, string>;
+  t: (key: string) => any;
   translations: typeof translations;
 }
 
@@ -27,7 +27,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   // Función t() para acceder a traducciones con notación de punto
-  const t = (key: string): string | Record<string, string> => {
+  const t = (key: string): any => {
     const keys = key.split('.');
     let value: any = translations[language];
 
