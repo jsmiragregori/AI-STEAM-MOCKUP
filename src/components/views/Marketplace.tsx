@@ -172,6 +172,41 @@ const levelStyles: Record<string, string> = {
   Máster: 'bg-purple-100 text-purple-800',
 };
 
+const getLevelLabel = (level: string, t: any): string => {
+  const levelMap: Record<string, string> = {
+    'FP': t?.fpLevel || 'FP',
+    'Máster': t?.masterLevel || 'Master',
+  };
+  return levelMap[level] || level;
+};
+
+const getStatusLabel = (status: string, t: any): string => {
+  const statusMap: Record<string, string> = {
+    'Abierto': t?.open || 'Open',
+    'En Resolución': t?.inProgress || 'In Progress',
+    'Resuelto': t?.resolved || 'Resolved',
+  };
+  return statusMap[status] || status;
+};
+
+const getSectorLabel = (sector: string, t: any): string => {
+  const sectorNames = t?.sectorNames as Record<string, string>;
+  return sectorNames?.[getSectorCode(sector)] || sector;
+};
+
+const getSectorCode = (sectorName: string): string => {
+  const codeMap: Record<string, string> = {
+    'Manufacturing': 'mfg',
+    'Mobility and Transport': 'mob',
+    'Energy and Environment': 'ene',
+    'Agrifood': 'agr',
+    'Cultural and Creative Industries': 'cci',
+    'Housing': 'hou',
+    'Non-Touristic Services': 'nts',
+  };
+  return codeMap[sectorName] || sectorName;
+};
+
 export default function Marketplace() {
   const languageContext = useContext(LanguageContext);
   const language = languageContext?.language || 'es';
@@ -291,7 +326,7 @@ export default function Marketplace() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full border border-eu-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-eu-blue"
-                  placeholder="Buscar por título o descripción..."
+                  placeholder={t?.searchPlaceholder || 'Search by title or description...'}
                 />
               </div>
             </div>
@@ -327,21 +362,21 @@ export default function Marketplace() {
                 onChange={(e) => setSectorFilter(e.target.value as SectorFilter)}
                 className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
               >
-                <option value="Todos">{t.all}</option>
-                <option value="Manufacturing">Manufacturing</option>
-                <option value="Mobility and Transport">Mobility and Transport</option>
-                <option value="Energy and Environment">Energy and Environment</option>
-                <option value="Agrifood">Agrifood</option>
-                <option value="Cultural and Creative Industries">Cultural and Creative Industries</option>
-                <option value="Housing">Housing</option>
-                <option value="Non-Touristic Services">Non-Touristic Services</option>
+                <option value="Todos">{t?.all}</option>
+                <option value="Manufacturing">{getSectorLabel('Manufacturing', t)}</option>
+                <option value="Mobility and Transport">{getSectorLabel('Mobility and Transport', t)}</option>
+                <option value="Energy and Environment">{getSectorLabel('Energy and Environment', t)}</option>
+                <option value="Agrifood">{getSectorLabel('Agrifood', t)}</option>
+                <option value="Cultural and Creative Industries">{getSectorLabel('Cultural and Creative Industries', t)}</option>
+                <option value="Housing">{getSectorLabel('Housing', t)}</option>
+                <option value="Non-Touristic Services">{getSectorLabel('Non-Touristic Services', t)}</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Results count */}
-        <p className="text-sm text-gray-500 mb-4">Mostrando <strong>{filtered.length}</strong> de {challenges.length} retos</p>
+        <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (t?.resultsCount || 'Showing {{count}} of {{total}} challenges').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(challenges.length)) }} />
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -350,10 +385,10 @@ export default function Marketplace() {
               <div className="p-5 flex-1">
                 <div className="flex items-center justify-between mb-3">
                   <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[ch.level]}`}>
-                    Reto {ch.level}
+                    {t?.challengeLabel || 'Challenge'} {getLevelLabel(ch.level, t)}
                   </span>
                   <span className={`text-sm font-bold px-2 py-0.5 rounded ${statusStyles[ch.status]}`}>
-                    {ch.status}
+                    {getStatusLabel(ch.status, t)}
                   </span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
@@ -373,12 +408,12 @@ export default function Marketplace() {
                 </div>
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
-                <span className="text-sm font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{ch.sector}</span>
+                <span className="text-sm font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{getSectorLabel(ch.sector, t)}</span>
                 <button
                   onClick={() => setSelectedId(ch.id)}
                   className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline"
                 >
-                  Ver y Aplicar →
+                  {t?.viewAndApply || 'View and Apply'} →
                 </button>
               </div>
             </div>
@@ -387,8 +422,8 @@ export default function Marketplace() {
 
         {filtered.length === 0 && (
           <div className="text-center py-16 text-gray-500">
-            <p className="text-lg font-semibold mb-2">No se encontraron retos con estos filtros</p>
-            <p className="text-sm">Prueba a modificar los criterios de búsqueda</p>
+            <p className="text-lg font-semibold mb-2">{t?.noResults || 'No challenges found with these filters'}</p>
+            <p className="text-sm">{t?.tryModifying || 'Try modifying your search criteria'}</p>
           </div>
         )}
       </div>
