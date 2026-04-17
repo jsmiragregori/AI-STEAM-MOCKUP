@@ -313,6 +313,17 @@ export const translations = {
         { id: 'b7', name: 'GovAI Badge', description: 'IA en servicios públicos: automatización, transparencia y ética', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curso GovAI 40h', 'Caso práctico de tramitación', 'Test Reglamento IA UE'] },
         { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelado, simulación y análisis de gemelos digitales industriales', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Módulo IND-MST-05', 'Proyecto con plataforma de simulación', 'Validación TÜV'] },
       ],
+      // OER Resources data
+      oerResources: [
+        { id: 'o1', title: 'Guía de Ética en IA para FP', type: 'Guía', sector: 'nts', level: 'FP', license: 'CC-BY-SA 4.0', author: 'CEICE / IF.E', date: 'Mar 2026', downloads: 1420, lang: 'ES / VA' },
+        { id: 'o2', title: 'Manual de Gemelos Digitales v2.1', type: 'Manual', sector: 'mfg', level: 'Máster', license: 'CC-BY 4.0', author: 'INESC TEC / HSW', date: 'Feb 2026', downloads: 876, lang: 'EN / ES' },
+        { id: 'o3', title: 'Dataset Plagas Cítricos CV (10K imágenes)', type: 'Dataset', sector: 'agr', level: 'Máster', license: 'CC-BY-NC 4.0', author: 'AVA-ASAJA / UVEG', date: 'Ene 2026', downloads: 543, lang: 'ES' },
+        { id: 'o4', title: 'Plantilla Análisis de Sesgo en Modelos de IA', type: 'Plantilla', sector: 'Todos', level: 'Todos', license: 'CC-BY-SA 4.0', author: 'COGN / LC', date: 'Dic 2025', downloads: 2105, lang: 'EN / ES / FR' },
+        { id: 'o5', title: 'Introducción a ML con Python para FP – Vídeo (12h)', type: 'Vídeo', sector: 'nts', level: 'FP', license: 'CC-BY 4.0', author: 'UMU / CEICE', date: 'Nov 2025', downloads: 3210, lang: 'ES / VA' },
+        { id: 'o6', title: 'Guía Reglamento IA UE para la Administración', type: 'Guía', sector: 'nts', level: 'Docentes', license: 'CC-BY-SA 4.0', author: 'LC / CEICE', date: 'Feb 2026', downloads: 789, lang: 'ES / EN' },
+        { id: 'o7', title: 'Manual de NLP para Análisis Clínico', type: 'Manual', sector: 'nts', level: 'Máster', license: 'CC-BY-NC-SA 4.0', author: "Ud'A / UVEG", date: 'Mar 2026', downloads: 412, lang: 'IT / EN' },
+        { id: 'o8', title: 'Dataset Imágenes Patrimonio Cultural (5K)', type: 'Dataset', sector: 'cci', level: 'Máster', license: 'CC-BY 4.0', author: 'LPGA / ESAD-GV', date: 'Ene 2026', downloads: 298, lang: 'ES / EN' },
+      ],
       // Success cases data
       successCases: [
         { title: 'Automatización de expedientes académicos con IA', org: 'CEICE – Generalitat Valenciana', sector: 'nts', level: 'FP', result: 'Sistema OCR + LLM en producción. Reducción del 70% en tiempo de tramitación. 5 equipos participantes.', oer: 'Guía técnica y dataset publicados bajo CC-BY-SA', year: '2025-2026' },
@@ -741,6 +752,17 @@ export const translations = {
         { id: 'b6', name: 'CreativeAI Badge', description: 'Generative AI applied to heritage, design and cultural tourism', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['TUR-MST-04 module', 'Creative AI project', 'Public exhibition'] },
         { id: 'b7', name: 'GovAI Badge', description: 'AI in public services: automation, transparency and ethics', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['GovAI 40h course', 'Process automation practical case', 'EU AI Regulation test'] },
         { id: 'b8', name: 'DigitalTwin Badge', description: 'Modeling, simulation and analysis of industrial digital twins', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['IND-MST-05 module', 'Project with simulation platform', 'TÜV validation'] },
+      ],
+      // OER Resources data
+      oerResources: [
+        { id: 'o1', title: 'AI Ethics Guide for VET', type: 'Guide', sector: 'nts', level: 'FP', license: 'CC-BY-SA 4.0', author: 'CEICE / IF.E', date: 'Mar 2026', downloads: 1420, lang: 'ES / VA' },
+        { id: 'o2', title: 'Digital Twins Manual v2.1', type: 'Manual', sector: 'mfg', level: 'Máster', license: 'CC-BY 4.0', author: 'INESC TEC / HSW', date: 'Feb 2026', downloads: 876, lang: 'EN / ES' },
+        { id: 'o3', title: 'Citrus Pests Dataset CV (10K images)', type: 'Dataset', sector: 'agr', level: 'Máster', license: 'CC-BY-NC 4.0', author: 'AVA-ASAJA / UVEG', date: 'Ene 2026', downloads: 543, lang: 'ES' },
+        { id: 'o4', title: 'AI Bias Analysis Template', type: 'Template', sector: 'Todos', level: 'Todos', license: 'CC-BY-SA 4.0', author: 'COGN / LC', date: 'Dic 2025', downloads: 2105, lang: 'EN / ES / FR' },
+        { id: 'o5', title: 'Introduction to ML with Python for VET – Video (12h)', type: 'Video', sector: 'nts', level: 'FP', license: 'CC-BY 4.0', author: 'UMU / CEICE', date: 'Nov 2025', downloads: 3210, lang: 'ES / VA' },
+        { id: 'o6', title: 'EU AI Regulation Guide for Administration', type: 'Guide', sector: 'nts', level: 'Docentes', license: 'CC-BY-SA 4.0', author: 'LC / CEICE', date: 'Feb 2026', downloads: 789, lang: 'ES / EN' },
+        { id: 'o7', title: 'NLP Manual for Clinical Analysis', type: 'Manual', sector: 'nts', level: 'Máster', license: 'CC-BY-NC-SA 4.0', author: "Ud'A / UVEG", date: 'Mar 2026', downloads: 412, lang: 'IT / EN' },
+        { id: 'o8', title: 'Cultural Heritage Images Dataset (5K)', type: 'Dataset', sector: 'cci', level: 'Máster', license: 'CC-BY 4.0', author: 'LPGA / ESAD-GV', date: 'Ene 2026', downloads: 298, lang: 'ES / EN' },
       ],
       // Success cases data
       successCases: [
@@ -1199,6 +1221,17 @@ export const translations = {
         { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimoni, disseny i turisme cultural', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Mòdul TUR-MST-04', 'Projecte creatiu amb IA', 'Exposició pública'] },
         { id: 'b7', name: 'GovAI Badge', description: 'IA en serveis públics: automatització, transparència i ètica', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curs GovAI 40h', 'Case pràctic de tramitació', 'Test Reglament IA UE'] },
         { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelatge, simulació i anàlisi de bessons digitals industrials', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Mòdul IND-MST-05', 'Projecte amb plataforma de simulació', 'Validació TÜV'] },
+      ],
+      // OER Resources data
+      oerResources: [
+        { id: 'o1', title: 'Guia d\'Ètica en IA per a FP', type: 'Guia', sector: 'nts', level: 'FP', license: 'CC-BY-SA 4.0', author: 'CEICE / IF.E', date: 'Mar 2026', downloads: 1420, lang: 'ES / VA' },
+        { id: 'o2', title: 'Manual de Bessons Digitals v2.1', type: 'Manual', sector: 'mfg', level: 'Máster', license: 'CC-BY 4.0', author: 'INESC TEC / HSW', date: 'Feb 2026', downloads: 876, lang: 'EN / ES' },
+        { id: 'o3', title: 'Dataset Plagues Cítrics CV (10K imatges)', type: 'Dataset', sector: 'agr', level: 'Máster', license: 'CC-BY-NC 4.0', author: 'AVA-ASAJA / UVEG', date: 'Ene 2026', downloads: 543, lang: 'ES' },
+        { id: 'o4', title: 'Plantilla Anàlisi de Biaix en Models de IA', type: 'Plantilla', sector: 'Todos', level: 'Todos', license: 'CC-BY-SA 4.0', author: 'COGN / LC', date: 'Dic 2025', downloads: 2105, lang: 'EN / ES / FR' },
+        { id: 'o5', title: 'Introducció a ML amb Python per a FP – Vídeo (12h)', type: 'Vídeo', sector: 'nts', level: 'FP', license: 'CC-BY 4.0', author: 'UMU / CEICE', date: 'Nov 2025', downloads: 3210, lang: 'ES / VA' },
+        { id: 'o6', title: 'Guia Reglament IA UE per a l\'Administració', type: 'Guia', sector: 'nts', level: 'Docentes', license: 'CC-BY-SA 4.0', author: 'LC / CEICE', date: 'Feb 2026', downloads: 789, lang: 'ES / EN' },
+        { id: 'o7', title: 'Manual de PNL per a Anàlisi Clínic', type: 'Manual', sector: 'nts', level: 'Máster', license: 'CC-BY-NC-SA 4.0', author: "Ud'A / UVEG", date: 'Mar 2026', downloads: 412, lang: 'IT / EN' },
+        { id: 'o8', title: 'Dataset Imatges Patrimoni Cultural (5K)', type: 'Dataset', sector: 'cci', level: 'Máster', license: 'CC-BY 4.0', author: 'LPGA / ESAD-GV', date: 'Ene 2026', downloads: 298, lang: 'ES / EN' },
       ],
       // Success cases data
       successCases: [
