@@ -73,7 +73,8 @@ const transparencyDocs = [
 export default function Governance() {
   const [activeTab, setActiveTab] = useState<GovTab>('estructura');
   const languageContext = useContext(LanguageContext);
-  const t = languageContext?.translations.governance || {};
+  const language = languageContext?.language || 'es';
+  const t = languageContext?.translations[language]?.governance || {};
 
   return (
     <div className="animate-in fade-in duration-300">

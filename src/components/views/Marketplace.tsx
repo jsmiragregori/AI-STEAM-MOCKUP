@@ -174,7 +174,8 @@ const levelStyles: Record<string, string> = {
 
 export default function Marketplace() {
   const languageContext = useContext(LanguageContext);
-  const t = languageContext?.translations.marketplace || {};
+  const language = languageContext?.language || 'es';
+  const t = languageContext?.translations[language]?.marketplace || {};
 
   const [levelFilter, setLevelFilter] = useState<LevelFilter>('Todos');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('Todos');

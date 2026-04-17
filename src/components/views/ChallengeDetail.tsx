@@ -566,8 +566,8 @@ interface ChallengeDetailProps {
 
 export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailProps) {
   const languageContext = useContext(LanguageContext);
-  const t = languageContext?.translations.challengeDetail || {};
   const currentLanguage = languageContext?.language || 'es';
+  const t = languageContext?.translations[currentLanguage]?.challengeDetail || {};
 
   // Get challenge data in current language
   const extra = challengeExtras[currentLanguage as keyof typeof challengeExtras]?.[challenge.id as keyof typeof challengeExtras.es] ||
