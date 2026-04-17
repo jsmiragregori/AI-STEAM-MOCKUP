@@ -1,7 +1,7 @@
 # Guía de Contexto - AI-STEAM Mockup
 
-**Última actualización:** 2026-04-17  
-**Estado:** Sesión abierta - Información crítica del sistema de traducciones
+**Última actualización:** 2026-04-17 (Sesión cerrada)  
+**Estado:** ✅ Multilingüismo completo - Todas las traducciones funcionando correctamente
 
 ---
 
@@ -154,12 +154,29 @@ Todos los componentes principales tienen soporte multilingüe completo (ES, EN, 
    - `8a1d0ab`: Add event type translation to News component
    - `d4706bf`: Fix - Allow nested objects in translation function return type (resuelve News section)
 
-## 🐛 Bug Fix Sesión Actual (2026-04-17)
+## 🐛 Bug Fixes Sesión Actual (2026-04-17)
 
+### 1. News Section Type Issue
 **Problema:** News section mostraba contenido solo en VA, no en ES/EN  
 **Causa:** Restricción de tipo en `LanguageContext.tsx` - `t()` estaba tipada como `(key: string) => string | Record<string, string>`, lo que impedía acceso a objetos anidados  
 **Solución:** Cambiar retorno de `t()` a `any` para soportar estructuras de datos arbitrarias  
+**Commit:** `d4706bf`  
 **Impacto:** News (Actualidad) ahora funciona correctamente en ES, EN y VA
+
+### 2. Category Filter Reset Issue
+**Problema:** Al cambiar de idioma, el filtro de categoría se quedaba en la categoría del idioma anterior  
+**Causa:** `categoryFilter` (estado) no se actualizaba cuando cambiaba el idioma  
+**Solución:** Agregar `useEffect` para resetear `categoryFilter` cuando `language` cambia  
+**Commit:** Incluido en cambios de News  
+**Impacto:** Filtro de categoría se sincroniza correctamente con cambios de idioma
+
+### 3. Social Link Update
+**Cambio:** Reemplazar Zenodo por Substack en sección "Follow Us"  
+**Descripciones agregadas:**
+- ES: "Substack – Artículos y Papers"
+- EN: "Substack – Articles and Papers"  
+- VA: "Substack – Articles i Papers"
+**Commits:** `a2ace48`, `9f8ee09`, `46b5f1e`
 
 ---
 
