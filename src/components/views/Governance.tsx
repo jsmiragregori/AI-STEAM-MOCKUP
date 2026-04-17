@@ -510,22 +510,13 @@ export default function Governance() {
                 <div className="w-12 h-12 bg-eu-orange/10 rounded-xl flex items-center justify-center mb-4">
                   <Building2 className="w-6 h-6 text-eu-orange" />
                 </div>
-                <h2 className="text-xl font-bold text-eu-text mb-1">Adhesión como Stakeholder</h2>
-                <p className="text-xs font-bold uppercase text-eu-orange mb-3">Track B · Espacio Ecosistema · Gasto Cero</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  Cualquier organización pública o privada puede adherirse a la red suscribiendo el <strong>Acuerdo de Colaboración</strong>. La adhesión es gratuita (Regla de Gasto Cero), vigente durante 4 años y renovable.
-                </p>
+                <h2 className="text-xl font-bold text-eu-text mb-1">{t.tabContent_participar.stakeholderTitle}</h2>
+                <p className="text-xs font-bold uppercase text-eu-orange mb-3">{t.tabContent_participar.stakeholderSubtitle}</p>
+                <p className="text-sm text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: t.tabContent_participar.stakeholderDesc }} />
                 <div className="bg-orange-50 rounded-lg p-4 mb-5">
-                  <p className="text-xs font-bold text-eu-orange uppercase mb-2">Como stakeholder podrás:</p>
+                  <p className="text-xs font-bold text-eu-orange uppercase mb-2">{t.tabContent_participar.stakeholderBenefitsLabel}</p>
                   <ul className="space-y-1.5">
-                    {[
-                      'Proponer retos reales al Banco de Retos vía ConsensUE',
-                      'Votar prioridades temáticas y co-diseñar el currículo',
-                      'Acceder al repositorio de recursos OER y casos de éxito',
-                      'Participar en grupos de trabajo sectoriales',
-                      'Recibir soluciones prototipadas de equipos del Máster AI-SECRETT',
-                      'Conectar con los socios del consorcio y la red europea',
-                    ].map((a) => (
+                    {t.tabContent_participar.stakeholderBenefits.map((a) => (
                       <li key={a} className="flex items-start gap-2 text-sm text-gray-700">
                         <CheckCircle className="w-3.5 h-3.5 text-eu-orange mt-0.5 shrink-0" />{a}
                       </li>
@@ -534,10 +525,10 @@ export default function Governance() {
                 </div>
                 <p className="text-xs text-gray-500 mb-4 flex items-start gap-2">
                   <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5 text-gray-400" />
-                  Los stakeholders operan exclusivamente en el Track B. No tienen acceso al espacio académico (Aules/Máster) salvo autorización expresa de UVEG.
+                  {t.tabContent_participar.stakeholderWarning}
                 </p>
                 <a href="#" className="inline-flex items-center gap-2 bg-eu-orange text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors">
-                  Solicitar Acuerdo de Colaboración <ExternalLink className="w-4 h-4" />
+                  {t.tabContent_participar.stakeholderButton} <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
 
@@ -546,15 +537,13 @@ export default function Governance() {
                 <div className="w-12 h-12 bg-eu-teal/10 rounded-xl flex items-center justify-center mb-4">
                   <Users className="w-6 h-6 text-eu-teal" />
                 </div>
-                <h2 className="text-xl font-bold text-eu-text mb-1">Participa vía ConsensUE</h2>
-                <p className="text-xs font-bold uppercase text-eu-teal mb-3">Track B · Plataforma Decidim · Democracia Participativa</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  ConsensUE es la plataforma democrática del ecosistema, basada en <strong>Decidim</strong> y gestionada por CEICE. Es el canal principal para que stakeholders y socios del consorcio propongan y debatan contenidos del Track B.
-                </p>
+                <h2 className="text-xl font-bold text-eu-text mb-1">{t.tabContent_participar.consensueTitle}</h2>
+                <p className="text-xs font-bold uppercase text-eu-teal mb-3">{t.tabContent_participar.consensueSubtitle}</p>
+                <p className="text-sm text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: t.tabContent_participar.consensueDesc }} />
                 <div className="space-y-3 mb-5">
                   {[
-                    { who: 'Para Stakeholders (Track B)', actions: ['Proponer retos al Banco de Retos', 'Votar prioridades del próximo curso', 'Participar en grupos de trabajo sectoriales', 'Consultas sobre políticas de la red'] },
-                    { who: 'Para Socios del Consorcio', actions: ['Proponer recursos OER y casos de éxito', 'Debatir modificaciones de gobernanza', 'Convocar consultas a la red', 'Coordinar nodos distribuidos'] },
+                    { who: t.tabContent_participar.consensueGroupStakeholders, actions: t.tabContent_participar.consensueActionsStakeholders },
+                    { who: t.tabContent_participar.consensueGroupConsortium, actions: t.tabContent_participar.consensueActionsConsortium },
                   ].map((g) => (
                     <div key={g.who} className="bg-teal-50 rounded-lg p-4">
                       <p className="text-xs font-extrabold uppercase text-eu-teal mb-2">{g.who}</p>
@@ -569,7 +558,7 @@ export default function Governance() {
                   ))}
                 </div>
                 <a href="#" className="inline-flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors">
-                  Ir a ConsensUE <ExternalLink className="w-4 h-4" />
+                  {t.tabContent_participar.consensueButton} <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -581,16 +570,12 @@ export default function Governance() {
                   <Landmark className="w-5 h-5 text-eu-blue" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-eu-text">Red de Stakeholders (SN) – Próximas Reuniones</h2>
-                  <p className="text-sm text-gray-500">Coordinada por CEICE · Frecuencia semestral + online continua</p>
+                  <h2 className="text-xl font-bold text-eu-text">{t.tabContent_participar.meetingsTitle}</h2>
+                  <p className="text-sm text-gray-500">{t.tabContent_participar.meetingsSubtitle}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-                {[
-                  { date: '15 Jun 2026', title: 'Asamblea de la Red – Sesión 3', location: 'Conselleria de Educació, Valencia + Streaming' },
-                  { date: '10 Jul 2026', title: 'Taller Sectorial: IA y Salud', location: 'Hospital La Fe + Online' },
-                  { date: '18 Sep 2026', title: 'Foro Anual AI-STEAM Network', location: 'Ciudad Politécnica de la Innovación, Valencia' },
-                ].map((e, i) => (
+                {t.tabContent_participar.meetings.map((e, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-eu-bg rounded-lg border border-eu-border">
                     <div className="bg-eu-blue text-white rounded-lg px-2 py-1 text-center shrink-0 min-w-[3rem]">
                       <span className="block text-xs font-extrabold leading-none">{e.date.split(' ')[0]}</span>
@@ -604,7 +589,7 @@ export default function Governance() {
                 ))}
               </div>
               <a href="#" className="inline-flex items-center gap-2 bg-eu-blue text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-blue-800 transition-colors">
-                Inscribirse a la próxima reunión <ExternalLink className="w-4 h-4" />
+                {t.tabContent_participar.meetingsButton} <ExternalLink className="w-4 h-4" />
               </a>
             </div>
           </div>
