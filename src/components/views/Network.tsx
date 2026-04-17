@@ -87,8 +87,56 @@ const getRoleLabel = (roleCode: string, networkT: any): string => {
   return roleMap[roleCode] || roleCode;
 };
 
+const getStakeholderType = (type: string, language: string): string => {
+  const typeMap: Record<string, Record<string, string>> = {
+    'Agencia estatal regulatoria': { es: 'Agencia estatal regulatoria', en: 'State regulatory agency', va: 'Agència estatal reguladora' },
+    'Agencia de Innovación Regional': { es: 'Agencia de Innovación Regional', en: 'Regional Innovation Agency', va: 'Agència d\'Innovació Regional' },
+    'Organismo Público': { es: 'Organismo Público', en: 'Public Organization', va: 'Organisme Públic' },
+    'Centro de Innovación Urbana': { es: 'Centro de Innovación Urbana', en: 'Urban Innovation Center', va: 'Centre d\'Innovació Urbana' },
+    'Federación Agroalimentaria': { es: 'Federación Agroalimentaria', en: 'Agrifood Federation', va: 'Federació Agroalimentària' },
+    'Asociación de Agricultores': { es: 'Asociación de Agricultores', en: 'Farmers Association', va: 'Associació d\'Agricultors' },
+    'Federación Metalúrgica': { es: 'Federación Metalúrgica', en: 'Metalworking Federation', va: 'Federació Metal·lúrgica' },
+    'Asoc. Fabricantes de Azulejos': { es: 'Asoc. Fabricantes de Azulejos', en: 'Tile Manufacturers Association', va: 'Assoc. Fabricants d\'Azullejos' },
+    'Empresa de Gestión del Agua': { es: 'Empresa de Gestión del Agua', en: 'Water Management Company', va: 'Empresa de Gestió de l\'Aigua' },
+    'Empresa Tecnológica': { es: 'Empresa Tecnológica', en: 'Technology Company', va: 'Empresa Tecnològica' },
+    'Centro Tecnológico (REDIT)': { es: 'Centro Tecnológico (REDIT)', en: 'Technology Center (REDIT)', va: 'Centre Tecnològic (REDIT)' },
+    'Red de Institutos Tecnológicos': { es: 'Red de Institutos Tecnológicos', en: 'Network of Technology Centers', va: 'Xarxa d\'Instituts Tecnològics' },
+    'Institución Sanitaria Pública': { es: 'Institución Sanitaria Pública', en: 'Public Health Institution', va: 'Institució Sanitària Pública' },
+    'Instituto Tecnologías Turísticas': { es: 'Instituto Tecnologías Turísticas', en: 'Tourism Technology Institute', va: 'Institut Tecnologies Turístiques' },
+  };
+  return typeMap[type]?.[language] || type;
+};
+
+const getRegionLabel = (region: string, language: string): string => {
+  const regionMap: Record<string, Record<string, string>> = {
+    'Nacional': { es: 'Nacional', en: 'National', va: 'Nacional' },
+    'C. Valenciana': { es: 'C. Valenciana', en: 'C. Valenciana', va: 'C. Valenciana' },
+  };
+  return regionMap[region]?.[language] || region;
+};
+
+const getStakeholderDesc = (id: string, language: string): string => {
+  const descMap: Record<string, Record<string, string>> = {
+    'aesia': { es: 'Supervisión regulatoria y ética de la IA en España.', en: 'AI regulatory supervision and ethics in Spain.', va: 'Supervisió regulatòria i ética de la IA a Espanya.' },
+    'ivace': { es: 'Financiación de innovación y enlace con PYMEs.', en: 'Innovation funding and liaison with SMEs.', va: 'Finançament d\'innovació i enllaç amb PIMEs.' },
+    'dgtic': { es: 'Dirección General de Tecnologías de la Información y las Comunicaciones de la GVA.', en: 'General Directorate of Information and Communication Technologies of the GVA.', va: 'Direcció General de Tecnologies de la Informació i les Comunicacions de la GVA.' },
+    'lasnaves': { es: 'Living lab urbano, misiones 2030 de la ciudad de Valencia.', en: 'Urban living lab, 2030 missions of the city of Valencia.', va: 'Living lab urbà, missions 2030 de la ciutat de València.' },
+    'fedacova': { es: 'Agrupa 30 asociaciones de la industria transformadora agroalimentaria.', en: 'Groups 30 associations of the agrifood processing industry.', va: 'Agrupa 30 associacions de la indústria transformadora agroalimentària.' },
+    'avaasaja': { es: 'Digitalización rural y representación de la base productiva agrícola.', en: 'Rural digitalization and representation of the agricultural productive base.', va: 'Digitalització rural i representació de la base productiva agrícola.' },
+    'femeval': { es: 'Transformación digital del sector metal valenciano.', en: 'Digital transformation of the Valencian metal sector.', va: 'Transformació digital del sector metal valencià.' },
+    'ascer': { es: 'Clúster cerámico, eficiencia energética e IA en diseño.', en: 'Ceramic cluster, energy efficiency and AI in design.', va: 'Clúster ceràmic, eficiència energètica i IA en disseny.' },
+    'globalomnium': { es: 'IA en ciclo integral del agua y gemelos digitales.', en: 'AI in the complete water cycle and digital twins.', va: 'IA en cicle integral de l\'aigua i bessons digitals.' },
+    'brainstorm': { es: 'Gráficos 3D en tiempo real y estudios virtuales con IA.', en: 'Real-time 3D graphics and virtual studios with AI.', va: 'Gràfics 3D en temps real i estudis virtuals amb IA.' },
+    'iti': { es: 'Big Data, IA y coordinador del EDIH valenciano.', en: 'Big Data, AI and coordinator of the Valencian EDIH.', va: 'Big Data, IA i coordinador de l\'EDIH valencià.' },
+    'redit': { es: 'Coordinación de 11 centros tecnológicos de la Comunitat Valenciana.', en: 'Coordination of 11 technology centers in the Valencian Community.', va: 'Coordinació de 11 centres tecnològics de la Comunitat Valenciana.' },
+    'lafe': { es: 'Referente en IA clínica y datos de salud.', en: 'Leader in clinical AI and health data.', va: 'Referent en IA clínica i dades de salut.' },
+    'invattur': { es: 'Turismo inteligente y analítica de destinos.', en: 'Smart tourism and destination analytics.', va: 'Turisme intel·ligent i analítica de destinacions.' },
+  };
+  return descMap[id]?.[language] || '';
+};
+
 export default function Network() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const networkT = t('network');
   const [activeTab, setActiveTab] = useState<NetworkTab>('socios');
   const [activeCategory, setActiveCategory] = useState<HelixCategory>('todos');
@@ -341,9 +389,9 @@ export default function Network() {
                       <span className="text-xs bg-eu-orange/10 text-eu-orange font-bold px-1.5 py-0.5 rounded">{networkT?.stakeholderBadge}</span>
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{s.name}</p>
-                    <p className="text-sm text-gray-500 mb-1">{s.type}</p>
-                    <p className="text-sm text-eu-teal font-semibold mb-2">📍 {s.region}</p>
-                    <p className="text-sm text-gray-600 mb-2">{s.desc}</p>
+                    <p className="text-sm text-gray-500 mb-1">{getStakeholderType(s.type, language)}</p>
+                    <p className="text-sm text-eu-teal font-semibold mb-2">📍 {getRegionLabel(s.region, language)}</p>
+                    <p className="text-sm text-gray-600 mb-2">{getStakeholderDesc(s.id, language)}</p>
                     <span className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s.sector}</span>
                   </div>
                 );
