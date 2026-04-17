@@ -179,7 +179,7 @@ const statusStyles: Record<string, string> = {
 };
 
 const levelStyles: Record<string, string> = {
-  FP: 'bg-orange-100 text-orange-800',
+  FP: 'bg-eu-yellow text-eu-purple',
   Máster: 'bg-purple-100 text-purple-800',
 };
 
@@ -274,7 +274,7 @@ export default function Marketplace() {
           </div>
           <button
             onClick={() => setShowSubmit(!showSubmit)}
-            className="flex items-center gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors border-none cursor-pointer"
+            className="flex items-center gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer"
           >
             <Plus className="w-4 h-4" /> {marketplaceT.publishChallenge}
           </button>
@@ -326,7 +326,7 @@ export default function Marketplace() {
                 <button type="button" onClick={() => setShowSubmit(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
                   {marketplaceT.cancel}
                 </button>
-                <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-orange-600 transition-colors cursor-pointer">
+                <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-eu-purple transition-colors cursor-pointer">
                   {marketplaceT.submit}
                 </button>
               </div>
@@ -450,3 +450,4 @@ export default function Marketplace() {
     </div>
   );
 }
+

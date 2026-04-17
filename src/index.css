@@ -1,15 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-eu-blue: #004494;
-  --color-eu-yellow: #FFD617;
-  --color-eu-teal: #008080;
-  --color-eu-orange: #F27D26;
+  --color-eu-blue: #5620F6;
+  --color-eu-purple: #4918AD;
+  --color-eu-yellow: #FFF4E1;
+  --color-eu-beige: #FFF4E1;
+  --color-eu-teal: #5620F6;
+  --color-eu-orange: #4918AD;
   --color-eu-bg: #F3F6F8;
-  --color-eu-text: #1A1A1B;
-  --color-eu-border: #D1D5DB;
-  --color-eu-footer: #2D3748;
-  --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --color-eu-text: #111827;
+  --color-eu-border: #C9D1E0;
+  --color-eu-footer: #24324A;
+  --font-sans: "Instrument Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -17,3 +20,4 @@ body {
   color: var(--color-eu-text);
   font-family: var(--font-sans);
 }
+

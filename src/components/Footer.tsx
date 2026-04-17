@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-eu-footer text-white flex items-center px-6 text-sm gap-10 border-t-4 border-eu-blue mt-auto py-4">
       <div className="flex items-center gap-5">
-        <div className="w-[30px] h-[20px] bg-[#003399]"></div>
+        <div className="w-[30px] h-[20px] bg-eu-blue"></div>
         <div>
           {t('footer.fundedBy')}<br/>
           <strong>{t('footer.europeanUnion')}</strong>

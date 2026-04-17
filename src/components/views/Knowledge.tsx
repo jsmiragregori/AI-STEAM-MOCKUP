@@ -42,7 +42,7 @@ const oerResources: OERResource[] = [
 const badges: Badge[] = [
   { id: 'b1', name: 'AI-Industry Badge', description: 'Competencias en IA aplicada a entornos industriales y mantenimiento predictivo', sector: 'mfg', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Completar módulo IND-FP-01', 'Superar evaluación práctica', 'Resolver 1 reto del Banco'] },
   { id: 'b2', name: 'HealthAI Badge', description: 'Aplicación de ML en diagnóstico y gestión clínica con perspectiva ética', sector: 'nts', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Completar módulo SAL-MST-02', 'Trabajo de investigación clínica', 'Validación TÜV'] },
-  { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competencia digital en IA para docentes de FP y educación secundaria', sector: 'nts', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['Curso online 30h', 'Diseño de unidad didáctica IA', 'Evaluación por pares'] },
+  { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competencia digital en IA para docentes de FP y educación secundaria', sector: 'nts', level: 'Docentes', color: 'bg-eu-blue', issued: 524, criteria: ['Curso online 30h', 'Diseño de unidad didáctica IA', 'Evaluación por pares'] },
   { id: 'b4', name: 'GreenAI Badge', description: 'IA para monitorización ambiental, energía y economía circular', sector: 'ene', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['Módulo MED-FP-03', 'Proyecto de sensórica ambiental', 'Informe de impacto'] },
   { id: 'b5', name: 'AgroAI Badge', description: 'Técnicas de IA para agricultura de precisión y trazabilidad alimentaria', sector: 'agr', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['Módulo AGR-FP-01', 'Práctica con drones y sensores', 'Reto Banco de Retos'] },
   { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimonio, diseño y turismo cultural', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Módulo TUR-MST-04', 'Proyecto creativo con IA', 'Exposición pública'] },
@@ -59,9 +59,9 @@ const typeIcons: Record<string, string> = {
 };
 
 const levelColors: Record<string, string> = {
-  FP: 'bg-orange-100 text-orange-800',
+  FP: 'bg-eu-yellow text-eu-purple',
   Máster: 'bg-purple-100 text-purple-800',
-  Docentes: 'bg-teal-100 text-teal-800',
+  Docentes: 'bg-eu-blue/10 text-eu-blue',
   Todos: 'bg-gray-100 text-gray-600',
 };
 
@@ -325,3 +325,4 @@ export default function Knowledge() {
     </div>
   );
 }
+
