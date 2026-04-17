@@ -71,29 +71,13 @@ export default function Governance() {
             {/* Intro y hub */}
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <h2 className="text-xl font-bold text-eu-text mb-3 flex items-center gap-2">
-                <Globe className="w-5 h-5 text-eu-blue" /> Estructura de Hub Distribuido
+                <Globe className="w-5 h-5 text-eu-blue" /> {(t.tabContent_estructura as any)?.hubTitle}
               </h2>
               <p className="text-sm text-gray-600 mb-5 max-w-3xl">
-                La AI-STEAM Network opera como una <strong>facilidad distribuida de mejora del conocimiento e innovación</strong>, inspirada en el modelo DigiNet (Finlandia). Su estructura física y virtual replica la lógica de un hub con nodos regionales europeos.
+                {(t.tabContent_estructura as any)?.hubDesc}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  {
-                    label: 'Nodo Principal', city: 'Valencia', org: 'CEICE – Generalitat Valenciana',
-                    role: 'Orquestador del ecosistema. Hub central de la red. Aloja el portal, Aules y ConsensUE.',
-                    color: 'bg-eu-blue', border: 'border-eu-blue',
-                  },
-                  {
-                    label: 'Nodo EU', city: 'Bruselas', org: 'Lisbon Council (LC)',
-                    role: 'Proximidad a las instituciones europeas. Enlace con Digital Decade, AI Act y política educativa EU.',
-                    color: 'bg-eu-orange', border: 'border-eu-orange',
-                  },
-                  {
-                    label: 'Nodos Distribuidos', city: 'Europa (9 países)', org: 'Socios del Consorcio AI-SECRETT',
-                    role: 'NTNU, HSW, INESC, FIDIT, Ud\'A, ESAD-GV y otros. Extensión regional de la red en sus territorios.',
-                    color: 'bg-eu-teal', border: 'border-eu-teal',
-                  },
-                ].map((node) => (
+                {((t.tabContent_estructura as any)?.nodes || []).map((node: any) => (
                   <div key={node.label} className={`rounded-xl border-2 ${node.border} p-5`}>
                     <div className={`w-8 h-8 rounded-lg ${node.color} text-white flex items-center justify-center mb-3`}>
                       <Globe className="w-4 h-4" />
@@ -109,9 +93,9 @@ export default function Governance() {
 
             {/* Dos actores principales */}
             <div>
-              <h2 className="text-xl font-bold text-eu-text mb-2">Los Dos Actores Principales de la Plataforma</h2>
+              <h2 className="text-xl font-bold text-eu-text mb-2">{(t.tabContent_estructura as any)?.actorsTitle}</h2>
               <p className="text-sm text-gray-600 mb-5 max-w-3xl">
-                Siguiendo el modelo DigiNet, la operación del hub se articula sobre una división formal de competencias entre el Orquestador Institucional y el Proveedor Académico.
+                {(t.tabContent_estructura as any)?.actorsDesc}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* CEICE */}
@@ -121,18 +105,14 @@ export default function Governance() {
                       <Building2 className="w-5 h-5 text-eu-orange" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-eu-text">CEICE – Orquestador Institucional</h3>
-                      <p className="text-xs text-eu-orange font-bold uppercase">Generalitat Valenciana · Track B</p>
+                      <h3 className="font-bold text-eu-text">{(t.tabContent_estructura as any)?.ceiceTitle}</h3>
+                      <p className="text-xs text-eu-orange font-bold uppercase">{(t.tabContent_estructura as any)?.ceiceSubtitle}</p>
                     </div>
                   </div>
                   <div className="space-y-3 text-sm">
-                    {[
-                      { icon: Shield, label: 'Representación', desc: 'Representación pública y política de la red ante instituciones europeas y nacionales.' },
-                      { icon: FileText, label: 'Contenido (no Máster)', desc: 'Gestiona la publicación de noticias, agenda de eventos y retos del ecosistema.' },
-                      { icon: Users, label: 'Datos de miembros', desc: 'Actúa como Responsable del Tratamiento de datos de las organizaciones adheridas al Acuerdo de Colaboración (RGPD).' },
-                      { icon: Globe, label: 'Infraestructura', desc: 'Provee y mantiene el PortalEdu, Aules y la plataforma de participación democrática (ConsensUE/Decidim).' },
-                    ].map((item) => {
-                      const Icon = item.icon;
+                    {((t.tabContent_estructura as any)?.ceiceRoles || []).map((item: any) => {
+                      const icons: any = { 'Representación': Shield, 'Representation': Shield, 'Representació': Shield, 'Contenido (no Máster)': FileText, 'Content (non-Master)': FileText, 'Contingut (no Màster)': FileText, 'Datos de miembros': Users, 'Member Data': Users, 'Dades de membres': Users, 'Infraestructura': Globe, 'Infrastructure': Globe };
+                      const Icon = icons[item.label] || Shield;
                       return (
                         <div key={item.label} className="flex items-start gap-2.5">
                           <Icon className="w-4 h-4 text-eu-orange mt-0.5 shrink-0" />
@@ -153,18 +133,14 @@ export default function Governance() {
                       <GraduationCap className="w-5 h-5 text-eu-blue" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-eu-text">UVEG – Proveedor Académico</h3>
-                      <p className="text-xs text-eu-blue font-bold uppercase">Universitat de València · Track A</p>
+                      <h3 className="font-bold text-eu-text">{(t.tabContent_estructura as any)?.uvegTitle}</h3>
+                      <p className="text-xs text-eu-blue font-bold uppercase">{(t.tabContent_estructura as any)?.uvegSubtitle}</p>
                     </div>
                   </div>
                   <div className="space-y-3 text-sm">
-                    {[
-                      { icon: GraduationCap, label: 'Garante académico', desc: 'Responsable de la calidad académica del Máster AI-SECRETT, los ECTS y las micro-credenciales. Coordina con Laurea el Espacio Académico.' },
-                      { icon: FileText, label: 'Contenido del Máster', desc: 'Gestiona el LMS, la matriculación de estudiantes y la carga y gestión de materiales docentes (Tarea 3.6).' },
-                      { icon: Shield, label: 'Datos académicos', desc: 'Actúa como Responsable del Tratamiento de los expedientes académicos de estudiantes del Máster (RGPD).' },
-                      { icon: Globe, label: 'Infraestructura académica', desc: 'Provee el hardware, la seguridad y la plataforma base de micro-credenciales (.LRN).' },
-                    ].map((item) => {
-                      const Icon = item.icon;
+                    {((t.tabContent_estructura as any)?.uvegRoles || []).map((item: any) => {
+                      const icons: any = { 'Garante académico': GraduationCap, 'Academic Guarantor': GraduationCap, 'Garant acadèmic': GraduationCap, 'Contenido del Máster': FileText, 'Master Content': FileText, 'Contingut del Màster': FileText, 'Datos académicos': Shield, 'Academic Data': Shield, 'Dades acadèmiques': Shield, 'Infraestructura académica': Globe, 'Academic Infrastructure': Globe, 'Infraestructura acadèmica': Globe };
+                      const Icon = icons[item.label] || GraduationCap;
                       return (
                         <div key={item.label} className="flex items-start gap-2.5">
                           <Icon className="w-4 h-4 text-eu-blue mt-0.5 shrink-0" />
@@ -182,9 +158,9 @@ export default function Governance() {
 
             {/* Órganos formales */}
             <div>
-              <h2 className="text-xl font-bold text-eu-text mb-2">Órganos Formales del Consorcio AI-SECRETT</h2>
+              <h2 className="text-xl font-bold text-eu-text mb-2">{(t.tabContent_estructura as any)?.bodiesTitle}</h2>
               <p className="text-sm text-gray-600 mb-6 max-w-3xl">
-                Los seis órganos de gobernanza están definidos en el Acuerdo de Consorcio v1.0. Cada uno opera en uno o ambos Tracks según su naturaleza.
+                {(t.tabContent_estructura as any)?.bodiesDesc}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {((t.governanceBodies as any) || []).map((body: any) => (
@@ -214,8 +190,8 @@ export default function Governance() {
                   <ShieldCheck className="w-6 h-6 text-eu-blue" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-eu-text mb-1">ISO 21001 – Gestión Educativa</h3>
-                  <p className="text-sm text-gray-600">El consorcio opera bajo ISO 21001 (EOMS), coordinado por UVEG. Garantiza que los procedimientos formativos estén orientados a las necesidades de estudiantes y partes interesadas, con trazabilidad y auditabilidad plena.</p>
+                  <h3 className="font-bold text-eu-text mb-1">{(t.tabContent_estructura as any)?.iso21001Title}</h3>
+                  <p className="text-sm text-gray-600">{(t.tabContent_estructura as any)?.iso21001Desc}</p>
                 </div>
               </div>
               <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6 flex gap-4 items-start">
@@ -223,8 +199,8 @@ export default function Governance() {
                   <Globe className="w-6 h-6 text-eu-orange" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-eu-text mb-1">ENRED – Red Europea de Departamentos de Educación</h3>
-                  <p className="text-sm text-gray-600">La Generalitat Valenciana actúa como puente institucional entre AI-SECRETT y ENRED, facilitando la cooperación entre autoridades de educación regional europeas y conectando la red con el marco de gobernanza educativa de la UE.</p>
+                  <h3 className="font-bold text-eu-text mb-1">{(t.tabContent_estructura as any)?.enredTitle}</h3>
+                  <p className="text-sm text-gray-600">{(t.tabContent_estructura as any)?.enredDesc}</p>
                 </div>
               </div>
             </div>
