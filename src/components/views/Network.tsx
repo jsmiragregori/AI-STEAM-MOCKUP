@@ -13,7 +13,7 @@ interface Partner {
   city: string;
   category: 'universidad' | 'empresa' | 'admin' | 'sociedad';
   sectors: string[];
-  role: string;
+  role: 'coordinator' | 'beneficiary' | 'certification' | 'associated';
 }
 
 interface Stakeholder {
@@ -28,28 +28,28 @@ interface Stakeholder {
 
 // Socios del Consorcio AI-SECRETT (fijos, no pueden adherirse)
 const partners: Partner[] = [
-  { id: 'uveg', name: 'Universitat de València', acronym: 'UVEG', country: 'ES', city: 'Valencia', category: 'universidad', sectors: ['Educación', 'Industria'], role: 'Coordinador' },
-  { id: 'umu', name: 'Universidad de Murcia', acronym: 'UMU', country: 'ES', city: 'Murcia', category: 'universidad', sectors: ['Salud', 'Educación'], role: 'Socio Beneficiario' },
-  { id: 'upv', name: 'Universitat Politècnica de València', acronym: 'UPV', country: 'ES', city: 'Valencia', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'Socio Beneficiario' },
-  { id: 'ntnu', name: 'NTNU – Norwegian Univ. of S&T', acronym: 'NTNU', country: 'NO', city: 'Trondheim', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'Socio Beneficiario' },
-  { id: 'hsw', name: 'Hochschule Wismar', acronym: 'HSW', country: 'DE', city: 'Wismar', category: 'universidad', sectors: ['Industria', 'Educación'], role: 'Socio Beneficiario' },
-  { id: 'fidit', name: 'Univ. de Rijeka – FIDIT', acronym: 'FIDIT', country: 'HR', city: 'Rijeka', category: 'universidad', sectors: ['Educación', 'Administración'], role: 'Socio Beneficiario' },
-  { id: 'uda', name: "Univ. Gabriele d'Annunzio", acronym: "Ud'A", country: 'IT', city: 'Chieti-Pescara', category: 'universidad', sectors: ['Salud', 'Industria'], role: 'Socio Beneficiario' },
-  { id: 'esad', name: 'ESAD Grenoble-Valence', acronym: 'ESAD-GV', country: 'FR', city: 'Grenoble', category: 'universidad', sectors: ['Turismo y Cultura'], role: 'Socio Beneficiario' },
-  { id: 'inesc', name: 'INESC TEC', acronym: 'INESC', country: 'PT', city: 'Porto', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'Socio Beneficiario' },
-  { id: 'ceice', name: "Conselleria d'Educació (CEICE)", acronym: 'CEICE', country: 'ES', city: 'Valencia', category: 'admin', sectors: ['Educación', 'Administración'], role: 'Socio Beneficiario' },
-  { id: 'lpga', name: 'Promoción Las Palmas de GC', acronym: 'LPGA', country: 'ES', city: 'Las Palmas', category: 'admin', sectors: ['Turismo y Cultura', 'Administración'], role: 'Socio Beneficiario' },
-  { id: 'varm', name: 'Region Värmland', acronym: 'VARM', country: 'SE', city: 'Karlstad', category: 'admin', sectors: ['Medio Ambiente', 'Administración'], role: 'Socio Beneficiario' },
-  { id: 'preda', name: 'Agencia Desarrollo Prijedor', acronym: 'PREDA', country: 'BA', city: 'Prijedor', category: 'admin', sectors: ['Administración', 'Industria'], role: 'Socio Beneficiario' },
-  { id: 'cogn', name: 'Cognito S.R.L.', acronym: 'COGN', country: 'IT', city: 'Massa', category: 'empresa', sectors: ['Industria', 'Educación'], role: 'Socio Beneficiario' },
-  { id: 'tuvit', name: 'TÜV Thüringen Italia', acronym: 'TUV.IT', country: 'IT', city: 'Collecchio', category: 'empresa', sectors: ['Industria'], role: 'Certificación' },
-  { id: 'joist', name: 'The Factory IKE (JOIST)', acronym: 'JOIST', country: 'GR', city: 'Larissa', category: 'empresa', sectors: ['Industria', 'Turismo y Cultura'], role: 'Socio Beneficiario' },
-  { id: 'clink', name: 'CulturaLink SL', acronym: 'C-LINK', country: 'ES', city: 'Las Palmas', category: 'empresa', sectors: ['Turismo y Cultura'], role: 'Socio Beneficiario' },
-  { id: 'cink', name: 'CINK Venturing SL', acronym: 'CINK', country: 'ES', city: 'Madrid', category: 'empresa', sectors: ['Industria', 'Agroalimentario'], role: 'Socio Beneficiario' },
-  { id: 'lc', name: 'The Lisbon Council', acronym: 'LC', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Administración', 'Educación'], role: 'Socio Beneficiario' },
-  { id: 'kea', name: 'KEA European Affairs', acronym: 'KEA', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'Socio Beneficiario' },
-  { id: 'ife', name: 'Inspiring Futures Europe', acronym: 'IF.E', country: 'ES', city: 'Madrid', category: 'sociedad', sectors: ['Educación'], role: 'Socio Beneficiario' },
-  { id: 'rce', name: 'Relais Culture Europe', acronym: 'RCE', country: 'FR', city: 'París', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'Socio Asociado' },
+  { id: 'uveg', name: 'Universitat de València', acronym: 'UVEG', country: 'ES', city: 'Valencia', category: 'universidad', sectors: ['Educación', 'Industria'], role: 'coordinator' },
+  { id: 'umu', name: 'Universidad de Murcia', acronym: 'UMU', country: 'ES', city: 'Murcia', category: 'universidad', sectors: ['Salud', 'Educación'], role: 'beneficiary' },
+  { id: 'upv', name: 'Universitat Politècnica de València', acronym: 'UPV', country: 'ES', city: 'Valencia', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'beneficiary' },
+  { id: 'ntnu', name: 'NTNU – Norwegian Univ. of S&T', acronym: 'NTNU', country: 'NO', city: 'Trondheim', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'beneficiary' },
+  { id: 'hsw', name: 'Hochschule Wismar', acronym: 'HSW', country: 'DE', city: 'Wismar', category: 'universidad', sectors: ['Industria', 'Educación'], role: 'beneficiary' },
+  { id: 'fidit', name: 'Univ. de Rijeka – FIDIT', acronym: 'FIDIT', country: 'HR', city: 'Rijeka', category: 'universidad', sectors: ['Educación', 'Administración'], role: 'beneficiary' },
+  { id: 'uda', name: "Univ. Gabriele d'Annunzio", acronym: "Ud'A", country: 'IT', city: 'Chieti-Pescara', category: 'universidad', sectors: ['Salud', 'Industria'], role: 'beneficiary' },
+  { id: 'esad', name: 'ESAD Grenoble-Valence', acronym: 'ESAD-GV', country: 'FR', city: 'Grenoble', category: 'universidad', sectors: ['Turismo y Cultura'], role: 'beneficiary' },
+  { id: 'inesc', name: 'INESC TEC', acronym: 'INESC', country: 'PT', city: 'Porto', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'beneficiary' },
+  { id: 'ceice', name: "Conselleria d'Educació (CEICE)", acronym: 'CEICE', country: 'ES', city: 'Valencia', category: 'admin', sectors: ['Educación', 'Administración'], role: 'beneficiary' },
+  { id: 'lpga', name: 'Promoción Las Palmas de GC', acronym: 'LPGA', country: 'ES', city: 'Las Palmas', category: 'admin', sectors: ['Turismo y Cultura', 'Administración'], role: 'beneficiary' },
+  { id: 'varm', name: 'Region Värmland', acronym: 'VARM', country: 'SE', city: 'Karlstad', category: 'admin', sectors: ['Medio Ambiente', 'Administración'], role: 'beneficiary' },
+  { id: 'preda', name: 'Agencia Desarrollo Prijedor', acronym: 'PREDA', country: 'BA', city: 'Prijedor', category: 'admin', sectors: ['Administración', 'Industria'], role: 'beneficiary' },
+  { id: 'cogn', name: 'Cognito S.R.L.', acronym: 'COGN', country: 'IT', city: 'Massa', category: 'empresa', sectors: ['Industria', 'Educación'], role: 'beneficiary' },
+  { id: 'tuvit', name: 'TÜV Thüringen Italia', acronym: 'TUV.IT', country: 'IT', city: 'Collecchio', category: 'empresa', sectors: ['Industria'], role: 'certification' },
+  { id: 'joist', name: 'The Factory IKE (JOIST)', acronym: 'JOIST', country: 'GR', city: 'Larissa', category: 'empresa', sectors: ['Industria', 'Turismo y Cultura'], role: 'beneficiary' },
+  { id: 'clink', name: 'CulturaLink SL', acronym: 'C-LINK', country: 'ES', city: 'Las Palmas', category: 'empresa', sectors: ['Turismo y Cultura'], role: 'beneficiary' },
+  { id: 'cink', name: 'CINK Venturing SL', acronym: 'CINK', country: 'ES', city: 'Madrid', category: 'empresa', sectors: ['Industria', 'Agroalimentario'], role: 'beneficiary' },
+  { id: 'lc', name: 'The Lisbon Council', acronym: 'LC', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Administración', 'Educación'], role: 'beneficiary' },
+  { id: 'kea', name: 'KEA European Affairs', acronym: 'KEA', country: 'BE', city: 'Bruselas', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'beneficiary' },
+  { id: 'ife', name: 'Inspiring Futures Europe', acronym: 'IF.E', country: 'ES', city: 'Madrid', category: 'sociedad', sectors: ['Educación'], role: 'beneficiary' },
+  { id: 'rce', name: 'Relais Culture Europe', acronym: 'RCE', country: 'FR', city: 'París', category: 'sociedad', sectors: ['Turismo y Cultura'], role: 'associated' },
 ];
 
 // Stakeholders adheridos a la red (pueden unirse nuevos)
@@ -75,6 +75,16 @@ const categoryMeta = {
   empresa: { icon: Building2, color: 'text-blue-700', bg: 'bg-blue-100', border: 'border-blue-300' },
   admin: { icon: Globe, color: 'text-green-700', bg: 'bg-green-100', border: 'border-green-300' },
   sociedad: { icon: HeartHandshake, color: 'text-pink-700', bg: 'bg-pink-100', border: 'border-pink-300' },
+};
+
+const getRoleLabel = (roleCode: string, networkT: any): string => {
+  const roleMap: Record<string, string> = {
+    coordinator: networkT?.coordinator || 'Coordinator',
+    beneficiary: networkT?.beneficiary || 'Beneficiary Partner',
+    certification: networkT?.certification || 'Certification',
+    associated: networkT?.associated || 'Associated Partner',
+  };
+  return roleMap[roleCode] || roleCode;
 };
 
 export default function Network() {
@@ -222,7 +232,7 @@ export default function Network() {
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{p.name}</p>
                     <p className="text-sm font-mono text-gray-500 mb-2">{p.acronym} · {p.city}</p>
-                    <p className="text-sm text-eu-teal font-semibold mb-2">{p.role}</p>
+                    <p className="text-sm text-eu-teal font-semibold mb-2">{getRoleLabel(p.role, networkT)}</p>
                     <div className="flex flex-wrap gap-1">
                       {p.sectors.map((s) => (
                         <span key={s} className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{s}</span>
@@ -281,7 +291,7 @@ export default function Network() {
               </div>
               {filterCountry && (
                 <p className="text-xs text-gray-500 mt-4">
-                  {networkT?.filteringPartners} <strong>{networkT?.countryNames?.[filterCountry as keyof typeof networkT.countryNames]}</strong>. Los resultados se muestran en la lista superior.
+                  {networkT?.filteringPartners} <strong>{networkT?.countryNames?.[filterCountry as keyof typeof networkT.countryNames]}</strong>. {networkT?.resultsMessage}
                 </p>
               )}
             </div>
@@ -293,28 +303,26 @@ export default function Network() {
           <>
             <div className="flex items-start justify-between mb-5 flex-wrap gap-4">
               <div>
-                <p className="text-sm text-gray-600 max-w-3xl">
-                  Los stakeholders son organizaciones adheridas voluntariamente a la red AI-STEAM. Su adhesión es <strong>gratuita</strong> (acuerdo de gasto cero) y les permite publicar retos, acceder a recursos formativos y participar en la gobernanza a través de ConsensUE.
-                </p>
+                <p className="text-sm text-gray-600 max-w-3xl" dangerouslySetInnerHTML={{ __html: networkT?.stakeholdersDesc || '' }} />
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
                 className="flex items-center gap-2 bg-eu-orange text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors border-none cursor-pointer shrink-0"
               >
                 <UserPlus className="w-4 h-4" />
-                {showForm ? 'Cerrar formulario' : 'Solicitar adhesión'}
+                {showForm ? networkT?.closeForm : networkT?.requestMembership}
               </button>
             </div>
 
             {/* Category filters */}
             <div className="flex flex-wrap gap-2 mb-5">
               <button onClick={() => setActiveCategory('todos')} className={`px-4 py-1.5 rounded-full text-[13px] font-bold cursor-pointer border transition-colors ${activeCategory === 'todos' ? 'bg-eu-blue text-white border-eu-blue' : 'bg-white text-eu-text border-eu-border hover:border-eu-blue'}`}>
-                Todos ({stakeholders.length})
+                {networkT?.stakeholdersFilterAll} ({stakeholders.length})
               </button>
               {(Object.entries(categoryMeta) as [keyof typeof categoryMeta, typeof categoryMeta[keyof typeof categoryMeta]][]).map(([key, meta]) => (
                 stakeholderCounts[key] > 0 && (
                   <button key={key} onClick={() => setActiveCategory(key)} className={`px-4 py-1.5 rounded-full text-[13px] font-bold cursor-pointer border transition-colors ${activeCategory === key ? 'bg-eu-blue text-white border-eu-blue' : 'bg-white text-eu-text border-eu-border hover:border-eu-blue'}`}>
-                    {meta.label} ({stakeholderCounts[key]})
+                    {networkT?.categoryLabels?.[key as keyof typeof networkT.categoryLabels] || key} ({stakeholderCounts[key]})
                   </button>
                 )
               ))}
@@ -330,7 +338,7 @@ export default function Network() {
                       <div className={`w-9 h-9 rounded-lg ${meta.bg} flex items-center justify-center`}>
                         <Icon className={`w-4 h-4 ${meta.color}`} />
                       </div>
-                      <span className="text-xs bg-eu-orange/10 text-eu-orange font-bold px-1.5 py-0.5 rounded">STAKEHOLDER</span>
+                      <span className="text-xs bg-eu-orange/10 text-eu-orange font-bold px-1.5 py-0.5 rounded">{networkT?.stakeholderBadge}</span>
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{s.name}</p>
                     <p className="text-sm text-gray-500 mb-1">{s.type}</p>
@@ -348,66 +356,65 @@ export default function Network() {
                 <div className="bg-eu-orange/10 border-b border-eu-orange/30 px-6 py-4 flex items-center gap-3">
                   <UserPlus className="w-5 h-5 text-eu-orange" />
                   <div>
-                    <h2 className="text-lg font-bold text-eu-text">Formulario de Adhesión como Stakeholder</h2>
-                    <p className="text-xs text-gray-600 mt-0.5">Adhesión bajo el Acuerdo de Gasto Cero · Plazo abierto · Solo para organizaciones externas al consorcio</p>
+                    <h2 className="text-lg font-bold text-eu-text">{networkT?.formTitle}</h2>
+                    <p className="text-xs text-gray-600 mt-0.5">{networkT?.formSubtitle}</p>
                   </div>
                 </div>
                 <div className="p-6 bg-eu-bg">
                   <p className="text-sm text-gray-600 mb-6 max-w-2xl">
-                    Al adherirte como stakeholder podrás publicar retos al Banco de Retos, acceder a recursos formativos, participar en la gobernanza vía ConsensUE y conectar con los socios del consorcio AI-SECRETT.
+                    {networkT?.formDescription}
                   </p>
                   <form className="space-y-5 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
                     <div className="grid grid-cols-1 gap-y-5 gap-x-4 sm:grid-cols-2">
                       <div className="sm:col-span-2">
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Nombre de la Entidad *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.entityName} *</label>
                         <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" placeholder="Ej. FEDACOVA, Hospital La Fe, Cluster Energía CV..." />
                       </div>
                       <div>
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Categoría (Cuádruple Hélice) *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.category} *</label>
                         <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                          <option>Educación Superior / Centro I+D</option>
-                          <option>Empresa / PYME / Clúster</option>
-                          <option>Administración Pública</option>
-                          <option>ONG / Sociedad Civil</option>
-                          <option>Centro de Formación Profesional</option>
+                          <option>{networkT?.categoryOptions?.university}</option>
+                          <option>{networkT?.categoryOptions?.company}</option>
+                          <option>{networkT?.categoryOptions?.admin}</option>
+                          <option>{networkT?.categoryOptions?.civil}</option>
                         </select>
                       </div>
                       <div>
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Sector Principal *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.sector} *</label>
                         <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                          <option>Industria y Manufactura</option>
-                          <option>Salud y Bienestar</option>
-                          <option>Medio Ambiente y Sostenibilidad</option>
-                          <option>Educación e Investigación</option>
-                          <option>Agroalimentario</option>
-                          <option>Turismo y Cultura</option>
-                          <option>Administración Pública</option>
+                          <option>{networkT?.sectorOptions?.manufacturing}</option>
+                          <option>{networkT?.sectorOptions?.mobility}</option>
+                          <option>{networkT?.sectorOptions?.energy}</option>
+                          <option>{networkT?.sectorOptions?.agrifood}</option>
+                          <option>{networkT?.sectorOptions?.cci}</option>
+                          <option>{networkT?.sectorOptions?.housing}</option>
+                          <option>{networkT?.sectorOptions?.services}</option>
                         </select>
                       </div>
                       <div>
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Persona de Contacto *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.contact} *</label>
                         <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" placeholder="Nombre y apellidos" />
                       </div>
                       <div>
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">País *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.country} *</label>
                         <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" defaultValue="España" />
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Correo Electrónico Institucional *</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.email} *</label>
                         <input type="email" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" placeholder="correo@entidad.com" />
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="block text-[13px] font-bold text-eu-text mb-1">Descripción breve y motivación para unirse</label>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.description}</label>
                         <textarea rows={3} className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white resize-none" placeholder="Describa brevemente su entidad y su interés en la red AI-STEAM..."></textarea>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <input type="checkbox" id="gdpr" className="rounded border-eu-border" />
-                      <label htmlFor="gdpr" className="text-xs text-gray-600">Acepto la <a href="#" className="text-eu-blue hover:underline">política de privacidad</a> y el tratamiento de mis datos según el RGPD</label>
+                      <label htmlFor="gdpr" className="text-xs text-gray-600">{networkT?.acceptTerms} <a href="#" className="text-eu-blue hover:underline">{networkT?.privacyPolicy}</a> {networkT?.rgpd}</label>
                     </div>
                     <div className="flex justify-end">
                       <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-orange-600 transition-colors cursor-pointer">
-                        Enviar solicitud de adhesión
+                        {networkT?.submitBtn}
                       </button>
                     </div>
                   </form>
