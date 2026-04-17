@@ -1737,7 +1737,7 @@ export const translations = {
       filterByType: 'Filtra per Tipus',
     },
     governance: {
-      title: 'Governança de la Xarxa',
+      title: 'Governança i Transparència',
       subtitle: 'Estructura de decisió i participació',
       description: 'La xarxa AI-STEAM funciona sota un model de governança de Doble Vía: un espai acadèmic liderat per UVEG i un espai ecosistema orquestrat per la Generalitat Valenciana (CEICE).',
       tabEstructura: 'Estructura i Òrgans',
