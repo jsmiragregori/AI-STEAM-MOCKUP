@@ -79,6 +79,7 @@ export default function Knowledge() {
   const [activeTab, setActiveTab] = useState<KnowledgeTab>('flujo');
   const [oerSearch, setOerSearch] = useState('');
 
+  const oerData = (t('knowledge.oerResources') as any[]) || [];
   const badgesData = (t('knowledge.badges') as any[]) || [];
   const successCasesData = (t('knowledge.successCases') as any[]) || [];
 
@@ -99,7 +100,7 @@ export default function Knowledge() {
     return typeMap[type] || type;
   };
 
-  const filteredOER = oerResources.filter((r) =>
+  const filteredOER = oerData.filter((r) =>
     oerSearch === '' || r.title.toLowerCase().includes(oerSearch.toLowerCase()) || getSectorName(r.sector).toLowerCase().includes(oerSearch.toLowerCase())
   );
 
