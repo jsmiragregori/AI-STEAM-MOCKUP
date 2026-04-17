@@ -87,15 +87,17 @@ const t = languageContext?.translations[language]?.marketplace || {};
 
 ## 📋 Componentes Actualizados (2026-04-17)
 
-| Componente | Archivo | Estado | Fecha |
-|-----------|---------|--------|--------|
-| Marketplace (Banco de Retos) | `src/components/views/Marketplace.tsx` | ✅ Arreglado | 2026-04-17 |
-| ChallengeDetail (Detalles de Retos) | `src/components/views/ChallengeDetail.tsx` | ✅ Arreglado | 2026-04-17 |
-| Governance (Gobernanza) | `src/components/views/Governance.tsx` | ✅ Arreglado | 2026-04-17 |
-| Home | `src/components/views/Home.tsx` | ✅ Correcto | — |
-| Knowledge | `src/components/views/Knowledge.tsx` | ✅ Correcto | — |
-| Network | `src/components/views/Network.tsx` | ✅ Correcto | — |
-| Sectors | `src/components/views/Sectors.tsx` | ✅ Correcto | — |
+| Componente | Archivo | Estado | Detalles |
+|-----------|---------|--------|----------|
+| Marketplace (Banco de Retos) | `src/components/views/Marketplace.tsx` | ✅ Completo | Deadline label, team singular/plural |
+| ChallengeDetail (Detalles de Retos) | `src/components/views/ChallengeDetail.tsx` | ✅ Completo | All challenge details translated |
+| Governance (Gobernanza) | `src/components/views/Governance.tsx` | ✅ Completo | All governance sections translated |
+| News (Actualidad) | `src/components/views/News.tsx` | ✅ Completo | Event type translations (Presencial, Online, Híbrido) |
+| Training (Formación) | `src/components/views/Training.tsx` | ✅ Completo | Level, status, modality, sector labels |
+| Home | `src/components/views/Home.tsx` | ✅ Completo | All home sections translated |
+| Knowledge (Conocimiento) | `src/components/views/Knowledge.tsx` | ✅ Completo | All knowledge sections translated |
+| Network (Red) | `src/components/views/Network.tsx` | ✅ Completo | Stakeholder roles and descriptions |
+| Sectors (Sectores) | `src/components/views/Sectors.tsx` | ✅ Completo | Sector names, descriptions, keywords |
 
 ---
 
@@ -130,19 +132,26 @@ es: {
 
 ---
 
-## 🔧 Próximos Componentes a Traducir
+## ✅ Traducción Multilingüe - COMPLETADA
 
-- [ ] **News.tsx** (~300 líneas, contenido en ES)
-- [ ] **Training.tsx** (~350 líneas, contenido en ES)
+Todos los componentes principales tienen soporte multilingüe completo (ES, EN, VA). 
+
+**Cambios en esta sesión (2026-04-17):**
+- ✅ Fixed hardcoded deadline label "Plazo" and team singular/plural in Marketplace
+- ✅ Added level/status/modality/sector label translations to Training component
+- ✅ Added event type translation to News component (Presencial → In-person/Presencial)
 
 ---
 
 ## 📌 Notas Importantes
 
-1. **El merge de multilingüismo (2026-04-16)** cambió la forma de acceder a las traducciones pero no actualó completamente todos los componentes
+1. **El merge de multilingüismo (2026-04-16)** cambió la forma de acceder a las traducciones - ahora completamente implementado
 2. **El hook `useLanguage()`** es el método recomendado y es más seguro que `useContext()` directo
 3. **El contexto proporciona `translations` completo**, no filtrado por idioma, requiere acceso manual como `translations[language]`
-4. **Los cambios del 2026-04-17** fueron publicados en commit `57bcd5a`
+4. **Los cambios del 2026-04-16** fueron publicados en commit `57bcd5a`
+5. **Los cambios finales de traducción del 2026-04-17** están en commits:
+   - `dca2f99`: Complete multilingual translations for Marketplace and Training
+   - `8a1d0ab`: Add event type translation to News component
 
 ---
 
