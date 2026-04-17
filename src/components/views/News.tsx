@@ -85,6 +85,15 @@ const getCategoryColor = (category: string): string => {
   return categoryColorMap[category] || 'text-gray-600';
 };
 
+const getTypeLabel = (type: string, t: any): string => {
+  const typeLabels: Record<string, string> = {
+    'Presencial': t?.inPerson || 'Presencial',
+    'Online': t?.online || 'Online',
+    'Híbrido': t?.hybrid || 'Híbrido',
+  };
+  return typeLabels[type] || type;
+};
+
 export default function News() {
   const { t, language } = useLanguage();
   const newsT = t('news');
@@ -221,7 +230,7 @@ export default function News() {
                             <MapPin className="w-3 h-3 shrink-0" /> {event.location}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${getTypeColor(event.type)}`}>{event.type}</span>
+                            <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${getTypeColor(event.type)}`}>{getTypeLabel(event.type, newsT)}</span>
                             {event.register && (
                               <a href="#" className="text-sm font-bold text-eu-blue hover:underline flex items-center gap-0.5">
                                 {newsT?.register} <ExternalLink className="w-2.5 h-2.5" />
