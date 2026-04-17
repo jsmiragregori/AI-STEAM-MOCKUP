@@ -53,18 +53,36 @@ const getNewsAndEvents = (language: string, newsT: any) => {
   return { news, events };
 };
 
-const typeColors: Record<string, string> = {
-  Presencial: 'bg-blue-100 text-blue-700',
-  Online: 'bg-green-100 text-green-700',
-  Híbrido: 'bg-purple-100 text-purple-700',
+const getTypeColor = (type: string): string => {
+  const typeColorMap: Record<string, string> = {
+    'Presencial': 'bg-blue-100 text-blue-700',
+    'Online': 'bg-green-100 text-green-700',
+    'Híbrido': 'bg-purple-100 text-purple-700',
+    'In-person': 'bg-blue-100 text-blue-700',
+    'En-person': 'bg-blue-100 text-blue-700',
+    'Hybrid': 'bg-purple-100 text-purple-700',
+    'En línia': 'bg-green-100 text-green-700',
+    'Híbrid': 'bg-purple-100 text-purple-700',
+  };
+  return typeColorMap[type] || 'bg-gray-100 text-gray-700';
 };
 
-const categoryColors: Record<string, string> = {
-  Institucional: 'text-blue-700',
-  Formación: 'text-purple-700',
-  Eventos: 'text-eu-teal',
-  Retos: 'text-eu-orange',
-  Recursos: 'text-green-700',
+const getCategoryColor = (category: string): string => {
+  const categoryColorMap: Record<string, string> = {
+    'Institucional': 'text-blue-700',
+    'Institutional': 'text-blue-700',
+    'Formación': 'text-purple-700',
+    'Training': 'text-purple-700',
+    'Formació': 'text-purple-700',
+    'Eventos': 'text-eu-teal',
+    'Events': 'text-eu-teal',
+    'Retos': 'text-eu-orange',
+    'Challenges': 'text-eu-orange',
+    'Reptes': 'text-eu-orange',
+    'Recursos': 'text-green-700',
+    'Resources': 'text-green-700',
+  };
+  return categoryColorMap[category] || 'text-gray-600';
 };
 
 export default function News() {
@@ -149,7 +167,7 @@ export default function News() {
                 <article key={item.id} className="bg-white p-5 rounded-xl border border-eu-border shadow-sm hover:border-eu-blue transition-colors group cursor-pointer">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs font-bold uppercase tracking-wider ${categoryColors[item.category] ?? 'text-gray-600'}`}>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${getCategoryColor(item.category)}`}>
                         {item.category}
                       </span>
                       {item.sector && (
@@ -203,10 +221,10 @@ export default function News() {
                             <MapPin className="w-3 h-3 shrink-0" /> {event.location}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${typeColors[event.type]}`}>{event.type}</span>
+                            <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${getTypeColor(event.type)}`}>{event.type}</span>
                             {event.register && (
                               <a href="#" className="text-sm font-bold text-eu-blue hover:underline flex items-center gap-0.5">
-                                Inscribirse <ExternalLink className="w-2.5 h-2.5" />
+                                {newsT?.register} <ExternalLink className="w-2.5 h-2.5" />
                               </a>
                             )}
                           </div>
@@ -242,12 +260,12 @@ export default function News() {
               <h3 className="font-bold text-eu-text mb-3">{newsT?.followUs}</h3>
               <div className="space-y-2">
                 {[
-                  { label: 'LinkedIn – AI-SECRETT Project', url: '#' },
-                  { label: 'Twitter/X – @AISTEAMNetwork', url: '#' },
-                  { label: 'YouTube – Canal AI-STEAM', url: '#' },
-                  { label: 'Zenodo – Repositorio Publicaciones', url: '#' },
+                  { key: 'linkedin', label: newsT?.socialLinks?.linkedin, url: '#' },
+                  { key: 'twitter', label: newsT?.socialLinks?.twitter, url: '#' },
+                  { key: 'youtube', label: newsT?.socialLinks?.youtube, url: '#' },
+                  { key: 'zenodo', label: newsT?.socialLinks?.zenodo, url: '#' },
                 ].map((link) => (
-                  <a key={link.label} href={link.url} className="flex items-center gap-2 text-sm text-eu-blue hover:underline font-medium">
+                  <a key={link.key} href={link.url} className="flex items-center gap-2 text-sm text-eu-blue hover:underline font-medium">
                     <ExternalLink className="w-3.5 h-3.5 shrink-0" /> {link.label}
                   </a>
                 ))}
