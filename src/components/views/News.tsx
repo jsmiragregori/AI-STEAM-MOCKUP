@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, ArrowRight, Rss, Tag, MapPin, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import NewsDetail from './NewsDetail';
 
 type NewsCategory = 'Todas' | 'Institucional' | 'Formación' | 'Eventos' | 'Retos' | 'Recursos' | 'All' | 'Institutional' | 'Training' | 'Events' | 'Challenges' | 'Resources' | 'Totes' | 'Institucional' | 'Formació' | 'Reptes' | 'Totes';
 
@@ -106,6 +107,7 @@ export default function News() {
 
   const categoryList = categories[language as keyof typeof categories];
   const [categoryFilter, setCategoryFilter] = useState<NewsCategory>(categoryList[0]);
+  const [selectedNewsId, setSelectedNewsId] = useState<number | null>(null);
 
   useEffect(() => {
     setCategoryFilter(categoryList[0]);
@@ -117,6 +119,10 @@ export default function News() {
   const filtered = categoryFilter === firstCategoryValue ? news : news.filter((n) => n.category === categoryFilter);
   const featured = news.find((n) => n.featured);
   const rest = filtered.filter((n) => !n.featured || categoryFilter !== firstCategoryValue);
+
+  if (selectedNewsId !== null) {
+    return <NewsDetail onBack={() => setSelectedNewsId(null)} />;
+  }
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -167,9 +173,9 @@ export default function News() {
                 <p className="text-white/80 text-sm mb-4">{featured.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-white/60">{featured.partner}</span>
-                  <a href="#" className="inline-flex items-center text-eu-yellow font-bold text-sm hover:underline">
+                  <button onClick={() => setSelectedNewsId(featured.id)} className="inline-flex items-center text-eu-yellow font-bold text-sm hover:underline cursor-pointer">
                     {newsT?.readMore} <ArrowRight className="ml-1 w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </article>
             )}
@@ -194,14 +200,16 @@ export default function News() {
                     </span>
                   </div>
                   <h3 className="text-base font-bold text-eu-text mb-2 group-hover:text-eu-blue transition-colors leading-snug">
-                    <a href="#">{item.title}</a>
+                    <button onClick={() => setSelectedNewsId(item.id)} className="hover:underline cursor-pointer">
+                      {item.title}
+                    </button>
                   </h3>
                   <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.excerpt}</p>
                   <div className="flex items-center justify-between">
                     {item.partner && <span className="text-sm text-gray-400 font-semibold">{item.partner}</span>}
-                    <a href="#" className="inline-flex items-center text-sm font-bold text-eu-blue hover:underline ml-auto">
+                    <button onClick={() => setSelectedNewsId(item.id)} className="inline-flex items-center text-sm font-bold text-eu-blue hover:underline ml-auto cursor-pointer">
                       {newsT?.readMore} <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                    </a>
+                    </button>
                   </div>
                 </article>
               ))}

@@ -624,6 +624,47 @@ export const translations = {
         event5: { dateNum: '02', dateMonth: 'Oct', title: 'Apertura Máster AI-SECRETT – 2ª Edición', location: 'Online (Aules)', type: 'Online', register: false },
         event6: { dateNum: '15', dateMonth: 'Oct', title: 'Hackathon AgroAI: IA para la Agricultura Sostenible', location: 'ETSIAMN – UPV, Valencia', type: 'Presencial', register: false },
       },
+      newsDetail: {
+        title: 'AI-STEAM Network: El Ecosistema de Innovación y Aprendizaje que Transforma la Educación Técnica Europea',
+        date: '10 Abr 2026',
+        author: 'Equipo de Comunicación AI-SECRETT',
+        category: 'Institucional',
+        hero_subtitle: 'La red liderada por UVEG y CEICE abre sus puertas con una financiación de 4,2 millones de euros para capacitar a 10.000 estudiantes en inteligencia artificial aplicada',
+        intro: 'La Generalitat Valenciana, a través de CEICE, y la Universitat de València lanzan oficialmente la AI-STEAM Network, un ecosistema europeo de aprendizaje colaborativo que conecta educación técnica, industria innovadora y administración pública en torno a la Inteligencia Artificial. Con una inversión de 4,2 millones de euros del programa Digital Europe de la Unión Europea, la red desplegará sus actividades en 11 países europeos con el objetivo de formar a 10.000 estudiantes de Formación Profesional y Máster en aplicaciones prácticas de IA antes de 2027.',
+        sections: [
+          {
+            title: 'Un modelo único: la Cuádruple Hélice en acción',
+            content: 'A diferencia de otros programas de educación en IA centrados exclusivamente en el aula, la AI-STEAM Network implementa un modelo de cuádruple hélice donde Universidad, Empresa, Administración Pública y Sociedad Civil trabajan de forma coordinada. Los estudiantes no aprenden sobre IA de manera teórica, sino que resuelven retos reales de empresas y administraciones públicas, recibiendo mentorización simultánea de docentes universitarios e ingenieros industriales.\n\n"Este no es un máster convencional", explica el Dr. Ramón López, vicerrector de Innovación de UVEG. "Es un laboratorio vivo donde cada reto es un caso real con impacto económico y social. Nuestros estudiantes salen al mercado laboral no solo con titulación, sino con un portafolio de proyectos implementados".',
+          },
+          {
+            title: 'Infraestructura de tres plataformas integradas',
+            content: 'El ecosistema se articula sobre tres plataformas tecnológicas complementarias:\n\n• ConsensUE: Una plataforma democrática de participación donde empresas, administraciones e instituciones proponen retos y votan prioridades temáticas del currículo.\n\n• AI-STEAM Network Portal: El banco central de retos validados, recursos educativos abiertos (OER), directorio de stakeholders, y casos de éxito documentados.\n\n• Aules: La plataforma de aprendizaje donde se entregan los módulos del Máster AI-SECRETT, se gestionan los ECTS, y se emiten micro-credenciales Open Badge 3.0 reconocidas internacionalmente.',
+          },
+          {
+            title: 'Siete sectores estratégicos de la economía europea',
+            content: 'La red enfoca sus esfuerzos en sectores clave para la transición digital europea según la estrategia Digital Decade 2030:\n\n1. Manufactura e Industria 4.0\n2. Movilidad y Transporte Autónomo\n3. Energía y Transición Ambiental\n4. Agroalimentario y Agricultura de Precisión\n5. Industrias Culturales y Creativas\n6. Vivienda y Construcción Sostenible\n7. Servicios No Turísticos (Sanidad, Administración, Educación)\n\nCada sector cuenta con un grupo de trabajo interdisciplinar formado por académicos, profesionales de la industria y responsables de políticas públicas que diseña conjuntamente los retos y los módulos formativos.',
+          },
+          {
+            title: 'Primeros compromisos: instituciones y empresas ya se adhieren',
+            content: 'En solo tres meses desde su anuncio, la AI-STEAM Network ha alcanzado acuerdos de adhesión con más de 40 organizaciones europeas:\n\n• AVA-ASAJA (Comunitat Valenciana): 12.000 hectáreas de datos agrícolas para retos de agricultura de precisión\n• Municipios de Valencia, Stuttgart y Oporto: colaboración en retos de smart cities y transporte urbano\n• Hospital La Fe (Valencia): desarrollo de herramientas IA para triaje y diagnóstico clínico\n• INESC TEC (Portugal): liderazgo técnico en gemelos digitales para industria\n• Hochschule Wismar (Alemania): integración de formación en IA en ciclos de FP germánicos\n\n"El entusiasmo ha superado nuestras expectativas", comenta Isabel Ferrer, directora de CEICE. "No es un programa más. Es un movimiento que está transformando cómo entendemos la educación técnica en Europa".',
+          },
+          {
+            title: 'Datos y cifras del lanzamiento',
+            content: '📊 10 universidades y centros de FP coordinados\n📊 11 países europeos participantes (España, Portugal, Italia, Alemania, Suecia, Finlandia, Países Bajos, Bélgica, Lituania, Croacia, Rumanía)\n📊 60+ módulos formativos en desarrollo\n📊 234 primeros estudiantes ya obtuvieron micro-credenciales\n📊 9 retos publicados en el Banco de Retos con soluciones en curso\n📊 4,2 millones de euros de financiación garantizada hasta 2027\n📊 0 euros de costo para los stakeholders (Regla de Gasto Cero)',
+          },
+          {
+            title: '¿Cómo participar?',
+            content: 'La AI-STEAM Network está abierta a nuevas adhesiones:\n\n✓ Empresas, ONGs y administraciones pueden proponer retos reales a través de ConsensUE\n✓ Estudiantes de FP y Máster pueden inscribirse en los módulos disponibles en Aules\n✓ Docentes de centros de FP pueden acceder a recursos OER y formación de actualización en IA\n✓ Responsables de políticas educativas pueden participar en el grupo de trabajo ENRED',
+          },
+        ],
+        cta_button: 'Solicitar Adhesión a la Red',
+        cta_link: '#',
+        related_news: [
+          'Hackathon "Green AI" 2026: 50 equipos abordan el cambio climático con Inteligencia Artificial',
+          'La red AI-STEAM presenta resultados en el European AI Forum de Bruselas',
+          'Acuerdo de adhesión con AVA-ASAJA: la mayor cooperativa agrícola valenciana se une a la red',
+        ],
+      },
     },
     marketplace: {
       title: 'Banco de Retos',
@@ -1252,6 +1293,47 @@ export const translations = {
         event4: { dateNum: '18', dateMonth: 'Sep', title: 'AI-STEAM Network Annual Forum 2026', location: 'Polytechnic City of Innovation, Valencia', type: 'In-person', register: false },
         event5: { dateNum: '02', dateMonth: 'Oct', title: 'Master AI-SECRETT Opening – 2nd Edition', location: 'Online (Aules)', type: 'Online', register: false },
         event6: { dateNum: '15', dateMonth: 'Oct', title: 'AgroAI Hackathon: AI for Sustainable Agriculture', location: 'ETSIAMN – UPV, Valencia', type: 'In-person', register: false },
+      },
+      newsDetail: {
+        title: 'AI-STEAM Network: The Innovation and Learning Ecosystem Transforming Technical Education in Europe',
+        date: 'Apr 10, 2026',
+        author: 'AI-SECRETT Communication Team',
+        category: 'Institutional',
+        hero_subtitle: 'The network led by UVEG and CEICE opens its doors with €4.2 million in funding to train 10,000 students in applied artificial intelligence',
+        intro: 'The Generalitat Valenciana, through CEICE, and the Universitat de València officially launch the AI-STEAM Network, a European collaborative learning ecosystem connecting technical education, innovative industry, and public administration around Artificial Intelligence. With a €4.2 million investment from the EU\'s Digital Europe program, the network will deploy its activities in 11 European countries with the goal of training 10,000 vocational and Master\'s students in practical AI applications by 2027.',
+        sections: [
+          {
+            title: 'A unique model: the Quadruple Helix in action',
+            content: 'Unlike other AI education programs focused exclusively on classroom instruction, the AI-STEAM Network implements a quadruple helix model where University, Industry, Public Administration, and Civil Society work in a coordinated manner. Students do not learn about AI in a theoretical way, but rather solve real-world challenges from companies and public administrations, receiving simultaneous mentoring from university educators and industrial engineers.\n\n"This is not a conventional master\'s program," explains Dr. Ramón López, Vice-rector of Innovation at UVEG. "It\'s a living laboratory where each challenge is a real case with economic and social impact. Our students enter the job market not only with a degree, but with a portfolio of implemented projects."',
+          },
+          {
+            title: 'Infrastructure of three integrated platforms',
+            content: 'The ecosystem is articulated on three complementary technological platforms:\n\n• ConsensUE: A democratic participation platform where companies, administrations and institutions propose challenges and vote on thematic curriculum priorities.\n\n• AI-STEAM Network Portal: The central bank of validated challenges, open educational resources (OER), stakeholder directory, and documented success cases.\n\n• Aules: The learning platform where Master AI-SECRETT modules are delivered, ECTS are managed, and internationally recognized Open Badge 3.0 micro-credentials are issued.',
+          },
+          {
+            title: 'Seven strategic sectors of the European economy',
+            content: 'The network focuses its efforts on key sectors for European digital transition according to the Digital Decade 2030 strategy:\n\n1. Manufacturing and Industry 4.0\n2. Mobility and Autonomous Transport\n3. Energy and Environmental Transition\n4. Agrifood and Precision Agriculture\n5. Cultural and Creative Industries\n6. Housing and Sustainable Construction\n7. Non-Touristic Services (Healthcare, Administration, Education)\n\nEach sector has an interdisciplinary working group made up of academics, industry professionals, and public policy leaders who jointly design challenges and training modules.',
+          },
+          {
+            title: 'First commitments: institutions and companies already join',
+            content: 'Within just three months of its announcement, the AI-STEAM Network has reached membership agreements with over 40 European organizations:\n\n• AVA-ASAJA (Valencian Community): 12,000 hectares of agricultural data for precision farming challenges\n• Cities of Valencia, Stuttgart, and Porto: collaboration on smart cities and urban transportation challenges\n• Hospital La Fe (Valencia): development of AI tools for clinical triage and diagnosis\n• INESC TEC (Portugal): technical leadership in industrial digital twins\n• Hochschule Wismar (Germany): integration of AI training in German VET cycles\n\n"The enthusiasm has exceeded our expectations," says Isabel Ferrer, CEICE Director. "This is not just another program. It\'s a movement that is transforming how we understand technical education in Europe."',
+          },
+          {
+            title: 'Launch data and figures',
+            content: '📊 10 universities and VET centers coordinated\n📊 11 European countries participating (Spain, Portugal, Italy, Germany, Sweden, Finland, Netherlands, Belgium, Lithuania, Croatia, Romania)\n📊 60+ training modules in development\n📊 234 first students already obtained micro-credentials\n📊 9 challenges published in the Challenge Bank with solutions underway\n📊 €4.2 million in guaranteed funding through 2027\n📊 €0 cost for stakeholders (Zero Cost Rule)',
+          },
+          {
+            title: 'How to participate?',
+            content: 'The AI-STEAM Network is open to new memberships:\n\n✓ Companies, NGOs, and administrations can propose real challenges through ConsensUE\n✓ VET and Master students can enroll in available modules on Aules\n✓ VET center educators can access OER resources and AI refresher training\n✓ Education policymakers can participate in the ENRED working group',
+          },
+        ],
+        cta_button: 'Request Network Membership',
+        cta_link: '#',
+        related_news: [
+          'Hackathon "Green AI" 2026: 50 teams tackle climate change with Artificial Intelligence',
+          'AI-STEAM Network Presents Results at European AI Forum in Brussels',
+          'Membership Agreement with AVA-ASAJA: Valencian Agricultural Cooperative Joins Network',
+        ],
       },
     },
     marketplace: {
@@ -1910,6 +1992,47 @@ export const translations = {
         event4: { dateNum: '18', dateMonth: 'Sep', title: 'Fòrum Anual AI-STEAM Network 2026', location: 'Ciutat Politècnica de la Innovació, València', type: 'Presencial', register: false },
         event5: { dateNum: '02', dateMonth: 'Oct', title: 'Obertura Màster AI-SECRETT – 2ª Edició', location: 'En línia (Aules)', type: 'En línia', register: false },
         event6: { dateNum: '15', dateMonth: 'Oct', title: 'Hackathon AgroAI: IA per a l\'Agricultura Sostenible', location: 'ETSIAMN – UPV, València', type: 'Presencial', register: false },
+      },
+      newsDetail: {
+        title: 'Xarxa AI-STEAM: L\'Ecosistema d\'Innovació i Aprenentatge que Transforma l\'Educació Tècnica Europea',
+        date: '10 Abr 2026',
+        author: 'Equip de Comunicació AI-SECRETT',
+        category: 'Institucional',
+        hero_subtitle: 'La xarxa liderada per UVEG i CEICE obri les portes amb una finançament de 4,2 milions d\'euros per a capacitar a 10.000 estudiants en intel·ligència artificial aplicada',
+        intro: 'La Generalitat Valenciana, a través de CEICE, i la Universitat de València llancen oficialment la Xarxa AI-STEAM, un ecosistema europeu de aprenentatge col·laboratiu que connecta educació tècnica, indústria innovadora i administració pública al voltant de la Intel·ligència Artificial. Amb una inversió de 4,2 milions d\'euros del programa Digital Europe de la Unió Europea, la xarxa desplegarà les seues activitats en 11 països europeus amb l\'objectiu de formar a 10.000 estudiants de Formació Professional i Màster en aplicacions pràctiques de IA abans de 2027.',
+        sections: [
+          {
+            title: 'Un model únic: la Quàdruple Hèlix en acció',
+            content: 'A diferència d\'altres programes de formació en IA centrats exclusivament en l\'aula, la Xarxa AI-STEAM implementa un model de quàdruple hèlix on Universitat, Empresa, Administració Pública i Societat Civil treballen de forma coordinada. Els estudiants no aprenen sobre IA de manera teòrica, sinó que resolen reptes reals de empreses i administracions públiques, rebent mentorització simultània de docents universitaris i enginyers industrials.\n\n"Este no és un màster convencional", explica el Dr. Ramón López, vicerrector d\'Innovació de UVEG. "Es un laboratori viu on cada repte és un cas real amb impacte econòmic i social. Els nostres estudiants ixen al mercat laboral no sols amb titulació, sinó amb un portafoli de projectes implementats".',
+          },
+          {
+            title: 'Infraestructura de tres plataformes integrades',
+            content: 'L\'ecosistema s\'articula sobre tres plataformes tecnològiques complementàries:\n\n• ConsensUE: Una plataforma democràtica de participació on empreses, administracions i institucions proposen reptes i voten prioritats temàtiques del currículum.\n\n• Portal Xarxa AI-STEAM: El banc central de reptes validats, recursos educatius oberts (OER), directori de stakeholders, i casos d\'èxit documentats.\n\n• Aules: La plataforma d\'aprenentatge on es fan arribar els mòduls del Màster AI-SECRETT, es gestionen els ECTS, i s\'emeten micro-credencials Open Badge 3.0 reconegudes internacionalment.',
+          },
+          {
+            title: 'Set sectors estratègics de l\'economia europea',
+            content: 'La xarxa enfoca els seus esforços en sectors clau per a la transició digital europea segons l\'estratègia Digital Decade 2030:\n\n1. Manufactura i Indústria 4.0\n2. Mobilitat i Transport Autònom\n3. Energia i Transició Ambiental\n4. Agroalimentari i Agricultura de Precisió\n5. Indústries Culturals i Creatives\n6. Vivienda i Construcció Sostenible\n7. Servicis No Turístics (Sanitat, Administració, Educació)\n\nCada sector compta amb un grup de treball interdisciplinari format per acadèmics, professionals de la indústria i responsables de polítiques públiques que dissenya conjuntament els reptes i els mòduls formatius.',
+          },
+          {
+            title: 'Primers compromisos: institucions i empreses ja s\'adhereixin',
+            content: 'En sols tres mesos desde el seu anunci, la Xarxa AI-STEAM ha aconseguit acords d\'adhesió amb més de 40 organitzacions europees:\n\n• AVA-ASAJA (Comunitat Valenciana): 12.000 hectàrees de dades agrícoles per a reptes d\'agricultura de precisió\n• Municipis de València, Stuttgart i Porto: col·laboració en reptes de smart cities i transport urbà\n• Hospital La Fe (València): desenvolupament de ferramentes IA per a triatge i diagnòstic clínic\n• INESC TEC (Portugal): lideratge tècnic en bessons digitals per a indústria\n• Hochschule Wismar (Alemanya): integració de formació en IA en cicles de FP alemanys\n\n"L\'entusiasme ha superat les nostres expectatives", comenta Isabel Ferrer, directora de CEICE. "No és un programa més. Es un moviment que està transformant com entenem l\'educació tècnica a Europa".',
+          },
+          {
+            title: 'Dades i xifres del llançament',
+            content: '📊 10 universitats i centres de FP coordinats\n📊 11 países europeus participants (Espanya, Portugal, Itàlia, Alemanya, Suècia, Finlàndia, Países Baixos, Bèlgica, Lituània, Croàcia, Romania)\n📊 60+ mòduls formatius en desenvolupament\n📊 234 primers estudiants ja van obtenir micro-credencials\n📊 9 reptes publicats en el Banc de Reptes amb solucions en curs\n📊 4,2 milions d\'euros de finançament garantitzat fins a 2027\n📊 0 euros de cost per als stakeholders (Regla de Cost Zero)',
+          },
+          {
+            title: '¿Com participar?',
+            content: 'La Xarxa AI-STEAM està oberta a noves adhesions:\n\n✓ Empreses, ONGs i administracions poden proposar reptes reals a través de ConsensUE\n✓ Estudiants de FP i Màster poden inscriure\'s en els mòduls disponibles a Aules\n✓ Docents de centres de FP poden accedir a recursos OER i formació d\'actualització en IA\n✓ Responsables de polítiques educatives poden participar en el grup de treball ENRED',
+          },
+        ],
+        cta_button: 'Sol·licitar Adhesió a la Xarxa',
+        cta_link: '#',
+        related_news: [
+          'Hackathon "Green AI" 2026: 50 equips aborden el canvi climàtic amb Intel·ligència Artificial',
+          'La xarxa AI-STEAM presenta resultats al Fòrum Europeu d\'IA de Brussel·les',
+          'Acord d\'adhesió amb AVA-ASAJA: la major cooperativa agrícola valenciana s\'uneix a la xarxa',
+        ],
       },
     },
     marketplace: {
