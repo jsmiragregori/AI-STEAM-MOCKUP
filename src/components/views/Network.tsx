@@ -71,20 +71,15 @@ const stakeholders: Stakeholder[] = [
 ];
 
 const categoryMeta = {
-  universidad: { label: 'Educación Superior e I+D', icon: GraduationCap, color: 'text-purple-700', bg: 'bg-purple-100', border: 'border-purple-300' },
-  empresa: { label: 'Empresa e Innovación', icon: Building2, color: 'text-blue-700', bg: 'bg-blue-100', border: 'border-blue-300' },
-  admin: { label: 'Administración Pública', icon: Globe, color: 'text-green-700', bg: 'bg-green-100', border: 'border-green-300' },
-  sociedad: { label: 'Sociedad Civil y ONG', icon: HeartHandshake, color: 'text-pink-700', bg: 'bg-pink-100', border: 'border-pink-300' },
-};
-
-
-const countryName: Record<string, string> = {
-  ES: 'España', IT: 'Italia', DE: 'Alemania', NO: 'Noruega', FR: 'Francia',
-  HR: 'Croacia', PT: 'Portugal', SE: 'Suecia', BE: 'Bélgica', GR: 'Grecia', BA: 'Bosnia y Herzegovina',
+  universidad: { icon: GraduationCap, color: 'text-purple-700', bg: 'bg-purple-100', border: 'border-purple-300' },
+  empresa: { icon: Building2, color: 'text-blue-700', bg: 'bg-blue-100', border: 'border-blue-300' },
+  admin: { icon: Globe, color: 'text-green-700', bg: 'bg-green-100', border: 'border-green-300' },
+  sociedad: { icon: HeartHandshake, color: 'text-pink-700', bg: 'bg-pink-100', border: 'border-pink-300' },
 };
 
 export default function Network() {
   const { t } = useLanguage();
+  const networkT = t('network');
   const [activeTab, setActiveTab] = useState<NetworkTab>('socios');
   const [activeCategory, setActiveCategory] = useState<HelixCategory>('todos');
   const [filterCountry, setFilterCountry] = useState<string | null>(null);
@@ -149,20 +144,21 @@ export default function Network() {
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Quadruple Helix */}
         <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mb-8">
-          <h2 className="text-xl font-bold text-eu-text mb-2">Modelo de Cuádruple Hélice</h2>
+          <h2 className="text-xl font-bold text-eu-text mb-2">{networkT?.helixTitle}</h2>
           <p className="text-sm text-gray-600 mb-5 max-w-3xl">
-            La red se organiza según el modelo de innovación de cuádruple hélice, que reconoce el papel de la sociedad civil junto con la universidad, la empresa y la administración como motor de la innovación responsable.
+            {networkT?.helixDesc}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {(Object.entries(categoryMeta) as [keyof typeof categoryMeta, typeof categoryMeta[keyof typeof categoryMeta]][]).map(([key, meta]) => {
               const Icon = meta.icon;
               const total = partnerCounts[key] + stakeholderCounts[key];
+              const categoryLabel = networkT?.categoryLabels?.[key as keyof typeof networkT.categoryLabels] || key;
               return (
                 <div key={key} className={`${meta.bg} ${meta.border} border rounded-xl p-4 text-center`}>
                   <Icon className={`w-6 h-6 ${meta.color} mx-auto mb-2`} />
-                  <p className={`font-bold text-sm ${meta.color}`}>{meta.label}</p>
+                  <p className={`font-bold text-sm ${meta.color}`}>{categoryLabel}</p>
                   <p className="text-2xl font-extrabold text-gray-800 mt-1">{total}</p>
-                  <p className="text-sm text-gray-500 mt-0.5">{partnerCounts[key]} socios · {stakeholderCounts[key]} stakeholders</p>
+                  <p className="text-sm text-gray-500 mt-0.5">{partnerCounts[key]} {networkT?.sociosLabel} · {stakeholderCounts[key]} {networkT?.stakeholdersLabel}</p>
                 </div>
               );
             })}
@@ -175,33 +171,34 @@ export default function Network() {
             onClick={() => { setActiveTab('socios'); setActiveCategory('todos'); setFilterCountry(null); }}
             className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer ${activeTab === 'socios' ? 'border-eu-blue text-eu-blue' : 'border-transparent text-gray-600 hover:text-eu-text'}`}
           >
-            Socios del Consorcio AI-SECRETT ({partners.length})
+            {networkT?.partnersTabTitle} ({partners.length})
           </button>
           <button
             onClick={() => { setActiveTab('stakeholders'); setActiveCategory('todos'); setFilterCountry(null); }}
             className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer ${activeTab === 'stakeholders' ? 'border-eu-blue text-eu-blue' : 'border-transparent text-gray-600 hover:text-eu-text'}`}
           >
-            Stakeholders de la Red ({stakeholders.length})
+            {networkT?.stakeholdersTabTitle} ({stakeholders.length})
           </button>
         </div>
 
         {/* SOCIOS TAB */}
         {activeTab === 'socios' && (
           <>
-            <p className="text-sm text-gray-600 mb-5 max-w-3xl">
-              Los socios del consorcio AI-SECRETT son los <strong>23 miembros</strong> (22 beneficiarios + 1 socio asociado) del proyecto europeo, seleccionados en la convocatoria inicial. Su composición es fija durante la vida del proyecto.
-            </p>
+            <p className="text-sm text-gray-600 mb-5 max-w-3xl" dangerouslySetInnerHTML={{ __html: networkT?.partnersDesc || '' }} />
 
             {/* Category filters */}
             <div className="flex flex-wrap gap-2 mb-5">
               <button onClick={() => setActiveCategory('todos')} className={`px-4 py-1.5 rounded-full text-[13px] font-bold cursor-pointer border transition-colors ${activeCategory === 'todos' ? 'bg-eu-blue text-white border-eu-blue' : 'bg-white text-eu-text border-eu-border hover:border-eu-blue'}`}>
-                Todos ({partners.length})
+                {networkT?.filterAll} ({partners.length})
               </button>
-              {(Object.entries(categoryMeta) as [keyof typeof categoryMeta, typeof categoryMeta[keyof typeof categoryMeta]][]).map(([key, meta]) => (
-                <button key={key} onClick={() => setActiveCategory(key)} className={`px-4 py-1.5 rounded-full text-[13px] font-bold cursor-pointer border transition-colors ${activeCategory === key ? 'bg-eu-blue text-white border-eu-blue' : 'bg-white text-eu-text border-eu-border hover:border-eu-blue'}`}>
-                  {meta.label} ({partnerCounts[key]})
-                </button>
-              ))}
+              {(Object.entries(categoryMeta) as [keyof typeof categoryMeta, typeof categoryMeta[keyof typeof categoryMeta]][]).map(([key, meta]) => {
+                const categoryLabel = networkT?.categoryLabels?.[key as keyof typeof networkT.categoryLabels] || key;
+                return (
+                  <button key={key} onClick={() => setActiveCategory(key)} className={`px-4 py-1.5 rounded-full text-[13px] font-bold cursor-pointer border transition-colors ${activeCategory === key ? 'bg-eu-blue text-white border-eu-blue' : 'bg-white text-eu-text border-eu-border hover:border-eu-blue'}`}>
+                    {categoryLabel} ({partnerCounts[key]})
+                  </button>
+                );
+              })}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-10">
@@ -217,10 +214,10 @@ export default function Network() {
                       <div className="flex items-center gap-1.5">
                         <img
                           src={`https://flagcdn.com/20x15/${p.country.toLowerCase()}.png`}
-                          alt={countryName[p.country] ?? p.country}
+                          alt={networkT?.countryNames?.[p.country as keyof typeof networkT.countryNames] ?? p.country}
                           className="rounded-sm"
                         />
-                        <span className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">CONSORCIO</span>
+                        <span className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">{networkT?.consortium}</span>
                       </div>
                     </div>
                     <p className="font-bold text-eu-text text-sm leading-snug mb-0.5">{p.name}</p>
@@ -240,14 +237,14 @@ export default function Network() {
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
               <div className="flex items-center justify-between mb-5">
                 <h2 className="text-xl font-bold text-eu-text flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-eu-teal" /> Cobertura Geográfica del Consorcio
+                  <MapPin className="w-5 h-5 text-eu-teal" /> {networkT?.geographicCoverage}
                 </h2>
                 {filterCountry && (
                   <button
                     onClick={() => { setFilterCountry(null); setActiveCategory('todos'); }}
                     className="text-xs font-bold text-eu-blue hover:underline cursor-pointer bg-transparent border-none"
                   >
-                    ✕ Quitar filtro
+                    {networkT?.clearFilter}
                   </button>
                 )}
               </div>
@@ -267,16 +264,16 @@ export default function Network() {
                     >
                       <img
                         src={`https://flagcdn.com/48x36/${c.toLowerCase()}.png`}
-                        alt={countryName[c] ?? c}
+                        alt={networkT?.countryNames?.[c as keyof typeof networkT.countryNames] ?? c}
                         className="w-10 h-auto rounded-sm shadow-sm"
                       />
                       <p className={`font-bold text-xs leading-tight ${isActive ? 'text-white' : 'text-eu-text'}`}>
-                        {countryName[c] ?? c}
+                        {networkT?.countryNames?.[c as keyof typeof networkT.countryNames] ?? c}
                       </p>
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
                         isActive ? 'bg-white/20 text-white' : 'bg-eu-blue/10 text-eu-blue'
                       }`}>
-                        {count} {count === 1 ? 'miembro' : 'miembros'}
+                        {count} {count === 1 ? networkT?.member : networkT?.members}
                       </span>
                     </button>
                   );
@@ -284,7 +281,7 @@ export default function Network() {
               </div>
               {filterCountry && (
                 <p className="text-xs text-gray-500 mt-4">
-                  Filtrando socios de <strong>{countryName[filterCountry]}</strong>. Los resultados se muestran en la lista superior.
+                  {networkT?.filteringPartners} <strong>{networkT?.countryNames?.[filterCountry as keyof typeof networkT.countryNames]}</strong>. Los resultados se muestran en la lista superior.
                 </p>
               )}
             </div>
