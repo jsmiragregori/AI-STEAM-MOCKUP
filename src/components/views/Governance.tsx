@@ -279,7 +279,7 @@ export default function Governance() {
                     </div>
                     <div>
                       <p className="text-xs font-bold uppercase text-eu-orange mb-1">{(t.tabContent_dualtrack as any)?.trackB?.limit_label}</p>
-                      <div className="flex items-start gap-2 bg-orange-50 rounded-lg p-3">
+                      <div className="flex items-start gap-2 bg-eu-yellow/60 rounded-lg p-3">
                         <CheckCircle className="w-4 h-4 text-eu-orange mt-0.5 shrink-0" />
                         <p className="text-sm text-eu-orange font-semibold">{(t.tabContent_dualtrack as any)?.trackB?.limit_desc}</p>
                       </div>
@@ -513,7 +513,7 @@ export default function Governance() {
                 <h2 className="text-xl font-bold text-eu-text mb-1">{t.tabContent_participar.stakeholderTitle}</h2>
                 <p className="text-xs font-bold uppercase text-eu-orange mb-3">{t.tabContent_participar.stakeholderSubtitle}</p>
                 <p className="text-sm text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: t.tabContent_participar.stakeholderDesc }} />
-                <div className="bg-orange-50 rounded-lg p-4 mb-5">
+                <div className="bg-eu-yellow/60 rounded-lg p-4 mb-5">
                   <p className="text-xs font-bold text-eu-orange uppercase mb-2">{t.tabContent_participar.stakeholderBenefitsLabel}</p>
                   <ul className="space-y-1.5">
                     {t.tabContent_participar.stakeholderBenefits.map((a) => (
@@ -527,7 +527,7 @@ export default function Governance() {
                   <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5 text-gray-400" />
                   {t.tabContent_participar.stakeholderWarning}
                 </p>
-                <a href="#" className="inline-flex items-center gap-2 bg-eu-orange text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors">
+                <a href="#" className="inline-flex items-center gap-2 bg-eu-orange text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors">
                   {t.tabContent_participar.stakeholderButton} <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
@@ -545,7 +545,7 @@ export default function Governance() {
                     { who: t.tabContent_participar.consensueGroupStakeholders, actions: t.tabContent_participar.consensueActionsStakeholders },
                     { who: t.tabContent_participar.consensueGroupConsortium, actions: t.tabContent_participar.consensueActionsConsortium },
                   ].map((g) => (
-                    <div key={g.who} className="bg-teal-50 rounded-lg p-4">
+                    <div key={g.who} className="bg-eu-blue/10 rounded-lg p-4">
                       <p className="text-xs font-extrabold uppercase text-eu-teal mb-2">{g.who}</p>
                       <ul className="space-y-1">
                         {g.actions.map((a) => (
@@ -557,7 +557,7 @@ export default function Governance() {
                     </div>
                   ))}
                 </div>
-                <a href="#" className="inline-flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors">
+                <a href="#" className="inline-flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors">
                   {t.tabContent_participar.consensueButton} <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
@@ -598,3 +598,4 @@ export default function Governance() {
     </div>
   );
 }
+

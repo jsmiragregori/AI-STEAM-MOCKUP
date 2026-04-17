@@ -65,7 +65,7 @@ const getTypeColor = (type: string): string => {
     'En línia': 'bg-green-100 text-green-700',
     'Híbrid': 'bg-purple-100 text-purple-700',
   };
-  return typeColorMap[type] || 'bg-gray-100 text-gray-700';
+  return typeColorMap[type] || 'bg-gray-100 text-gray-800';
 };
 
 const getCategoryColor = (category: string): string => {
@@ -83,7 +83,7 @@ const getCategoryColor = (category: string): string => {
     'Recursos': 'text-green-700',
     'Resources': 'text-green-700',
   };
-  return categoryColorMap[category] || 'text-gray-600';
+  return categoryColorMap[category] || 'text-gray-700';
 };
 
 const getTypeLabel = (type: string, t: any): string => {
@@ -131,7 +131,7 @@ export default function News() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-start justify-between gap-6">
           <div>
             <h1 className="text-3xl font-extrabold mb-2">{newsT?.title}</h1>
-            <p className="text-white/80 max-w-2xl text-base">
+            <p className="text-white/90 max-w-2xl text-base">
               {newsT?.description}
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function News() {
 
             {/* Featured article */}
             {categoryFilter === firstCategoryValue && featured && (
-              <article className="bg-eu-blue text-white p-7 rounded-xl mb-5 hover:bg-blue-900 transition-colors group cursor-pointer">
+              <article className="bg-eu-blue text-white p-7 rounded-xl mb-5 hover:bg-eu-purple transition-colors group cursor-pointer">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold bg-eu-yellow/20 text-eu-yellow px-2 py-0.5 rounded uppercase tracking-wide">{newsT?.featured}</span>
                   <span className="text-xs text-white/60 flex items-center gap-1"><Calendar className="w-3 h-3" />{featured.date}</span>
@@ -261,16 +261,20 @@ export default function News() {
             </div>
 
             {/* Newsletter */}
-            <div className="bg-eu-orange rounded-xl p-6 text-white">
-              <h3 className="font-bold text-lg mb-2">{newsT?.newsletterTitle}</h3>
-              <p className="text-sm text-white/90 mb-4">{newsT?.newsletterDesc}</p>
+            <div className="bg-linear-to-br from-eu-purple to-eu-blue rounded-xl p-6 text-white shadow-sm">
+              <h3 className="font-bold text-lg mb-2 text-eu-yellow">{newsT?.newsletterTitle}</h3>
+              <p className="text-sm text-white mb-4">{newsT?.newsletterDesc}</p>
               <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
+                <label htmlFor="newsletter-email" className="sr-only">
+                  {newsT?.newsletterPlaceholder}
+                </label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   placeholder={newsT?.newsletterPlaceholder}
-                  className="w-full rounded-md px-3 py-2 text-sm text-eu-text focus:outline-none"
+                  className="w-full rounded-md px-3 py-2 text-sm text-eu-text bg-white border border-white/70 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-eu-yellow"
                 />
-                <button type="submit" className="w-full bg-white text-eu-orange font-bold rounded-md py-2 text-sm hover:bg-orange-50 transition-colors cursor-pointer border-none">
+                <button type="submit" className="w-full bg-eu-yellow text-eu-purple font-bold rounded-md py-2 text-sm hover:bg-white transition-colors cursor-pointer border border-eu-yellow">
                   {newsT?.newsletterSubscribe}
                 </button>
               </form>
@@ -298,3 +302,4 @@ export default function News() {
     </div>
   );
 }
+

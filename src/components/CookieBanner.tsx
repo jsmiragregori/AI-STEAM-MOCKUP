@@ -14,10 +14,11 @@ export default function CookieBanner({ onAccept }: CookieBannerProps) {
       </div>
       <button
         onClick={onAccept}
-        className="bg-eu-teal text-white border-none px-3 py-1.5 rounded font-semibold cursor-pointer hover:bg-teal-700 ml-4 whitespace-nowrap"
+        className="bg-eu-teal text-white border-none px-3 py-1.5 rounded font-semibold cursor-pointer hover:bg-eu-purple ml-4 whitespace-nowrap"
       >
         {t('cookieBanner.accept')}
       </button>
     </div>
   );
 }
+

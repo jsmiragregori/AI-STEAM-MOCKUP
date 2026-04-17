@@ -31,7 +31,7 @@ export default function Home({ setActiveTab }: HomeProps) {
   return (
     <div className="animate-in fade-in duration-300">
       {/* Hero */}
-      <section className="bg-linear-to-br from-eu-blue to-[#003080] text-white px-6 py-16">
+      <section className="bg-linear-to-br from-eu-blue to-eu-purple text-white px-6 py-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <span className="inline-block bg-eu-yellow/20 text-eu-yellow font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4">
@@ -46,7 +46,7 @@ export default function Home({ setActiveTab }: HomeProps) {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setActiveTab('banco-retos')}
-                className="bg-eu-orange text-white px-6 py-3 rounded-md font-bold border-none hover:bg-orange-600 transition-colors flex items-center gap-2"
+                className="bg-eu-orange text-white px-6 py-3 rounded-md font-bold border-none hover:bg-eu-purple transition-colors flex items-center gap-2"
               >
                 {t('home.uploadChallenge')} <ArrowRight className="w-4 h-4" />
               </button>
@@ -187,7 +187,7 @@ export default function Home({ setActiveTab }: HomeProps) {
             </div>
 
             {/* FP */}
-            <div className="bg-linear-to-br from-orange-50 to-orange-100/50 border border-orange-200 rounded-xl p-7">
+            <div className="bg-linear-to-br from-orange-50 to-orange-100/50 border border-eu-yellow rounded-xl p-7">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-eu-orange rounded-xl flex items-center justify-center text-white font-extrabold text-sm">FP</div>
                 <div>
@@ -229,7 +229,7 @@ export default function Home({ setActiveTab }: HomeProps) {
             ].map((ch, i) => (
               <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-orange-100 text-orange-800' : 'bg-purple-100 text-purple-800'}`}>
+                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-eu-yellow text-eu-purple' : 'bg-purple-100 text-purple-800'}`}>
                     Reto {ch.level}
                   </span>
                   <span className="text-sm text-eu-teal font-bold">● {ch.status}</span>
@@ -257,3 +257,4 @@ export default function Home({ setActiveTab }: HomeProps) {
     </div>
   );
 }
+

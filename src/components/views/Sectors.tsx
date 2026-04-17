@@ -44,10 +44,10 @@ const sectors: Sector[] = [
     id: 'mob',
     name: 'Mobility and Transport',
     emoji: '🚗',
-    color: 'from-orange-600 to-amber-500',
-    borderColor: 'border-orange-500',
-    tagBg: 'bg-orange-100',
-    tagText: 'text-orange-800',
+    color: 'from-eu-purple to-eu-blue',
+    borderColor: 'border-eu-purple',
+    tagBg: 'bg-eu-yellow',
+    tagText: 'text-eu-purple',
     description: 'IA para vehículos autónomos, logística inteligente, optimización de rutas, predicción de tráfico y movilidad urbana sostenible. Conectividad V2X y sistemas de transporte integrados.',
     challenges: 18,
     partners: 20,
@@ -327,3 +327,4 @@ export default function Sectors() {
     </div>
   );
 }
+

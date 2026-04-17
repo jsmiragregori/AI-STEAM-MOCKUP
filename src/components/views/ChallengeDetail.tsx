@@ -555,7 +555,7 @@ const statusStyles: Record<string, { bg: string; text: string; dot: string }> = 
 };
 
 const levelStyles: Record<string, string> = {
-  FP: 'bg-orange-100 text-orange-800',
+  FP: 'bg-eu-yellow text-eu-purple',
   Máster: 'bg-purple-100 text-purple-800',
 };
 
@@ -653,7 +653,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
               </div>
             </div>
             {challenge.status === 'Abierto' && (
-              <button className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-orange-600 transition-colors border-none cursor-pointer text-sm">
+              <button className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
                 {t.enrollButton || 'Inscribir mi equipo →'}
               </button>
             )}
@@ -894,7 +894,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
             <div className="bg-eu-blue rounded-xl p-6 text-white text-center">
               <p className="font-bold mb-1">{t.interestCTA || '¿Te interesa este reto?'}</p>
               <p className="text-xs text-white/70 mb-4">{t.enrollBeforeDeadline || 'Inscríbete antes del'} {challenge.deadline}</p>
-              <button className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-orange-600 transition-colors border-none cursor-pointer text-sm">
+              <button className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
                 {t.enrollButton || 'Inscribir mi equipo →'}
               </button>
               <p className="text-xs text-white/50 mt-3">{t.privateAreaAccess || 'Acceso con cuenta del Área Privada AI-STEAM'}</p>
@@ -905,3 +905,4 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
     </div>
   );
 }
+

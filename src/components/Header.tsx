@@ -96,7 +96,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             onClick={() => setActiveTab(item.id)}
             className={`text-sm font-medium flex items-center px-3 cursor-pointer border-b-[3px] transition-all duration-200 whitespace-nowrap ${
               activeTab === item.id
-                ? 'text-white border-eu-orange'
+                ? 'text-white border-eu-yellow'
                 : 'text-white/80 border-transparent hover:text-white hover:border-white/40'
             }`}
             aria-current={activeTab === item.id ? 'page' : undefined}
