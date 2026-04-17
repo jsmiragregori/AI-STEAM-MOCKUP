@@ -85,6 +85,17 @@ export default function Knowledge() {
     return sectorNames[sectorId] || sectorId;
   };
 
+  const getOERType = (type: string, t: any): string => {
+    const typeMap: Record<string, string> = {
+      'Guía': t('knowledge.oerTypeGuide'),
+      'Manual': t('knowledge.oerTypeManual'),
+      'Dataset': t('knowledge.oerTypeDataset'),
+      'Vídeo': t('knowledge.oerTypeVideo'),
+      'Plantilla': t('knowledge.oerTypeTemplate'),
+    };
+    return typeMap[type] || type;
+  };
+
   const filteredOER = oerResources.filter((r) =>
     oerSearch === '' || r.title.toLowerCase().includes(oerSearch.toLowerCase()) || getSectorName(r.sector).toLowerCase().includes(oerSearch.toLowerCase())
   );
@@ -204,9 +215,9 @@ export default function Knowledge() {
                       <span className={`text-sm font-bold px-1.5 py-0.5 rounded ${levelColors[r.level]}`}>{r.level}</span>
                     </div>
                     <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-                      <span>{r.type}</span>
-                      <span>Sector: {getSectorName(r.sector)}</span>
-                      <span>Autor: {r.author}</span>
+                      <span>{getOERType(r.type, t)}</span>
+                      <span>{t('knowledge.oerSector')} {getSectorName(r.sector)}</span>
+                      <span>{t('knowledge.oerAuthor')} {r.author}</span>
                       <span>{r.date}</span>
                       <span className="font-mono text-eu-teal">{r.license}</span>
                       <span>🌐 {r.lang}</span>
@@ -252,7 +263,7 @@ export default function Knowledge() {
                     <span className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{getSectorName(badge.sector)}</span>
                   </div>
                   <div className="bg-eu-bg rounded-lg p-3 mb-3">
-                    <p className="text-sm font-bold text-gray-500 uppercase mb-1">Criterios</p>
+                    <p className="text-sm font-bold text-gray-500 uppercase mb-1">{t('knowledge.badgesCriteria')}</p>
                     <ul className="space-y-1">
                       {badge.criteria.map((c) => (
                         <li key={c} className="text-sm text-gray-600 flex items-start gap-1">
@@ -262,7 +273,7 @@ export default function Knowledge() {
                     </ul>
                   </div>
                   <p className="text-center text-eu-teal font-extrabold text-lg mt-auto">{badge.issued}</p>
-                  <p className="text-center text-sm text-gray-400">insignias emitidas</p>
+                  <p className="text-center text-sm text-gray-400">{t('knowledge.badgesIssued')}</p>
                 </div>
               ))}
             </div>
@@ -272,8 +283,8 @@ export default function Knowledge() {
         {/* Tab: Casos de Éxito */}
         {activeTab === 'repositorio' && (
           <div>
-            <h2 className="text-xl font-bold text-eu-text mb-2">Casos de Éxito</h2>
-            <p className="text-sm text-gray-600 mb-7 max-w-2xl">Retos ya resueltos que se han convertido en recursos educativos abiertos y referentes de la red.</p>
+            <h2 className="text-xl font-bold text-eu-text mb-2">{t('knowledge.casesTitle')}</h2>
+            <p className="text-sm text-gray-600 mb-7 max-w-2xl">{t('knowledge.casesDesc')}</p>
             <div className="space-y-5">
               {[
                 {
@@ -312,7 +323,7 @@ export default function Knowledge() {
                     </div>
                     <div className="flex gap-2">
                       <span className={`text-sm font-bold px-2 py-0.5 rounded ${levelColors[c.level]}`}>{c.level}</span>
-                      <span className="text-sm bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded">Resuelto</span>
+                      <span className="text-sm bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded">{t('knowledge.casesSolved')}</span>
                       <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{c.year}</span>
                     </div>
                   </div>
@@ -323,10 +334,10 @@ export default function Knowledge() {
                   </div>
                   <div className="mt-3 flex gap-3">
                     <button className="flex items-center gap-1 text-eu-blue text-xs font-bold hover:underline cursor-pointer bg-transparent border-none">
-                      <FileText className="w-3 h-3" /> Ver caso completo
+                      <FileText className="w-3 h-3" /> {t('knowledge.casesViewFull')}
                     </button>
                     <button className="flex items-center gap-1 text-eu-blue text-xs font-bold hover:underline cursor-pointer bg-transparent border-none">
-                      <Download className="w-3 h-3" /> Descargar recursos
+                      <Download className="w-3 h-3" /> {t('knowledge.casesDownloadResources')}
                     </button>
                   </div>
                 </div>
