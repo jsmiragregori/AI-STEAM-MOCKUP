@@ -355,7 +355,7 @@ export default function Network() {
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
-                className="flex items-center gap-2 bg-eu-orange text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors border-none cursor-pointer shrink-0"
+                className="flex items-center gap-2 bg-eu-orange text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer shrink-0"
               >
                 <UserPlus className="w-4 h-4" />
                 {showForm ? networkT?.closeForm : networkT?.requestMembership}
@@ -461,7 +461,7 @@ export default function Network() {
                       <label htmlFor="gdpr" className="text-xs text-gray-600">{networkT?.acceptTerms} <a href="#" className="text-eu-blue hover:underline">{networkT?.privacyPolicy}</a> {networkT?.rgpd}</label>
                     </div>
                     <div className="flex justify-end">
-                      <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-orange-600 transition-colors cursor-pointer">
+                      <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-eu-purple transition-colors cursor-pointer">
                         {networkT?.submitBtn}
                       </button>
                     </div>
@@ -475,3 +475,4 @@ export default function Network() {
     </div>
   );
 }
+
