@@ -312,7 +312,7 @@ export const translations = {
         linkedin: 'LinkedIn – Proyecto AI-SECRETT',
         twitter: 'Twitter/X – @AISTEAMNetwork',
         youtube: 'YouTube – Canal AI-STEAM',
-        zenodo: 'Zenodo – Repositorio Publicaciones',
+        sobstack: 'Sobstack – Red de Profesionales',
       },
       newsItems: {
         news1: { title: 'AI-SECRETT recibe financiación del programa Europa Digital: 4,2M€ para la red AI-STEAM', excerpt: 'El consorcio liderado por UVEG y CEICE obtiene financiación confirmada del programa Digital Europe para desplegar la red AI-STEAM en 11 países y crear más de 60 módulos formativos para FP y Máster.', category: 'Institucional', partner: 'UVEG / CEICE', date: '10 Abr 2026', featured: true },
@@ -673,7 +673,7 @@ export const translations = {
         linkedin: 'LinkedIn – AI-SECRETT Project',
         twitter: 'Twitter/X – @AISTEAMNetwork',
         youtube: 'YouTube – AI-STEAM Channel',
-        zenodo: 'Zenodo – Publications Repository',
+        sobstack: 'Sobstack – Professional Network',
       },
       newsItems: {
         news1: { title: 'AI-SECRETT Receives Digital Europe Programme Funding: €4.2M for AI-STEAM Network', excerpt: 'The consortium led by UVEG and CEICE secures confirmed funding from the Digital Europe program to deploy the AI-STEAM network in 11 countries and create more than 60 training modules for VET and Master students.', category: 'Institutional', partner: 'UVEG / CEICE', date: 'Apr 10, 2026', featured: true },
@@ -1063,7 +1063,7 @@ export const translations = {
         linkedin: 'LinkedIn – Projecte AI-SECRETT',
         twitter: 'Twitter/X – @AISTEAMNetwork',
         youtube: 'YouTube – Canal AI-STEAM',
-        zenodo: 'Zenodo – Repositori Publicacions',
+        sobstack: 'Sobstack – Xarxa de Professionals',
       },
       newsItems: {
         news1: { title: 'AI-SECRETT rep finançament del programa Europa Digital: 4,2M€ per a la xarxa AI-STEAM', excerpt: 'El consorcio liderat per UVEG i CEICE obté finançament confirmat del programa Digital Europe per desplegar la xarxa AI-STEAM en 11 països i crear més de 60 mòduls formatius per a FP i Màster.', category: 'Institucional', partner: 'UVEG / CEICE', date: '10 Abr 2026', featured: true },
