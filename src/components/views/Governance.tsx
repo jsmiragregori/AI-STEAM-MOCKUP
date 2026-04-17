@@ -8,68 +8,6 @@ import { LanguageContext } from '../../context/LanguageContext';
 
 type GovTab = 'estructura' | 'dual-track' | 'lbd' | 'documentos' | 'participar';
 
-/* ── Órganos formales del consorcio ───────────────────────────────── */
-const governanceBodies = [
-  {
-    id: 'ga', name: 'Asamblea General', abbr: 'GA',
-    type: 'Órgano deliberativo', freq: 'Anual + extraordinaria', quorum: '2/3 beneficiarios',
-    members: 'Todos los beneficiarios del consorcio',
-    desc: 'Máximo órgano estratégico. Aprueba presupuestos, modificaciones del Acuerdo de Consorcio y decisiones sobre incumplimientos. Sus acuerdos son vinculantes para todos los socios.',
-    color: 'border-blue-600 bg-blue-50', iconColor: 'text-blue-700',
-  },
-  {
-    id: 'sc', name: 'Comité Directivo', abbr: 'SC',
-    type: 'Órgano ejecutivo', freq: 'Trimestral', quorum: 'Mayoría simple',
-    members: 'UVEG (coord.), UMU, CEICE, TUV.IT, LC',
-    desc: 'Gestión operativa del proyecto. Supervisa el plan de trabajo, aprueba los informes internos y coordina la coherencia entre Track A (Académico) y Track B (Ecosistema).',
-    color: 'border-eu-teal bg-teal-50', iconColor: 'text-eu-teal',
-  },
-  {
-    id: 'ab', name: 'Consejo Asesor', abbr: 'AB',
-    type: 'Órgano consultivo', freq: 'Semestral', quorum: '—',
-    members: 'Expertos externos independientes',
-    desc: 'Orientación estratégica externa. Evaluación de calidad científica, pertinencia sectorial y alineamiento con las políticas europeas de IA, Educación y el AI Act.',
-    color: 'border-purple-600 bg-purple-50', iconColor: 'text-purple-700',
-  },
-  {
-    id: 'scc', name: 'Comité Científico', abbr: 'SCC',
-    type: 'Órgano de validación (Track A)', freq: 'Bajo demanda', quorum: '3 revisores mínimo',
-    members: 'Investigadores senior: UVEG, UMU, NTNU, INESC, Ud\'A',
-    desc: 'Valida la calidad académica del Máster AI-SECRETT, los módulos ECTS y los recursos OER. Transforma los retos del ecosistema en materiales didácticos dentro del Track Académico.',
-    color: 'border-indigo-600 bg-indigo-50', iconColor: 'text-indigo-700',
-  },
-  {
-    id: 'sn', name: 'Red de Stakeholders', abbr: 'SN',
-    type: 'Órgano participativo (Track B)', freq: 'Semestral + Online continua', quorum: 'Participación abierta',
-    members: 'Todos los stakeholders adheridos mediante Acuerdo de Colaboración',
-    desc: 'Órgano participativo del Track B. Stakeholders proponen retos, votan prioridades y co-diseñan el currículo vía ConsensUE. CEICE actúa como Orquestadora de este espacio.',
-    color: 'border-eu-orange bg-orange-50', iconColor: 'text-eu-orange',
-  },
-  {
-    id: 'sb', name: 'Junta Estratégica', abbr: 'SB',
-    type: 'Enlace institucional', freq: 'Anual', quorum: 'Unanimidad',
-    members: 'CEICE, LC, KEA, Lisbon Council',
-    desc: 'Alineación con políticas europeas (Digital Decade, AI Act, EPALE) y con las prioridades de la Generalitat Valenciana. Coordina con ENRED (Red Europea de Departamentos de Educación Regional).',
-    color: 'border-gray-600 bg-gray-50', iconColor: 'text-gray-700',
-  },
-];
-
-/* ── Documentos ───────────────────────────────────────────────────── */
-const transparencyDocs = [
-  { title: 'Acuerdo de Consorcio AI-SECRETT v1.0', date: 'Oct 2025', type: 'Fundacional', access: 'Público', icon: '📄' },
-  { title: 'D1.2 – AI STEAM Network: Conceptos Iniciales y Gobernanza', date: 'Feb 2026', type: 'Gobernanza', access: 'Público', icon: '🏛️' },
-  { title: 'Modelo de Acuerdo de Colaboración – Stakeholders', date: 'Feb 2026', type: 'Colaboración', access: 'Público', icon: '🤝' },
-  { title: 'Política de Contenidos y Licencias OER', date: 'Mar 2026', type: 'Editorial', access: 'Público', icon: '📝' },
-  { title: 'Código Ético de Retos Industriales', date: 'Feb 2026', type: 'Ética', access: 'Público', icon: '⚖️' },
-  { title: 'Plan de Gestión de Datos (DMP)', date: 'Oct 2025', type: 'Técnico', access: 'Socios', icon: '🗄️' },
-  { title: 'Actas Asamblea General – Sesión 1', date: 'Nov 2025', type: 'Actas', access: 'Socios', icon: '📋' },
-  { title: 'Actas Comité Directivo – Q1 2026', date: 'Mar 2026', type: 'Actas', access: 'Socios', icon: '📋' },
-  { title: 'Declaración Ética y Conflictos de Interés', date: 'Oct 2025', type: 'Ética', access: 'Público', icon: '🔍' },
-  { title: 'Informe de Progreso Interno Q1 2026', date: 'Abr 2026', type: 'Seguimiento', access: 'Socios', icon: '📈' },
-  { title: 'Manual de Usuario – ConsensUE para Stakeholders', date: 'Mar 2026', type: 'Operativo', access: 'Público', icon: '📘' },
-  { title: 'Política de Igualdad de Género y Diversidad', date: 'Nov 2025', type: 'RRHH', access: 'Público', icon: '⚧' },
-];
-
 export default function Governance() {
   const [activeTab, setActiveTab] = useState<GovTab>('estructura');
   const languageContext = useContext(LanguageContext);
@@ -87,10 +25,10 @@ export default function Governance() {
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             {[
-              { label: 'Órganos de gobernanza', value: '6' },
-              { label: 'Modelo de vías paralelas', value: 'Dual Track' },
-              { label: 'Plataformas integradas', value: '3' },
-              { label: 'Acuerdo de Colaboración', value: 'Gasto Cero' },
+              { label: t.statBodies, value: t.statValue1 },
+              { label: t.statDualTrack, value: t.statValue2 },
+              { label: t.statPlatforms, value: t.statValue3 },
+              { label: t.statAgreement, value: t.statValue4 },
             ].map((s) => (
               <div key={s.label} className="bg-white/10 rounded-xl px-5 py-3 text-center">
                 <p className="text-xl font-extrabold text-eu-yellow leading-tight">{s.value}</p>
@@ -249,7 +187,7 @@ export default function Governance() {
                 Los seis órganos de gobernanza están definidos en el Acuerdo de Consorcio v1.0. Cada uno opera en uno o ambos Tracks según su naturaleza.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {governanceBodies.map((body) => (
+                {((t.governanceBodies as any) || []).map((body: any) => (
                   <div key={body.id} className={`rounded-xl border-l-4 border ${body.color} p-6 shadow-sm`}>
                     <div className="flex items-start justify-between mb-3">
                       <div>
@@ -606,7 +544,7 @@ export default function Governance() {
               Los documentos públicos están disponibles para descarga directa. Los documentos de socios requieren acceso al Área Privada.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {transparencyDocs.map((doc, i) => (
+              {((t.transparencyDocs as any) || []).map((doc: any, i: number) => (
                 <a key={i} href="#" className="flex items-center p-4 rounded-xl border border-eu-border bg-white hover:border-eu-blue hover:bg-eu-bg transition-colors group">
                   <span className="text-2xl mr-4 shrink-0">{doc.icon}</span>
                   <div className="flex-1 min-w-0">
@@ -614,8 +552,8 @@ export default function Governance() {
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       <span className="text-xs text-gray-500">{doc.date}</span>
                       <span className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{doc.type}</span>
-                      <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${doc.access === 'Público' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                        {doc.access === 'Público' ? '🔓 Público' : '🔒 Socios'}
+                      <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${doc.access === 'Public' || doc.access === 'Público' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
+                        {doc.access === 'Public' || doc.access === 'Público' ? '🔓 Público' : '🔒 Socios'}
                       </span>
                     </div>
                   </div>
