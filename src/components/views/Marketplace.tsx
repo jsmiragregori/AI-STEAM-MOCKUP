@@ -46,7 +46,7 @@ const challenges: Challenge[] = [
     entityType: 'Empresa Agrícola',
     level: 'Máster',
     status: 'En Resolución',
-    sector: 'Agroalimentario',
+    sector: 'Agrifood',
     description: 'Sistema de detección temprana de la Xylella fastidiosa y cotonet en cultivos de cítricos mediante drones y modelos de visión computacional entrenados con imágenes multiespectrales.',
     posted: '15 Ene 2026',
     deadline: '15 Jul 2026',
