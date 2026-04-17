@@ -347,9 +347,14 @@ export default function Training() {
                   <Award className="w-3 h-3 text-eu-orange" />
                   <span className="text-sm font-bold text-eu-orange">{course.badge}</span>
                 </div>
-                <button className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline">
-                  {trainingT?.courseViewMore}
-                </button>
+                <a
+                  href={course.level === 'Máster' ? 'https://valgrai.eu/' : 'https://portal.edu.gva.es/aules/'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-eu-blue font-bold text-xs bg-transparent cursor-pointer hover:underline inline-flex items-center gap-1"
+                >
+                  {trainingT?.courseViewMore} <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
           ))}
