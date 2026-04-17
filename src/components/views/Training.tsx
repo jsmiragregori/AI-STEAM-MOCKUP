@@ -136,14 +136,14 @@ const courses: Course[] = [
 
 const getLevelColor = (level: string): string => {
   const levelColorMap: Record<string, string> = {
-    'FP': 'bg-orange-100 text-orange-800',
-    'VET': 'bg-orange-100 text-orange-800',
+    'FP': 'bg-eu-yellow text-eu-purple',
+    'VET': 'bg-eu-yellow text-eu-purple',
     'Máster': 'bg-purple-100 text-purple-800',
     'Master': 'bg-purple-100 text-purple-800',
     'Màster': 'bg-purple-100 text-purple-800',
-    'Docentes': 'bg-teal-100 text-teal-800',
-    'Teachers': 'bg-teal-100 text-teal-800',
-    'Docents': 'bg-teal-100 text-teal-800',
+    'Docentes': 'bg-eu-blue/10 text-eu-blue',
+    'Teachers': 'bg-eu-blue/10 text-eu-blue',
+    'Docents': 'bg-eu-blue/10 text-eu-blue',
   };
   return levelColorMap[level] || 'bg-gray-100 text-gray-800';
 };
@@ -273,7 +273,7 @@ export default function Training() {
               href="https://aules.edu.gva.es/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors"
+              className="flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors"
             >
               <BookOpen className="w-4 h-4" /> {trainingT?.accessAules} <ExternalLink className="w-3 h-3" />
             </a>
@@ -382,7 +382,7 @@ export default function Training() {
           <h2 className="text-xl font-bold text-eu-text mb-6">{trainingT?.trainingPaths}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* FP Path */}
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <div className="bg-eu-yellow/60 border border-eu-yellow rounded-xl p-5">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-eu-orange rounded-lg flex items-center justify-center text-white text-xs font-extrabold">FP</span>
                 {trainingT?.fpPath}
@@ -417,3 +417,4 @@ export default function Training() {
     </div>
   );
 }
+
