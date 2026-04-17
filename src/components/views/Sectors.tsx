@@ -151,14 +151,35 @@ const sectors: Sector[] = [
 ];
 
 export default function Sectors() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const sectorsT = t('sectors');
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggle = (id: string) => setExpanded(expanded === id ? null : id);
 
   const getSectorName = (sectorId: string): string => {
-    const sectorNames = t('sectors.sectorNames') as Record<string, string>;
-    return sectorNames[sectorId] || sectorId;
+    const sectorNames = sectorsT?.sectorNames as Record<string, string>;
+    return sectorNames?.[sectorId] || sectorId;
+  };
+
+  const getSectorDescription = (sectorId: string): string => {
+    const descriptions = sectorsT?.sectorDescriptions as Record<string, string>;
+    return descriptions?.[sectorId] || '';
+  };
+
+  const getSectorKeywords = (sectorId: string): string[] => {
+    const keywords = sectorsT?.sectorKeywords as Record<string, string[]>;
+    return keywords?.[sectorId] || [];
+  };
+
+  const getSectorFpModules = (sectorId: string): string[] => {
+    const modules = sectorsT?.sectorFpModules as Record<string, string[]>;
+    return modules?.[sectorId] || [];
+  };
+
+  const getSectorMasterTopics = (sectorId: string): string[] => {
+    const topics = sectorsT?.sectorMasterTopics as Record<string, string[]>;
+    return topics?.[sectorId] || [];
   };
 
   const totalChallenges = sectors.reduce((a, s) => a + s.challenges, 0);
@@ -210,24 +231,24 @@ export default function Sectors() {
                 <span className="text-4xl">{sector.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-bold text-eu-text">{getSectorName(sector.id)}</h2>
-                  <p className="text-sm text-gray-600 line-clamp-1">{sector.description}</p>
+                  <p className="text-sm text-gray-600 line-clamp-1">{getSectorDescription(sector.id)}</p>
                 </div>
                 <div className="hidden sm:flex items-center gap-6 shrink-0">
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-teal">{sector.challenges}</p>
-                    <p className="text-sm text-gray-500 uppercase font-semibold">Retos</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.challenges}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-blue">{sector.partners}</p>
-                    <p className="text-sm text-gray-500 uppercase font-semibold">Socios</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.partners}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-purple-600">{sector.stakeholders}</p>
-                    <p className="text-sm text-gray-500 uppercase font-semibold">Stakeholders</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.stakeholders}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-orange">{sector.courses}</p>
-                    <p className="text-sm text-gray-500 uppercase font-semibold">Módulos</p>
+                    <p className="text-sm text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.modules}</p>
                   </div>
                 </div>
                 {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />}
@@ -238,9 +259,9 @@ export default function Sectors() {
                 <div className="border-t border-eu-border px-6 py-6 bg-eu-bg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {/* Description + keywords */}
                   <div>
-                    <p className="text-sm text-gray-700 mb-4">{sector.description}</p>
+                    <p className="text-sm text-gray-700 mb-4">{getSectorDescription(sector.id)}</p>
                     <div className="flex flex-wrap gap-1.5">
-                      {sector.keywords.map((kw) => (
+                      {getSectorKeywords(sector.id).map((kw) => (
                         <span key={kw} className={`text-sm font-semibold px-2 py-0.5 rounded-full ${sector.tagBg} ${sector.tagText}`}>
                           {kw}
                         </span>
@@ -252,10 +273,10 @@ export default function Sectors() {
                   <div className="bg-white rounded-lg border border-eu-border p-4">
                     <h4 className="font-bold text-eu-text text-sm mb-3 flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-eu-orange inline-block"></span>
-                      Módulos FP (CEICE)
+                      {sectorsT?.fpModulesLabel}
                     </h4>
                     <ul className="space-y-2">
-                      {sector.fpModules.map((m) => (
+                      {getSectorFpModules(sector.id).map((m) => (
                         <li key={m} className="text-xs text-gray-700 flex items-start gap-2">
                           <ArrowRight className="w-3 h-3 text-eu-orange mt-0.5 shrink-0" />
                           {m}
@@ -268,18 +289,18 @@ export default function Sectors() {
                   <div className="bg-white rounded-lg border border-eu-border p-4">
                     <h4 className="font-bold text-eu-text text-sm mb-3 flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>
-                      Temas Máster AI-SECRETT
+                      {sectorsT?.masterTopicsLabel}
                     </h4>
                     <ul className="space-y-2">
-                      {sector.masterTopics.map((t) => (
-                        <li key={t} className="text-xs text-gray-700 flex items-start gap-2">
+                      {getSectorMasterTopics(sector.id).map((topic) => (
+                        <li key={topic} className="text-xs text-gray-700 flex items-start gap-2">
                           <ArrowRight className="w-3 h-3 text-purple-600 mt-0.5 shrink-0" />
-                          {t}
+                          {topic}
                         </li>
                       ))}
                     </ul>
                     <div className="mt-4 pt-3 border-t border-eu-border">
-                      <p className="text-sm text-gray-500 font-semibold uppercase mb-1">Socios Destacados</p>
+                      <p className="text-sm text-gray-500 font-semibold uppercase mb-1">{sectorsT?.featuredPartnersLabel}</p>
                       <div className="flex flex-wrap gap-1">
                         {sector.featuredPartners.map((p) => (
                           <span key={p} className="text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-bold">{p}</span>
@@ -298,8 +319,8 @@ export default function Sectors() {
       <div className="max-w-7xl mx-auto px-6 pb-12">
         <div className="bg-eu-blue rounded-xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-xl font-bold mb-2">¿Tu organización trabaja en alguno de estos sectores?</h3>
-            <p className="text-white/80 text-sm">La red AI-STEAM está abierta a stakeholders de cualquiera de los 7 sectores. Adhiérete desde la sección <strong>La Red</strong> y empieza a co-crear conocimiento.</p>
+            <h3 className="text-xl font-bold mb-2">{sectorsT?.cta}</h3>
+            <p className="text-white/80 text-sm" dangerouslySetInnerHTML={{ __html: sectorsT?.ctaDesc || '' }} />
           </div>
         </div>
       </div>
