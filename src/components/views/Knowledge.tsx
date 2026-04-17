@@ -94,22 +94,22 @@ export default function Knowledge() {
       {/* Header */}
       <div className="bg-eu-blue text-white px-6 py-12">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-extrabold mb-3">Transferencia de Conocimiento</h1>
+          <h1 className="text-3xl font-extrabold mb-3">{t('knowledge.title')}</h1>
           <p className="text-white/80 max-w-3xl text-base">
-            El ciclo completo desde el reto industrial hasta el recurso educativo abierto. Recursos OER, micro-credenciales y el repositorio de casos de éxito de la red AI-STEAM.
+            {t('knowledge.description')}
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerResources.length}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Recursos OER</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('knowledge.statsOER')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{badges.reduce((a, b) => a + b.issued, 0).toLocaleString()}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Insignias Emitidas</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('knowledge.statsBadges')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerResources.reduce((a, r) => a + r.downloads, 0).toLocaleString()}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">Descargas Totales</p>
+              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('knowledge.statsDownloads')}</p>
             </div>
           </div>
         </div>
@@ -119,21 +119,21 @@ export default function Knowledge() {
         {/* Tabs */}
         <div className="flex flex-wrap gap-1 border-b border-eu-border mb-8">
           {([
-            { id: 'flujo', label: 'Ciclo de Conocimiento' },
-            { id: 'oer', label: 'Repositorio OER' },
-            { id: 'insignias', label: 'Muro de Insignias' },
-            { id: 'repositorio', label: 'Casos de Éxito' },
-          ] as { id: KnowledgeTab; label: string }[]).map((t) => (
+            { id: 'flujo', label: t('knowledge.tabFlow') },
+            { id: 'oer', label: t('knowledge.tabOER') },
+            { id: 'insignias', label: t('knowledge.tabBadges') },
+            { id: 'repositorio', label: t('knowledge.tabCases') },
+          ] as { id: KnowledgeTab; label: string }[]).map((tab) => (
             <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id)}
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
               className={`px-5 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors cursor-pointer ${
-                activeTab === t.id
+                activeTab === tab.id
                   ? 'border-eu-blue text-eu-blue bg-transparent'
                   : 'border-transparent text-gray-600 hover:text-eu-text'
               }`}
             >
-              {t.label}
+              {tab.label}
             </button>
           ))}
         </div>
@@ -141,34 +141,34 @@ export default function Knowledge() {
         {/* Tab: Flujo */}
         {activeTab === 'flujo' && (
           <div>
-            <h2 className="text-xl font-bold text-eu-text mb-2">Del Reto Industrial al Recurso Educativo Abierto</h2>
+            <h2 className="text-xl font-bold text-eu-text mb-2">{t('knowledge.flowTitle')}</h2>
             <p className="text-sm text-gray-600 mb-8 max-w-3xl">
-              La red transforma los desafíos reales de las organizaciones en conocimiento educativo de calidad, siguiendo un proceso estructurado de 6 etapas validado por el consorcio AI-SECRETT.
+              {t('knowledge.flowDesc')}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-              {flowSteps.map((step) => (
-                <div key={step.n} className="bg-white rounded-xl border border-eu-border shadow-sm p-6 relative">
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-eu-blue text-white flex items-center justify-center font-extrabold text-sm">{step.n}</div>
-                  <span className="text-3xl block mb-3">{step.icon}</span>
+              {(t('knowledge.flowSteps') as any[]).map((step: any, idx: number) => (
+                <div key={idx} className="bg-white rounded-xl border border-eu-border shadow-sm p-6 relative">
+                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-eu-blue text-white flex items-center justify-center font-extrabold text-sm">{idx + 1}</div>
+                  <span className="text-3xl block mb-3">{['🏭', '🔍', '👥', '💻', '✅', '🌐'][idx]}</span>
                   <h3 className="font-bold text-eu-text mb-2">{step.title}</h3>
                   <p className="text-sm text-gray-600">{step.desc}</p>
                 </div>
               ))}
             </div>
             <div className="bg-eu-bg border border-eu-border rounded-xl p-6">
-              <h3 className="font-bold text-eu-text mb-3">Conexión con las plataformas del ecosistema</h3>
+              <h3 className="font-bold text-eu-text mb-3">{t('knowledge.flowConnection')}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                 <div className="bg-white rounded-lg border border-eu-teal/30 p-4">
                   <p className="font-bold text-eu-teal mb-1">Aules (Moodle)</p>
-                  <p className="text-gray-600 text-xs">Los recursos OER se publican como módulos en Aules, accesibles para alumnos de FP y del Máster.</p>
+                  <p className="text-gray-600 text-xs">{t('knowledge.aulesPlatform')}</p>
                 </div>
                 <div className="bg-white rounded-lg border border-eu-blue/30 p-4">
                   <p className="font-bold text-eu-blue mb-1">AI-STEAM Network (CMS)</p>
-                  <p className="text-gray-600 text-xs">Este portal centraliza los retos, el repositorio OER y los casos de éxito para toda la red.</p>
+                  <p className="text-gray-600 text-xs">{t('knowledge.networkPlatform')}</p>
                 </div>
                 <div className="bg-white rounded-lg border border-eu-orange/30 p-4">
                   <p className="font-bold text-eu-orange mb-1">ConsensUE (Decidim)</p>
-                  <p className="text-gray-600 text-xs">La comunidad vota qué retos y recursos son prioritarios para nutrir el currículo del siguiente curso.</p>
+                  <p className="text-gray-600 text-xs">{t('knowledge.consensuePlatform')}</p>
                 </div>
               </div>
             </div>
@@ -180,8 +180,8 @@ export default function Knowledge() {
           <div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
-                <h2 className="text-xl font-bold text-eu-text mb-1">Repositorio de Recursos Educativos Abiertos</h2>
-                <p className="text-sm text-gray-600">Todos los recursos están bajo licencias Creative Commons y disponibles en Aules.</p>
+                <h2 className="text-xl font-bold text-eu-text mb-1">{t('knowledge.oerTitle')}</h2>
+                <p className="text-sm text-gray-600">{t('knowledge.oerDesc')}</p>
               </div>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -190,7 +190,7 @@ export default function Knowledge() {
                   value={oerSearch}
                   onChange={(e) => setOerSearch(e.target.value)}
                   className="border border-eu-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-eu-blue w-64"
-                  placeholder="Buscar recurso..."
+                  placeholder={t('knowledge.oerSearch')}
                 />
               </div>
             </div>
@@ -214,9 +214,9 @@ export default function Knowledge() {
                   </div>
                   <div className="text-right shrink-0">
                     <p className="text-lg font-extrabold text-eu-teal">{r.downloads.toLocaleString()}</p>
-                    <p className="text-sm text-gray-400">descargas</p>
+                    <p className="text-sm text-gray-400">{t('knowledge.oerDownloads')}</p>
                     <button className="mt-1 flex items-center gap-1 text-eu-blue text-xs font-bold hover:underline cursor-pointer bg-transparent border-none">
-                      <Download className="w-3 h-3" /> Descargar
+                      <Download className="w-3 h-3" /> {t('knowledge.oerDownloadBtn')}
                     </button>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function Knowledge() {
             </div>
             <div className="mt-6 text-center">
               <a href="#" className="inline-flex items-center gap-2 text-eu-blue font-bold text-sm hover:underline">
-                <ExternalLink className="w-4 h-4" /> Ver todos los recursos en Aules
+                <ExternalLink className="w-4 h-4" /> {t('knowledge.oerViewAll')}
               </a>
             </div>
           </div>
@@ -234,9 +234,9 @@ export default function Knowledge() {
         {activeTab === 'insignias' && (
           <div>
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-eu-text mb-1">Muro de Micro-credenciales e Insignias</h2>
+              <h2 className="text-xl font-bold text-eu-text mb-1">{t('knowledge.badgesTitle')}</h2>
               <p className="text-sm text-gray-600 max-w-2xl">
-                Las insignias digitales de AI-STEAM Network siguen el estándar Open Badges 3.0 y son reconocidas como European Digital Credentials. Pueden añadirse al perfil de Europass y LinkedIn.
+                {t('knowledge.badgesDesc')}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
