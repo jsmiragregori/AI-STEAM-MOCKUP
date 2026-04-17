@@ -30,7 +30,7 @@ translations = {
   {
     language: 'es' | 'en' | 'va',
     setLanguage: (lang: Language) => void,
-    t: (key: string) => string | Record<string, string>,
+    t: (key: string) => any,
     translations: { es: {...}, en: {...}, va: {...} }  // ← Objeto COMPLETO, no filtrado
   }
   ```
@@ -152,6 +152,14 @@ Todos los componentes principales tienen soporte multilingüe completo (ES, EN, 
 5. **Los cambios finales de traducción del 2026-04-17** están en commits:
    - `dca2f99`: Complete multilingual translations for Marketplace and Training
    - `8a1d0ab`: Add event type translation to News component
+   - `d4706bf`: Fix - Allow nested objects in translation function return type (resuelve News section)
+
+## 🐛 Bug Fix Sesión Actual (2026-04-17)
+
+**Problema:** News section mostraba contenido solo en VA, no en ES/EN  
+**Causa:** Restricción de tipo en `LanguageContext.tsx` - `t()` estaba tipada como `(key: string) => string | Record<string, string>`, lo que impedía acceso a objetos anidados  
+**Solución:** Cambiar retorno de `t()` a `any` para soportar estructuras de datos arbitrarias  
+**Impacto:** News (Actualidad) ahora funciona correctamente en ES, EN y VA
 
 ---
 
