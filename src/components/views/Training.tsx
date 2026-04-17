@@ -162,6 +162,54 @@ const getStatusColor = (status: string): string => {
   return statusColorMap[status] || 'text-gray-600 bg-gray-100';
 };
 
+const getLevelLabel = (level: string, t: any): string => {
+  const levelLabels = t?.levelLabels as Record<string, string>;
+  const langMapping: Record<string, string> = {
+    'FP': level,
+    'Máster': level,
+    'Docentes': level,
+    'VET': 'FP',
+    'Master': 'Máster',
+    'Teachers': 'Docentes',
+  };
+  const normalizedLevel = langMapping[level] || level;
+  return levelLabels?.[normalizedLevel] || level;
+};
+
+const getStatusLabel = (status: string, t: any): string => {
+  const statusLabels = t?.statusLabels as Record<string, string>;
+  const langMapping: Record<string, string> = {
+    'Activo': status,
+    'Active': 'Activo',
+    'Próximamente': status,
+    'Coming Soon': 'Próximamente',
+    'Pròximament': 'Próximamente',
+    'Completado': status,
+    'Completed': 'Completado',
+    'Completat': 'Completado',
+  };
+  const normalizedStatus = langMapping[status] || status;
+  return statusLabels?.[normalizedStatus] || status;
+};
+
+const getModalityLabel = (modality: string, t: any): string => {
+  const modalityLabels = t?.modalityLabels as Record<string, string>;
+  const langMapping: Record<string, string> = {
+    'Online': 'Online',
+    'Presencial': 'Presencial',
+    'Semipresencial': 'Semipresencial',
+    'In-person': 'Presencial',
+    'Blended': 'Semipresencial',
+  };
+  const normalizedModality = langMapping[modality] || modality;
+  return modalityLabels?.[normalizedModality] || modality;
+};
+
+const getSectorLabel = (sector: string, t: any): string => {
+  const sectorLabels = t?.sectorLabels as Record<string, string>;
+  return sectorLabels?.[sector] || sector;
+};
+
 const credentialFrameworks = [
   { name: 'European Digital Credentials (EDC)', org: 'European Commission', logo: '🇪🇺' },
   { name: 'Open Badges 3.0', org: 'IMS Global / 1EdTech', logo: '🏅' },
@@ -272,10 +320,10 @@ export default function Training() {
               <div className="p-5 flex-1">
                 <div className="flex items-center justify-between mb-3">
                   <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${getLevelColor(course.level)}`}>
-                    {course.level}
+                    {getLevelLabel(course.level, trainingT)}
                   </span>
                   <span className={`text-sm font-bold px-2 py-0.5 rounded ${getStatusColor(course.status)}`}>
-                    {course.status}
+                    {getStatusLabel(course.status, trainingT)}
                   </span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-2 leading-snug">{course.title}</h3>
@@ -286,8 +334,8 @@ export default function Training() {
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-yellow-500" />{course.rating}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.sector}</span>
-                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{course.modality}</span>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{getSectorLabel(course.sector, trainingT)}</span>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{getModalityLabel(course.modality, trainingT)}</span>
                 </div>
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">

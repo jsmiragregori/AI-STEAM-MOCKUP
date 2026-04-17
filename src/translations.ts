@@ -243,6 +243,10 @@ export const translations = {
         course7: { title: 'IA Generativa para Patrimonio Cultural y Turismo', desc: 'Modelos de difusión, síntesis de voz y lenguaje natural aplicados a museos virtuales, guías turísticos IA y restauración digital de patrimonio.', badge: 'CreativeAI Badge', level: 'Máster', sector: 'Turismo y Cultura', status: 'Próximamente' },
         course8: { title: 'Administración Electrónica e IA para el Sector Público', desc: 'Automatización de trámites, chatbots ciudadanos, datos abiertos y reglamento europeo de IA aplicado a los servicios públicos. Dirigido a funcionarios y docentes.', badge: 'GovAI Badge', level: 'Docentes', sector: 'Administración', status: 'Activo' },
       },
+      levelLabels: { FP: 'FP', Máster: 'Máster', Docentes: 'Docentes' },
+      statusLabels: { Activo: 'Activo', Próximamente: 'Próximamente', Completado: 'Completado' },
+      modalityLabels: { Online: 'Online', Presencial: 'Presencial', Semipresencial: 'Semipresencial' },
+      sectorLabels: { Industria: 'Industria', Salud: 'Salud', Educación: 'Educación', Agroalimentario: 'Agroalimentario', 'Turismo y Cultura': 'Turismo y Cultura', Administración: 'Administración', 'Medio Ambiente': 'Medio Ambiente' },
     },
     knowledge: {
       title: 'Banco de Conocimiento',
@@ -589,6 +593,10 @@ export const translations = {
         course7: { title: 'Generative AI for Cultural Heritage and Tourism', desc: 'Diffusion models, voice and natural language synthesis applied to virtual museums, AI tourist guides and digital heritage restoration.', badge: 'CreativeAI Badge', level: 'Master', sector: 'Tourism and Culture', status: 'Coming Soon' },
         course8: { title: 'E-Government and AI for the Public Sector', desc: 'Process automation, citizen chatbots, open data and EU AI regulation applied to public services. Aimed at civil servants and educators.', badge: 'GovAI Badge', level: 'Teachers', sector: 'Administration', status: 'Active' },
       },
+      levelLabels: { FP: 'VET', Máster: 'Master', Docentes: 'Teachers' },
+      statusLabels: { Activo: 'Active', Próximamente: 'Coming Soon', Completado: 'Completed' },
+      modalityLabels: { Online: 'Online', Presencial: 'In-person', Semipresencial: 'Blended' },
+      sectorLabels: { Industria: 'Manufacturing', Salud: 'Health', Educación: 'Education', Agroalimentario: 'Agrifood', 'Turismo y Cultura': 'Tourism and Culture', Administración: 'Administration', 'Medio Ambiente': 'Energy and Environment' },
     },
     knowledge: {
       title: 'Knowledge Bank',
@@ -964,6 +972,10 @@ export const translations = {
         course7: { title: 'IA Generativa per a Patrimoni Cultural i Turisme', desc: 'Models de difusió, síntesi de veu i llenguatge natural aplicats a museus virtuals, guies turístiques IA i restauració digital de patrimoni.', badge: 'CreativeAI Badge', level: 'Màster', sector: 'Turisme i Cultura', status: 'Pròximament' },
         course8: { title: 'Administració Electrònica i IA per al Sector Públic', desc: 'Automatització de tràmits, chatbots ciutadans, dades obertes i reglament europeu de IA aplicat als serveis públics. Dirigit a funcionaris i docents.', badge: 'GovAI Badge', level: 'Docents', sector: 'Administració', status: 'Actiu' },
       },
+      levelLabels: { FP: 'FP', Máster: 'Màster', Docentes: 'Docents' },
+      statusLabels: { Activo: 'Actiu', Próximamente: 'Pròximament', Completado: 'Completat' },
+      modalityLabels: { Online: 'Online', Presencial: 'Presencial', Semipresencial: 'Semipresencial' },
+      sectorLabels: { Industria: 'Indústria', Salud: 'Salut', Educación: 'Educació', Agroalimentario: 'Agroalimentari', 'Turismo y Cultura': 'Turisme i Cultura', Administración: 'Administració', 'Medio Ambiente': 'Medi Ambient' },
     },
     knowledge: {
       title: 'Banc de Coneixement',
