@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "WebSearch",
+      "WebFetch(domain:op.europa.eu)",
+      "WebFetch(domain:www.era-learn.eu)",
+      "Bash(python3 -c ' *)",
+      "Bash(wc -l d:/Github/AI-STEAM-MOCKUP/src/components/views/*.tsx d:/Github/AI-STEAM-MOCKUP/src/components/*.tsx)",
+      "Bash(npm run *)",
+      "Bash(wc -l src/components/**/*.tsx)"
+    ]
+  }
+}

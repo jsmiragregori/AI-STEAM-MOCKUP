@@ -134,23 +134,39 @@ const courses: Course[] = [
   },
 ];
 
-const levelColors: Record<string, string> = {
-  FP: 'bg-orange-100 text-orange-800',
-  Máster: 'bg-purple-100 text-purple-800',
-  Docentes: 'bg-teal-100 text-teal-800',
+const getLevelColor = (level: string): string => {
+  const levelColorMap: Record<string, string> = {
+    'FP': 'bg-orange-100 text-orange-800',
+    'VET': 'bg-orange-100 text-orange-800',
+    'Máster': 'bg-purple-100 text-purple-800',
+    'Master': 'bg-purple-100 text-purple-800',
+    'Màster': 'bg-purple-100 text-purple-800',
+    'Docentes': 'bg-teal-100 text-teal-800',
+    'Teachers': 'bg-teal-100 text-teal-800',
+    'Docents': 'bg-teal-100 text-teal-800',
+  };
+  return levelColorMap[level] || 'bg-gray-100 text-gray-800';
 };
 
-const statusColors: Record<string, string> = {
-  Activo: 'text-green-700 bg-green-50',
-  Próximamente: 'text-yellow-700 bg-yellow-50',
-  Completado: 'text-gray-600 bg-gray-100',
+const getStatusColor = (status: string): string => {
+  const statusColorMap: Record<string, string> = {
+    'Activo': 'text-green-700 bg-green-50',
+    'Active': 'text-green-700 bg-green-50',
+    'Próximamente': 'text-yellow-700 bg-yellow-50',
+    'Coming Soon': 'text-yellow-700 bg-yellow-50',
+    'Pròximament': 'text-yellow-700 bg-yellow-50',
+    'Completado': 'text-gray-600 bg-gray-100',
+    'Completed': 'text-gray-600 bg-gray-100',
+    'Completat': 'text-gray-600 bg-gray-100',
+  };
+  return statusColorMap[status] || 'text-gray-600 bg-gray-100';
 };
 
 const credentialFrameworks = [
-  { name: 'European Digital Credentials (EDC)', org: 'Comisión Europea', logo: '🇪🇺' },
+  { name: 'European Digital Credentials (EDC)', org: 'European Commission', logo: '🇪🇺' },
   { name: 'Open Badges 3.0', org: 'IMS Global / 1EdTech', logo: '🏅' },
   { name: 'Europass Certificate Supplement', org: 'CEDEFOP', logo: '📋' },
-  { name: 'TÜV Thüringen Certification', org: 'TUV.IT – Consorcio AI-SECRETT', logo: '✅' },
+  { name: 'TÜV Thüringen Certification', org: 'TUV.IT – AI-SECRETT Consortium', logo: '✅' },
 ];
 
 export default function Training() {
@@ -255,18 +271,18 @@ export default function Training() {
             <div key={course.id} className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col overflow-hidden hover:border-eu-blue transition-colors">
               <div className="p-5 flex-1">
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelColors[course.level]}`}>
+                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${getLevelColor(course.level)}`}>
                     {course.level}
                   </span>
-                  <span className={`text-sm font-bold px-2 py-0.5 rounded ${statusColors[course.status]}`}>
+                  <span className={`text-sm font-bold px-2 py-0.5 rounded ${getStatusColor(course.status)}`}>
                     {course.status}
                   </span>
                 </div>
                 <h3 className="font-bold text-eu-text text-sm mb-2 leading-snug">{course.title}</h3>
                 <p className="text-xs text-gray-500 mb-3">{course.description}</p>
                 <div className="flex flex-wrap gap-2 text-sm text-gray-600 mb-3">
-                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{course.hours}h</span>
-                  <span className="flex items-center gap-1"><Users className="w-3 h-3" />{course.enrolled} matriculados</span>
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{course.hours}{trainingT?.courseHours}</span>
+                  <span className="flex items-center gap-1"><Users className="w-3 h-3" />{course.enrolled} {trainingT?.courseEnrolledLabel}</span>
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-yellow-500" />{course.rating}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -315,13 +331,7 @@ export default function Training() {
                 {trainingT?.fpPath}
               </h3>
               <ol className="space-y-3">
-                {[
-                  'Ciclo Formativo de Grado Superior (CFGS)',
-                  'Curso de Especialización IA-STEAM',
-                  'FCT con empresa de la red',
-                  'Micro-credencial Open Badge 3.0',
-                  'Acceso al Máster AI-SECRETT (bridge)',
-                ].map((step, i) => (
+                {(trainingT?.fpPathSteps || []).map((step: string, i: number) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-gray-700">
                     <span className="w-6 h-6 rounded-full bg-eu-orange text-white text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
                     {step}
@@ -336,13 +346,7 @@ export default function Training() {
                 {trainingT?.masterPath}
               </h3>
               <ol className="space-y-3">
-                {[
-                  'Admisión (grado universitario o FP + bridge)',
-                  'Módulos temáticos por sector (60 ECTS)',
-                  'Reto real del Banco de Retos como TFM',
-                  'Prácticas internacionales con socio UE',
-                  'Certificación TÜV + European Digital Credential',
-                ].map((step, i) => (
+                {(trainingT?.masterPathSteps || []).map((step: string, i: number) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-gray-700">
                     <span className="w-6 h-6 rounded-full bg-purple-600 text-white text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
                     {step}
