@@ -269,38 +269,38 @@ export default function Marketplace() {
             <p className="text-sm text-gray-600 mb-5">{t.shareChallenge}</p>
             <form className="space-y-4 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
               <div>
-                <label className="block text-[13px] font-bold text-eu-text mb-1">Título del Reto *</label>
-                <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder="Ej. Predicción de fallos en turbinas eólicas" />
+                <label className="block text-[13px] font-bold text-eu-text mb-1">{t?.formLabels?.title} *</label>
+                <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder={t?.formPlaceholders?.title} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[13px] font-bold text-eu-text mb-1">Nivel *</label>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t?.formLabels?.level} *</label>
                   <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                    <option>FP</option>
-                    <option>Máster</option>
-                    <option>Ambos</option>
+                    <option>{t?.levelFP}</option>
+                    <option>{t?.levelMaster}</option>
+                    <option>{t?.levelBoth}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[13px] font-bold text-eu-text mb-1">Sector *</label>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t?.formLabels?.sector} *</label>
                   <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                    <option>Manufacturing</option>
-                    <option>Mobility and Transport</option>
-                    <option>Energy and Environment</option>
-                    <option>Agrifood</option>
-                    <option>Cultural and Creative Industries</option>
-                    <option>Housing</option>
-                    <option>Non-Touristic Services</option>
+                    <option>{getSectorLabel('Manufacturing', t)}</option>
+                    <option>{getSectorLabel('Mobility and Transport', t)}</option>
+                    <option>{getSectorLabel('Energy and Environment', t)}</option>
+                    <option>{getSectorLabel('Agrifood', t)}</option>
+                    <option>{getSectorLabel('Cultural and Creative Industries', t)}</option>
+                    <option>{getSectorLabel('Housing', t)}</option>
+                    <option>{getSectorLabel('Non-Touristic Services', t)}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[13px] font-bold text-eu-text mb-1">Plazo límite *</label>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t?.formLabels?.deadline} *</label>
                   <input type="date" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
                 </div>
               </div>
               <div>
-                <label className="block text-[13px] font-bold text-eu-text mb-1">Descripción del Reto *</label>
-                <textarea rows={4} className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue resize-none" placeholder="Describe el problema, el contexto, los datos disponibles y los resultados esperados..."></textarea>
+                <label className="block text-[13px] font-bold text-eu-text mb-1">{t?.formLabels?.description} *</label>
+                <textarea rows={4} className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue resize-none" placeholder={t?.formPlaceholders?.description}></textarea>
               </div>
               <div className="flex justify-end gap-3">
                 <button type="button" onClick={() => setShowSubmit(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
@@ -403,8 +403,8 @@ export default function Marketplace() {
                   ))}
                 </div>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />Plazo: {ch.deadline}</span>
-                  <span className="flex items-center gap-1"><Users className="w-3 h-3" />{ch.teams} {ch.teams === 1 ? 'equipo' : 'equipos'}</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{t?.deadlineLabel || 'Plazo'}: {ch.deadline}</span>
+                  <span className="flex items-center gap-1"><Users className="w-3 h-3" />{ch.teams} {ch.teams === 1 ? t?.teamSingular || 'equipo' : t?.teamPlural || 'equipos'}</span>
                 </div>
               </div>
               <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
