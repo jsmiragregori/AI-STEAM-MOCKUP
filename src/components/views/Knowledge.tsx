@@ -79,6 +79,9 @@ export default function Knowledge() {
   const [activeTab, setActiveTab] = useState<KnowledgeTab>('flujo');
   const [oerSearch, setOerSearch] = useState('');
 
+  const badgesData = (t('knowledge.badges') as any[]) || [];
+  const successCasesData = (t('knowledge.successCases') as any[]) || [];
+
   const getSectorName = (sectorId: string): string => {
     if (sectorId === 'Todos') return 'Todos';
     const sectorNames = t('sectors.sectorNames') as Record<string, string>;
@@ -251,7 +254,7 @@ export default function Knowledge() {
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {badges.map((badge) => (
+              {badgesData.map((badge) => (
                 <div key={badge.id} className="bg-white rounded-xl border border-eu-border shadow-sm p-5 flex flex-col hover:border-eu-blue transition-colors">
                   <div className={`w-16 h-16 rounded-full ${badge.color} flex items-center justify-center text-white font-extrabold text-lg mb-4 mx-auto shadow-md`}>
                     <Award className="w-7 h-7" />
@@ -286,35 +289,7 @@ export default function Knowledge() {
             <h2 className="text-xl font-bold text-eu-text mb-2">{t('knowledge.casesTitle')}</h2>
             <p className="text-sm text-gray-600 mb-7 max-w-2xl">{t('knowledge.casesDesc')}</p>
             <div className="space-y-5">
-              {[
-                {
-                  title: 'Automatización de expedientes académicos con IA',
-                  org: 'CEICE – Generalitat Valenciana',
-                  sector: 'nts',
-                  level: 'FP',
-                  result: 'Sistema OCR + LLM en producción. Reducción del 70% en tiempo de tramitación. 5 equipos participantes.',
-                  oer: 'Guía técnica y dataset publicados bajo CC-BY-SA',
-                  year: '2025-2026',
-                },
-                {
-                  title: 'Predicción de fallos en embotelladoras de vino',
-                  org: 'Bodegas Murviedro SA',
-                  sector: 'agr',
-                  level: 'FP',
-                  result: 'Modelo LSTM con 92% de precisión. Reducción de paradas del 35%. Implementado en 2 líneas de producción.',
-                  oer: 'Notebook Python + dataset vibrómetro publicados en Aules',
-                  year: '2024-2025',
-                },
-                {
-                  title: 'Catálogo semántico de museos canarios',
-                  org: 'LPGA – Las Palmas de Gran Canaria',
-                  sector: 'cci',
-                  level: 'Máster',
-                  result: '12.000 obras catalogadas automáticamente. Motor de búsqueda semántica desplegado en web municipal.',
-                  oer: 'Modelo NLP multilingüe y ontología publicados en HuggingFace + Aules',
-                  year: '2024-2025',
-                },
-              ].map((c, i) => (
+              {successCasesData.map((c, i) => (
                 <div key={i} className="bg-white rounded-xl border border-eu-border shadow-sm p-6 hover:border-eu-blue transition-colors">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>

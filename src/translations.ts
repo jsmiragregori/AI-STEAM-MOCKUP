@@ -302,6 +302,23 @@ export const translations = {
       statsOER: 'Recursos OER',
       statsBadges: 'Insignias Emitidas',
       statsDownloads: 'Descargas Totales',
+      // Badges data
+      badges: [
+        { id: 'b1', name: 'AI-Industry Badge', description: 'Competencias en IA aplicada a entornos industriales y mantenimiento predictivo', sector: 'mfg', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Completar módulo IND-FP-01', 'Superar evaluación práctica', 'Resolver 1 reto del Banco'] },
+        { id: 'b2', name: 'HealthAI Badge', description: 'Aplicación de ML en diagnóstico y gestión clínica con perspectiva ética', sector: 'nts', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Completar módulo SAL-MST-02', 'Trabajo de investigación clínica', 'Validación TÜV'] },
+        { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competencia digital en IA para docentes de FP y educación secundaria', sector: 'nts', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['Curso online 30h', 'Diseño de unidad didáctica IA', 'Evaluación por pares'] },
+        { id: 'b4', name: 'GreenAI Badge', description: 'IA para monitorización ambiental, energía y economía circular', sector: 'ene', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['Módulo MED-FP-03', 'Proyecto de sensórica ambiental', 'Informe de impacto'] },
+        { id: 'b5', name: 'AgroAI Badge', description: 'Técnicas de IA para agricultura de precisión y trazabilidad alimentaria', sector: 'agr', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['Módulo AGR-FP-01', 'Práctica con drones y sensores', 'Reto Banco de Retos'] },
+        { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimonio, diseño y turismo cultural', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Módulo TUR-MST-04', 'Proyecto creativo con IA', 'Exposición pública'] },
+        { id: 'b7', name: 'GovAI Badge', description: 'IA en servicios públicos: automatización, transparencia y ética', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curso GovAI 40h', 'Caso práctico de tramitación', 'Test Reglamento IA UE'] },
+        { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelado, simulación y análisis de gemelos digitales industriales', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Módulo IND-MST-05', 'Proyecto con plataforma de simulación', 'Validación TÜV'] },
+      ],
+      // Success cases data
+      successCases: [
+        { title: 'Automatización de expedientes académicos con IA', org: 'CEICE – Generalitat Valenciana', sector: 'nts', level: 'FP', result: 'Sistema OCR + LLM en producción. Reducción del 70% en tiempo de tramitación. 5 equipos participantes.', oer: 'Guía técnica y dataset publicados bajo CC-BY-SA', year: '2025-2026' },
+        { title: 'Predicción de fallos en embotelladoras de vino', org: 'Bodegas Murviedro SA', sector: 'agr', level: 'FP', result: 'Modelo LSTM con 92% de precisión. Reducción de paradas del 35%. Implementado en 2 líneas de producción.', oer: 'Notebook Python + dataset vibrómetro publicados en Aules', year: '2024-2025' },
+        { title: 'Catálogo semántico de museos canarios', org: 'LPGA – Las Palmas de Gran Canaria', sector: 'cci', level: 'Máster', result: '12.000 obras catalogadas automáticamente. Motor de búsqueda semántica desplegado en web municipal.', oer: 'Modelo NLP multilingüe y ontología publicados en HuggingFace + Aules', year: '2024-2025' },
+      ],
       // Old labels (for backward compatibility)
       researchPapers: 'Papers de Investigación',
       caseStudies: 'Estudios de Caso',
@@ -714,6 +731,23 @@ export const translations = {
       statsOER: 'OER Resources',
       statsBadges: 'Badges Issued',
       statsDownloads: 'Total Downloads',
+      // Badges data
+      badges: [
+        { id: 'b1', name: 'AI-Industry Badge', description: 'Skills in AI applied to industrial environments and predictive maintenance', sector: 'mfg', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Complete IND-FP-01 module', 'Pass practical evaluation', 'Solve 1 Challenge Bank challenge'] },
+        { id: 'b2', name: 'HealthAI Badge', description: 'ML application in diagnosis and clinical management with ethical perspective', sector: 'nts', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Complete SAL-MST-02 module', 'Clinical research work', 'TÜV validation'] },
+        { id: 'b3', name: 'EduAI Literacy Badge', description: 'Digital competency in AI for VET and secondary education teachers', sector: 'nts', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['30h online course', 'Design AI teaching unit', 'Peer evaluation'] },
+        { id: 'b4', name: 'GreenAI Badge', description: 'AI for environmental monitoring, energy and circular economy', sector: 'ene', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['MED-FP-03 module', 'Environmental sensor project', 'Impact report'] },
+        { id: 'b5', name: 'AgroAI Badge', description: 'AI techniques for precision agriculture and food traceability', sector: 'agr', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['AGR-FP-01 module', 'Practice with drones and sensors', 'Challenge Bank challenge'] },
+        { id: 'b6', name: 'CreativeAI Badge', description: 'Generative AI applied to heritage, design and cultural tourism', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['TUR-MST-04 module', 'Creative AI project', 'Public exhibition'] },
+        { id: 'b7', name: 'GovAI Badge', description: 'AI in public services: automation, transparency and ethics', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['GovAI 40h course', 'Process automation practical case', 'EU AI Regulation test'] },
+        { id: 'b8', name: 'DigitalTwin Badge', description: 'Modeling, simulation and analysis of industrial digital twins', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['IND-MST-05 module', 'Project with simulation platform', 'TÜV validation'] },
+      ],
+      // Success cases data
+      successCases: [
+        { title: 'AI automation of academic records', org: 'CEICE – Generalitat Valenciana', sector: 'nts', level: 'FP', result: 'OCR + LLM system in production. 70% reduction in processing time. 5 teams participated.', oer: 'Technical guide and dataset published under CC-BY-SA', year: '2025-2026' },
+        { title: 'Failure prediction in wine bottling lines', org: 'Bodegas Murviedro SA', sector: 'agr', level: 'FP', result: 'LSTM model with 92% accuracy. 35% reduction in downtime. Implemented in 2 production lines.', oer: 'Python notebook + vibration sensor dataset published in Aules', year: '2024-2025' },
+        { title: 'Semantic catalog of Canary Islands museums', org: 'LPGA – Las Palmas de Gran Canaria', sector: 'cci', level: 'Máster', result: '12,000 works automatically cataloged. Semantic search engine deployed on municipal website.', oer: 'Multilingual NLP model and ontology published in HuggingFace + Aules', year: '2024-2025' },
+      ],
       // Old labels (for backward compatibility)
       researchPapers: 'Research Papers',
       caseStudies: 'Case Studies',
@@ -1155,6 +1189,23 @@ export const translations = {
       statsOER: 'Recursos OER',
       statsBadges: 'Insignies Emeses',
       statsDownloads: 'Descarregues Totals',
+      // Badges data
+      badges: [
+        { id: 'b1', name: 'AI-Industry Badge', description: 'Competències en IA aplicada a entorns industrials i manteniment predictiu', sector: 'mfg', level: 'FP', color: 'bg-blue-500', issued: 234, criteria: ['Completar mòdul IND-FP-01', 'Superar avaluació pràctica', 'Resoldre 1 repte del Banc'] },
+        { id: 'b2', name: 'HealthAI Badge', description: 'Aplicació de ML en diagnòstic i gestió clínica amb perspectiva ètica', sector: 'nts', level: 'Máster', color: 'bg-red-500', issued: 87, criteria: ['Completar mòdul SAL-MST-02', 'Treball de recerca clínica', 'Validació TÜV'] },
+        { id: 'b3', name: 'EduAI Literacy Badge', description: 'Competència digital en IA per a docents de FP i educació secundària', sector: 'nts', level: 'Docentes', color: 'bg-teal-600', issued: 524, criteria: ['Curs en línia 30h', 'Disseny d\'unitat didàctica IA', 'Avaluació per parells'] },
+        { id: 'b4', name: 'GreenAI Badge', description: 'IA per a monitorització ambiental, energia i economia circular', sector: 'ene', level: 'FP', color: 'bg-green-600', issued: 143, criteria: ['Mòdul MED-FP-03', 'Projecte de sensòrica ambiental', 'Informe d\'impacte'] },
+        { id: 'b5', name: 'AgroAI Badge', description: 'Tècniques d\'IA per a agricultura de precisió i traçabilitat alimentària', sector: 'agr', level: 'FP', color: 'bg-yellow-600', issued: 198, criteria: ['Mòdul AGR-FP-01', 'Pràctica amb drons i sensors', 'Repte Banc de Reptes'] },
+        { id: 'b6', name: 'CreativeAI Badge', description: 'IA generativa aplicada al patrimoni, disseny i turisme cultural', sector: 'cci', level: 'Máster', color: 'bg-pink-600', issued: 72, criteria: ['Mòdul TUR-MST-04', 'Projecte creatiu amb IA', 'Exposició pública'] },
+        { id: 'b7', name: 'GovAI Badge', description: 'IA en serveis públics: automatització, transparència i ètica', sector: 'nts', level: 'Docentes', color: 'bg-slate-600', issued: 211, criteria: ['Curs GovAI 40h', 'Case pràctic de tramitació', 'Test Reglament IA UE'] },
+        { id: 'b8', name: 'DigitalTwin Badge', description: 'Modelatge, simulació i anàlisi de bessons digitals industrials', sector: 'mfg', level: 'Máster', color: 'bg-indigo-600', issued: 54, criteria: ['Mòdul IND-MST-05', 'Projecte amb plataforma de simulació', 'Validació TÜV'] },
+      ],
+      // Success cases data
+      successCases: [
+        { title: 'Automatització d\'expedients acadèmics amb IA', org: 'CEICE – Generalitat Valenciana', sector: 'nts', level: 'FP', result: 'Sistema OCR + LLM en producció. Reducció del 70% en temps de tramitació. 5 equips participants.', oer: 'Guia tècnica i dataset publicats sota CC-BY-SA', year: '2025-2026' },
+        { title: 'Predicció de fallades en embotelladoras de vi', org: 'Bodegas Murviedro SA', sector: 'agr', level: 'FP', result: 'Model LSTM amb 92% de precisió. Reducció de parades del 35%. Implementat en 2 línies de producció.', oer: 'Notebook Python + dataset vibròmetre publicats en Aules', year: '2024-2025' },
+        { title: 'Catàleg semàntic de museus canaris', org: 'LPGA – Las Palmas de Gran Canaria', sector: 'cci', level: 'Máster', result: '12.000 obres catalogades automàticament. Motor de busca semàntica desplegat en web municipal.', oer: 'Model NLP multilingüe i ontologia publicats en HuggingFace + Aules', year: '2024-2025' },
+      ],
       // Old labels (for backward compatibility)
       researchPapers: 'Articles de Investigació',
       caseStudies: 'Estudis de Cas',
