@@ -524,6 +524,13 @@ export const translations = {
         enredTitle: 'ENRED – Red Europea de Departamentos de Educación',
         enredDesc: 'La Generalitat Valenciana actúa como puente institucional entre AI-SECRETT y ENRED, facilitando la cooperación entre autoridades de educación regional europeas y conectando la red con el marco de gobernanza educativa de la UE.',
       },
+      // Tab Content - Documentación
+      tabContent_documentos: {
+        title: 'Documentación de Transparencia',
+        description: 'Los documentos públicos están disponibles para descarga directa. Los documentos de socios requieren acceso al Área Privada.',
+        accessPublic: '🔓 Público',
+        accessPartners: '🔒 Socios',
+      },
       // Tab Content - Participación
       tabContent_participar: {
         stakeholderTitle: 'Adhesión como Stakeholder',
@@ -1145,6 +1152,13 @@ export const translations = {
         iso21001Desc: 'The consortium operates under ISO 21001 (EOMS), coordinated by UVEG. It ensures that training procedures are oriented to the needs of students and stakeholders, with full traceability and auditability.',
         enredTitle: 'ENRED – European Network of Regional Education Departments',
         enredDesc: 'The Generalitat Valenciana acts as an institutional bridge between AI-SECRETT and ENRED, facilitating cooperation between European regional education authorities and connecting the network with the EU education governance framework.',
+      },
+      // Tab Content - Documentation
+      tabContent_documentos: {
+        title: 'Transparency Documentation',
+        description: 'Public documents are available for direct download. Partner documents require access to the Private Area.',
+        accessPublic: '🔓 Public',
+        accessPartners: '🔒 Partners',
       },
       // Tab Content - Participation
       tabContent_participar: {
@@ -1796,6 +1810,13 @@ export const translations = {
         iso21001Desc: 'El consorcio funciona sota ISO 21001 (EOMS), coordinat per UVEG. Garanteix que els procediments formatius estiguen orientats a les necessitats d\'estudiants i parts interessades, amb total rastreabilitat i auditabilitat.',
         enredTitle: 'ENRED – Xarxa Europea de Departaments d\'Educació Regional',
         enredDesc: 'La Generalitat Valenciana actua com a pont institucional entre AI-SECRETT i ENRED, facilitant la cooperació entre autoritats d\'educació regional europees i connectant la xarxa amb el marc de governança educativa de la UE.',
+      },
+      // Tab Content - Documentació
+      tabContent_documentos: {
+        title: 'Documentació de Transparència',
+        description: 'Els documents públics estan disponibles per a descàrrega directa. Els documents de socis requereixen accés a l\'Àrea Privada.',
+        accessPublic: '🔓 Públic',
+        accessPartners: '🔒 Socis',
       },
       // Tab Content - Participació
       tabContent_participar: {

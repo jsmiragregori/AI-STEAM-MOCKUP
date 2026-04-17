@@ -473,9 +473,9 @@ export default function Governance() {
         ══════════════════════════════════════════════════ */}
         {activeTab === 'documentos' && (
           <div>
-            <h2 className="text-xl font-bold text-eu-text mb-2">Documentación de Transparencia</h2>
+            <h2 className="text-xl font-bold text-eu-text mb-2">{t.tabContent_documentos.title}</h2>
             <p className="text-sm text-gray-600 mb-7 max-w-2xl">
-              Los documentos públicos están disponibles para descarga directa. Los documentos de socios requieren acceso al Área Privada.
+              {t.tabContent_documentos.description}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {((t.transparencyDocs as any) || []).map((doc: any, i: number) => (
@@ -487,7 +487,7 @@ export default function Governance() {
                       <span className="text-xs text-gray-500">{doc.date}</span>
                       <span className="text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">{doc.type}</span>
                       <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${doc.access === 'Public' || doc.access === 'Público' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                        {doc.access === 'Public' || doc.access === 'Público' ? '🔓 Público' : '🔒 Socios'}
+                        {doc.access === 'Public' || doc.access === 'Público' ? t.tabContent_documentos.accessPublic : t.tabContent_documentos.accessPartners}
                       </span>
                     </div>
                   </div>
