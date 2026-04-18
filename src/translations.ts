@@ -1649,7 +1649,7 @@ export const translations = {
       tabFlow: 'Cicle de Coneixement',
       tabOER: 'Repositori OER',
       tabBadges: 'Mur de Insignies',
-      tabCases: 'Cases d\'Èxit',
+      tabCases: 'Casos d\'Èxit',
       // Flow section
       flowTitle: 'Del Repte Industrial al Recurs Educatiu Obert',
       flowDesc: 'La xarxa transforma els desafiaments reals de les organitzacions en coneixement educatiu de qualitat, seguint un procés estructurat de 6 etapes validat pel consorci AI-SECRETT.',
@@ -1686,7 +1686,7 @@ export const translations = {
       badgesCriteria: 'Criteris',
       badgesIssued: 'insignies emeses',
       // Success Cases section
-      casesTitle: 'Cases d\'Èxit',
+      casesTitle: 'Casos d\'Èxit',
       casesDesc: 'Reptes ja resolts que s\'han convertit en recursos educatius oberts i referents de la xarxa.',
       casesSolved: 'Resolt',
       casesViewFull: 'Veure cas sencer',
