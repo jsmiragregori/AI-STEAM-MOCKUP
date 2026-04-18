@@ -100,9 +100,6 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
         {/* Mobile Right Actions - Visible below md */}
         <div className="flex md:hidden items-center gap-2">
-          {/* Language Selector - Mobile */}
-          <LanguageSelector size="compact" />
-
           {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -152,6 +149,43 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                 {t(item.key)}
               </button>
             ))}
+          </div>
+
+          {/* Language Selector Section - Mobile Only */}
+          <div className="border-t border-eu-blue/20 px-6 py-4">
+            <p className="text-xs text-white/70 font-bold uppercase mb-3">{t('header.language') || 'Language'}</p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setLanguage('en' as Language)}
+                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                  language === 'en'
+                    ? 'bg-eu-yellow text-eu-blue'
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('es' as Language)}
+                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                  language === 'es'
+                    ? 'bg-eu-yellow text-eu-blue'
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => setLanguage('va' as Language)}
+                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                  language === 'va'
+                    ? 'bg-eu-yellow text-eu-blue'
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                VA
+              </button>
+            </div>
           </div>
 
           {/* Mobile Actions Section */}
