@@ -77,8 +77,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           </div>
         </div>
 
-        {/* Desktop Right Actions - Visible from md and up */}
-        <div className="hidden md:flex items-center gap-3 lg:gap-4">
+        {/* Desktop Right Actions - Visible from lg and up */}
+        <div className="hidden lg:flex items-center gap-3">
           {/* Language Selector - Desktop */}
           <LanguageSelector size="normal" />
 
@@ -87,8 +87,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             {t('header.privateAccess')}
           </button>
 
-          {/* Institutional Shortcuts - lg and up */}
-          <div className="hidden lg:flex items-center gap-2 border-l border-eu-border pl-4">
+          {/* Institutional Shortcuts */}
+          <div className="flex items-center gap-2 border-l border-eu-border pl-4">
             <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
               {t('header.aules')}
             </a>
@@ -96,6 +96,25 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
               {t('header.consensUE')}
             </button>
           </div>
+        </div>
+
+        {/* Tablet Right Actions - md to lg */}
+        <div className="hidden md:flex lg:hidden items-center gap-2">
+          {/* SSO Button - Tablet */}
+          <button className="bg-eu-blue text-white border-none px-3 py-2 rounded font-semibold text-sm cursor-pointer hover:bg-blue-800 transition-colors shrink-0 min-h-10">
+            {t('header.privateAccess')}
+          </button>
+
+          {/* Hamburger for Tablet */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded hover:bg-gray-100 transition-colors h-10 w-10 flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Right Actions - Visible below md */}
@@ -113,8 +132,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         </div>
       </header>
 
-      {/* Desktop Nav Menu - md and up */}
-      <nav className="hidden md:flex bg-eu-blue h-12 px-4 sm:px-6 gap-1 overflow-x-auto">
+      {/* Desktop Nav Menu - lg and up */}
+      <nav className="hidden lg:flex bg-eu-blue h-12 px-6 gap-1">
         {navItems.map((item) => (
           <button
             key={item.id}
@@ -131,9 +150,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         ))}
       </nav>
 
-      {/* Mobile Nav Menu - Dropdown (below md) */}
+      {/* Mobile Nav Menu - Dropdown (below lg) */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-eu-blue border-t border-eu-blue/20 max-h-[calc(100vh-128px)] overflow-y-auto">
+        <nav className="lg:hidden bg-eu-blue border-t border-eu-blue/20 max-h-[calc(100vh-128px)] overflow-y-auto">
           {/* Mobile Navigation Items */}
           <div className="flex flex-col">
             {navItems.map((item) => (
