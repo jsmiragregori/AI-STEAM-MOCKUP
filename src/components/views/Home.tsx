@@ -225,10 +225,13 @@ export default function Home({ setActiveTab }: HomeProps) {
             {(t('home.latestChallengesData') as any || []).map((ch: any, i: number) => {
               const statusTranslationKey = ch.status === 'Abierto' || ch.status === 'Open' || ch.status === 'Obert'
                 ? 'open'
-                : ch.status === 'En Resolución' || ch.status === 'In Progress'
+                : ch.status === 'En Resolución' || ch.status === 'In Progress' || ch.status === 'En Resolució'
                 ? 'inProgress'
                 : 'resolved';
               const statusLabel = t(`marketplace.${statusTranslationKey}`);
+
+              const sectorNames = t('marketplace.sectorNames') as any;
+              const sectorLabel = sectorNames?.[ch.sectorCode] || ch.sectorCode;
 
               return (
                 <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
@@ -240,7 +243,7 @@ export default function Home({ setActiveTab }: HomeProps) {
                   </div>
                   <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
                   <p className="text-xs text-gray-500 mb-3">{ch.org}</p>
-                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{ch.sector}</span>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{sectorLabel}</span>
                 </div>
               );
             })}
