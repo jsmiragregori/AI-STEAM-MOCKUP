@@ -9,6 +9,7 @@ export const translations = {
       privateAccess: 'Acceso Área Privada',
       aules: 'Aules',
       consensUE: 'ConsensUE',
+      language: 'Idioma',
     },
     nav: {
       inicio: 'Inicio',
@@ -739,7 +740,7 @@ export const translations = {
     },
   },
   en: {
-    header: { title: 'AI-STEAM Network', subtitle: 'Generalitat Valenciana · CEICE · Digital Europe', privateAccess: 'Private Access', aules: 'Aules', consensUE: 'ConsensUE' },
+    header: { title: 'AI-STEAM Network', subtitle: 'Generalitat Valenciana · CEICE · Digital Europe', privateAccess: 'Private Access', aules: 'Aules', consensUE: 'ConsensUE', language: 'Language' },
     nav: { inicio: 'Home', red: 'Network', sectores: 'Sectors', bancoRetos: 'Challenge Bank', formacion: 'Training', conocimiento: 'Knowledge', actualidad: 'News', gobernanza: 'Governance' },
     footer: { fundedBy: 'Funded by', europeanUnion: 'European Union', accessibility: 'Accessibility', privacy: 'Privacy', sitemap: 'Sitemap' },
     cookieBanner: { legal: 'Legal Notice:', text: 'We use technical cookies necessary for the operation of the portal. Data processing complies with GDPR.', accept: 'Accept' },
@@ -1444,7 +1445,7 @@ export const translations = {
     },
   },
   va: {
-    header: { title: 'AI-STEAM Network', subtitle: 'Generalitat Valenciana · CEICE · Digital Europe', privateAccess: 'Accés Àrea Privada', aules: 'Aules', consensUE: 'ConsensUE' },
+    header: { title: 'AI-STEAM Network', subtitle: 'Generalitat Valenciana · CEICE · Digital Europe', privateAccess: 'Accés Àrea Privada', aules: 'Aules', consensUE: 'ConsensUE', language: 'Idioma' },
     nav: { inicio: 'Inici', red: 'La Xarxa', sectores: 'Sectors', bancoRetos: 'Banc de Reptes', formacion: 'Formació', conocimiento: 'Coneixement', actualidad: 'Actualitat', gobernanza: 'Governança' },
     footer: { fundedBy: 'Finançat per', europeanUnion: 'Unió Europea', accessibility: 'Accessibilitat', privacy: 'Privacitat', sitemap: 'Mapa Web' },
     cookieBanner: { legal: 'Avís Legal:', text: 'Utilitzem galetes tècniques necessàries per al funcionament del portal. El tractament de dades compleix amb el RGPD.', accept: 'Acceptar' },

@@ -172,34 +172,34 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
           {/* Language Selector Section - Mobile Only */}
           <div className="border-t border-eu-blue/20 px-6 py-4">
-            <p className="text-xs text-white/70 font-bold uppercase mb-3">{t('header.language') || 'Language'}</p>
+            <p className="text-xs text-white/80 font-bold uppercase mb-3 tracking-wide">{t('header.language')}</p>
             <div className="flex gap-2">
               <button
                 onClick={() => setLanguage('en' as Language)}
-                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                className={`flex-1 px-3 py-2 rounded font-bold transition-all min-h-10 flex items-center justify-center text-sm ${
                   language === 'en'
-                    ? 'bg-eu-yellow text-eu-blue'
-                    : 'bg-white/20 text-white hover:bg-white/30'
+                    ? 'bg-eu-yellow text-eu-blue shadow-lg'
+                    : 'bg-white/40 text-white hover:bg-white/60 active:bg-white/50'
                 }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage('es' as Language)}
-                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                className={`flex-1 px-3 py-2 rounded font-bold transition-all min-h-10 flex items-center justify-center text-sm ${
                   language === 'es'
-                    ? 'bg-eu-yellow text-eu-blue'
-                    : 'bg-white/20 text-white hover:bg-white/30'
+                    ? 'bg-eu-yellow text-eu-blue shadow-lg'
+                    : 'bg-white/40 text-white hover:bg-white/60 active:bg-white/50'
                 }`}
               >
                 ES
               </button>
               <button
                 onClick={() => setLanguage('va' as Language)}
-                className={`flex-1 px-3 py-2 rounded text-sm font-bold transition-colors min-h-10 flex items-center justify-center ${
+                className={`flex-1 px-3 py-2 rounded font-bold transition-all min-h-10 flex items-center justify-center text-sm ${
                   language === 'va'
-                    ? 'bg-eu-yellow text-eu-blue'
-                    : 'bg-white/20 text-white hover:bg-white/30'
+                    ? 'bg-eu-yellow text-eu-blue shadow-lg'
+                    : 'bg-white/40 text-white hover:bg-white/60 active:bg-white/50'
                 }`}
               >
                 VA
