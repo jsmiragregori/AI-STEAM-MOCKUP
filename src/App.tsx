@@ -37,7 +37,7 @@ export default function App() {
       <div className="min-h-screen flex flex-col bg-eu-bg font-sans text-eu-text">
         <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        <main className="flex-grow pt-[112px]">
+        <main className="flex-grow pt-16 md:pt-28">
           {renderView()}
         </main>
 

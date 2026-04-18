@@ -250,42 +250,42 @@ export default function Marketplace() {
   return (
     <div className="animate-in fade-in duration-300">
       {/* Header */}
-      <div className="bg-eu-blue text-white px-6 py-10">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-start justify-between gap-6">
-          <div>
-            <h1 className="text-3xl font-extrabold mb-2">{marketplaceT.title}</h1>
-            <p className="text-white/80 max-w-2xl text-base">
+      <div className="bg-eu-blue text-white px-4 sm:px-6 py-8 sm:py-10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-extrabold mb-2">{marketplaceT.title}</h1>
+            <p className="text-white/80 max-w-2xl text-sm sm:text-base">
               {marketplaceT.description}
             </p>
-            <div className="flex gap-5 mt-5">
-              <div className="bg-white/10 rounded-xl px-6 py-4">
-                <p className="text-2xl font-extrabold text-eu-yellow">{open}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.openChallenges}</p>
+            <div className="grid grid-cols-3 gap-3 sm:gap-5 mt-5">
+              <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
+                <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{open}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.openChallenges}</p>
               </div>
-              <div className="bg-white/10 rounded-xl px-6 py-4">
-                <p className="text-2xl font-extrabold text-eu-yellow">{inProgress}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.inProgressChallenges}</p>
+              <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
+                <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{inProgress}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.inProgressChallenges}</p>
               </div>
-              <div className="bg-white/10 rounded-xl px-6 py-4">
-                <p className="text-2xl font-extrabold text-eu-yellow">{solved}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1">{marketplaceT.resolvedChallenges}</p>
+              <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
+                <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{solved}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.resolvedChallenges}</p>
               </div>
             </div>
           </div>
           <button
             onClick={() => setShowSubmit(!showSubmit)}
-            className="flex items-center gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer"
+            className="flex items-center justify-center sm:justify-start gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer shrink-0 w-full sm:w-auto"
           >
             <Plus className="w-4 h-4" /> {marketplaceT.publishChallenge}
           </button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Submit Form */}
         {showSubmit && (
-          <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mb-8">
-            <h2 className="text-xl font-bold text-eu-text mb-1">{marketplaceT.publishNew}</h2>
+          <div className="bg-white rounded-xl border border-eu-border shadow-sm p-5 sm:p-7 mb-8">
+            <h2 className="text-lg sm:text-xl font-bold text-eu-text mb-1">{marketplaceT.publishNew}</h2>
             <p className="text-sm text-gray-600 mb-5">{marketplaceT.shareChallenge}</p>
             <form className="space-y-4 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
               <div>
@@ -322,7 +322,7 @@ export default function Marketplace() {
                 <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.description} *</label>
                 <textarea rows={4} className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue resize-none" placeholder={marketplaceT?.formPlaceholders?.description}></textarea>
               </div>
-              <div className="flex justify-end gap-3">
+              <div className="flex flex-col-reverse sm:flex-row justify-end gap-3">
                 <button type="button" onClick={() => setShowSubmit(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
                   {marketplaceT.cancel}
                 </button>
@@ -335,9 +335,9 @@ export default function Marketplace() {
         )}
 
         {/* Filters */}
-        <div className="bg-white rounded-xl border border-eu-border shadow-sm p-5 mb-6">
-          <div className="flex flex-wrap gap-4 items-end">
-            <div className="flex-1 min-w-50">
+        <div className="bg-white rounded-xl border border-eu-border shadow-sm p-4 sm:p-5 mb-6">
+          <div className="flex flex-col gap-4">
+            <div className="w-full">
               <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.searchLabel}</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -350,47 +350,49 @@ export default function Marketplace() {
                 />
               </div>
             </div>
-            <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterLevel}</label>
-              <select
-                value={levelFilter}
-                onChange={(e) => setLevelFilter(e.target.value as LevelFilter)}
-                className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
-              >
-                <option value="Todos">{marketplaceT.all}</option>
-                <option value="FP">{marketplaceT.fpLevel}</option>
-                <option value="Máster">{marketplaceT.masterLevel}</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterStatus}</label>
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
-              >
-                <option value="Todos">{marketplaceT.all}</option>
-                <option value="Abierto">{marketplaceT.open}</option>
-                <option value="En Resolución">{marketplaceT.inProgress}</option>
-                <option value="Resuelto">{marketplaceT.resolved}</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterSector}</label>
-              <select
-                value={sectorFilter}
-                onChange={(e) => setSectorFilter(e.target.value as SectorFilter)}
-                className="border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
-              >
-                <option value="Todos">{marketplaceT?.all}</option>
-                <option value="Manufacturing">{getSectorLabel('Manufacturing', marketplaceT)}</option>
-                <option value="Mobility and Transport">{getSectorLabel('Mobility and Transport', marketplaceT)}</option>
-                <option value="Energy and Environment">{getSectorLabel('Energy and Environment', marketplaceT)}</option>
-                <option value="Agrifood">{getSectorLabel('Agrifood', marketplaceT)}</option>
-                <option value="Cultural and Creative Industries">{getSectorLabel('Cultural and Creative Industries', marketplaceT)}</option>
-                <option value="Housing">{getSectorLabel('Housing', marketplaceT)}</option>
-                <option value="Non-Touristic Services">{getSectorLabel('Non-Touristic Services', marketplaceT)}</option>
-              </select>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div>
+                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterLevel}</label>
+                <select
+                  value={levelFilter}
+                  onChange={(e) => setLevelFilter(e.target.value as LevelFilter)}
+                  className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
+                >
+                  <option value="Todos">{marketplaceT.all}</option>
+                  <option value="FP">{marketplaceT.fpLevel}</option>
+                  <option value="Máster">{marketplaceT.masterLevel}</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterStatus}</label>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
+                  className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
+                >
+                  <option value="Todos">{marketplaceT.all}</option>
+                  <option value="Abierto">{marketplaceT.open}</option>
+                  <option value="En Resolución">{marketplaceT.inProgress}</option>
+                  <option value="Resuelto">{marketplaceT.resolved}</option>
+                </select>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterSector}</label>
+                <select
+                  value={sectorFilter}
+                  onChange={(e) => setSectorFilter(e.target.value as SectorFilter)}
+                  className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
+                >
+                  <option value="Todos">{marketplaceT?.all}</option>
+                  <option value="Manufacturing">{getSectorLabel('Manufacturing', marketplaceT)}</option>
+                  <option value="Mobility and Transport">{getSectorLabel('Mobility and Transport', marketplaceT)}</option>
+                  <option value="Energy and Environment">{getSectorLabel('Energy and Environment', marketplaceT)}</option>
+                  <option value="Agrifood">{getSectorLabel('Agrifood', marketplaceT)}</option>
+                  <option value="Cultural and Creative Industries">{getSectorLabel('Cultural and Creative Industries', marketplaceT)}</option>
+                  <option value="Housing">{getSectorLabel('Housing', marketplaceT)}</option>
+                  <option value="Non-Touristic Services">{getSectorLabel('Non-Touristic Services', marketplaceT)}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -399,39 +401,39 @@ export default function Marketplace() {
         <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (marketplaceT?.resultsCount || 'Showing {{count}} of {{total}} challenges').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(translatedChallenges.length)) }} />
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filtered.map((ch) => (
             <div key={ch.id} className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col hover:border-eu-blue transition-colors">
-              <div className="p-5 flex-1">
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[ch.level]}`}>
+              <div className="p-4 sm:p-5 flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                  <span className={`text-xs sm:text-sm font-extrabold uppercase px-2 py-0.5 rounded w-fit ${levelStyles[ch.level]}`}>
                     {marketplaceT?.challengeLabel || 'Challenge'} {getLevelLabel(ch.level, marketplaceT)}
                   </span>
-                  <span className={`text-sm font-bold px-2 py-0.5 rounded ${statusStyles[ch.status]}`}>
+                  <span className={`text-xs sm:text-sm font-bold px-2 py-0.5 rounded w-fit ${statusStyles[ch.status]}`}>
                     {getStatusLabel(ch.status, marketplaceT)}
                   </span>
                 </div>
-                <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
-                <p className="text-xs text-gray-500 mb-1 font-semibold">{ch.country} {ch.entity}</p>
-                <p className="text-sm text-gray-400 mb-3">{ch.entityType}</p>
+                <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug line-clamp-2">{ch.title}</h3>
+                <p className="text-xs text-gray-500 mb-1 font-semibold truncate">{ch.country} {ch.entity}</p>
+                <p className="text-xs sm:text-sm text-gray-400 mb-3 line-clamp-1">{ch.entityType}</p>
                 <p className="text-xs text-gray-600 mb-4 line-clamp-2">{ch.description}</p>
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {ch.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="flex items-center gap-1 text-sm bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">
-                      <Tag className="w-2.5 h-2.5" />{t}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {ch.tags.slice(0, 2).map((t) => (
+                    <span key={t} className="flex items-center gap-1 text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold line-clamp-1">
+                      <Tag className="w-2.5 h-2.5 shrink-0" />{t}
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{marketplaceT?.deadlineLabel || 'Plazo'}: {ch.deadline}</span>
-                  <span className="flex items-center gap-1"><Users className="w-3 h-3" />{ch.teams} {ch.teams === 1 ? marketplaceT?.teamSingular || 'equipo' : marketplaceT?.teamPlural || 'equipos'}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-xs sm:text-sm text-gray-500">
+                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3 shrink-0" /><span className="truncate">{marketplaceT?.deadlineLabel || 'Plazo'}: {ch.deadline}</span></span>
+                  <span className="flex items-center gap-1"><Users className="w-3 h-3 shrink-0" />{ch.teams} {ch.teams === 1 ? marketplaceT?.teamSingular || 'equipo' : marketplaceT?.teamPlural || 'equipos'}</span>
                 </div>
               </div>
-              <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
-                <span className="text-sm font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded">{getSectorLabel(ch.sector, marketplaceT)}</span>
+              <div className="border-t border-eu-border p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-eu-bg">
+                <span className="text-xs font-bold text-eu-teal uppercase bg-eu-teal/10 px-2 py-0.5 rounded w-fit">{getSectorLabel(ch.sector, marketplaceT)}</span>
                 <button
                   onClick={() => setSelectedId(ch.id)}
-                  className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline"
+                  className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline text-left sm:text-right"
                 >
                   {marketplaceT?.viewAndApply || 'View and Apply'} →
                 </button>
