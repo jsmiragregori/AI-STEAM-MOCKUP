@@ -28,6 +28,37 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
     setMobileMenuOpen(false);
   };
 
+  const LanguageSelector = ({ size = 'normal' }: { size?: 'compact' | 'normal' }) => (
+    <div className={`flex items-center font-semibold text-gray-700 gap-2 ${size === 'compact' ? 'text-xs gap-1' : 'text-sm'}`}>
+      <button
+        onClick={() => setLanguage('en' as Language)}
+        className={`cursor-pointer px-2 py-1 rounded transition-colors whitespace-nowrap ${
+          language === 'en' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+        } ${size === 'compact' ? 'px-1 py-0.5 text-xs' : ''}`}
+      >
+        EN
+      </button>
+      <span className="text-gray-400">|</span>
+      <button
+        onClick={() => setLanguage('es' as Language)}
+        className={`cursor-pointer px-2 py-1 rounded transition-colors whitespace-nowrap ${
+          language === 'es' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+        } ${size === 'compact' ? 'px-1 py-0.5 text-xs' : ''}`}
+      >
+        ES
+      </button>
+      <span className="text-gray-400">|</span>
+      <button
+        onClick={() => setLanguage('va' as Language)}
+        className={`cursor-pointer px-2 py-1 rounded transition-colors whitespace-nowrap ${
+          language === 'va' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
+        } ${size === 'compact' ? 'px-1 py-0.5 text-xs' : ''}`}
+      >
+        VA
+      </button>
+    </div>
+  );
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Top Bar */}
@@ -46,44 +77,17 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           </div>
         </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+        {/* Desktop Right Actions - Visible from md and up */}
+        <div className="hidden md:flex items-center gap-3 lg:gap-4">
           {/* Language Selector - Desktop */}
-          <div className="hidden lg:flex items-center text-sm font-semibold text-gray-700 gap-2">
-            <button
-              onClick={() => setLanguage('en' as Language)}
-              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
-                language === 'en' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
-              }`}
-            >
-              EN
-            </button>
-            <span className="text-gray-400">|</span>
-            <button
-              onClick={() => setLanguage('es' as Language)}
-              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
-                language === 'es' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
-              }`}
-            >
-              ES
-            </button>
-            <span className="text-gray-400">|</span>
-            <button
-              onClick={() => setLanguage('va' as Language)}
-              className={`cursor-pointer px-2 py-1 rounded transition-colors ${
-                language === 'va' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue hover:bg-gray-100'
-              }`}
-            >
-              VA
-            </button>
-          </div>
+          <LanguageSelector size="normal" />
 
-          {/* SSO Button - Visible on all screens */}
-          <button className="bg-eu-blue text-white border-none px-3 sm:px-4 py-2 sm:py-2.5 rounded font-bold text-xs sm:text-sm cursor-pointer hover:bg-blue-800 transition-colors shrink-0 h-10 min-w-max">
+          {/* SSO Button */}
+          <button className="bg-eu-blue text-white border-none px-4 py-2 rounded font-semibold text-sm cursor-pointer hover:bg-blue-800 transition-colors shrink-0 min-h-10">
             {t('header.privateAccess')}
           </button>
 
-          {/* Institutional Shortcuts - Desktop Only */}
+          {/* Institutional Shortcuts - lg and up */}
           <div className="hidden lg:flex items-center gap-2 border-l border-eu-border pl-4">
             <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
               {t('header.aules')}
@@ -94,40 +98,15 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           </div>
         </div>
 
-        {/* Mobile Language & Hamburger */}
-        <div className="flex lg:hidden items-center gap-1 sm:gap-2">
-          {/* Mobile Language Selector - compact */}
-          <div className="hidden sm:flex items-center text-xs font-semibold text-gray-700 gap-0.5">
-            <button
-              onClick={() => setLanguage('en' as Language)}
-              className={`cursor-pointer px-1 py-0.5 rounded transition-colors text-xs h-7 ${
-                language === 'en' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue'
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage('es' as Language)}
-              className={`cursor-pointer px-1 py-0.5 rounded transition-colors text-xs h-7 ${
-                language === 'es' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue'
-              }`}
-            >
-              ES
-            </button>
-            <button
-              onClick={() => setLanguage('va' as Language)}
-              className={`cursor-pointer px-1 py-0.5 rounded transition-colors text-xs h-7 ${
-                language === 'va' ? 'text-eu-text font-bold bg-gray-100' : 'hover:text-eu-blue'
-              }`}
-            >
-              VA
-            </button>
-          </div>
+        {/* Mobile Right Actions - Visible below md */}
+        <div className="flex md:hidden items-center gap-2">
+          {/* Language Selector - Mobile */}
+          <LanguageSelector size="compact" />
 
           {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded hover:bg-gray-100 transition-colors h-10 w-10"
+            className="p-2 rounded hover:bg-gray-100 transition-colors h-10 w-10 flex items-center justify-center"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,13 +116,13 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         </div>
       </header>
 
-      {/* Desktop Nav Menu */}
-      <nav className="hidden lg:flex bg-eu-blue h-12 px-6 gap-1">
+      {/* Desktop Nav Menu - md and up */}
+      <nav className="hidden md:flex bg-eu-blue h-12 px-4 sm:px-6 gap-1 overflow-x-auto">
         {navItems.map((item) => (
           <button
             key={item.id}
             onClick={() => handleNavClick(item.id)}
-            className={`text-sm font-medium flex items-center px-3 cursor-pointer border-b-[3px] transition-all duration-200 whitespace-nowrap ${
+            className={`text-xs sm:text-sm font-medium flex items-center px-2 sm:px-3 cursor-pointer border-b-[3px] transition-all duration-200 whitespace-nowrap ${
               activeTab === item.id
                 ? 'text-white border-eu-yellow'
                 : 'text-white/80 border-transparent hover:text-white hover:border-white/40'
@@ -155,15 +134,16 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         ))}
       </nav>
 
-      {/* Mobile Nav Menu - Dropdown */}
+      {/* Mobile Nav Menu - Dropdown (below md) */}
       {mobileMenuOpen && (
-        <nav className="lg:hidden bg-eu-blue border-t border-eu-blue/20 max-h-[calc(100vh-128px)] overflow-y-auto">
+        <nav className="md:hidden bg-eu-blue border-t border-eu-blue/20 max-h-[calc(100vh-128px)] overflow-y-auto">
+          {/* Mobile Navigation Items */}
           <div className="flex flex-col">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-6 py-4 text-left font-medium border-l-4 transition-all duration-200 min-h-12 flex items-center ${
+                className={`px-6 py-4 text-left font-medium border-l-4 transition-all duration-200 min-h-12 flex items-center text-sm ${
                   activeTab === item.id
                     ? 'bg-eu-blue/20 border-eu-yellow text-white'
                     : 'border-transparent text-white/80 hover:text-white'
@@ -174,15 +154,20 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             ))}
           </div>
 
-          {/* Mobile Actions */}
-          <div className="border-t border-eu-blue/20 px-6 py-6 space-y-3">
+          {/* Mobile Actions Section */}
+          <div className="border-t border-eu-blue/20 px-4 sm:px-6 py-6 space-y-3">
+            {/* SSO Button in Mobile Menu */}
             <button className="w-full bg-white text-eu-blue border-none px-4 py-3 rounded font-semibold text-sm cursor-pointer hover:bg-gray-100 transition-colors min-h-12 flex items-center justify-center">
               {t('header.privateAccess')}
             </button>
-            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center text-center bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-3 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors min-h-12">
+
+            {/* Aules Button - White background for contrast */}
+            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center text-center bg-white border border-eu-teal text-eu-teal px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12">
               {t('header.aules')}
             </a>
-            <button className="w-full bg-eu-orange/10 border border-eu-orange text-eu-orange px-3 py-3 rounded text-sm font-bold cursor-pointer hover:bg-eu-orange hover:text-white transition-colors min-h-12 flex items-center justify-center">
+
+            {/* ConsensUE Button - White background for contrast */}
+            <button className="w-full bg-white border border-eu-orange text-eu-orange px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12 flex items-center justify-center">
               {t('header.consensUE')}
             </button>
           </div>
