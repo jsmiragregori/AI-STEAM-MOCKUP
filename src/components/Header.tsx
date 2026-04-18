@@ -159,10 +159,10 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-6 py-4 text-left font-medium border-l-4 transition-all duration-200 min-h-12 flex items-center text-sm ${
+                className={`px-6 py-4 text-left font-medium border-l-4 transition-all duration-200 min-h-12 flex items-center text-sm active:scale-95 ${
                   activeTab === item.id
-                    ? 'bg-eu-blue/20 border-eu-yellow text-white'
-                    : 'border-transparent text-white/80 hover:text-white'
+                    ? 'bg-eu-blue/20 border-eu-yellow text-white shadow-md'
+                    : 'border-transparent text-white/80 hover:text-white hover:bg-white/10 active:bg-white/20'
                 }`}
               >
                 {t(item.key)}
