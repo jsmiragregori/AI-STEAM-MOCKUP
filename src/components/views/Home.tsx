@@ -222,23 +222,28 @@ export default function Home({ setActiveTab }: HomeProps) {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              { title: 'Optimización energética en museos con IA', org: 'Generalitat Valenciana (CEICE)', level: 'FP', sector: 'Energy and Environment', status: 'Abierto' },
-              { title: 'Detección de plagas en cítricos vía Computer Vision', org: 'AVA-ASAJA Cooperativa', level: 'Máster', sector: 'Agrifood', status: 'En Resolución' },
-              { title: 'IA en triaje de urgencias pediátricas', org: 'Hospital La Fe – Valencia', level: 'Máster', sector: 'Non-Touristic Services', status: 'Abierto' },
-            ].map((ch, i) => (
-              <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-eu-yellow text-eu-purple' : 'bg-purple-100 text-purple-800'}`}>
-                    Reto {ch.level}
-                  </span>
-                  <span className="text-sm text-eu-teal font-bold">● {ch.status}</span>
+            {(t('home.latestChallengesData') as any || []).map((ch: any, i: number) => {
+              const statusTranslationKey = ch.status === 'Abierto' || ch.status === 'Open' || ch.status === 'Obert'
+                ? 'open'
+                : ch.status === 'En Resolución' || ch.status === 'In Progress'
+                ? 'inProgress'
+                : 'resolved';
+              const statusLabel = t(`marketplace.${statusTranslationKey}`);
+
+              return (
+                <div key={i} className="bg-white rounded-xl border border-eu-border p-5 hover:border-eu-blue transition-colors shadow-sm">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${ch.level === 'FP' ? 'bg-eu-yellow text-eu-purple' : 'bg-purple-100 text-purple-800'}`}>
+                      {t('home.challengeLabel')} {ch.level}
+                    </span>
+                    <span className="text-sm text-eu-teal font-bold">● {statusLabel}</span>
+                  </div>
+                  <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
+                  <p className="text-xs text-gray-500 mb-3">{ch.org}</p>
+                  <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{ch.sector}</span>
                 </div>
-                <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug">{ch.title}</h3>
-                <p className="text-xs text-gray-500 mb-3">{ch.org}</p>
-                <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded text-gray-600 font-semibold">{ch.sector}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
