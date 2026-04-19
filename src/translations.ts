@@ -62,7 +62,7 @@ export const translations = {
         isItems: [
           'Track B de AI-SECRETT: comunidad y capa de transferencia',
           'Activación de stakeholders, transferencia FP/VET, formación docente',
-          'Generador de evidencias sectoriales para AI-SECRETT',
+          'Generador de evidencias sectoriales (CEICE) para hitos como el Milestone 14 y entregables D2.2, D4.2 y D6.2 de AI-SECRETT',
         ],
         isNotTitle: 'No es',
         isNotItems: [
@@ -923,7 +923,7 @@ export const translations = {
         isItems: [
           'AI-SECRETT Track B: community and transfer layer',
           'Stakeholder activation, VET/FP transfer, teacher training, sectoral evidence',
-          'Evidence generator for AI-SECRETT consortium',
+          'Sectoral evidence generator (CEICE) for milestones such as Milestone 14 and AI-SECRETT deliverables D2.2, D4.2 and D6.2',
         ],
         isNotTitle: 'Is not',
         isNotItems: [
@@ -1792,7 +1792,7 @@ export const translations = {
         isItems: [
           'Track B d\'AI-SECRETT: comunitat i capa de transferència',
           'Activació de stakeholders, transferència FP/VET, formació docent, evidència sectorial',
-          'Generador d\'evidències sectoriales per a AI-SECRETT',
+          'Generador d\'evidències sectorials (CEICE) per a fites com el Milestone 14 i lliurables D2.2, D4.2 i D6.2 d\'AI-SECRETT',
         ],
         isNotTitle: 'No és',
         isNotItems: [
