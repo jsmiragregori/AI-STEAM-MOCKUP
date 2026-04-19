@@ -8,7 +8,26 @@
       "Bash(python3 -c ' *)",
       "Bash(wc -l d:/Github/AI-STEAM-MOCKUP/src/components/views/*.tsx d:/Github/AI-STEAM-MOCKUP/src/components/*.tsx)",
       "Bash(npm run *)",
-      "Bash(wc -l src/components/**/*.tsx)"
+      "Bash(wc -l src/components/**/*.tsx)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"mobile hamburger menu navigation responsive\" --stack react -n 5)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"responsive button mobile touch target sizing\" --stack react -n 3)",
+      "Read(//d/Núvol/OneDrive - Conselleria d'Educací/Curs 2025-2026/Projectes/**)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"mobile layout compact buttons small screen padding\" --stack react -n 5)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"mobile header navigation button visibility breakpoints\" --stack react)",
+      "Bash(git reset *)",
+      "Bash(git commit -m ' *)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"mobile navigation hamburger menu responsive header layout\" --stack react -n 10)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"responsive breakpoints flexbox grid layout mobile desktop\" --domain style -n 8)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"contrast accessibility WCAG color buttons dark background visibility\" --domain ux -n 5)",
+      "Bash(git commit -m 'fix: Improve button contrast in mobile menu for WCAG compliance *)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"mobile menu dropdown selectors language switcher navigation\" --domain ux)",
+      "Bash(git commit -m 'refactor: Move language selector to mobile menu dropdown *)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"navigation wrapping responsive horizontal menu overflow\" --domain ux)",
+      "Bash(git commit -m 'fix: Eliminate horizontal scroll by reorganizing breakpoints *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'fix: Improve language selector in mobile menu *)",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"hover states interaction feedback menu items visual feedback transitions\" --domain ux -n 5)",
+      "Bash(git commit -m 'feat: Improve hover and active states for menu items in mobile dropdown *)"
     ]
   }
 }
