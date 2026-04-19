@@ -1,7 +1,7 @@
 # Guía de Contexto - AI-STEAM Mockup
 
-**Última actualización:** 2026-04-19 (Sesión cerrada - Prompt 5 completado y gobernanza refinada)  
-**Estado:** ✅ Reestructuración Track B avanzada - Training, Sectors y Governance alineados con AI-STEAM Network
+**Última actualización:** 2026-04-19 (Sesión finalizada - Mockup completado y merge a main)  
+**Estado:** ✅ Proyecto Mockup y Reestructuración Finalizados (ES, VA, EN)
 
 ---
 
@@ -132,7 +132,7 @@ es: {
 
 ---
 
-## ✅ Reestructuración Track B - COMPLETADA / AVANZADA (Sesión 2026-04-19)
+## ✅ Reestructuración Track B y QA Final - COMPLETADA (Sesión 2026-04-19)
 
 **Prompts ejecutados:**
 
@@ -250,15 +250,28 @@ es: {
 
 ---
 
+### Prompt 6: Conocimiento, Actualidad y Etiquetado Editorial (COMPLETADO)
+- ✅ Inclusión de noticia oficial (GVA) de lanzamiento del proyecto AI-SECRETT con 7,2 M€ de financiación.
+- ✅ Reestructuración del JSON en `translations.ts` para arreglar corrupción en bloque VA (mismatch de llaves y contenidos fantasma).
+- ✅ Cambio de titular a "dotado con" / "dotat amb" / "endowed with" para mayor precisión.
+
+### Prompt 7: Revisión Final de Coherencia, Copy y Datos Dummy (COMPLETADO)
+- ✅ Modificado el hero description (isItems) en la Home para referenciar hitos precisos: "Generador de evidencias sectoriales (CEICE) para hitos como el Milestone 14 y entregables D2.2, D4.2 y D6.2 de AI-SECRETT".
+- ✅ Verificación de build (`npm run build`) exitosa (Exit code 0).
+- ✅ Merge de la rama `reestructuracion-proyecto` hacia `main` e integración total de todas las fases.
+- ✅ Generado informe de QA final en `QA_FINAL_REVIEW.md`.
+
+**Commits de esta sesión (Finalización):**
+- `172f543`: Actualización de titular de noticia oficial (GVA) y sincronización multilingüe
+- `5aca7b3`: QA Final: Inserción de referencias explícitas a hitos (Milestone 14) y entregables D2.2, D4.2, D6.2
+- `66b4a2a`: QA Final: Añadido informe de revisión final en markdown
+- Integración final (`git merge`) en `main` y subida limpia al remoto (origin).
+
+---
+
 ## 📋 Prompts Pendientes para Próxima Sesión
 
-Quedan 2 prompts por ejecutar (en orden):
-
-### Prompt 6 - Conocimiento, Actualidad y Etiquetado Editorial
-Restructuring: Knowledge section (OER flow, badge wall, success cases), News/Actualidad section (event types, institutional news), Editorial tagging (editorial policy, content labeling).
-
-### Prompt 7 - Revisión Final de Coherencia, Copy y Datos Dummy
-Final review: narrative coherence across all pages, copy consistency, dummy data labeling, performance/accessibility check, i18n completeness.
+✅ **No quedan prompts pendientes.** Todo el *PROMPTS_MOCKUP_AI_STEAM_NETWORK.md* ha sido ejecutado.
 
 **Location:** `PROMPTS_MOCKUP_AI_STEAM_NETWORK.md`
 
@@ -267,9 +280,7 @@ Final review: narrative coherence across all pages, copy consistency, dummy data
 ## 🔄 Instrucciones para Futuras Sesiones
 
 1. Lee este archivo (CLAUDE.md) primero para contexto rápido
-2. Lee la tabla de cambios en `PROMPTS_MOCKUP_AI_STEAM_NETWORK.md` para ver qué prompts quedan
-3. Los commits recientes están en rama `reestructuracion-proyecto`
-4. Todas las traducciones multilingües están integradas (ES, EN, VA)
-5. El sistema de transferencia AI-SECRETT está ahora más explícito en Training y Sectors
-6. En Governance, mantener siempre la separación: CEICE/Track B informa necesidades y gestiona comunidad; UVEG/Track A decide currículo, ECTS y evaluación del Máster
-7. Evitar bloques centrados en deliverables AI-SECRETT si no aportan directamente a explicar la AI-STEAM Network
+2. El proyecto se encuentra actualmente en la rama `main` y está limpio y consolidado.
+3. Todas las traducciones multilingües están integradas (ES, EN, VA) en `src/translations.ts`. Si dicho fichero crece mucho, modularizar.
+4. El sistema de transferencia AI-SECRETT es claro ("Track A vs Track B"). Respetar los límites si se agregan nuevos copys en el futuro.
+5. El Mockup es seguro para demostraciones a terceros y stakeholders. Revisar anchos muy pequeños (<360px) en producciones reales.
