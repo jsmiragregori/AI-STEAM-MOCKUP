@@ -1,7 +1,7 @@
 # Guía de Contexto - AI-STEAM Mockup
 
-**Última actualización:** 2026-04-19 (Sesión cerrada - Prompts 3 y 4 completados)  
-**Estado:** ✅ Reestructuración Track B completa - Training (3 pathways) y Sectors (transfer map) implementados
+**Última actualización:** 2026-04-19 (Sesión cerrada - Prompt 5 completado y gobernanza refinada)  
+**Estado:** ✅ Reestructuración Track B avanzada - Training, Sectors y Governance alineados con AI-STEAM Network
 
 ---
 
@@ -91,7 +91,7 @@ const t = languageContext?.translations[language]?.marketplace || {};
 |-----------|---------|--------|----------|
 | Marketplace (Banco de Retos) | `src/components/views/Marketplace.tsx` | ✅ Completo | Deadline label, team singular/plural |
 | ChallengeDetail (Detalles de Retos) | `src/components/views/ChallengeDetail.tsx` | ✅ Completo | All challenge details translated |
-| Governance (Gobernanza) | `src/components/views/Governance.tsx` | ✅ Completo | All governance sections translated |
+| Governance (Gobernanza) | `src/components/views/Governance.tsx` | ✅ Completo (2026-04-19) | Dual Track, ENRED, límites de responsabilidad y flujo operativo |
 | News (Actualidad) | `src/components/views/News.tsx` | ✅ Completo | Event type translations (Presencial, Online, Híbrido) |
 | Training (Formación) | `src/components/views/Training.tsx` | ✅ Completo (2026-04-19) | 3 tabs: FP/VET, Teacher Training, Master Bridge |
 | Home | `src/components/views/Home.tsx` | ✅ Completo | All home sections translated |
@@ -132,7 +132,7 @@ es: {
 
 ---
 
-## ✅ Reestructuración Track B - COMPLETADA (Sesión 2026-04-19)
+## ✅ Reestructuración Track B - COMPLETADA / AVANZADA (Sesión 2026-04-19)
 
 **Prompts ejecutados:**
 
@@ -160,11 +160,40 @@ es: {
 - ✅ Mark stats as demo: Retos (demo), Skills FP/VET (demo)
 - ✅ All 3 languages (ES, EN, VA) fully translated
 
+### Ajustes de copy Home/Sectors: "Retos y casos"
+- ✅ Hero Home: `home.stats.totalChallenges` cambiado a "Retos y Casos" / "Challenges & Cases" / "Reptes i Casos"
+- ✅ Sectors: contador superior y tarjetas cambiado a "Retos y casos" / "Challenges & cases" / "Reptes i casos"
+- ✅ Eliminado "(demo)" visible de contadores de Sectores y de Skills FP/VET en estadísticas superiores
+- ✅ Commit: `68eb3e1` - `Update challenges and cases labels`
+
+### Prompt 5: Gobernanza, Track Boundaries y AI-STEAM Network
+- ✅ Governance refinada para presentación a socios, centrada en la AI-STEAM Network y no en obligaciones administrativas puras de AI-SECRETT
+- ✅ Añadido bloque "Data and responsibility boundaries":
+  - CEICE: datos de miembros, participación comunitaria, ENRED/AI-STEAM, retos/casos y evidencias Track B
+  - UVEG/socios académicos: expedientes, evaluación del Máster, criterios docentes, ECTS y decisiones curriculares Track A
+  - ConsensUE/Decidim: participación, deliberación, votaciones y trazabilidad
+  - Aules/PortalEdu: entornos de aprendizaje/recursos según responsable de actividad
+- ✅ Añadido "Operating flow":
+  - Input stakeholder/ENRED/centro → clasificación → validación → actividad/recurso/piloto → evidencia → seguimiento
+- ✅ Reforzado ENRED como base institucional previa y AI-STEAM como evolución temática dentro de AI-SECRETT
+- ✅ Corregidos textos conflictivos:
+  - "co-diseñar currículo" → "informar necesidades, validar relevancia y contribuir casos/retos"
+  - CEICE/Track B no decide ECTS, evaluación ni currículo del Máster
+  - Aules se describe como entorno de aprendizaje; la evaluación y ECTS del Máster quedan bajo Track A
+- ✅ Se eliminó el dashboard "Evidence for CEICE deliverables" porque confundía el foco: era demasiado AI-SECRETT administrativo y aportaba poco a AI-STEAM Network
+- ✅ Subtítulo de ConsensUE cambiado:
+  - "Plataforma Decidim" → "Plataforma ConsensUE" (ES/VA)
+  - "Decidim Platform" → "ConsensUE Platform" (EN)
+- ✅ Build verificado con `npm run build`
+- ✅ Commit: `f165982` - `Refine governance terminology and track boundaries`
+
 **Commits de esta sesión (2026-04-19):**
 - `bc81227`: feat: Complete Prompt 3 - Restructure Training into 3 pathway tabs
 - `4264f1b`: fix: Master course cards layout and link
 - `08d416e`: fix: Move Track A badge inside master course cards, remove UVEG text
 - `789a020`: feat(Prompt 4): Realign Sectors as AI-SECRETT transfer map
+- `68eb3e1`: Update challenges and cases labels
+- `f165982`: Refine governance terminology and track boundaries
 
 ---
 
@@ -223,10 +252,7 @@ es: {
 
 ## 📋 Prompts Pendientes para Próxima Sesión
 
-Quedan 3 prompts por ejecutar (en orden):
-
-### Prompt 5 - Gobernanza, Evidencias y Entregables CEICE
-Restructuring: Governance view (WPs, role-based governance, decision flows), Evidence framework (triple transition indicators, maturity levels), CEICE deliverables alignment.
+Quedan 2 prompts por ejecutar (en orden):
 
 ### Prompt 6 - Conocimiento, Actualidad y Etiquetado Editorial
 Restructuring: Knowledge section (OER flow, badge wall, success cases), News/Actualidad section (event types, institutional news), Editorial tagging (editorial policy, content labeling).
@@ -245,3 +271,5 @@ Final review: narrative coherence across all pages, copy consistency, dummy data
 3. Los commits recientes están en rama `reestructuracion-proyecto`
 4. Todas las traducciones multilingües están integradas (ES, EN, VA)
 5. El sistema de transferencia AI-SECRETT está ahora más explícito en Training y Sectors
+6. En Governance, mantener siempre la separación: CEICE/Track B informa necesidades y gestiona comunidad; UVEG/Track A decide currículo, ECTS y evaluación del Máster
+7. Evitar bloques centrados en deliverables AI-SECRETT si no aportan directamente a explicar la AI-STEAM Network
