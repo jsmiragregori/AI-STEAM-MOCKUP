@@ -118,7 +118,7 @@ export default function Sectors() {
                 <div className="hidden sm:flex items-center gap-6 shrink-0">
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-teal">{sector.challenges}</p>
-                    <p className="text-xs text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.challenges} <span className="text-gray-400 normal-case font-normal">(demo)</span></p>
+                    <p className="text-xs text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.challenges}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-eu-blue">{sector.partners}</p>
@@ -126,7 +126,7 @@ export default function Sectors() {
                   </div>
                   <div className="text-center">
                     <p className="text-xl font-extrabold text-purple-600">{sector.stakeholders}</p>
-                    <p className="text-xs text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.stakeholders} <span className="text-gray-400 normal-case font-normal">(demo)</span></p>
+                    <p className="text-xs text-gray-500 uppercase font-semibold">{sectorsT?.sectorLabels?.stakeholders}</p>
                   </div>
                 </div>
                 {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />}
