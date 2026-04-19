@@ -83,15 +83,18 @@ export default function Training() {
     return labels?.[sector] || sector;
   };
 
-  const CourseCard = ({ course }: { course: Course; key?: string }) => {
-    const isMaster = course.level === 'Máster';
+  const CourseCard = ({ course, isMaster: isMasterProp }: { course: Course; key?: string; isMaster?: boolean }) => {
+    const isMaster = isMasterProp || course.level === 'Máster';
     return (
       <div className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col overflow-hidden hover:border-eu-blue transition-colors">
         <div className="p-5 flex-1">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-extrabold uppercase px-2 py-0.5 rounded bg-eu-yellow text-eu-purple">
-              {getLevelLabel(course.level)}
-            </span>
+          <div className="flex items-center justify-between mb-3 gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-extrabold uppercase px-2 py-0.5 rounded bg-eu-yellow text-eu-purple">
+                {getLevelLabel(course.level)}
+              </span>
+              {isMaster && <span className="text-xs bg-purple-600 text-white px-2 py-0.5 rounded font-bold">Track A</span>}
+            </div>
             <span className={`text-sm font-bold px-2 py-0.5 rounded ${getStatusColor(course.status)}`}>
               {getStatusLabel(course.status)}
             </span>
@@ -282,11 +285,8 @@ export default function Training() {
             {/* Master-level course cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
               {masterCourses.map((course) => (
-                <div key={course.id} className="relative">
-                  <div className="absolute top-2 right-2 z-10">
-                    <span className="text-xs bg-purple-600 text-white px-2 py-0.5 rounded font-bold">Track A · UVEG</span>
-                  </div>
-                  <CourseCard course={course} />
+                <div key={course.id}>
+                  <CourseCard course={course} isMaster={true} />
                 </div>
               ))}
             </div>
