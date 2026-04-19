@@ -328,6 +328,22 @@ export default function Governance() {
                 </div>
               </div>
 
+              {/* Límites de datos y responsabilidad */}
+              <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
+                <h3 className="font-bold text-eu-text mb-2 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-eu-orange" /> {(t.tabContent_dualtrack as any)?.responsibilityBoundaries?.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-5">{(t.tabContent_dualtrack as any)?.responsibilityBoundaries?.desc}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                  {((t.tabContent_dualtrack as any)?.responsibilityBoundaries?.items || []).map((item: any) => (
+                    <div key={item.owner} className="rounded-xl border border-eu-border bg-eu-bg p-5">
+                      <p className="text-xs font-extrabold uppercase text-eu-blue mb-1">{item.owner}</p>
+                      <p className="text-sm text-gray-700">{item.scope}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Acuerdo de Colaboración */}
               <div className="bg-eu-bg rounded-xl border border-eu-border p-6">
                 <h3 className="font-bold text-eu-text mb-3 flex items-center gap-2">
@@ -400,6 +416,25 @@ export default function Governance() {
                     </div>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Flujo operativo */}
+              <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
+                <h3 className="font-bold text-eu-text mb-2 flex items-center gap-2">
+                  <ArrowRight className="w-5 h-5 text-eu-teal" /> {(t.tabContent_lbd as any)?.operatingFlow?.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-5">{(t.tabContent_lbd as any)?.operatingFlow?.desc}</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-3">
+                  {((t.tabContent_lbd as any)?.operatingFlow?.steps || []).map((step: any, i: number) => (
+                    <div key={step.title} className="relative rounded-xl border border-eu-border bg-eu-bg p-4">
+                      <div className="w-8 h-8 rounded-lg bg-eu-blue text-white flex items-center justify-center font-extrabold text-sm mb-3">
+                        {i + 1}
+                      </div>
+                      <p className="text-sm font-bold text-eu-text mb-1">{step.title}</p>
+                      <p className="text-xs text-gray-600 leading-relaxed">{step.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 

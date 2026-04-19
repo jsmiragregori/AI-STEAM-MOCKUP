@@ -54,7 +54,7 @@ export const translations = {
       platforms: {
         aules: { name: 'Aules', subtitle: 'LMS · Moodle', desc: 'Cursos, módulos de FP y máster, formación docente y contenidos OER del proyecto.', tag: 'Formación' },
         network: { name: 'AI-STEAM Network', subtitle: 'CMS · Este portal', desc: 'Repositorio de retos, socios, conocimiento y recursos para nutrir el máster y la FP de CEICE.', tag: 'Red de Conocimiento' },
-        consensUE: { name: 'ConsensUE', subtitle: 'Participación · Decidim', desc: 'Democracia y participación: propuestas, votaciones y co-diseño del currículo con la ciudadanía.', tag: 'Participación' },
+        consensUE: { name: 'ConsensUE', subtitle: 'Participación · Decidim', desc: 'Democracia y participación: propuestas, votaciones y validación de relevancia de necesidades, casos y retos.', tag: 'Participación' },
       },
       isNotBlock: {
         heading: '¿Qué es y qué no es esta red?',
@@ -374,7 +374,7 @@ export const translations = {
       ],
       aulesPlatform: 'Los recursos OER se publican como módulos en Aules, accesibles para alumnos de FP y del Máster.',
       networkPlatform: 'Este portal centraliza los retos, el repositorio OER y los casos de éxito para toda la red.',
-      consensuePlatform: 'La comunidad vota qué retos y recursos son prioritarios para nutrir el currículo del siguiente curso.',
+      consensuePlatform: 'La comunidad vota qué retos y recursos son prioritarios para informar necesidades formativas y posibles actividades.',
       // OER section
       oerTitle: 'Repositorio de Recursos Educativos Abiertos',
       oerDesc: 'Todos los recursos están bajo licencias Creative Commons y disponibles en Aules.',
@@ -479,7 +479,7 @@ export const translations = {
         { id: 'sc', name: 'Comité Directivo', abbr: 'SC', type: 'Órgano ejecutivo', freq: 'Trimestral', quorum: 'Mayoría simple', members: 'UVEG (coord.), UMU, CEICE, TUV.IT, LC', desc: 'Gestión operativa del proyecto. Supervisa el plan de trabajo, aprueba los informes internos y coordina la coherencia entre Track A (Académico) y Track B (Ecosistema).', color: 'border-eu-teal bg-eu-blue/10', iconColor: 'text-eu-teal' },
         { id: 'ab', name: 'Consejo Asesor', abbr: 'AB', type: 'Órgano consultivo', freq: 'Semestral', quorum: '—', members: 'Expertos externos independientes', desc: 'Orientación estratégica externa. Evaluación de calidad científica, pertinencia sectorial y alineamiento con las políticas europeas de IA, Educación y el AI Act.', color: 'border-purple-600 bg-purple-50', iconColor: 'text-purple-700' },
         { id: 'scc', name: 'Comité Científico', abbr: 'SCC', type: 'Órgano de validación (Track A)', freq: 'Bajo demanda', quorum: '3 revisores mínimo', members: 'Investigadores senior: UVEG, UMU, NTNU, INESC, Ud\'A', desc: 'Valida la calidad académica del Máster AI-SECRETT, los módulos ECTS y los recursos OER. Transforma los retos del ecosistema en materiales didácticos dentro del Track Académico.', color: 'border-indigo-600 bg-indigo-50', iconColor: 'text-indigo-700' },
-        { id: 'sn', name: 'Red de Stakeholders', abbr: 'SN', type: 'Órgano participativo (Track B)', freq: 'Semestral + Online continua', quorum: 'Participación abierta', members: 'Todos los stakeholders adheridos mediante Acuerdo de Colaboración', desc: 'Órgano participativo del Track B. Stakeholders proponen retos, votan prioridades y co-diseñan el currículo vía ConsensUE. CEICE actúa como Orquestadora de este espacio.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
+        { id: 'sn', name: 'Red de Stakeholders', abbr: 'SN', type: 'Órgano participativo (Track B)', freq: 'Semestral + Online continua', quorum: 'Participación abierta', members: 'Todos los stakeholders adheridos mediante Acuerdo de Colaboración', desc: 'Órgano participativo del Track B. Stakeholders informan necesidades, validan relevancia y aportan casos o retos vía ConsensUE. CEICE actúa como Orquestadora de este espacio.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
         { id: 'sb', name: 'Junta Estratégica', abbr: 'SB', type: 'Enlace institucional', freq: 'Anual', quorum: 'Unanimidad', members: 'CEICE, LC, KEA, Lisbon Council', desc: 'Alineación con políticas europeas (Digital Decade, AI Act, EPALE) y con las prioridades de la Generalitat Valenciana. Coordina con ENRED (Red Europea de Departamentos de Educación Regional).', color: 'border-gray-600 bg-gray-50', iconColor: 'text-gray-700' },
       ],
       // Transparency Documents
@@ -539,6 +539,16 @@ export const translations = {
             items: ['Expedientes académicos y calificaciones', 'Exámenes y actividades de evaluación', 'Materiales docentes del Máster AI-SECRETT', 'Datos personales de estudiantes (protegidos por reglamento universitario)', 'Gestión de ECTS y micro-credenciales'],
           },
         },
+        responsibilityBoundaries: {
+          title: 'Límites de datos y responsabilidad',
+          desc: 'Cada plataforma conserva su responsabilidad operativa. La AI-STEAM Network protege los compromisos CEICE en Track B sin invadir decisiones académicas del Máster.',
+          items: [
+            { owner: 'CEICE', scope: 'Datos de miembros, participación comunitaria, red ENRED/AI-STEAM, retos/casos y evidencias Track B.' },
+            { owner: 'UVEG y socios académicos', scope: 'Expedientes académicos, evaluación del Máster, criterios docentes, ECTS y decisiones curriculares Track A.' },
+            { owner: 'ConsensUE / Decidim', scope: 'Participación, deliberaciones, debates, votaciones y trazabilidad de aportaciones comunitarias.' },
+            { owner: 'Aules / PortalEdu', scope: 'Entornos de aprendizaje y publicación de recursos cuando aplique, según el responsable de cada actividad.' },
+          ],
+        },
         agreement: {
           title: 'Acuerdo de Colaboración – Regla de Gasto Cero',
           desc: 'La adhesión al Track B (Espacio Ecosistema) se formaliza mediante el Acuerdo de Colaboración, que establece los siguientes principios:',
@@ -563,8 +573,8 @@ export const translations = {
             platform: 'ConsensUE + AI-STEAM Network',
             title: 'Input: Retos y Casos de Uso',
             actor: 'Organizaciones de la red (empresas, administraciones, ONGs)',
-            desc: 'Los miembros del ecosistema aportan retos y casos de uso reales a través de ConsensUE. La Red de Stakeholders (SN), con CEICE como orquestadora con voz principal, valida colectivamente su relevancia mediante el proceso participativo de ConsensUE y los publica en el Banco de Retos de AI-STEAM Network.',
-            outputs: ['Reto publicado con descripción del problema', 'Datos y recursos disponibles para el equipo', 'Plazo y criterios de éxito definidos'],
+            desc: 'Los miembros del ecosistema aportan necesidades, retos y casos de uso a través de ConsensUE. La Red de Stakeholders (SN), con CEICE como orquestadora, valida su relevancia Track B y los clasifica para actividades, recursos, pilotos o posible revisión académica por Track A.',
+            outputs: ['Reto o caso registrado', 'Necesidad y sector clasificados', 'Ruta de tratamiento propuesta'],
           },
           {
             step: '2',
@@ -572,8 +582,8 @@ export const translations = {
             platform: 'Comité Científico + UVEG',
             title: 'Procesamiento Académico',
             actor: 'Comité Científico + Equipo docente UVEG/Laurea',
-            desc: 'El Comité Científico transforma el reto en material didáctico o en una propuesta de TFM (Trabajo de Fin de Máster). Se asigna a estudiantes del Máster AI-SECRETT como parte de su evaluación oficial con créditos ECTS.',
-            outputs: ['Reto convertido en TFM o módulo de proyecto', 'ECTS asignados al estudiante', 'Mentoría académica e industrial coordinada'],
+            desc: 'Cuando una contribución se considera académicamente pertinente, UVEG y los socios académicos deciden si se convierte en material, actividad o propuesta de trabajo dentro del Track A. La AI-STEAM Network no asigna ECTS ni evalúa al alumnado del Máster.',
+            outputs: ['Revisión académica por Track A', 'Decisión docente documentada', 'Mentoría académica coordinada si procede'],
           },
           {
             step: '3',
@@ -582,15 +592,27 @@ export const translations = {
             title: 'Output: Beneficio Triple',
             actor: 'Organización proponente + Estudiante + Red AI-STEAM',
             desc: 'Al completar el reto, cada parte recibe su beneficio específico. Si el resultado no es confidencial, se publica como caso de éxito en la sección de Conocimiento para visibilidad europea.',
-            outputs: ['Empresa: solución prototipada o informe de viabilidad', 'Estudiante: ECTS + micro-credencial Open Badge 3.0', 'Red: caso de éxito publicado con visibilidad EU'],
+            outputs: ['Organización: prototipo o informe de viabilidad', 'Track A: evaluación gestionada por UVEG si aplica', 'Red: evidencia o caso publicado si procede'],
           },
         ],
+        operatingFlow: {
+          title: 'Flujo operativo de Track B a evidencias',
+          desc: 'El recorrido muestra cómo CEICE puede convertir participación de red en evidencias auditables sin presentar indicadores demo como resultados reales.',
+          steps: [
+            { title: 'Input', desc: 'Stakeholder, ENRED o centro educativo aporta una necesidad, caso o propuesta.' },
+            { title: 'Clasificación', desc: 'Se clasifica por sector AI-SECRETT y ruta: FP/VET, docente, recurso, piloto o puente académico.' },
+            { title: 'Validación', desc: 'La relevancia se contrasta en Track B y, si procede, se deriva a órganos académicos Track A.' },
+            { title: 'Actividad', desc: 'Se genera actividad, recurso OER, debate, piloto o caso documentado.' },
+            { title: 'Evidencia', desc: 'Se registran indicadores, trazas ConsensUE, recursos, encuestas y participación.' },
+            { title: 'Seguimiento', desc: 'La evidencia alimenta la mejora continua y el relato público de evolución de la red.' },
+          ],
+        },
         platformsTitle: 'Las tres plataformas en el flujo LbD',
         platformsDesc: 'Cada plataforma tiene un rol específico y una autoridad responsable. El contenido fluye unidireccionalmente del ecosistema al aprendizaje.',
         platforms: [
-          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE (Orquestadora)', role: 'Participación democrática', desc: 'Punto de entrada de propuestas. Deliberación comunitaria, votación de prioridades y co-diseño del currículo.' },
+          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE (Orquestadora)', role: 'Participación democrática', desc: 'Punto de entrada de propuestas. Deliberación comunitaria, votación de prioridades y validación de relevancia de necesidades, casos y retos.' },
           { name: 'AI-STEAM Network', tech: 'Portal web', track: 'Track A + B', owner: 'CEICE + UVEG', role: 'Validación y repositorio', desc: 'Banco de Retos validados, Conocimiento OER, directorio de la red. Punto de encuentro de los dos Tracks.' },
-          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A', owner: 'CEICE (infra) + UVEG (contenido)', role: 'Entrega formativa', desc: 'Módulos del Máster AI-SECRETT y FP, gestión de ECTS, emisión de micro-credenciales Open Badge 3.0.' },
+          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A + entornos CEICE', owner: 'UVEG/CEICE según actividad', role: 'Entrega formativa', desc: 'Entorno de aprendizaje para actividades del Máster, FP/VET o formación docente. La evaluación y los ECTS del Máster permanecen bajo Track A.' },
         ],
       },
       // Tab Content - Estructura y Órganos
@@ -625,7 +647,7 @@ export const translations = {
         iso21001Title: 'ISO 21001 – Gestión Educativa',
         iso21001Desc: 'El consorcio opera bajo ISO 21001 (EOMS), coordinado por UVEG. Garantiza que los procedimientos formativos estén orientados a las necesidades de estudiantes y partes interesadas, con trazabilidad y auditabilidad plena.',
         enredTitle: 'ENRED – Red Europea de Departamentos de Educación',
-        enredDesc: 'La Generalitat Valenciana actúa como puente institucional entre AI-SECRETT y ENRED, facilitando la cooperación entre autoridades de educación regional europeas y conectando la red con el marco de gobernanza educativa de la UE.',
+        enredDesc: 'ENRED es la base institucional previa. AI-STEAM es su evolución temática dentro de AI-SECRETT: aporta cooperación educativa regional, aprendizaje entre pares y legitimidad institucional para movilizar centros, docentes y administraciones.',
       },
       // Tab Content - Documentación
       tabContent_documentos: {
@@ -642,7 +664,7 @@ export const translations = {
         stakeholderBenefitsLabel: 'Como stakeholder podrás:',
         stakeholderBenefits: [
           'Proponer retos reales al Banco de Retos vía ConsensUE',
-          'Votar prioridades temáticas y co-diseñar el currículo',
+          'Informar necesidades, validar relevancia y contribuir casos o retos',
           'Acceder al repositorio de recursos OER y casos de éxito',
           'Participar en grupos de trabajo sectoriales',
           'Recibir soluciones prototipadas de equipos del Máster AI-SECRETT',
@@ -651,7 +673,7 @@ export const translations = {
         stakeholderWarning: 'Los stakeholders operan exclusivamente en el Track B. No tienen acceso al espacio académico (Aules/Máster) salvo autorización expresa de UVEG.',
         stakeholderButton: 'Solicitar Acuerdo de Colaboración',
         consensueTitle: 'Participa vía ConsensUE',
-        consensueSubtitle: 'Track B · Plataforma Decidim · Democracia Participativa',
+        consensueSubtitle: 'Track B · Plataforma ConsensUE · Democracia Participativa',
         consensueDesc: 'ConsensUE es la plataforma democrática del ecosistema, basada en <strong>Decidim</strong> y gestionada por CEICE. Es el canal principal para que stakeholders y socios del consorcio propongan y debatan contenidos del Track B.',
         consensueGroupStakeholders: 'Para Stakeholders (Track B)',
         consensueActionsStakeholders: [
@@ -741,7 +763,7 @@ export const translations = {
           },
           {
             title: 'Infraestructura de tres plataformas integradas',
-            content: 'El ecosistema se articula sobre tres plataformas tecnológicas complementarias:\n\n• ConsensUE: Una plataforma democrática de participación donde empresas, administraciones e instituciones proponen retos y votan prioridades temáticas del currículo.\n\n• AI-STEAM Network Portal: El banco central de retos validados, recursos educativos abiertos (OER), directorio de stakeholders, y casos de éxito documentados.\n\n• Aules: La plataforma de aprendizaje donde se entregan los módulos del Máster AI-SECRETT, se gestionan los ECTS, y se emiten micro-credenciales Open Badge 3.0 reconocidas internacionalmente.',
+            content: 'El ecosistema se articula sobre tres plataformas tecnológicas complementarias:\n\n• ConsensUE: Una plataforma democrática de participación donde empresas, administraciones e instituciones proponen retos y validan la relevancia de necesidades, casos y contribuciones.\n\n• AI-STEAM Network Portal: El banco central de retos validados, recursos educativos abiertos (OER), directorio de stakeholders, y casos de éxito documentados.\n\n• Aules: La plataforma de aprendizaje donde se entregan actividades formativas según el responsable de cada Track. La evaluación y los ECTS del Máster permanecen bajo Track A.',
           },
           {
             title: 'Siete sectores estratégicos de la economía europea',
@@ -865,7 +887,7 @@ export const translations = {
       stats: { stakeholders: 'Stakeholders', totalChallenges: 'Challenges & Cases', consortiumMembers: 'Consortium Members', microCredentials: 'Micro-credentials', countries: 'Countries', trainingModules: 'Training Modules' },
       ecosystem: 'The AI-STEAM Ecosystem',
       ecosystemDesc: 'Three complementary platforms for a unique knowledge and educational innovation network in Europe.',
-      platforms: { aules: { name: 'Aules', subtitle: 'LMS · Moodle', desc: 'Courses, VET and master modules, teacher training and project OER content.', tag: 'Training' }, network: { name: 'AI-STEAM Network', subtitle: 'CMS · This portal', desc: 'Repository of challenges, partners, knowledge and resources to feed the master and CEICE VET programs.', tag: 'Knowledge Network' }, consensUE: { name: 'ConsensUE', subtitle: 'Participation · Decidim', desc: 'Democracy and participation: proposals, voting and co-design of curriculum with citizens.', tag: 'Participation' } },
+      platforms: { aules: { name: 'Aules', subtitle: 'LMS · Moodle', desc: 'Courses, VET and master modules, teacher training and project OER content.', tag: 'Training' }, network: { name: 'AI-STEAM Network', subtitle: 'CMS · This portal', desc: 'Repository of challenges, partners, knowledge and resources to feed the master and CEICE VET programs.', tag: 'Knowledge Network' }, consensUE: { name: 'ConsensUE', subtitle: 'Participation · Decidim', desc: 'Democracy and participation: proposals, voting and relevance validation of needs, cases and challenges.', tag: 'Participation' } },
       isNotBlock: {
         heading: 'What this network is — and is not',
         isTitle: 'Is',
@@ -1184,7 +1206,7 @@ export const translations = {
       ],
       aulesPlatform: 'OER resources are published as modules in Aules, accessible to VET and Master students.',
       networkPlatform: 'This portal centralizes challenges, the OER repository and success cases for the entire network.',
-      consensuePlatform: 'The community votes on which challenges and resources are priorities to feed next year\'s curriculum.',
+      consensuePlatform: 'The community votes on which challenges and resources are priorities to inform training needs and possible activities.',
       // OER section
       oerTitle: 'Open Educational Resources Repository',
       oerDesc: 'All resources are under Creative Commons licenses and available in Aules.',
@@ -1289,7 +1311,7 @@ export const translations = {
         { id: 'sc', name: 'Steering Committee', abbr: 'SC', type: 'Executive body', freq: 'Quarterly', quorum: 'Simple majority', members: 'UVEG (coord.), UMU, CEICE, TUV.IT, LC', desc: 'Operational management of the project. Supervises the work plan, approves internal reports, and coordinates coherence between Track A (Academic) and Track B (Ecosystem).', color: 'border-eu-teal bg-eu-blue/10', iconColor: 'text-eu-teal' },
         { id: 'ab', name: 'Advisory Board', abbr: 'AB', type: 'Consultative body', freq: 'Biannual', quorum: '—', members: 'Independent external experts', desc: 'External strategic guidance. Evaluation of scientific quality, sectoral relevance, and alignment with European AI, Education policies and the AI Act.', color: 'border-purple-600 bg-purple-50', iconColor: 'text-purple-700' },
         { id: 'scc', name: 'Scientific Committee', abbr: 'SCC', type: 'Validation body (Track A)', freq: 'On demand', quorum: 'Minimum 3 reviewers', members: 'Senior researchers: UVEG, UMU, NTNU, INESC, Ud\'A', desc: 'Validates the academic quality of the Master AI-SECRETT, ECTS modules, and OER resources. Transforms ecosystem challenges into educational materials within the Academic Track.', color: 'border-indigo-600 bg-indigo-50', iconColor: 'text-indigo-700' },
-        { id: 'sn', name: 'Stakeholder Network', abbr: 'SN', type: 'Participatory body (Track B)', freq: 'Biannual + Continuous online', quorum: 'Open participation', members: 'All stakeholders adhered through Collaboration Agreement', desc: 'Participatory body of Track B. Stakeholders propose challenges, vote priorities, and co-design curriculum via ConsensUE. CEICE acts as orchestrator of this space.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
+        { id: 'sn', name: 'Stakeholder Network', abbr: 'SN', type: 'Participatory body (Track B)', freq: 'Biannual + Continuous online', quorum: 'Open participation', members: 'All stakeholders adhered through Collaboration Agreement', desc: 'Participatory body of Track B. Stakeholders inform needs, validate relevance and contribute cases or challenges via ConsensUE. CEICE acts as orchestrator of this space.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
         { id: 'sb', name: 'Strategic Board', abbr: 'SB', type: 'Institutional liaison', freq: 'Annual', quorum: 'Unanimity', members: 'CEICE, LC, KEA, Lisbon Council', desc: 'Alignment with European policies (Digital Decade, AI Act, EPALE) and Generalitat Valenciana priorities. Coordinates with ENRED (European Network of Regional Education Departments).', color: 'border-gray-600 bg-gray-50', iconColor: 'text-gray-700' },
       ],
       // Transparency Documents
@@ -1349,6 +1371,16 @@ export const translations = {
             items: ['Academic records and grades', 'Exams and evaluation activities', 'Master AI-SECRETT teaching materials', 'Student personal data (protected by university regulations)', 'ECTS and micro-credential management'],
           },
         },
+        responsibilityBoundaries: {
+          title: 'Data and responsibility boundaries',
+          desc: 'Each platform keeps its operational responsibility. The AI-STEAM Network protects CEICE commitments in Track B without entering Master academic decisions.',
+          items: [
+            { owner: 'CEICE', scope: 'Member data, community participation, ENRED/AI-STEAM network, challenges/cases and Track B evidence.' },
+            { owner: 'UVEG and academic partners', scope: 'Academic student records, Master evaluation, teaching criteria, ECTS and Track A curriculum decisions.' },
+            { owner: 'ConsensUE / Decidim', scope: 'Participation, deliberations, debates, votes and traceability of community contributions.' },
+            { owner: 'Aules / PortalEdu', scope: 'Learning and resource environments where applicable, according to the responsible owner of each activity.' },
+          ],
+        },
         agreement: {
           title: 'Collaboration Agreement – Zero Cost Rule',
           desc: 'Membership in Track B is formalized through the Collaboration Agreement, which establishes the following principles:',
@@ -1367,16 +1399,28 @@ export const translations = {
         diginetDesc: 'This model replicates the success of DigiNet (Finnish educational network in digital health), adapting it to the context of AI applied to Europe\'s triple transition.',
         cycleTitle: 'The LbD Cycle: From Business to Student and Back',
         phases: [
-          { step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network', title: 'Input: Challenges and Use Cases', actor: 'Network organizations', desc: 'Ecosystem members contribute real challenges through ConsensUE. The Stakeholder Network validates them and publishes them in the Challenge Bank.', outputs: ['Challenge published', 'Data and resources available', 'Deadline and success criteria defined'] },
-          { step: '2', track: 'Track A', platform: 'Scientific Committee + UVEG', title: 'Academic Processing', actor: 'Scientific Committee', desc: 'The Scientific Committee transforms challenges into teaching material or thesis proposals, assigned to Master students with ECTS credits.', outputs: ['Challenge converted to thesis', 'ECTS assigned', 'Academic and industry mentoring'] },
-          { step: '3', track: 'Track B + Track A', platform: 'AI-STEAM Network + Aules', title: 'Output: Triple Benefit', actor: 'Organization + Student + Network', desc: 'Each party receives its specific benefit. Results published as success cases for European visibility.', outputs: ['Company: solution or feasibility report', 'Student: ECTS + micro-credential', 'Network: published success case'] },
+          { step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network', title: 'Input: Challenges and Use Cases', actor: 'Network organizations', desc: 'Ecosystem members contribute needs, challenges and use cases through ConsensUE. The Stakeholder Network, with CEICE as orchestrator, validates Track B relevance and classifies them for activities, resources, pilots or possible academic review by Track A.', outputs: ['Challenge or case registered', 'Need and sector classified', 'Treatment route proposed'] },
+          { step: '2', track: 'Track A', platform: 'Scientific Committee + UVEG', title: 'Academic Processing', actor: 'Scientific Committee + UVEG/Laurea teaching team', desc: 'When a contribution is academically relevant, UVEG and academic partners decide whether it becomes material, an activity or a work proposal within Track A. The AI-STEAM Network does not assign ECTS or evaluate Master students.', outputs: ['Academic review by Track A', 'Teaching decision documented', 'Academic mentoring coordinated where applicable'] },
+          { step: '3', track: 'Track B + Track A', platform: 'AI-STEAM Network + Aules', title: 'Output: Triple Benefit', actor: 'Proposing organization + Student + AI-STEAM Network', desc: 'When work is completed, each party receives its specific benefit. If results are not confidential, they can be published as success cases or evidence records for European visibility.', outputs: ['Organization: prototype or feasibility report', 'Track A: evaluation managed by UVEG where applicable', 'Network: evidence or case published where applicable'] },
         ],
+        operatingFlow: {
+          title: 'Operating flow from Track B to evidence',
+          desc: 'The flow shows how CEICE can turn network participation into auditable evidence without presenting demo indicators as real results.',
+          steps: [
+            { title: 'Input', desc: 'A stakeholder, ENRED or education centre contributes a need, case or proposal.' },
+            { title: 'Classification', desc: 'It is classified by AI-SECRETT sector and route: FP/VET, teacher, resource, pilot or academic bridge.' },
+            { title: 'Validation', desc: 'Relevance is checked in Track B and, where appropriate, routed to Track A academic bodies.' },
+            { title: 'Activity', desc: 'An activity, OER resource, debate, pilot or documented case is produced.' },
+            { title: 'Evidence', desc: 'Indicators, ConsensUE traces, resources, surveys and participation are recorded.' },
+            { title: 'Tracking', desc: 'Evidence feeds continuous improvement and the public story of network evolution.' },
+          ],
+        },
         platformsTitle: 'The Three Platforms in the LbD Flow',
         platformsDesc: 'Each platform has a specific role. Content flows from ecosystem to learning.',
         platforms: [
-          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE', role: 'Democratic Participation', desc: 'Entry point for proposals and curriculum co-design.' },
+          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE', role: 'Democratic Participation', desc: 'Entry point for proposals, community deliberation, priority voting and relevance validation of needs, cases and challenges.' },
           { name: 'AI-STEAM Network', tech: 'Web Portal', track: 'Track A + B', owner: 'CEICE + UVEG', role: 'Validation and Repository', desc: 'Challenge Bank, OER Knowledge, network directory.' },
-          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A', owner: 'CEICE + UVEG', role: 'Training Delivery', desc: 'Master and VET modules, ECTS management, Open Badge issuance.' },
+          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A + CEICE environments', owner: 'UVEG/CEICE by activity', role: 'Training Delivery', desc: 'Learning environment for Master, FP/VET or teacher training activities. Master evaluation and ECTS remain under Track A.' },
         ],
       },
       // Tab Content - Structure and Bodies
@@ -1411,7 +1455,7 @@ export const translations = {
         iso21001Title: 'ISO 21001 – Educational Management',
         iso21001Desc: 'The consortium operates under ISO 21001 (EOMS), coordinated by UVEG. It ensures that training procedures are oriented to the needs of students and stakeholders, with full traceability and auditability.',
         enredTitle: 'ENRED – European Network of Regional Education Departments',
-        enredDesc: 'The Generalitat Valenciana acts as an institutional bridge between AI-SECRETT and ENRED, facilitating cooperation between European regional education authorities and connecting the network with the EU education governance framework.',
+        enredDesc: 'ENRED is the prior institutional base. AI-STEAM is its thematic evolution within AI-SECRETT: it contributes regional education cooperation, peer learning and institutional legitimacy to mobilise centres, teachers and administrations.',
       },
       // Tab Content - Documentation
       tabContent_documentos: {
@@ -1428,7 +1472,7 @@ export const translations = {
         stakeholderBenefitsLabel: 'As a stakeholder you can:',
         stakeholderBenefits: [
           'Propose real challenges to the Challenge Bank via ConsensUE',
-          'Vote on thematic priorities and co-design the curriculum',
+          'Inform needs, validate relevance and contribute cases or challenges',
           'Access the OER resources repository and success cases',
           'Participate in sectorial working groups',
           'Receive prototyped solutions from Master AI-SECRETT teams',
@@ -1437,7 +1481,7 @@ export const translations = {
         stakeholderWarning: 'Stakeholders operate exclusively in Track B. They do not have access to the academic space (Aules/Master) unless expressly authorized by UVEG.',
         stakeholderButton: 'Request Collaboration Agreement',
         consensueTitle: 'Participate via ConsensUE',
-        consensueSubtitle: 'Track B · Decidim Platform · Participatory Democracy',
+        consensueSubtitle: 'Track B · ConsensUE Platform · Participatory Democracy',
         consensueDesc: 'ConsensUE is the ecosystem\'s democratic platform, based on <strong>Decidim</strong> and managed by CEICE. It\'s the main channel for stakeholders and consortium partners to propose and debate Track B content.',
         consensueGroupStakeholders: 'For Stakeholders (Track B)',
         consensueActionsStakeholders: [
@@ -1527,7 +1571,7 @@ export const translations = {
           },
           {
             title: 'Infrastructure of three integrated platforms',
-            content: 'The ecosystem is articulated on three complementary technological platforms:\n\n• ConsensUE: A democratic participation platform where companies, administrations and institutions propose challenges and vote on thematic curriculum priorities.\n\n• AI-STEAM Network Portal: The central bank of validated challenges, open educational resources (OER), stakeholder directory, and documented success cases.\n\n• Aules: The learning platform where Master AI-SECRETT modules are delivered, ECTS are managed, and internationally recognized Open Badge 3.0 micro-credentials are issued.',
+            content: 'The ecosystem is articulated on three complementary technological platforms:\n\n• ConsensUE: A democratic participation platform where companies, administrations and institutions propose challenges and validate the relevance of needs, cases and contributions.\n\n• AI-STEAM Network Portal: The central bank of validated challenges, open educational resources (OER), stakeholder directory, and documented success cases.\n\n• Aules: The learning platform where training activities are delivered according to the responsible Track. Master evaluation and ECTS remain under Track A.',
           },
           {
             title: 'Seven strategic sectors of the European economy',
@@ -1683,7 +1727,7 @@ export const translations = {
       stats: { stakeholders: 'Grups d\'interès', totalChallenges: 'Reptes i Casos', consortiumMembers: 'Membres del Consorci', microCredentials: 'Micro-credencials', countries: 'Països', trainingModules: 'Mòduls Formatius' },
       ecosystem: 'L\'Ecosistema AI-STEAM',
       ecosystemDesc: 'Tres plataformes complementàries per a una xarxa de coneixement i innovació educativa única a Europa.',
-      platforms: { aules: { name: 'Aules', subtitle: 'LMS · Moodle', desc: 'Cursos, mòduls de FP i màster, formació de docents i continguts OER del projecte.', tag: 'Formació' }, network: { name: 'AI-STEAM Network', subtitle: 'CMS · Aquest portal', desc: 'Repositori de reptes, socis, coneixement i recursos per a nutrire el màster i la FP de CEICE.', tag: 'Xarxa de Coneixement' }, consensUE: { name: 'ConsensUE', subtitle: 'Participació · Decidim', desc: 'Democràcia i participació: propostes, votacions i co-disseny del currículum amb la ciutadania.', tag: 'Participació' } },
+      platforms: { aules: { name: 'Aules', subtitle: 'LMS · Moodle', desc: 'Cursos, mòduls de FP i màster, formació de docents i continguts OER del projecte.', tag: 'Formació' }, network: { name: 'AI-STEAM Network', subtitle: 'CMS · Aquest portal', desc: 'Repositori de reptes, socis, coneixement i recursos per a nutrire el màster i la FP de CEICE.', tag: 'Xarxa de Coneixement' }, consensUE: { name: 'ConsensUE', subtitle: 'Participació · Decidim', desc: 'Democràcia i participació: propostes, votacions i validació de rellevància de necessitats, casos i reptes.', tag: 'Participació' } },
       isNotBlock: {
         heading: 'Què és i què no és aquesta xarxa?',
         isTitle: 'És',
@@ -1985,7 +2029,7 @@ export const translations = {
       ],
       aulesPlatform: 'Els recursos OER es publiquen com a mòduls en Aules, accessibles per a alumnes de FP i del Màster.',
       networkPlatform: 'Aquest portal centralitza els reptes, el repositori OER i els casos d\'èxit per a tota la xarxa.',
-      consensuePlatform: 'La comunitat vota quins reptes i recursos són prioritaris per nutrir el currículum del curs següent.',
+      consensuePlatform: 'La comunitat vota quins reptes i recursos són prioritaris per a informar necessitats formatives i possibles activitats.',
       // OER section
       oerTitle: 'Repositori de Recursos Educatius Oberts',
       oerDesc: 'Tots els recursos están sota llicències Creative Commons i disponibles en Aules.',
@@ -2090,7 +2134,7 @@ export const translations = {
         { id: 'sc', name: 'Comité de Direcció', abbr: 'SC', type: 'Òrgan executiu', freq: 'Trimestral', quorum: 'Majoria simple', members: 'UVEG (coord.), UMU, CEICE, TUV.IT, LC', desc: 'Gestió operativa del projecte. Supervisa el pla de treball, aprova els informes interns i coordina la coherència entre Track A (Acadèmic) i Track B (Ecosistema).', color: 'border-eu-teal bg-eu-blue/10', iconColor: 'text-eu-teal' },
         { id: 'ab', name: 'Consell Assessor', abbr: 'AB', type: 'Òrgan consultiu', freq: 'Semestral', quorum: '—', members: 'Experts externs independents', desc: 'Orientació estratègica externa. Avaluació de qualitat científica, pertinença sectorial i alineament amb les polítiques europees d\'IA, Educació i l\'AI Act.', color: 'border-purple-600 bg-purple-50', iconColor: 'text-purple-700' },
         { id: 'scc', name: 'Comité Científic', abbr: 'SCC', type: 'Òrgan de validació (Track A)', freq: 'Sota demanda', quorum: '3 revisors mínim', members: 'Investigadors sènior: UVEG, UMU, NTNU, INESC, Ud\'A', desc: 'Valida la qualitat acadèmica del Màster AI-SECRETT, els mòduls ECTS i els recursos OER. Transforma els reptes de l\'ecosistema en materials didàctics dins del Track Acadèmic.', color: 'border-indigo-600 bg-indigo-50', iconColor: 'text-indigo-700' },
-        { id: 'sn', name: 'Xarxa de Stakeholders', abbr: 'SN', type: 'Òrgan participatiu (Track B)', freq: 'Semestral + Online contínua', quorum: 'Participació oberta', members: 'Tots els stakeholders adherits mitjançant Acord de Col·laboració', desc: 'Òrgan participatiu del Track B. Els stakeholders proposen reptes, voten prioritats i co-dissenyen el currículum via ConsensUE. CEICE actua com Orquestrador d\'este espai.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
+        { id: 'sn', name: 'Xarxa de Stakeholders', abbr: 'SN', type: 'Òrgan participatiu (Track B)', freq: 'Semestral + Online contínua', quorum: 'Participació oberta', members: 'Tots els stakeholders adherits mitjançant Acord de Col·laboració', desc: 'Òrgan participatiu del Track B. Els stakeholders informen necessitats, validen la rellevància i aporten casos o reptes via ConsensUE. CEICE actua com Orquestrador d\'este espai.', color: 'border-eu-orange bg-eu-yellow/60', iconColor: 'text-eu-orange' },
         { id: 'sb', name: 'Junta Estratègica', abbr: 'SB', type: 'Enllaç institucional', freq: 'Anual', quorum: 'Unanimitat', members: 'CEICE, LC, KEA, Lisbon Council', desc: 'Alineament amb polítiques europees (Digital Decade, AI Act, EPALE) i amb les prioritats de la Generalitat Valenciana. Coordina amb ENRED (Xarxa Europea de Departaments d\'Educació Regional).', color: 'border-gray-600 bg-gray-50', iconColor: 'text-gray-700' },
       ],
       // Transparency Documents
@@ -2150,6 +2194,16 @@ export const translations = {
             items: ['Expedients acadèmics i qualificacions', 'Exàmens i activitats d\'avaluació', 'Materials docents del Màster AI-SECRETT', 'Dades personals d\'estudiants (protegides per reglament universitari)', 'Gestió de crèdits ECTS i micro-credencials'],
           },
         },
+        responsibilityBoundaries: {
+          title: 'Límits de dades i responsabilitat',
+          desc: 'Cada plataforma conserva la seua responsabilitat operativa. La xarxa AI-STEAM protegeix els compromisos de CEICE en Track B sense entrar en decisions acadèmiques del Màster.',
+          items: [
+            { owner: 'CEICE', scope: 'Dades de membres, participació comunitària, xarxa ENRED/AI-STEAM, reptes/casos i evidències Track B.' },
+            { owner: 'UVEG i socis acadèmics', scope: 'Expedients acadèmics, avaluació del Màster, criteris docents, ECTS i decisions curriculars Track A.' },
+            { owner: 'ConsensUE / Decidim', scope: 'Participació, deliberacions, debats, votacions i traçabilitat de contribucions comunitàries.' },
+            { owner: 'Aules / PortalEdu', scope: 'Entorns d\'aprenentatge i publicació de recursos quan aplique, segons el responsable de cada activitat.' },
+          ],
+        },
         agreement: {
           title: 'Acord de Col·laboració – Regla de Cost Zero',
           desc: 'L\'adhesió al Track B es formalitza mitjançant l\'Acord de Col·laboració, que establix els següents principis:',
@@ -2168,16 +2222,28 @@ export const translations = {
         diginetDesc: 'Este model replica l\'èxit de DigiNet (xarxa educativa finlandesa en salut digital), adaptant-lo al context de la IA aplicada a la triple transició europea.',
         cycleTitle: 'El cicle LbD: de l\'empresa a l\'estudiant i de tornada',
         phases: [
-          { step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network', title: 'Input: Reptes i Casos d\'Ús', actor: 'Organitzacions de la xarxa', desc: 'Els membres de l\'ecosistema aporten reptes reals a través de ConsensUE. La Xarxa de Stakeholders els valida i els publica en el Banc de Reptes.', outputs: ['Repte publicat', 'Dades i recursos disponibles', 'Termini i criteris d\'èxit definits'] },
-          { step: '2', track: 'Track A', platform: 'Comité Científic + UVEG', title: 'Processament Acadèmic', actor: 'Comité Científic', desc: 'El Comité Científic transforma els reptes en material didàctic o propostes de TFM, assignats a estudiants del Màster amb crèdits ECTS.', outputs: ['Repte convertit en tesi', 'ECTS assignats', 'Mentoría acadèmica i industrial'] },
-          { step: '3', track: 'Track B + Track A', platform: 'AI-STEAM Network + Aules', title: 'Output: Benefici Triple', actor: 'Organització + Estudiant + Xarxa', desc: 'Cada part rep el seu benefici específic. Resultats publicats com a casos d\'èxit per a visibilitat europea.', outputs: ['Empresa: solució o informe de viabilitat', 'Estudiant: ECTS + micro-credencial', 'Xarxa: cas d\'èxit publicat'] },
+          { step: '1', track: 'Track B', platform: 'ConsensUE + AI-STEAM Network', title: 'Input: Reptes i Casos d\'Ús', actor: 'Organitzacions de la xarxa', desc: 'Els membres de l\'ecosistema aporten necessitats, reptes i casos d\'ús a través de ConsensUE. La Xarxa de Stakeholders, amb CEICE com a orquestradora, valida la rellevància Track B i els classifica per a activitats, recursos, pilots o possible revisió acadèmica per Track A.', outputs: ['Repte o cas registrat', 'Necessitat i sector classificats', 'Ruta de tractament proposada'] },
+          { step: '2', track: 'Track A', platform: 'Comité Científic + UVEG', title: 'Processament Acadèmic', actor: 'Comité Científic + equip docent UVEG/Laurea', desc: 'Quan una contribució és acadèmicament pertinent, UVEG i els socis acadèmics decidixen si es converteix en material, activitat o proposta de treball dins del Track A. La xarxa AI-STEAM no assigna ECTS ni avalua l\'alumnat del Màster.', outputs: ['Revisió acadèmica per Track A', 'Decisió docent documentada', 'Mentoria acadèmica coordinada si escau'] },
+          { step: '3', track: 'Track B + Track A', platform: 'AI-STEAM Network + Aules', title: 'Output: Benefici Triple', actor: 'Organització proponent + Estudiant + Xarxa AI-STEAM', desc: 'En completar el treball, cada part rep el seu benefici específic. Si els resultats no són confidencials, poden publicar-se com a casos d\'èxit o registres d\'evidència per a visibilitat europea.', outputs: ['Organització: prototip o informe de viabilitat', 'Track A: avaluació gestionada per UVEG si aplica', 'Xarxa: evidència o cas publicat si escau'] },
         ],
+        operatingFlow: {
+          title: 'Flux operatiu de Track B a evidències',
+          desc: 'El recorregut mostra com CEICE pot convertir participació de xarxa en evidències auditables sense presentar indicadors demo com a resultats reals.',
+          steps: [
+            { title: 'Input', desc: 'Un stakeholder, ENRED o centre educatiu aporta una necessitat, cas o proposta.' },
+            { title: 'Classificació', desc: 'Es classifica per sector AI-SECRETT i ruta: FP/VET, docent, recurs, pilot o pont acadèmic.' },
+            { title: 'Validació', desc: 'La rellevància es contrasta en Track B i, si escau, es deriva a òrgans acadèmics Track A.' },
+            { title: 'Activitat', desc: 'Es genera activitat, recurs OER, debat, pilot o cas documentat.' },
+            { title: 'Evidència', desc: 'Es registren indicadors, traces ConsensUE, recursos, enquestes i participació.' },
+            { title: 'Seguiment', desc: 'L\'evidència alimenta la millora contínua i el relat públic d\'evolució de la xarxa.' },
+          ],
+        },
         platformsTitle: 'Les Tres Plataformes en el Flux LbD',
         platformsDesc: 'Cada plataforma té un rol específic. El contingut fluïx de l\'ecosistema a l\'aprenentatge.',
         platforms: [
-          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE', role: 'Participació Democràtica', desc: 'Punt d\'entrada de propostes i co-disseny del currículum.' },
+          { name: 'ConsensUE', tech: 'Decidim', track: 'Track B', owner: 'CEICE', role: 'Participació Democràtica', desc: 'Punt d\'entrada de propostes, deliberació comunitària, votació de prioritats i validació de rellevància de necessitats, casos i reptes.' },
           { name: 'AI-STEAM Network', tech: 'Portal Web', track: 'Track A + B', owner: 'CEICE + UVEG', role: 'Validació i Repositori', desc: 'Banc de Reptes, Coneixement OER, directori de la xarxa.' },
-          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A', owner: 'CEICE + UVEG', role: 'Entrega Formativa', desc: 'Mòduls de Màster i FP, gestió de crèdits ECTS, emissió d\'Open Badge.' },
+          { name: 'Aules', tech: 'Moodle LMS', track: 'Track A + entorns CEICE', owner: 'UVEG/CEICE segons activitat', role: 'Entrega Formativa', desc: 'Entorn d\'aprenentatge per a activitats del Màster, FP/VET o formació docent. L\'avaluació i els ECTS del Màster romanen sota Track A.' },
         ],
       },
       // Tab Content - Estructura i Òrgans
@@ -2212,7 +2278,7 @@ export const translations = {
         iso21001Title: 'ISO 21001 – Gestió Educativa',
         iso21001Desc: 'El consorcio funciona sota ISO 21001 (EOMS), coordinat per UVEG. Garanteix que els procediments formatius estiguen orientats a les necessitats d\'estudiants i parts interessades, amb total rastreabilitat i auditabilitat.',
         enredTitle: 'ENRED – Xarxa Europea de Departaments d\'Educació Regional',
-        enredDesc: 'La Generalitat Valenciana actua com a pont institucional entre AI-SECRETT i ENRED, facilitant la cooperació entre autoritats d\'educació regional europees i connectant la xarxa amb el marc de governança educativa de la UE.',
+        enredDesc: 'ENRED és la base institucional prèvia. AI-STEAM és la seua evolució temàtica dins d\'AI-SECRETT: aporta cooperació educativa regional, aprenentatge entre iguals i legitimitat institucional per a mobilitzar centres, docents i administracions.',
       },
       // Tab Content - Documentació
       tabContent_documentos: {
@@ -2229,7 +2295,7 @@ export const translations = {
         stakeholderBenefitsLabel: 'Com a stakeholder podràs:',
         stakeholderBenefits: [
           'Proposar reptes reals al Banc de Reptes via ConsensUE',
-          'Votar prioritats temàtiques i co-dissenyar el currículum',
+          'Informar necessitats, validar rellevància i contribuir casos o reptes',
           'Accedir al repositori de recursos OER i casos d\'èxit',
           'Participar en grups de treball sectorials',
           'Rebre solucions prototipades d\'equips del Màster AI-SECRETT',
@@ -2238,7 +2304,7 @@ export const translations = {
         stakeholderWarning: 'Els stakeholders operen exclusivament en el Track B. No tindran accés a l\'espai acadèmic (Aules/Màster) llevat que UVEG ho autorice expressament.',
         stakeholderButton: 'Solicitar Acord de Col·laboració',
         consensueTitle: 'Participa vía ConsensUE',
-        consensueSubtitle: 'Track B · Plataforma Decidim · Democràcia Participativa',
+        consensueSubtitle: 'Track B · Plataforma ConsensUE · Democràcia Participativa',
         consensueDesc: 'ConsensUE és la plataforma democràtica de l\'ecosistema, basada en <strong>Decidim</strong> i gestionada per CEICE. És el canal principal per a que stakeholders i socis del consorcio propongan i debatem continguts del Track B.',
         consensueGroupStakeholders: 'Per a Stakeholders (Track B)',
         consensueActionsStakeholders: [
@@ -2328,7 +2394,7 @@ export const translations = {
           },
           {
             title: 'Infraestructura de tres plataformes integrades',
-            content: 'L\'ecosistema s\'articula sobre tres plataformes tecnològiques complementàries:\n\n• ConsensUE: Una plataforma democràtica de participació on empreses, administracions i institucions proposen reptes i voten prioritats temàtiques del currículum.\n\n• Portal Xarxa AI-STEAM: El banc central de reptes validats, recursos educatius oberts (OER), directori de stakeholders, i casos d\'èxit documentats.\n\n• Aules: La plataforma d\'aprenentatge on es fan arribar els mòduls del Màster AI-SECRETT, es gestionen els ECTS, i s\'emeten micro-credencials Open Badge 3.0 reconegudes internacionalment.',
+            content: 'L\'ecosistema s\'articula sobre tres plataformes tecnològiques complementàries:\n\n• ConsensUE: Una plataforma democràtica de participació on empreses, administracions i institucions proposen reptes i validen la rellevància de necessitats, casos i contribucions.\n\n• Portal Xarxa AI-STEAM: El banc central de reptes validats, recursos educatius oberts (OER), directori de stakeholders, i casos d\'èxit documentats.\n\n• Aules: La plataforma d\'aprenentatge on es lliuren activitats formatives segons el responsable de cada Track. L\'avaluació i els ECTS del Màster romanen sota Track A.',
           },
           {
             title: 'Set sectors estratègics de l\'economia europea',
