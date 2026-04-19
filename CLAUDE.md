@@ -1,7 +1,7 @@
 # Guía de Contexto - AI-STEAM Mockup
 
-**Última actualización:** 2026-04-17 (Sesión cerrada)  
-**Estado:** ✅ Multilingüismo completo - Todas las traducciones funcionando correctamente
+**Última actualización:** 2026-04-19 (Sesión cerrada - Prompts 3 y 4 completados)  
+**Estado:** ✅ Reestructuración Track B completa - Training (3 pathways) y Sectors (transfer map) implementados
 
 ---
 
@@ -93,11 +93,11 @@ const t = languageContext?.translations[language]?.marketplace || {};
 | ChallengeDetail (Detalles de Retos) | `src/components/views/ChallengeDetail.tsx` | ✅ Completo | All challenge details translated |
 | Governance (Gobernanza) | `src/components/views/Governance.tsx` | ✅ Completo | All governance sections translated |
 | News (Actualidad) | `src/components/views/News.tsx` | ✅ Completo | Event type translations (Presencial, Online, Híbrido) |
-| Training (Formación) | `src/components/views/Training.tsx` | ✅ Completo | Level, status, modality, sector labels |
+| Training (Formación) | `src/components/views/Training.tsx` | ✅ Completo (2026-04-19) | 3 tabs: FP/VET, Teacher Training, Master Bridge |
 | Home | `src/components/views/Home.tsx` | ✅ Completo | All home sections translated |
 | Knowledge (Conocimiento) | `src/components/views/Knowledge.tsx` | ✅ Completo | All knowledge sections translated |
 | Network (Red) | `src/components/views/Network.tsx` | ✅ Completo | Stakeholder roles and descriptions |
-| Sectors (Sectores) | `src/components/views/Sectors.tsx` | ✅ Completo | Sector names, descriptions, keywords |
+| Sectors (Sectores) | `src/components/views/Sectors.tsx` | ✅ Completo (2026-04-19) | Transfer chain view, FP/VET skills, bridge candidates |
 
 ---
 
@@ -132,14 +132,39 @@ es: {
 
 ---
 
-## ✅ Traducción Multilingüe - COMPLETADA
+## ✅ Reestructuración Track B - COMPLETADA (Sesión 2026-04-19)
 
-Todos los componentes principales tienen soporte multilingüe completo (ES, EN, VA). 
+**Prompts ejecutados:**
 
-**Cambios en esta sesión (2026-04-17):**
-- ✅ Fixed hardcoded deadline label "Plazo" and team singular/plural in Marketplace
-- ✅ Added level/status/modality/sector label translations to Training component
-- ✅ Added event type translation to News component (Presencial → In-person/Presencial)
+### Prompt 3: Restructure Training into 3 Pathways
+- ✅ Actualizar VA translation section (fpSkills, teacherTopics, masterBridgeItems, disclaimers)
+- ✅ Reescribir Training.tsx con 3 tabs principales:
+  - **Tab 1 (FP/VET)**: 9-skill grid + filtered FP course cards + pathway steps
+  - **Tab 2 (Teacher Training)**: 6-topic list + Docentes course cards + CEFIRE note
+  - **Tab 3 (Master Bridge)**: disclaimer amber, 4 bridge items, master cards con "Track A" badge, pathway steps
+- ✅ Update stats: microCredentialsPilots=6, countries=11 (real data)
+- ✅ All 3 languages (ES, EN, VA) fully translated
+
+### Prompt 4: Realign Sectors as AI-SECRETT Transfer Map
+- ✅ Verify exactly 7 sectors (no changes needed)
+- ✅ Add new fields per sector:
+  - `stakeholderTypes`: 3 tipos concretos de stakeholders
+  - `teacherRelevance`: relevancia para formación docente
+  - `exampleChallenge`: reto prototipo marcado como demo
+- ✅ Rename labels:
+  - FP Modules → "FP/VET Skills (prototype examples)"
+  - Master Topics → "Academic Bridge Candidates"
+- ✅ Add "Transfer Chain" visual view per sector
+- ✅ Rewrite all sector descriptions: triple transition, ethics/privacy, no techno-solutionism
+- ✅ Update keywords: ODS, algorithmic equity, digital divide, food sovereignty
+- ✅ Mark stats as demo: Retos (demo), Skills FP/VET (demo)
+- ✅ All 3 languages (ES, EN, VA) fully translated
+
+**Commits de esta sesión (2026-04-19):**
+- `bc81227`: feat: Complete Prompt 3 - Restructure Training into 3 pathway tabs
+- `4264f1b`: fix: Master course cards layout and link
+- `08d416e`: fix: Move Track A badge inside master course cards, remove UVEG text
+- `789a020`: feat(Prompt 4): Realign Sectors as AI-SECRETT transfer map
 
 ---
 
@@ -196,4 +221,27 @@ Todos los componentes principales tienen soporte multilingüe completo (ES, EN, 
 
 ---
 
-**Instrucciones para futuras sesiones:** Lee este archivo primero para contexto rápido sobre el sistema de traducciones.
+## 📋 Prompts Pendientes para Próxima Sesión
+
+Quedan 3 prompts por ejecutar (en orden):
+
+### Prompt 5 - Gobernanza, Evidencias y Entregables CEICE
+Restructuring: Governance view (WPs, role-based governance, decision flows), Evidence framework (triple transition indicators, maturity levels), CEICE deliverables alignment.
+
+### Prompt 6 - Conocimiento, Actualidad y Etiquetado Editorial
+Restructuring: Knowledge section (OER flow, badge wall, success cases), News/Actualidad section (event types, institutional news), Editorial tagging (editorial policy, content labeling).
+
+### Prompt 7 - Revisión Final de Coherencia, Copy y Datos Dummy
+Final review: narrative coherence across all pages, copy consistency, dummy data labeling, performance/accessibility check, i18n completeness.
+
+**Location:** `PROMPTS_MOCKUP_AI_STEAM_NETWORK.md`
+
+---
+
+## 🔄 Instrucciones para Futuras Sesiones
+
+1. Lee este archivo (CLAUDE.md) primero para contexto rápido
+2. Lee la tabla de cambios en `PROMPTS_MOCKUP_AI_STEAM_NETWORK.md` para ver qué prompts quedan
+3. Los commits recientes están en rama `reestructuracion-proyecto`
+4. Todas las traducciones multilingües están integradas (ES, EN, VA)
+5. El sistema de transferencia AI-SECRETT está ahora más explícito en Training y Sectors
