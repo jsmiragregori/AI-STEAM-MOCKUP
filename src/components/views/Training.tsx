@@ -83,45 +83,48 @@ export default function Training() {
     return labels?.[sector] || sector;
   };
 
-  const CourseCard = ({ course }: { course: Course; key?: string }) => (
-    <div className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col overflow-hidden hover:border-eu-blue transition-colors">
-      <div className="p-5 flex-1">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-sm font-extrabold uppercase px-2 py-0.5 rounded bg-eu-yellow text-eu-purple">
-            {getLevelLabel(course.level)}
-          </span>
-          <span className={`text-sm font-bold px-2 py-0.5 rounded ${getStatusColor(course.status)}`}>
-            {getStatusLabel(course.status)}
-          </span>
+  const CourseCard = ({ course }: { course: Course; key?: string }) => {
+    const isMaster = course.level === 'Máster';
+    return (
+      <div className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col overflow-hidden hover:border-eu-blue transition-colors">
+        <div className="p-5 flex-1">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-extrabold uppercase px-2 py-0.5 rounded bg-eu-yellow text-eu-purple">
+              {getLevelLabel(course.level)}
+            </span>
+            <span className={`text-sm font-bold px-2 py-0.5 rounded ${getStatusColor(course.status)}`}>
+              {getStatusLabel(course.status)}
+            </span>
+          </div>
+          <h3 className="font-bold text-eu-text text-sm mb-2 leading-snug">{course.title}</h3>
+          <p className="text-xs text-gray-500 mb-3">{course.description}</p>
+          <div className="flex flex-wrap gap-2 text-sm text-gray-600 mb-3">
+            <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{course.hours}{trainingT?.courseHours}</span>
+            <span className="flex items-center gap-1"><Users className="w-3 h-3" />{course.enrolled} {trainingT?.courseEnrolledLabel}</span>
+            <span className="flex items-center gap-1"><Star className="w-3 h-3 text-yellow-500" />{course.rating}</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600 whitespace-nowrap">{getSectorLabel(course.sector)}</span>
+            <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600 whitespace-nowrap">{getModalityLabel(course.modality)}</span>
+          </div>
         </div>
-        <h3 className="font-bold text-eu-text text-sm mb-2 leading-snug">{course.title}</h3>
-        <p className="text-xs text-gray-500 mb-3">{course.description}</p>
-        <div className="flex flex-wrap gap-2 text-sm text-gray-600 mb-3">
-          <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{course.hours}{trainingT?.courseHours}</span>
-          <span className="flex items-center gap-1"><Users className="w-3 h-3" />{course.enrolled} {trainingT?.courseEnrolledLabel}</span>
-          <span className="flex items-center gap-1"><Star className="w-3 h-3 text-yellow-500" />{course.rating}</span>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{getSectorLabel(course.sector)}</span>
-          <span className="text-sm bg-eu-bg border border-eu-border px-2 py-0.5 rounded font-semibold text-gray-600">{getModalityLabel(course.modality)}</span>
+        <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
+          <div className="flex items-center gap-1.5 min-w-0 flex-1">
+            <Award className="w-3 h-3 text-eu-orange shrink-0" />
+            <span className="text-sm font-bold text-eu-orange truncate">{course.badge}</span>
+          </div>
+          <a
+            href={isMaster ? 'https://valgrai.eu' : 'https://portal.edu.gva.es/aules/'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-eu-blue font-bold text-xs bg-transparent cursor-pointer hover:underline inline-flex items-center gap-1 shrink-0 ml-2"
+          >
+            {isMaster ? 'Ver' : trainingT?.courseViewMore} <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </div>
-      <div className="border-t border-eu-border p-3 flex items-center justify-between bg-eu-bg">
-        <div className="flex items-center gap-1.5">
-          <Award className="w-3 h-3 text-eu-orange" />
-          <span className="text-sm font-bold text-eu-orange">{course.badge}</span>
-        </div>
-        <a
-          href="https://portal.edu.gva.es/aules/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-eu-blue font-bold text-xs bg-transparent cursor-pointer hover:underline inline-flex items-center gap-1"
-        >
-          {trainingT?.courseViewMore} <ExternalLink className="w-3 h-3" />
-        </a>
-      </div>
-    </div>
-  );
+    );
+  };
 
   const tabs: { key: Tab; label: string; icon: ReactNode }[] = [
     { key: 'fp', label: trainingT?.tabFpVet, icon: <Briefcase className="w-4 h-4" /> },
