@@ -3,7 +3,7 @@ import { Calendar, ArrowRight, Rss, Tag, MapPin, ExternalLink } from 'lucide-rea
 import { useLanguage } from '../../context/LanguageContext';
 import NewsDetail from './NewsDetail';
 
-type NewsCategory = 'Todas' | 'Institucional' | 'Formación' | 'Eventos' | 'Retos' | 'Recursos' | 'All' | 'Institutional' | 'Training' | 'Events' | 'Challenges' | 'Resources' | 'Totes' | 'Institucional' | 'Formació' | 'Reptes' | 'Totes';
+type NewsCategory = string;
 
 interface NewsItem {
   id: number;
@@ -14,6 +14,7 @@ interface NewsItem {
   sector?: string;
   partner?: string;
   featured?: boolean;
+  isOfficial?: boolean;
 }
 
 interface EventItem {
@@ -39,6 +40,7 @@ const getNewsAndEvents = (language: string, newsT: any) => {
     sector: item.sector,
     partner: item.partner,
     featured: item.featured,
+    isOfficial: item.isOfficial,
   }));
 
   const events: EventItem[] = Object.values(eventsObj).map((item: any, idx: number) => ({
@@ -70,6 +72,7 @@ const getTypeColor = (type: string): string => {
 
 const getCategoryColor = (category: string): string => {
   const categoryColorMap: Record<string, string> = {
+    // Old (compatibility)
     'Institucional': 'text-blue-700',
     'Institutional': 'text-blue-700',
     'Formación': 'text-purple-700',
@@ -82,6 +85,19 @@ const getCategoryColor = (category: string): string => {
     'Reptes': 'text-eu-orange',
     'Recursos': 'text-green-700',
     'Resources': 'text-green-700',
+    // New categories
+    'ENRED': 'text-eu-purple',
+    'FP/VET': 'text-yellow-700',
+    'VET/FP': 'text-yellow-700',
+    'Form. Docent': 'text-pink-700',
+    'Teacher Training': 'text-pink-700',
+    'Stakeholders': 'text-blue-700',
+    'Retos y Casos': 'text-eu-orange',
+    'Reptes i Casos': 'text-eu-orange',
+    'Challenges & Cases': 'text-eu-orange',
+    'Entregables AI-SECRETT': 'text-eu-teal',
+    'AI-SECRETT Deliverables': 'text-eu-teal',
+    'Lliurables AI-SECRETT': 'text-eu-teal',
   };
   return categoryColorMap[category] || 'text-gray-700';
 };
@@ -99,14 +115,23 @@ export default function News() {
   const { t, language } = useLanguage();
   const newsT = t('news');
 
-  const categories = {
-    es: ['Todas', 'Institucional', 'Formación', 'Eventos', 'Retos', 'Recursos'] as NewsCategory[],
-    en: ['All', 'Institutional', 'Training', 'Events', 'Challenges', 'Resources'] as NewsCategory[],
-    va: ['Totes', 'Institucional', 'Formació', 'Events', 'Reptes', 'Recursos'] as NewsCategory[],
-  };
+  // New 7-category system
+  const categoryKeys = [
+    { key: 'categoryAll', fallback: { es: 'Todas', en: 'All', va: 'Totes' } },
+    { key: 'categoryENRED', fallback: { es: 'ENRED', en: 'ENRED', va: 'ENRED' } },
+    { key: 'categoryFPVET', fallback: { es: 'FP/VET', en: 'VET/FP', va: 'FP/VET' } },
+    { key: 'categoryTeacherTraining', fallback: { es: 'Form. Docente', en: 'Teacher Training', va: 'Form. Docent' } },
+    { key: 'categoryStakeholders', fallback: { es: 'Stakeholders', en: 'Stakeholders', va: 'Stakeholders' } },
+    { key: 'categoryChallengesCases', fallback: { es: 'Retos y Casos', en: 'Challenges & Cases', va: 'Reptes i Casos' } },
+    { key: 'categoryDeliverables', fallback: { es: 'Entregables AI-SECRETT', en: 'AI-SECRETT Deliverables', va: 'Lliurables AI-SECRETT' } },
+    { key: 'categoryEvents', fallback: { es: 'Eventos', en: 'Events', va: 'Events' } },
+  ];
 
-  const categoryList = categories[language as keyof typeof categories];
-  const [categoryFilter, setCategoryFilter] = useState<NewsCategory>(categoryList[0]);
+  const categoryList: string[] = categoryKeys.map((ck) =>
+    (newsT as any)?.[ck.key] || ck.fallback[language as 'es' | 'en' | 'va'] || ck.fallback.es
+  );
+
+  const [categoryFilter, setCategoryFilter] = useState<string>(categoryList[0]);
   const [selectedNewsId, setSelectedNewsId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -131,9 +156,10 @@ export default function News() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-start justify-between gap-6">
           <div>
             <h1 className="text-3xl font-extrabold mb-2">{newsT?.title}</h1>
-            <p className="text-white/90 max-w-2xl text-base">
-              {newsT?.description}
-            </p>
+            <p className="text-white/80 max-w-2xl text-sm">{newsT?.description}</p>
+            {newsT?.demoDisclaimer && (
+              <p className="text-xs text-eu-yellow/80 italic mt-2">{newsT.demoDisclaimer}</p>
+            )}
           </div>
           <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors text-white px-4 py-2 rounded-lg font-bold text-sm border border-white/20 cursor-pointer">
             <Rss className="w-4 h-4" /> {newsT?.subscribeButton}
@@ -184,20 +210,33 @@ export default function News() {
             <div className="space-y-4">
               {rest.map((item) => (
                 <article key={item.id} className="bg-white p-5 rounded-xl border border-eu-border shadow-sm hover:border-eu-blue transition-colors group cursor-pointer">
-                  <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <span className={`text-xs font-bold uppercase tracking-wider ${getCategoryColor(item.category)}`}>
                         {item.category}
                       </span>
                       {item.sector && (
-                        <span className="flex items-center gap-1 text-sm text-gray-400 font-semibold">
+                        <span className="flex items-center gap-1 text-xs text-gray-400 font-semibold">
                           <Tag className="w-2.5 h-2.5" /> {item.sector}
                         </span>
                       )}
                     </div>
-                    <span className="text-xs text-gray-500 flex items-center gap-1">
-                      <Calendar className="w-3 h-3" /> {item.date}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {item.isOfficial !== undefined && (
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${
+                          item.isOfficial
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-amber-100 text-amber-700'
+                        }`}>
+                          {item.isOfficial
+                            ? ((newsT as any)?.officialBadge || 'Oficial')
+                            : ((newsT as any)?.demoBadge || 'Demo')}
+                        </span>
+                      )}
+                      <span className="text-xs text-gray-500 flex items-center gap-1">
+                        <Calendar className="w-3 h-3" /> {item.date}
+                      </span>
+                    </div>
                   </div>
                   <h3 className="text-base font-bold text-eu-text mb-2 group-hover:text-eu-blue transition-colors leading-snug">
                     <button onClick={() => setSelectedNewsId(item.id)} className="hover:underline cursor-pointer">
