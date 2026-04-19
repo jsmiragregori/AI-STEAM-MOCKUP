@@ -1,4 +1,4 @@
-import { ArrowRight, Users, BookOpen, Layers, Zap, Globe, Award } from 'lucide-react';
+import { ArrowRight, Users, BookOpen, Layers, Zap, Globe, Award, CheckCircle, XCircle, ArrowRightCircle } from 'lucide-react';
 import { Tab } from '../../App';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -28,6 +28,9 @@ export default function Home({ setActiveTab }: HomeProps) {
     { id: 6, name: t('home.stats.trainingModules'), value: '68', icon: Layers },
   ];
 
+  const isNotBlock = t('home.isNotBlock') as any;
+  const enredBlock = t('home.enredBlock') as any;
+
   return (
     <div className="animate-in fade-in duration-300">
       {/* Hero */}
@@ -37,10 +40,16 @@ export default function Home({ setActiveTab }: HomeProps) {
             <span className="inline-block bg-eu-yellow/20 text-eu-yellow font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4">
               {t('home.badge')}
             </span>
-            <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight mb-5">
-              {t('home.title')}<br />{t('home.subtitle')}
+            <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
+              {t('home.title')}
             </h1>
-            <p className="text-lg text-white/80 mb-8 max-w-xl">
+            <p className="text-lg font-semibold text-eu-yellow mb-4">
+              {t('home.subtitle')}
+            </p>
+            <p className="text-base text-white/90 mb-4 max-w-xl leading-relaxed border-l-4 border-eu-yellow/60 pl-4">
+              {t('home.heroTagline')}
+            </p>
+            <p className="text-sm text-white/70 mb-8 max-w-xl">
               {t('home.description')}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -61,17 +70,81 @@ export default function Home({ setActiveTab }: HomeProps) {
 
           {/* Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div key={stat.id} className="bg-white/10 backdrop-blur rounded-xl p-5 flex flex-col">
-                  <Icon className="w-5 h-5 text-eu-yellow mb-2" />
-                  <div className="text-3xl font-extrabold text-white leading-none mb-1">{stat.value}</div>
-                  <div className="text-xs text-white/70 font-semibold uppercase tracking-wide">{stat.name}</div>
-                </div>
-              );
-            })}
+              {stats.map((stat) => {
+                const Icon = stat.icon;
+                return (
+                  <div key={stat.id} className="bg-white/10 backdrop-blur rounded-xl p-5 flex flex-col">
+                    <Icon className="w-5 h-5 text-eu-yellow mb-2" />
+                    <div className="text-3xl font-extrabold text-white leading-none mb-1">{stat.value}</div>
+                    <div className="text-xs text-white/70 font-semibold uppercase tracking-wide">{stat.name}</div>
+                  </div>
+                );
+              })}
+            </div>
+        </div>
+      </section>
+
+      {/* Is / Is Not Block */}
+      <section className="px-6 py-12 bg-white border-b border-eu-border">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-eu-text mb-8">{isNotBlock?.heading}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <h3 className="font-bold text-green-800 text-lg">{isNotBlock?.isTitle}</h3>
+              </div>
+              <ul className="space-y-3">
+                {(isNotBlock?.isItems || []).map((item: string, i: number) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-green-900">
+                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-1.5 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <XCircle className="w-5 h-5 text-red-600" />
+                <h3 className="font-bold text-red-800 text-lg">{isNotBlock?.isNotTitle}</h3>
+              </div>
+              <ul className="space-y-3">
+                {(isNotBlock?.isNotItems || []).map((item: string, i: number) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-red-900">
+                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-1.5 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* From ENRED to AI-STEAM */}
+      <section className="px-6 py-12 bg-eu-bg border-b border-eu-border">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-eu-text mb-6">{enredBlock?.heading}</h2>
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1 bg-white rounded-xl border border-eu-border p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{enredBlock?.enredLabel}</p>
+              <div className="flex flex-wrap gap-2">
+                {['Cooperación interregional EU', 'Intercambio buenas prácticas', 'Visitas institucionales', 'Internacionalización educativa'].map((tag) => (
+                  <span key={tag} className="text-xs bg-eu-bg border border-eu-border rounded px-2 py-1 text-gray-600">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <ArrowRightCircle className="w-8 h-8 text-eu-blue shrink-0 rotate-90 md:rotate-0" />
+            <div className="flex-1 bg-white rounded-xl border-2 border-eu-blue p-6 shadow-md">
+              <p className="text-xs font-bold uppercase tracking-widest text-eu-blue mb-2">{enredBlock?.networkLabel}</p>
+              <div className="flex flex-wrap gap-2">
+                {['IA & STEAM', 'Triple Transición', 'FP/VET Transfer', 'Formación Docente', 'AI-SECRETT Track B'].map((tag) => (
+                  <span key={tag} className="text-xs bg-eu-blue/10 border border-eu-blue/30 rounded px-2 py-1 text-eu-blue font-semibold">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="mt-6 text-sm text-gray-600 max-w-3xl leading-relaxed">{enredBlock?.desc}</p>
         </div>
       </section>
 
@@ -265,4 +338,3 @@ export default function Home({ setActiveTab }: HomeProps) {
     </div>
   );
 }
-

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Search, Plus, Calendar, Users, Tag } from 'lucide-react';
+import { Search, Plus, Calendar, Users, Tag, BookOpen, Route, FlaskConical } from 'lucide-react';
 import ChallengeDetail from './ChallengeDetail';
 import { useLanguage } from '../../context/LanguageContext';
 
-type LevelFilter = 'Todos' | 'Máster' | 'FP';
+type ContributionType = 'All' | 'Challenge' | 'Case' | 'Validation' | 'Mentoring' | 'Pilot' | 'Resource';
+type RouteFilter = 'All' | 'FP/VET' | 'Teacher Training' | 'Master Bridge' | 'Mixed';
 type StatusFilter = 'Todos' | 'Abierto' | 'En Resolución' | 'Resuelto';
+type EvidenceMaturity = 'All' | 'idea' | 'validated' | 'inPilot' | 'completed';
 type SectorFilter = 'Todos' | 'Manufacturing' | 'Mobility and Transport' | 'Energy and Environment' | 'Agrifood' | 'Cultural and Creative Industries' | 'Housing' | 'Non-Touristic Services';
 
 interface Challenge {
@@ -21,6 +23,10 @@ interface Challenge {
   teams: number;
   tags: string[];
   country: string;
+  contributionType: ContributionType;
+  route: RouteFilter;
+  evidenceExpected: string;
+  evidenceMaturity: EvidenceMaturity;
 }
 
 const challenges: Challenge[] = [
@@ -38,6 +44,10 @@ const challenges: Challenge[] = [
     teams: 0,
     tags: ['HVAC', 'ML Predictivo', 'IoT', 'Eficiencia Energética'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'FP/VET',
+    evidenceExpected: 'Modelo predictivo HVAC validado en 8 museos piloto',
+    evidenceMaturity: 'validated',
   },
   {
     id: 'r2',
@@ -53,6 +63,10 @@ const challenges: Challenge[] = [
     teams: 3,
     tags: ['Computer Vision', 'Drones', 'Deep Learning', 'Xylella'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'Master Bridge',
+    evidenceExpected: 'Pipeline CV desplegable en campo + artículo técnico IEEE',
+    evidenceMaturity: 'inPilot',
   },
   {
     id: 'r3',
@@ -66,8 +80,12 @@ const challenges: Challenge[] = [
     posted: '01 Feb 2026',
     deadline: '30 Ago 2026',
     teams: 1,
-    tags: ['LSTM', 'Vibración', 'IoT Industrial', 'Industria 4.0'],
+    tags: ['LSTM', 'Vibración', 'IoT Sectorial', 'Manufactura 4.0'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'FP/VET',
+    evidenceExpected: 'Sistema de alertas integrado con SAP PM + informe ROI',
+    evidenceMaturity: 'validated',
   },
   {
     id: 'r4',
@@ -83,6 +101,10 @@ const challenges: Challenge[] = [
     teams: 2,
     tags: ['NLP Clínico', 'FHIR', 'Triaje', 'Ética IA'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'Master Bridge',
+    evidenceExpected: 'CDSS con kappa ≥ 88% + documentación AI Act',
+    evidenceMaturity: 'idea',
   },
   {
     id: 'r5',
@@ -98,6 +120,10 @@ const challenges: Challenge[] = [
     teams: 4,
     tags: ['NLP', 'OCR', 'Patrimonio Digital', 'Multilingüe'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'Master Bridge',
+    evidenceExpected: 'Dataset Dublin Core 5.000 docs + pipeline OCR-NER publicado',
+    evidenceMaturity: 'inPilot',
   },
   {
     id: 'r6',
@@ -113,6 +139,10 @@ const challenges: Challenge[] = [
     teams: 1,
     tags: ['Series Temporales', 'Teledetección', 'Calidad Agua', 'GIS'],
     country: '🇸🇪',
+    contributionType: 'Challenge',
+    route: 'Master Bridge',
+    evidenceExpected: 'Modelo predicción 30 días + sistema de alertas prototipo',
+    evidenceMaturity: 'idea',
   },
   {
     id: 'r7',
@@ -126,8 +156,12 @@ const challenges: Challenge[] = [
     posted: '12 Feb 2026',
     deadline: '12 Ago 2026',
     teams: 2,
-    tags: ['Sistemas de Recomendación', 'Turismo Sostenible', 'LLM', 'API REST'],
+    tags: ['Recomendación', 'Turismo Sostenible', 'LLM', 'API REST'],
     country: '🇪🇸',
+    contributionType: 'Challenge',
+    route: 'FP/VET',
+    evidenceExpected: 'Motor de recomendación desplegado con precisión@10 ≥ 0.7',
+    evidenceMaturity: 'validated',
   },
   {
     id: 'r8',
@@ -137,12 +171,16 @@ const challenges: Challenge[] = [
     level: 'FP',
     status: 'Resuelto',
     sector: 'Non-Touristic Services',
-    description: 'Sistema de extracción y validación automática de datos en expedientes académicos de la CV mediante OCR + LLM. Reducción del tiempo de tramitación del 70%.',
+    description: 'Sistema de extracción y validación automática de datos en expedientes académicos de la CV mediante OCR + LLM. Reducción del tiempo de tramitación del 70%. En producción desde enero 2026.',
     posted: '01 Sep 2025',
     deadline: '28 Feb 2026',
     teams: 5,
     tags: ['OCR', 'RPA', 'LLM', 'Tramitación Electrónica'],
     country: '🇪🇸',
+    contributionType: 'Case',
+    route: 'FP/VET',
+    evidenceExpected: 'Sistema en producción GVA (99.3% precisión, 1.200 exp/día)',
+    evidenceMaturity: 'completed',
   },
   {
     id: 'r9',
@@ -158,6 +196,10 @@ const challenges: Challenge[] = [
     teams: 0,
     tags: ['NLP', 'Desinformación', 'Transformers', 'Redes Sociales'],
     country: '🇵🇹',
+    contributionType: 'Challenge',
+    route: 'Master Bridge',
+    evidenceExpected: 'Clasificador multilingüe F1 ≥ 0.82 + API tiempo real',
+    evidenceMaturity: 'idea',
   },
 ];
 
@@ -178,26 +220,27 @@ const statusStyles: Record<string, string> = {
   'Resuelto': 'bg-gray-100 text-gray-600',
 };
 
-const levelStyles: Record<string, string> = {
-  FP: 'bg-eu-yellow text-eu-purple',
-  Máster: 'bg-purple-100 text-purple-800',
+const routeStyles: Record<string, string> = {
+  'FP/VET': 'bg-eu-yellow text-eu-purple',
+  'Teacher Training': 'bg-teal-100 text-teal-800',
+  'Master Bridge': 'bg-purple-100 text-purple-800',
+  'Mixed': 'bg-blue-100 text-blue-800',
 };
 
-const getLevelLabel = (level: string, translations: any): string => {
-  const levelMap: Record<string, string> = {
-    'FP': translations?.fpLevel || 'FP',
-    'Máster': translations?.masterLevel || 'Master',
-  };
-  return levelMap[level] || level;
+const evidenceMaturityStyles: Record<string, string> = {
+  idea: 'bg-gray-100 text-gray-600',
+  validated: 'bg-blue-100 text-blue-700',
+  inPilot: 'bg-yellow-100 text-yellow-800',
+  completed: 'bg-green-100 text-green-800',
 };
 
 const getStatusLabel = (status: string, translations: any): string => {
-  const statusMap: Record<string, string> = {
+  const map: Record<string, string> = {
     'Abierto': translations?.open || 'Open',
     'En Resolución': translations?.inProgress || 'In Progress',
     'Resuelto': translations?.resolved || 'Resolved',
   };
-  return statusMap[status] || status;
+  return map[status] || status;
 };
 
 const getSectorLabel = (sector: string, translations: any): string => {
@@ -218,13 +261,30 @@ const getSectorCode = (sectorName: string): string => {
   return codeMap[sectorName] || sectorName;
 };
 
+const getContributionTypeLabel = (type: string, translations: any): string => {
+  const types = translations?.contributionTypes as Record<string, string>;
+  return types?.[type] || type;
+};
+
+const getRouteLabel = (route: string, translations: any): string => {
+  const routes = translations?.routeOptions as Record<string, string>;
+  return routes?.[route] || route;
+};
+
+const getEvidenceMaturityLabel = (maturity: string, translations: any): string => {
+  const maturities = translations?.evidenceMaturityOptions as Record<string, string>;
+  return maturities?.[maturity] || maturity;
+};
+
 export default function Marketplace() {
   const { t } = useLanguage();
-  const marketplaceT = t('marketplace');
+  const marketplaceT = t('marketplace') as any;
 
-  const [levelFilter, setLevelFilter] = useState<LevelFilter>('Todos');
+  const [contributionFilter, setContributionFilter] = useState<ContributionType>('All');
+  const [routeFilter, setRouteFilter] = useState<RouteFilter>('All');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('Todos');
   const [sectorFilter, setSectorFilter] = useState<SectorFilter>('Todos');
+  const [evidenceFilter, setEvidenceFilter] = useState<EvidenceMaturity>('All');
   const [search, setSearch] = useState('');
   const [showSubmit, setShowSubmit] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -236,9 +296,11 @@ export default function Marketplace() {
   }
 
   const filtered = translatedChallenges.filter((c) => {
-    if (levelFilter !== 'Todos' && c.level !== levelFilter) return false;
+    if (contributionFilter !== 'All' && c.contributionType !== contributionFilter) return false;
+    if (routeFilter !== 'All' && c.route !== routeFilter) return false;
     if (statusFilter !== 'Todos' && c.status !== statusFilter) return false;
     if (sectorFilter !== 'Todos' && c.sector !== sectorFilter) return false;
+    if (evidenceFilter !== 'All' && c.evidenceMaturity !== evidenceFilter) return false;
     if (search && !c.title.toLowerCase().includes(search.toLowerCase()) && !c.description.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
   });
@@ -253,22 +315,22 @@ export default function Marketplace() {
       <div className="bg-eu-blue text-white px-4 sm:px-6 py-8 sm:py-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
           <div className="flex-1 min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-extrabold mb-2">{marketplaceT.title}</h1>
+            <h1 className="text-2xl sm:text-3xl font-extrabold mb-2">{marketplaceT?.title}</h1>
             <p className="text-white/80 max-w-2xl text-sm sm:text-base">
-              {marketplaceT.description}
+              {marketplaceT?.description}
             </p>
             <div className="grid grid-cols-3 gap-3 sm:gap-5 mt-5">
               <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
                 <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{open}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.openChallenges}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT?.openChallenges}</p>
               </div>
               <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
                 <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{inProgress}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.inProgressChallenges}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT?.inProgressChallenges}</p>
               </div>
               <div className="bg-white/10 rounded-xl px-3 sm:px-6 py-3 sm:py-4 text-center sm:text-left">
                 <p className="text-xl sm:text-2xl font-extrabold text-eu-yellow">{solved}</p>
-                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT.resolvedChallenges}</p>
+                <p className="text-xs text-white/70 font-semibold uppercase mt-1 line-clamp-2">{marketplaceT?.resolvedChallenges}</p>
               </div>
             </div>
           </div>
@@ -276,7 +338,7 @@ export default function Marketplace() {
             onClick={() => setShowSubmit(!showSubmit)}
             className="flex items-center justify-center sm:justify-start gap-2 bg-eu-orange text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer shrink-0 w-full sm:w-auto"
           >
-            <Plus className="w-4 h-4" /> {marketplaceT.publishChallenge}
+            <Plus className="w-4 h-4" /> {marketplaceT?.publishChallenge}
           </button>
         </div>
       </div>
@@ -285,22 +347,32 @@ export default function Marketplace() {
         {/* Submit Form */}
         {showSubmit && (
           <div className="bg-white rounded-xl border border-eu-border shadow-sm p-5 sm:p-7 mb-8">
-            <h2 className="text-lg sm:text-xl font-bold text-eu-text mb-1">{marketplaceT.publishNew}</h2>
-            <p className="text-sm text-gray-600 mb-5">{marketplaceT.shareChallenge}</p>
+            <h2 className="text-lg sm:text-xl font-bold text-eu-text mb-1">{marketplaceT?.publishNew}</h2>
+            <p className="text-sm text-gray-600 mb-5">{marketplaceT?.shareChallenge}</p>
             <form className="space-y-4 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.title} *</label>
                 <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder={marketplaceT?.formPlaceholders?.title} />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.level} *</label>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.contributionType} *</label>
                   <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
-                    <option>{marketplaceT?.levelFP}</option>
-                    <option>{marketplaceT?.levelMaster}</option>
-                    <option>{marketplaceT?.levelBoth}</option>
+                    {Object.entries(marketplaceT?.contributionTypes || {}).map(([k, v]) => (
+                      <option key={k} value={k}>{v as string}</option>
+                    ))}
                   </select>
                 </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.route} *</label>
+                  <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
+                    {Object.entries(marketplaceT?.routeOptions || {}).map(([k, v]) => (
+                      <option key={k} value={k}>{v as string}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.sector} *</label>
                   <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
@@ -314,9 +386,21 @@ export default function Marketplace() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.deadline} *</label>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.deadline}</label>
                   <input type="date" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
                 </div>
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.evidenceExpected}</label>
+                <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder={marketplaceT?.formPlaceholders?.evidenceExpected} />
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.stakeholderReturn}</label>
+                <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder={marketplaceT?.formPlaceholders?.stakeholderReturn} />
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.ethicsConditions}</label>
+                <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder="RGPD, datos anonimizados, acuerdo de uso..." />
               </div>
               <div>
                 <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.description} *</label>
@@ -324,10 +408,10 @@ export default function Marketplace() {
               </div>
               <div className="flex flex-col-reverse sm:flex-row justify-end gap-3">
                 <button type="button" onClick={() => setShowSubmit(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
-                  {marketplaceT.cancel}
+                  {marketplaceT?.cancel}
                 </button>
                 <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-eu-purple transition-colors cursor-pointer">
-                  {marketplaceT.submit}
+                  {marketplaceT?.submit}
                 </button>
               </div>
             </form>
@@ -338,7 +422,7 @@ export default function Marketplace() {
         <div className="bg-white rounded-xl border border-eu-border shadow-sm p-4 sm:p-5 mb-6">
           <div className="flex flex-col gap-4">
             <div className="w-full">
-              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.searchLabel}</label>
+              <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT?.searchLabel}</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -346,38 +430,56 @@ export default function Marketplace() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full border border-eu-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-eu-blue"
-                  placeholder={marketplaceT?.searchPlaceholder || 'Search by title or description...'}
+                  placeholder={marketplaceT?.searchPlaceholder}
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               <div>
-                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterLevel}</label>
+                <label className="flex items-center gap-1 text-[12px] font-bold text-gray-500 uppercase mb-1">
+                  <BookOpen className="w-3 h-3" /> {marketplaceT?.filterContributionType}
+                </label>
                 <select
-                  value={levelFilter}
-                  onChange={(e) => setLevelFilter(e.target.value as LevelFilter)}
+                  value={contributionFilter}
+                  onChange={(e) => setContributionFilter(e.target.value as ContributionType)}
                   className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
                 >
-                  <option value="Todos">{marketplaceT.all}</option>
-                  <option value="FP">{marketplaceT.fpLevel}</option>
-                  <option value="Máster">{marketplaceT.masterLevel}</option>
+                  <option value="All">{marketplaceT?.all}</option>
+                  {Object.entries(marketplaceT?.contributionTypes || {}).map(([k, v]) => (
+                    <option key={k} value={k}>{v as string}</option>
+                  ))}
                 </select>
               </div>
               <div>
-                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterStatus}</label>
+                <label className="flex items-center gap-1 text-[12px] font-bold text-gray-500 uppercase mb-1">
+                  <Route className="w-3 h-3" /> {marketplaceT?.filterRoute}
+                </label>
+                <select
+                  value={routeFilter}
+                  onChange={(e) => setRouteFilter(e.target.value as RouteFilter)}
+                  className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
+                >
+                  <option value="All">{marketplaceT?.all}</option>
+                  {Object.entries(marketplaceT?.routeOptions || {}).map(([k, v]) => (
+                    <option key={k} value={k}>{v as string}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT?.filterStatus}</label>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
                   className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
                 >
-                  <option value="Todos">{marketplaceT.all}</option>
-                  <option value="Abierto">{marketplaceT.open}</option>
-                  <option value="En Resolución">{marketplaceT.inProgress}</option>
-                  <option value="Resuelto">{marketplaceT.resolved}</option>
+                  <option value="Todos">{marketplaceT?.all}</option>
+                  <option value="Abierto">{marketplaceT?.open}</option>
+                  <option value="En Resolución">{marketplaceT?.inProgress}</option>
+                  <option value="Resuelto">{marketplaceT?.resolved}</option>
                 </select>
               </div>
-              <div className="col-span-2 sm:col-span-1">
-                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT.filterSector}</label>
+              <div>
+                <label className="block text-[12px] font-bold text-gray-500 uppercase mb-1">{marketplaceT?.filterSector}</label>
                 <select
                   value={sectorFilter}
                   onChange={(e) => setSectorFilter(e.target.value as SectorFilter)}
@@ -393,38 +495,72 @@ export default function Marketplace() {
                   <option value="Non-Touristic Services">{getSectorLabel('Non-Touristic Services', marketplaceT)}</option>
                 </select>
               </div>
+              <div>
+                <label className="flex items-center gap-1 text-[12px] font-bold text-gray-500 uppercase mb-1">
+                  <FlaskConical className="w-3 h-3" /> {marketplaceT?.filterEvidenceMaturity}
+                </label>
+                <select
+                  value={evidenceFilter}
+                  onChange={(e) => setEvidenceFilter(e.target.value as EvidenceMaturity)}
+                  className="w-full border border-eu-border rounded-md p-2 text-sm bg-white focus:outline-none focus:border-eu-blue"
+                >
+                  <option value="All">{marketplaceT?.all}</option>
+                  {Object.entries(marketplaceT?.evidenceMaturityOptions || {}).map(([k, v]) => (
+                    <option key={k} value={k}>{v as string}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Results count */}
-        <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (marketplaceT?.resultsCount || 'Showing {{count}} of {{total}} challenges').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(translatedChallenges.length)) }} />
+        <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: (marketplaceT?.resultsCount || 'Showing <strong>{{count}}</strong> of {{total}} contributions').replace('{{count}}', `<strong>${filtered.length}</strong>`).replace('{{total}}', String(translatedChallenges.length)) }} />
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filtered.map((ch) => (
             <div key={ch.id} className="bg-white rounded-xl border border-eu-border shadow-sm flex flex-col hover:border-eu-blue transition-colors">
               <div className="p-4 sm:p-5 flex-1">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                  <span className={`text-xs sm:text-sm font-extrabold uppercase px-2 py-0.5 rounded w-fit ${levelStyles[ch.level]}`}>
-                    {marketplaceT?.challengeLabel || 'Challenge'} {getLevelLabel(ch.level, marketplaceT)}
+                {/* Type + Status row */}
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-eu-blue/10 text-eu-blue">
+                    {getContributionTypeLabel(ch.contributionType, marketplaceT)}
                   </span>
-                  <span className={`text-xs sm:text-sm font-bold px-2 py-0.5 rounded w-fit ${statusStyles[ch.status]}`}>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded ${statusStyles[ch.status]}`}>
                     {getStatusLabel(ch.status, marketplaceT)}
                   </span>
                 </div>
+
                 <h3 className="font-bold text-eu-text text-sm mb-1 leading-snug line-clamp-2">{ch.title}</h3>
                 <p className="text-xs text-gray-500 mb-1 font-semibold truncate">{ch.country} {ch.entity}</p>
-                <p className="text-xs sm:text-sm text-gray-400 mb-3 line-clamp-1">{ch.entityType}</p>
-                <p className="text-xs text-gray-600 mb-4 line-clamp-2">{ch.description}</p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {ch.tags.slice(0, 2).map((t) => (
-                    <span key={t} className="flex items-center gap-1 text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold line-clamp-1">
-                      <Tag className="w-2.5 h-2.5 shrink-0" />{t}
+                <p className="text-xs text-gray-400 mb-3 line-clamp-1">{ch.entityType}</p>
+                <p className="text-xs text-gray-600 mb-3 line-clamp-2">{ch.description}</p>
+
+                {/* Route badge */}
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded ${routeStyles[ch.route] || 'bg-gray-100 text-gray-600'}`}>
+                    {getRouteLabel(ch.route, marketplaceT)}
+                  </span>
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded ${evidenceMaturityStyles[ch.evidenceMaturity] || 'bg-gray-100 text-gray-600'}`}>
+                    {getEvidenceMaturityLabel(ch.evidenceMaturity, marketplaceT)}
+                  </span>
+                </div>
+
+                {/* Evidence expected */}
+                <p className="text-xs text-gray-500 mb-3 line-clamp-1">
+                  <span className="font-bold">{marketplaceT?.evidenceLabel || 'Evidencia'}:</span> {ch.evidenceExpected}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {ch.tags.slice(0, 2).map((tag) => (
+                    <span key={tag} className="flex items-center gap-1 text-xs bg-eu-bg border border-eu-border px-1.5 py-0.5 rounded text-gray-600 font-semibold">
+                      <Tag className="w-2.5 h-2.5 shrink-0" />{tag}
                     </span>
                   ))}
                 </div>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-xs sm:text-sm text-gray-500">
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-xs text-gray-500">
                   <span className="flex items-center gap-1"><Calendar className="w-3 h-3 shrink-0" /><span className="truncate">{marketplaceT?.deadlineLabel || 'Plazo'}: {ch.deadline}</span></span>
                   <span className="flex items-center gap-1"><Users className="w-3 h-3 shrink-0" />{ch.teams} {ch.teams === 1 ? marketplaceT?.teamSingular || 'equipo' : marketplaceT?.teamPlural || 'equipos'}</span>
                 </div>
@@ -435,7 +571,7 @@ export default function Marketplace() {
                   onClick={() => setSelectedId(ch.id)}
                   className="text-eu-blue font-bold text-xs bg-transparent border-none cursor-pointer hover:underline text-left sm:text-right"
                 >
-                  {marketplaceT?.viewAndApply || 'View and Apply'} →
+                  {marketplaceT?.viewAndApply || 'Ver detalle'} →
                 </button>
               </div>
             </div>
@@ -444,12 +580,11 @@ export default function Marketplace() {
 
         {filtered.length === 0 && (
           <div className="text-center py-16 text-gray-500">
-            <p className="text-lg font-semibold mb-2">{marketplaceT?.noResults || 'No challenges found with these filters'}</p>
-            <p className="text-sm">{marketplaceT?.tryModifying || 'Try modifying your search criteria'}</p>
+            <p className="text-lg font-semibold mb-2">{marketplaceT?.noResults}</p>
+            <p className="text-sm">{marketplaceT?.tryModifying}</p>
           </div>
         )}
       </div>
     </div>
   );
 }
-

@@ -27,7 +27,8 @@
       "Bash(git push *)",
       "Bash(git commit -m 'fix: Improve language selector in mobile menu *)",
       "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"hover states interaction feedback menu items visual feedback transitions\" --domain ux -n 5)",
-      "Bash(git commit -m 'feat: Improve hover and active states for menu items in mobile dropdown *)"
+      "Bash(git commit -m 'feat: Improve hover and active states for menu items in mobile dropdown *)",
+      "Read(//d/Núvol/OneDrive - Conselleria d'EducAdapter/Curs 2025-2026/Projectes/AI-STEAM-MOCKUP/src/components/views/**)"
     ]
   }
 }

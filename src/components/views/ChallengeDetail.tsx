@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, Users, Tag, Building2, Clock, CheckCircle, FileText, Star, ChevronRight, Download, MessageSquare, Target, Database, Award } from 'lucide-react';
+import { ArrowLeft, Calendar, Users, Tag, Building2, Clock, CheckCircle, FileText, Star, ChevronRight, Download, MessageSquare, Target, Database, Award, Route, FlaskConical, Handshake } from 'lucide-react';
 import { useContext } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { challengeExtras } from '../../challengeExtras';
@@ -17,6 +17,10 @@ interface Challenge {
   teams: number;
   tags: string[];
   country: string;
+  contributionType?: string;
+  route?: string;
+  evidenceExpected?: string;
+  evidenceMaturity?: string;
 }
 
 interface Milestone {
@@ -583,7 +587,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
             onClick={onBack}
             className="flex items-center gap-2 text-eu-blue font-bold text-sm hover:underline bg-transparent border-none cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" /> {t.backButton || 'Volver al Banco de Retos'}
+            <ArrowLeft className="w-4 h-4" /> {t.backButton || 'Volver a Retos y Casos'}
           </button>
           <div className="flex items-center gap-2">
             <span className={`text-sm font-extrabold uppercase px-2 py-0.5 rounded ${levelStyles[challenge.level]}`}>
@@ -652,6 +656,24 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
                 <p className="font-bold text-white text-sm">{extra?.teamSize ?? '—'}</p>
               </div>
             </div>
+            {challenge.route && (
+              <div className="flex items-center gap-3">
+                <Route className="w-4 h-4 text-eu-yellow shrink-0" />
+                <div>
+                  <p className="text-xs text-white/50 uppercase font-bold">{t.routeLabel || 'Ruta educativa'}</p>
+                  <p className="font-bold text-white text-sm">{challenge.route}</p>
+                </div>
+              </div>
+            )}
+            {challenge.evidenceExpected && (
+              <div className="flex items-start gap-3">
+                <FlaskConical className="w-4 h-4 text-eu-yellow shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-xs text-white/50 uppercase font-bold">{t.evidenceLabel || 'Evidencia esperada'}</p>
+                  <p className="text-white text-sm leading-snug">{challenge.evidenceExpected}</p>
+                </div>
+              </div>
+            )}
             {challenge.status === 'Abierto' && (
               <button className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
                 {t.enrollButton || 'Inscribir mi equipo →'}
@@ -888,6 +910,20 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
               </ul>
             </div>
           )}
+
+          {/* Network return */}
+          <div className="bg-eu-bg rounded-xl border border-eu-border p-6">
+            <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
+              <Handshake className="w-4 h-4 text-eu-teal" /> {t.networkReturnTitle || 'Qué devuelve la red al stakeholder'}
+            </h3>
+            <ul className="space-y-2.5 text-xs text-gray-700">
+              <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 bg-eu-teal rounded-full mt-1.5 shrink-0"></span>Publicación del caso/resultado como recurso OER en Aules</li>
+              <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 bg-eu-teal rounded-full mt-1.5 shrink-0"></span>Visibilidad en la red de {t.consortiumLabel || '23 socios'} de AI-SECRETT</li>
+              <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 bg-eu-teal rounded-full mt-1.5 shrink-0"></span>Acceso a talento formado (FP/VET y, si procede, Máster)</li>
+              <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 bg-eu-teal rounded-full mt-1.5 shrink-0"></span>Co-validación del resultado por el Comité Científico AI-SECRETT</li>
+              <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 bg-eu-teal rounded-full mt-1.5 shrink-0"></span>Participación en la gobernanza vía ConsensUE (acuerdo gasto cero)</li>
+            </ul>
+          </div>
 
           {/* CTA bottom */}
           {challenge.status === 'Abierto' && (
