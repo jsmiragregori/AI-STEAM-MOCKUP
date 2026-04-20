@@ -330,7 +330,7 @@ export default function Home({ setActiveTab }: HomeProps) {
       {/* Partners strip */}
       <section className="px-6 py-10 bg-white border-t border-eu-border">
         <div className="max-w-7xl mx-auto">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">{t('home.consortium')} 23 {t('home.members')} 11 {t('home.countries2')}</p>
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">{t('home.consortium')} 23 {t('home.members')} 12 {t('home.countries2')}</p>
           <div className="flex flex-wrap justify-center gap-4 items-center">
             {['UVEG', 'CEICE', 'UMU', 'UPV', 'NTNU', 'HSW', 'FIDIT', 'INESC', 'TUV.IT', 'JOIST', 'C-LINK', 'LC', 'COGN', 'ESAD-GV', 'IF.E', 'Ud\'A', 'LPGA', 'VARM', 'CINK', 'KEA', 'PREDA', 'RCE'].map((p) => (
               <div key={p} className="bg-eu-bg border border-eu-border rounded px-3 py-1.5 text-sm font-bold text-gray-600">{p}</div>
