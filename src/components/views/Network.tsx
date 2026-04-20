@@ -37,6 +37,7 @@ const partners: Partner[] = [
   { id: 'uda', name: "Univ. Gabriele d'Annunzio", acronym: "Ud'A", country: 'IT', city: 'Chieti-Pescara', category: 'universidad', sectors: ['Salud', 'Industria'], role: 'beneficiary' },
   { id: 'esad', name: 'ESAD Grenoble-Valence', acronym: 'ESAD-GV', country: 'FR', city: 'Grenoble', category: 'universidad', sectors: ['Turismo y Cultura'], role: 'beneficiary' },
   { id: 'inesc', name: 'INESC TEC', acronym: 'INESC', country: 'PT', city: 'Porto', category: 'universidad', sectors: ['Industria', 'Medio Ambiente'], role: 'beneficiary' },
+  { id: 'laurea', name: 'LAUREA University of Applied Sciences', acronym: 'LAUREA', country: 'FI', city: 'Espoo', category: 'universidad', sectors: ['Educación', 'Industria'], role: 'beneficiary' },
   { id: 'ceice', name: "Conselleria d'Educació (CEICE)", acronym: 'CEICE', country: 'ES', city: 'Valencia', category: 'admin', sectors: ['Educación', 'Administración'], role: 'beneficiary' },
   { id: 'lpga', name: 'Promoción Las Palmas de GC', acronym: 'LPGA', country: 'ES', city: 'Las Palmas', category: 'admin', sectors: ['Turismo y Cultura', 'Administración'], role: 'beneficiary' },
   { id: 'varm', name: 'Region Värmland', acronym: 'VARM', country: 'SE', city: 'Karlstad', category: 'admin', sectors: ['Medio Ambiente', 'Administración'], role: 'beneficiary' },
