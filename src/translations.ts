@@ -639,7 +639,7 @@ export const translations = {
         nodes: [
           { label: 'Nodo Principal', city: 'Valencia', org: 'CEICE – Generalitat Valenciana', role: 'Orquestador del ecosistema. Hub central de la red. Aloja el portal, Aules y ConsensUE.' },
           { label: 'Nodo EU', city: 'Bruselas', org: 'Lisbon Council (LC)', role: 'Proximidad a las instituciones europeas. Enlace con Digital Decade, AI Act y política educativa EU.' },
-          { label: 'Nodos Distribuidos', city: 'Europa (9 países)', org: 'Socios del Consorcio AI-SECRETT', role: 'NTNU, HSW, INESC, FIDIT, Ud\'A, ESAD-GV y otros. Extensión regional de la red en sus territorios.' },
+          { label: 'Nodos Distribuidos', city: 'Europa (12 países)', org: 'Socios del Consorcio AI-SECRETT', role: 'NTNU, HSW, INESC, LAUREA, FIDIT, Ud\'A, ESAD-GV y otros. Extensión regional de la red en sus territorios.' },
         ],
         actorsTitle: 'Los Dos Actores Principales de la Plataforma',
         actorsDesc: 'Siguiendo el modelo DigiNet, la operación del hub se articula sobre una división formal de competencias entre el Orquestador Institucional y el Proveedor Académico.',
@@ -1515,7 +1515,7 @@ export const translations = {
         nodes: [
           { label: 'Main Node', city: 'Valencia', org: 'CEICE – Generalitat Valenciana', role: 'Ecosystem orchestrator. Central hub of the network. Hosts the portal, Aules, and ConsensUE.' },
           { label: 'EU Node', city: 'Brussels', org: 'Lisbon Council (LC)', role: 'Proximity to European institutions. Link with Digital Decade, AI Act, and EU education policy.' },
-          { label: 'Distributed Nodes', city: 'Europe (9 countries)', org: 'AI-SECRETT Consortium Partners', role: 'NTNU, HSW, INESC, FIDIT, Ud\'A, ESAD-GV and others. Regional extension of the network in their territories.' },
+          { label: 'Distributed Nodes', city: 'Europe (12 countries)', org: 'AI-SECRETT Consortium Partners', role: 'NTNU, HSW, INESC, LAUREA, FIDIT, Ud\'A, ESAD-GV and others. Regional extension of the network in their territories.' },
         ],
         actorsTitle: 'The Two Main Actors of the Platform',
         actorsDesc: 'Following the DigiNet model, hub operation is articulated on a formal division of competencies between the Institutional Orchestrator and the Academic Provider.',
@@ -2372,7 +2372,7 @@ export const translations = {
         nodes: [
           { label: 'Node Principal', city: 'València', org: 'CEICE – Generalitat Valenciana', role: 'Orquestrador de l\'ecosistema. Hub central de la xarxa. Allotja el portal, Aules i ConsensUE.' },
           { label: 'Node UE', city: 'Brussel·les', org: 'Lisbon Council (LC)', role: 'Proximitat a les institucions europees. Enllaç amb Digital Decade, AI Act i política educativa UE.' },
-          { label: 'Nodes Distribuïts', city: 'Europa (9 països)', org: 'Socis del Consorcio AI-SECRETT', role: 'NTNU, HSW, INESC, FIDIT, Ud\'A, ESAD-GV i altres. Extensió regional de la xarxa als seus territoris.' },
+          { label: 'Nodes Distribuïts', city: 'Europa (12 països)', org: 'Socis del Consorci AI-SECRETT', role: 'NTNU, HSW, INESC, LAUREA, FIDIT, Ud\'A, ESAD-GV i altres. Extensió regional de la xarxa als seus territoris.' },
         ],
         actorsTitle: 'Els Dos Actors Principals de la Plataforma',
         actorsDesc: 'Seguint el model DigiNet, l\'operació del hub s\'articula sobre una divisió formal de competències entre l\'Orquestrador Institucional i el Proveïdor Acadèmic.',
