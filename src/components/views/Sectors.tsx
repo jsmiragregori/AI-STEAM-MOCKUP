@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp, Users, BookOpen, FlaskConical, GraduationCap, Lightbulb } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import type { Tab } from '../../App';
 
 interface SectorMeta {
   id: string;
@@ -26,12 +27,20 @@ const sectorsMeta: SectorMeta[] = [
   { id: 'nts', emoji: '🏢', color: 'from-slate-600 to-gray-500', borderColor: 'border-slate-500', tagBg: 'bg-slate-100', tagText: 'text-slate-800', challenges: 16, partners: 21, courses: 11, stakeholders: 56, featuredPartners: ['CEICE', 'LC', 'COGN', 'FIDIT'] },
 ];
 
-export default function Sectors() {
+interface SectorsProps {
+  setActiveTab?: (tab: Tab) => void;
+}
+
+export default function Sectors({ setActiveTab }: SectorsProps) {
   const { t } = useLanguage();
   const sectorsT = t('sectors');
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggle = (id: string) => setExpanded(expanded === id ? null : id);
+  const openStakeholderForm = () => {
+    window.location.hash = 'stakeholder-form';
+    setActiveTab?.('red');
+  };
 
   const get = (key: string, sectorId: string): any => {
     const obj = sectorsT?.[key] as Record<string, any> | undefined;
@@ -253,10 +262,16 @@ export default function Sectors() {
       {/* CTA */}
       <div className="max-w-7xl mx-auto px-6 pb-12">
         <div className="bg-eu-blue rounded-xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
+          <div className="max-w-2xl">
             <h3 className="text-xl font-bold mb-2">{sectorsT?.cta}</h3>
             <p className="text-white/80 text-sm" dangerouslySetInnerHTML={{ __html: sectorsT?.ctaDesc || '' }} />
           </div>
+          <button
+            onClick={openStakeholderForm}
+            className="bg-eu-orange text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors border-none cursor-pointer shrink-0"
+          >
+            {sectorsT?.ctaButton}
+          </button>
         </div>
       </div>
     </div>

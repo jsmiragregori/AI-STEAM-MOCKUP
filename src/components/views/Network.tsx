@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Building2, GraduationCap, HeartHandshake, Globe, MapPin, UserPlus } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -56,7 +56,7 @@ const partners: Partner[] = [
 // Stakeholders adheridos a la red (pueden unirse nuevos)
 const stakeholders: Stakeholder[] = [
   { id: 'aesia', name: 'AESIA – Agencia Española de Supervisión de IA', type: 'Agencia estatal regulatoria', sector: 'Transversal', region: 'Nacional', category: 'admin', desc: 'Supervisión regulatoria y ética de la IA en España.' },
-  { id: 'ivace', name: 'IVACE+i', type: 'Agencia de Innovación Regional', sector: 'Transversal', region: 'C. Valenciana', category: 'admin', desc: 'Financiación de innovación y enlace con PYMEs.' },
+  { id: 'ivace', name: 'IVACE+i', type: 'Agencia de Innovación Regional', sector: 'Transversal', region: 'C. Valenciana', category: 'admin', desc: 'Financiación de innovación y enlace con PYMES.' },
   { id: 'dgtic', name: 'GVA – DGTIC', type: 'Organismo Público', sector: 'Transversal', region: 'C. Valenciana', category: 'admin', desc: 'Dirección General de Tecnologías de la Información y las Comunicaciones de la GVA.' },
   { id: 'lasnaves', name: 'Las Naves', type: 'Centro de Innovación Urbana', sector: 'Industria / Energía', region: 'C. Valenciana', category: 'admin', desc: 'Living lab urbano, misiones 2030 de la ciudad de Valencia.' },
   { id: 'fedacova', name: 'FEDACOVA', type: 'Federación Agroalimentaria', sector: 'Agroalimentario', region: 'C. Valenciana', category: 'empresa', desc: 'Agrupa 30 asociaciones de la industria transformadora agroalimentaria.' },
@@ -119,7 +119,7 @@ const getRegionLabel = (region: string, language: string): string => {
 const getStakeholderDesc = (id: string, language: string): string => {
   const descMap: Record<string, Record<string, string>> = {
     'aesia': { es: 'Supervisión regulatoria y ética de la IA en España.', en: 'AI regulatory supervision and ethics in Spain.', va: 'Supervisió regulatòria i ética de la IA a Espanya.' },
-    'ivace': { es: 'Financiación de innovación y enlace con PYMEs.', en: 'Innovation funding and liaison with SMEs.', va: 'Finançament d\'innovació i enllaç amb PIMEs.' },
+    'ivace': { es: 'Financiación de innovación y enlace con PYMES.', en: 'Innovation funding and liaison with SMEs.', va: 'Finançament d\'innovació i enllaç amb PIMEs.' },
     'dgtic': { es: 'Dirección General de Tecnologías de la Información y las Comunicaciones de la GVA.', en: 'General Directorate of Information and Communication Technologies of the GVA.', va: 'Direcció General de Tecnologies de la Informació i les Comunicacions de la GVA.' },
     'lasnaves': { es: 'Living lab urbano, misiones 2030 de la ciudad de Valencia.', en: 'Urban living lab, 2030 missions of the city of Valencia.', va: 'Living lab urbà, missions 2030 de la ciutat de València.' },
     'fedacova': { es: 'Agrupa 30 asociaciones de la industria transformadora agroalimentaria.', en: 'Groups 30 associations of the agrifood processing industry.', va: 'Agrupa 30 associacions de la indústria transformadora agroalimentària.' },
@@ -139,10 +139,19 @@ const getStakeholderDesc = (id: string, language: string): string => {
 export default function Network() {
   const { t, language } = useLanguage();
   const networkT = t('network');
-  const [activeTab, setActiveTab] = useState<NetworkTab>('socios');
+  const shouldOpenStakeholderForm = window.location.hash === '#stakeholder-form';
+  const [activeTab, setActiveTab] = useState<NetworkTab>(shouldOpenStakeholderForm ? 'stakeholders' : 'socios');
   const [activeCategory, setActiveCategory] = useState<HelixCategory>('todos');
   const [filterCountry, setFilterCountry] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(shouldOpenStakeholderForm);
+
+  useEffect(() => {
+    if (!shouldOpenStakeholderForm) return;
+    window.setTimeout(() => {
+      document.getElementById('stakeholder-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }, 0);
+  }, [shouldOpenStakeholderForm]);
 
   const filteredPartners = partners.filter((p) => {
     const matchCategory = activeCategory === 'todos' || p.category === activeCategory;
@@ -401,7 +410,7 @@ export default function Network() {
 
             {/* Adhesion Form — solo para stakeholders */}
             {showForm && (
-              <div className="bg-white rounded-xl border-2 border-eu-orange shadow-sm overflow-hidden">
+              <div id="stakeholder-form" className="bg-white rounded-xl border-2 border-eu-orange shadow-sm overflow-hidden">
                 <div className="bg-eu-orange/10 border-b border-eu-orange/30 px-6 py-4 flex items-center gap-3">
                   <UserPlus className="w-5 h-5 text-eu-orange" />
                   <div>
@@ -448,9 +457,25 @@ export default function Network() {
                         <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.country} *</label>
                         <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" defaultValue="España" />
                       </div>
+                      <div>
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.region} *</label>
+                        <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" placeholder="Comunitat Valenciana, Norte de Portugal, Värmland..." />
+                      </div>
                       <div className="sm:col-span-2">
                         <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.email} *</label>
                         <input type="email" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue bg-white" placeholder="correo@entidad.com" />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.contributionFocus} *</label>
+                        <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
+                          <option>{networkT?.contributionOptions?.challenge}</option>
+                          <option>{networkT?.contributionOptions?.case}</option>
+                          <option>{networkT?.contributionOptions?.validation}</option>
+                          <option>{networkT?.contributionOptions?.mentoring}</option>
+                          <option>{networkT?.contributionOptions?.pilot}</option>
+                          <option>{networkT?.contributionOptions?.resource}</option>
+                          <option>{networkT?.contributionOptions?.network}</option>
+                        </select>
                       </div>
                       <div className="sm:col-span-2">
                         <label className="block text-[13px] font-bold text-eu-text mb-1">{networkT?.formFields?.description}</label>

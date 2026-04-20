@@ -168,7 +168,7 @@ export default function Training() {
               <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.microCredentialsPilots}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-6 py-4">
-              <p className="text-2xl font-extrabold text-eu-yellow">11</p>
+              <p className="text-2xl font-extrabold text-eu-yellow">12</p>
               <p className="text-xs text-white/70 font-semibold uppercase mt-1">{trainingT?.countries}</p>
             </div>
           </div>

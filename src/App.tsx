@@ -22,7 +22,7 @@ export default function App() {
     switch (activeTab) {
       case 'inicio': return <Home setActiveTab={setActiveTab} />;
       case 'red': return <Network />;
-      case 'sectores': return <Sectors />;
+      case 'sectores': return <Sectors setActiveTab={setActiveTab} />;
       case 'banco-retos': return <Marketplace />;
       case 'formacion': return <Training />;
       case 'conocimiento': return <Knowledge />;
