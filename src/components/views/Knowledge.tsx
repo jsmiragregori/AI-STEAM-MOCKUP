@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FileText, Download, Award, Search, BookOpen, ExternalLink, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { FileText, Download, Search, BookOpen, ExternalLink, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
-type KnowledgeTab = 'flujo' | 'oer' | 'insignias' | 'casos' | 'evidencia' | 'plantillas';
+type KnowledgeTab = 'flujo' | 'oer' | 'casos' | 'evidencia' | 'plantillas';
 
 const typeIcons: Record<string, string> = {
   'Guía': '📖',
@@ -45,7 +45,6 @@ export default function Knowledge() {
   const [oerSearch, setOerSearch] = useState('');
 
   const oerData = (t('knowledge.oerResources') as any[]) || [];
-  const badgesData = (t('knowledge.badges') as any[]) || [];
   const successCasesData = (t('knowledge.successCases') as any[]) || [];
   const evidenceItems = (t('knowledge.evidenceItems') as any[]) || [];
   const templatesItems = (t('knowledge.templatesItems') as any[]) || [];
@@ -76,7 +75,6 @@ export default function Knowledge() {
   const tabs: { id: KnowledgeTab; label: string }[] = [
     { id: 'flujo', label: t('knowledge.tabFlow') },
     { id: 'oer', label: t('knowledge.tabOER') },
-    { id: 'insignias', label: t('knowledge.tabBadges') },
     { id: 'casos', label: t('knowledge.tabCases') },
     { id: 'evidencia', label: t('knowledge.tabEvidence') },
     { id: 'plantillas', label: t('knowledge.tabTemplates') },
@@ -96,10 +94,6 @@ export default function Knowledge() {
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerData.length || 8}</p>
               <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('knowledge.statsOER')}</p>
-            </div>
-            <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
-              <p className="text-2xl font-extrabold text-eu-yellow">{badgesData.reduce((a: number, b: any) => a + b.issued, 0).toLocaleString()}</p>
-              <p className="text-sm text-white/70 font-semibold uppercase mt-0.5">{t('knowledge.statsBadges')}</p>
             </div>
             <div className="bg-white/10 rounded-xl px-5 py-3 text-center">
               <p className="text-2xl font-extrabold text-eu-yellow">{oerData.reduce((a: number, r: any) => a + (r.downloads || 0), 0).toLocaleString()}</p>
@@ -215,43 +209,6 @@ export default function Knowledge() {
               <a href="#" className="inline-flex items-center gap-2 text-eu-blue font-bold text-sm hover:underline">
                 <ExternalLink className="w-4 h-4" /> {t('knowledge.oerViewAll')}
               </a>
-            </div>
-          </div>
-        )}
-
-        {/* ── Tab: Insignias y Reconocimiento ── */}
-        {activeTab === 'insignias' && (
-          <div>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-eu-text mb-1">{t('knowledge.badgesTitle')}</h2>
-              <p className="text-sm text-gray-600 max-w-2xl">{t('knowledge.badgesDesc')}</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {badgesData.map((badge: any) => (
-                <div key={badge.id} className="bg-white rounded-xl border border-eu-border shadow-sm p-5 flex flex-col hover:border-eu-blue transition-colors">
-                  <div className={`w-16 h-16 rounded-full ${badge.color} flex items-center justify-center text-white font-extrabold text-lg mb-4 mx-auto shadow-md`}>
-                    <Award className="w-7 h-7" />
-                  </div>
-                  <h3 className="font-bold text-eu-text text-sm text-center mb-1">{badge.name}</h3>
-                  <p className="text-xs text-gray-500 text-center mb-3">{badge.description}</p>
-                  <div className="flex justify-center flex-wrap gap-2 mb-3">
-                    <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${levelColors[badge.level] || 'bg-gray-100 text-gray-600'}`}>{badge.level}</span>
-                    <span className={`text-xs px-1.5 py-0.5 rounded font-semibold ${sectorColors[badge.sector] || 'bg-gray-100 text-gray-600'}`}>{getSectorName(badge.sector)}</span>
-                  </div>
-                  <div className="bg-eu-bg rounded-lg p-3 mb-3">
-                    <p className="text-xs font-bold text-gray-500 uppercase mb-1">{t('knowledge.badgesCriteria')}</p>
-                    <ul className="space-y-1">
-                      {badge.criteria.map((c: string) => (
-                        <li key={c} className="text-xs text-gray-600 flex items-start gap-1">
-                          <span className="text-eu-teal mt-0.5 shrink-0">✓</span> {c}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <p className="text-center text-eu-teal font-extrabold text-lg mt-auto">{badge.issued}</p>
-                  <p className="text-center text-xs text-gray-400">{t('knowledge.badgesIssued')}</p>
-                </div>
-              ))}
             </div>
           </div>
         )}
