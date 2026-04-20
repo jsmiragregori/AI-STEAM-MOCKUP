@@ -95,9 +95,6 @@ const getCategoryColor = (category: string): string => {
     'Retos y Casos': 'text-eu-orange',
     'Reptes i Casos': 'text-eu-orange',
     'Challenges & Cases': 'text-eu-orange',
-    'Entregables AI-SECRETT': 'text-eu-teal',
-    'AI-SECRETT Deliverables': 'text-eu-teal',
-    'Lliurables AI-SECRETT': 'text-eu-teal',
   };
   return categoryColorMap[category] || 'text-gray-700';
 };
@@ -115,7 +112,7 @@ export default function News() {
   const { t, language } = useLanguage();
   const newsT = t('news');
 
-  // New 7-category system
+  // Category system
   const categoryKeys = [
     { key: 'categoryAll', fallback: { es: 'Todas', en: 'All', va: 'Totes' } },
     { key: 'categoryENRED', fallback: { es: 'ENRED', en: 'ENRED', va: 'ENRED' } },
@@ -123,7 +120,6 @@ export default function News() {
     { key: 'categoryTeacherTraining', fallback: { es: 'Form. Docente', en: 'Teacher Training', va: 'Form. Docent' } },
     { key: 'categoryStakeholders', fallback: { es: 'Stakeholders', en: 'Stakeholders', va: 'Stakeholders' } },
     { key: 'categoryChallengesCases', fallback: { es: 'Retos y Casos', en: 'Challenges & Cases', va: 'Reptes i Casos' } },
-    { key: 'categoryDeliverables', fallback: { es: 'Entregables AI-SECRETT', en: 'AI-SECRETT Deliverables', va: 'Lliurables AI-SECRETT' } },
     { key: 'categoryEvents', fallback: { es: 'Eventos', en: 'Events', va: 'Events' } },
   ];
 
