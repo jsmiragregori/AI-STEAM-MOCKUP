@@ -82,11 +82,6 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           {/* Language Selector - Desktop */}
           <LanguageSelector size="normal" />
 
-          {/* SSO Button */}
-          <button className="bg-eu-blue text-white border-none px-4 py-2 rounded font-semibold text-sm cursor-pointer hover:bg-blue-800 transition-colors shrink-0 min-h-10">
-            {t('header.privateAccess')}
-          </button>
-
           {/* Institutional Shortcuts */}
           <div className="flex items-center gap-2 border-l border-eu-border pl-4">
             <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
@@ -100,11 +95,6 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
         {/* Tablet Right Actions - md to lg */}
         <div className="hidden md:flex lg:hidden items-center gap-2">
-          {/* SSO Button - Tablet */}
-          <button className="bg-eu-blue text-white border-none px-3 py-2 rounded font-semibold text-sm cursor-pointer hover:bg-blue-800 transition-colors shrink-0 min-h-10">
-            {t('header.privateAccess')}
-          </button>
-
           {/* Hamburger for Tablet */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -209,11 +199,6 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
           {/* Mobile Actions Section */}
           <div className="border-t border-eu-blue/20 px-4 sm:px-6 py-6 space-y-3">
-            {/* SSO Button in Mobile Menu */}
-            <button className="w-full bg-white text-eu-blue border-none px-4 py-3 rounded font-semibold text-sm cursor-pointer hover:bg-gray-100 transition-colors min-h-12 flex items-center justify-center">
-              {t('header.privateAccess')}
-            </button>
-
             {/* Aules Button - White background for contrast */}
             <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center text-center bg-white border border-eu-teal text-eu-teal px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12">
               {t('header.aules')}

@@ -201,6 +201,82 @@ const challenges: Challenge[] = [
     evidenceExpected: 'Clasificador multilingüe F1 ≥ 0.82 + API tiempo real',
     evidenceMaturity: 'idea',
   },
+  {
+    id: 'r10',
+    title: 'Validación sectorial de necesidades IA para FP industrial',
+    entity: 'Clúster Manufactura Avanzada CV',
+    entityType: 'Clúster Empresarial',
+    level: 'FP',
+    status: 'Abierto',
+    sector: 'Manufacturing',
+    description: 'Revisión con empresas industriales de competencias, herramientas y casos reales que deberían priorizarse en actividades FP/VET sobre IA aplicada a producción, mantenimiento y calidad.',
+    posted: '18 Mar 2026',
+    deadline: '30 Jun 2026',
+    teams: 0,
+    tags: ['Validación Sectorial', 'FP/VET', 'Industria', 'Competencias'],
+    country: '🇪🇸',
+    contributionType: 'Validation',
+    route: 'FP/VET',
+    evidenceExpected: 'Informe breve de relevancia sectorial + matriz de competencias priorizadas',
+    evidenceMaturity: 'idea',
+  },
+  {
+    id: 'r11',
+    title: 'Mentoría para proyectos de IA responsable en administración pública',
+    entity: 'FIDIT',
+    entityType: 'Fundación de Innovación Pública',
+    level: 'Máster',
+    status: 'En Resolución',
+    sector: 'Non-Touristic Services',
+    description: 'Disponibilidad de perfiles expertos para orientar equipos docentes y estudiantes en privacidad, explicabilidad y evaluación de impacto en casos de IA para servicios públicos.',
+    posted: '22 Mar 2026',
+    deadline: '15 Jul 2026',
+    teams: 2,
+    tags: ['Mentoría', 'IA Responsable', 'Sector Público', 'Ética'],
+    country: '🇪🇸',
+    contributionType: 'Mentoring',
+    route: 'Mixed',
+    evidenceExpected: 'Registro de sesiones, recomendaciones éticas y checklist reutilizable',
+    evidenceMaturity: 'validated',
+  },
+  {
+    id: 'r12',
+    title: 'Pilotaje de actividad docente sobre sensores y calidad del aire',
+    entity: 'IES La Costera',
+    entityType: 'Centro FP/VET',
+    level: 'FP',
+    status: 'En Resolución',
+    sector: 'Energy and Environment',
+    description: 'Piloto en aula para probar una situación de aprendizaje con sensores ambientales, visualización de datos y reflexión sobre sostenibilidad y sesgos de medición.',
+    posted: '27 Mar 2026',
+    deadline: '30 Sep 2026',
+    teams: 1,
+    tags: ['Pilotaje', 'Sensórica', 'Aules', 'Sostenibilidad'],
+    country: '🇪🇸',
+    contributionType: 'Pilot',
+    route: 'Teacher Training',
+    evidenceExpected: 'Actividad probada, feedback docente y paquete OER revisable',
+    evidenceMaturity: 'inPilot',
+  },
+  {
+    id: 'r13',
+    title: 'Dataset sintético para trazabilidad agroalimentaria',
+    entity: 'CINK',
+    entityType: 'PYME Tecnológica',
+    level: 'FP',
+    status: 'Resuelto',
+    sector: 'Agrifood',
+    description: 'Aportación de un conjunto de datos sintético y anonimizado para practicar trazabilidad, detección de anomalías y visualización de cadenas de suministro agroalimentarias.',
+    posted: '02 Abr 2026',
+    deadline: '30 Abr 2026',
+    teams: 0,
+    tags: ['Recurso', 'Dataset Sintético', 'Trazabilidad', 'Agroalimentario'],
+    country: '🇭🇷',
+    contributionType: 'Resource',
+    route: 'FP/VET',
+    evidenceExpected: 'Dataset CC-BY-SA, guía docente y ficha de uso responsable',
+    evidenceMaturity: 'completed',
+  },
 ];
 
 const getTranslatedChallenges = (baseChalls: Challenge[], marketplaceT: any): Challenge[] => {
@@ -349,6 +425,10 @@ export default function Marketplace() {
           <div className="bg-white rounded-xl border border-eu-border shadow-sm p-5 sm:p-7 mb-8">
             <h2 className="text-lg sm:text-xl font-bold text-eu-text mb-1">{marketplaceT?.publishNew}</h2>
             <p className="text-sm text-gray-600 mb-5">{marketplaceT?.shareChallenge}</p>
+            <div className="bg-eu-yellow/30 border border-eu-yellow rounded-md p-3 mb-5 text-sm text-eu-text">
+              <p className="font-bold mb-1">{marketplaceT?.consensueDemoTitle}</p>
+              <p className="text-gray-700">{marketplaceT?.consensueDemoNote}</p>
+            </div>
             <form className="space-y-4 max-w-2xl" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="block text-[13px] font-bold text-eu-text mb-1">{marketplaceT?.formLabels?.title} *</label>

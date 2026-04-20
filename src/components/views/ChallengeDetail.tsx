@@ -933,7 +933,6 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
               <button className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
                 {t.enrollButton || 'Inscribir mi equipo →'}
               </button>
-              <p className="text-xs text-white/50 mt-3">{t.privateAreaAccess || 'Acceso con cuenta del Área Privada AI-STEAM'}</p>
             </div>
           )}
         </div>
