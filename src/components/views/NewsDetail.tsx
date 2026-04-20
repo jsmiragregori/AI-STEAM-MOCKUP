@@ -1,5 +1,6 @@
 import { ArrowLeft, Calendar, User, Tag, Share2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import ExternalAnchor from '../common/ExternalAnchor';
 
 interface NewsDetailProps {
   onBack: () => void;
@@ -85,12 +86,12 @@ export default function NewsDetail({ onBack }: NewsDetailProps) {
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
             La Xarxa AI-STEAM está abierta a nuevas organizaciones interesadas en colaborar, proponer retos y formar parte del ecosistema de innovación europeo.
           </p>
-          <a
+          <ExternalAnchor
             href={detail.cta_link}
             className="inline-flex items-center gap-2 bg-eu-blue text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors"
           >
             {detail.cta_button}
-          </a>
+          </ExternalAnchor>
         </div>
 
         {/* Related News */}

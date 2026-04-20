@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { BookOpen, Award, ExternalLink, Clock, Users, Star, CheckCircle, AlertTriangle, GraduationCap, Briefcase, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import ExternalAnchor from '../common/ExternalAnchor';
 
 interface Course {
   id: string;
@@ -116,14 +117,12 @@ export default function Training() {
             <Award className="w-3 h-3 text-eu-orange shrink-0" />
             <span className="text-sm font-bold text-eu-orange truncate">{course.badge}</span>
           </div>
-          <a
+          <ExternalAnchor
             href={isMaster ? 'https://valgrai.eu' : 'https://portal.edu.gva.es/aules/'}
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-eu-blue font-bold text-xs bg-transparent cursor-pointer hover:underline inline-flex items-center gap-1 shrink-0 ml-2"
           >
             {isMaster ? 'Ver' : trainingT?.courseViewMore} <ExternalLink className="w-3 h-3" />
-          </a>
+          </ExternalAnchor>
         </div>
       </div>
     );
@@ -145,14 +144,12 @@ export default function Training() {
               <h1 className="text-3xl font-extrabold mb-3">{trainingT?.title}</h1>
               <p className="text-white/80 max-w-2xl text-base">{trainingT?.description}</p>
             </div>
-            <a
+            <ExternalAnchor
               href="https://aules.edu.gva.es/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex min-h-11 items-center gap-2 rounded-lg border-none bg-eu-orange px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-eu-purple focus:outline-none focus:ring-2 focus:ring-eu-yellow focus:ring-offset-2 focus:ring-offset-eu-blue"
             >
               <BookOpen className="w-4 h-4" /> {trainingT?.accessAules} <ExternalLink className="w-3 h-3" />
-            </a>
+            </ExternalAnchor>
           </div>
           <div className="flex flex-wrap gap-6 mt-8">
             <div className="bg-white/10 rounded-xl px-6 py-4">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Building2, GraduationCap, HeartHandshake, Globe, MapPin, UserPlus } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import CountryFlag from '../common/CountryFlag';
 
 type NetworkTab = 'socios' | 'stakeholders';
 type HelixCategory = 'todos' | 'universidad' | 'empresa' | 'admin' | 'sociedad';
@@ -280,9 +281,10 @@ export default function Network() {
                         <Icon className={`w-4 h-4 ${meta.color}`} />
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <img
-                          src={`https://flagcdn.com/20x15/${p.country.toLowerCase()}.png`}
-                          alt={networkT?.countryNames?.[p.country as keyof typeof networkT.countryNames] ?? p.country}
+                        <CountryFlag
+                          countryCode={p.country}
+                          countryName={networkT?.countryNames?.[p.country as keyof typeof networkT.countryNames] ?? p.country}
+                          size="small"
                           className="rounded-sm"
                         />
                         <span className="text-xs bg-eu-blue/10 text-eu-blue font-bold px-1.5 py-0.5 rounded">{networkT?.consortium}</span>
@@ -330,9 +332,10 @@ export default function Network() {
                           : 'bg-eu-bg border-eu-border hover:border-eu-blue hover:shadow-sm'
                       }`}
                     >
-                      <img
-                        src={`https://flagcdn.com/48x36/${c.toLowerCase()}.png`}
-                        alt={networkT?.countryNames?.[c as keyof typeof networkT.countryNames] ?? c}
+                      <CountryFlag
+                        countryCode={c}
+                        countryName={networkT?.countryNames?.[c as keyof typeof networkT.countryNames] ?? c}
+                        size="large"
                         className="w-10 h-auto rounded-sm shadow-sm"
                       />
                       <p className={`font-bold text-xs leading-tight ${isActive ? 'text-white' : 'text-eu-text'}`}>

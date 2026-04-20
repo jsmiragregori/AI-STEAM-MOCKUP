@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Tab } from '../App';
 import { useLanguage } from '../context/LanguageContext';
 import { Language } from '../translations';
+import ExternalAnchor from './common/ExternalAnchor';
 
 interface HeaderProps {
   activeTab: Tab;
@@ -84,9 +85,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
           {/* Institutional Shortcuts */}
           <div className="flex items-center gap-2 border-l border-eu-border pl-4">
-            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
+            <ExternalAnchor href="https://aules.edu.gva.es/" className="bg-eu-teal/10 border border-eu-teal text-eu-teal px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-teal hover:text-white transition-colors inline-block">
               {t('header.aules')}
-            </a>
+            </ExternalAnchor>
             <button className="bg-eu-orange/10 border border-eu-orange text-eu-orange px-3 py-2 rounded text-sm font-bold cursor-pointer hover:bg-eu-orange hover:text-white transition-colors">
               {t('header.consensUE')}
             </button>
@@ -200,9 +201,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           {/* Mobile Actions Section */}
           <div className="border-t border-eu-blue/20 px-4 sm:px-6 py-6 space-y-3">
             {/* Aules Button - White background for contrast */}
-            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center text-center bg-white border border-eu-teal text-eu-teal px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12">
+            <ExternalAnchor href="https://aules.edu.gva.es/" className="flex w-full items-center justify-center text-center bg-white border border-eu-teal text-eu-teal px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12">
               {t('header.aules')}
-            </a>
+            </ExternalAnchor>
 
             {/* ConsensUE Button - White background for contrast */}
             <button className="w-full bg-white border border-eu-orange text-eu-orange px-4 py-3 rounded text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors min-h-12 flex items-center justify-center">

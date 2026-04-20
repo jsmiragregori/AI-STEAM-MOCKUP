@@ -1,6 +1,7 @@
 import { ArrowRight, Users, BookOpen, Layers, Zap, Globe, Award, CheckCircle, XCircle, Link2 } from 'lucide-react';
 import { Tab } from '../../App';
 import { useLanguage } from '../../context/LanguageContext';
+import ExternalAnchor from '../common/ExternalAnchor';
 
 interface HomeProps {
   setActiveTab: (tab: Tab) => void;
@@ -160,7 +161,7 @@ export default function Home({ setActiveTab }: HomeProps) {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Aules */}
-            <a href="https://aules.edu.gva.es/" target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl border-t-4 border-eu-teal border border-eu-border p-6 shadow-sm flex flex-col hover:shadow-lg transition-all cursor-pointer">
+            <ExternalAnchor href="https://aules.edu.gva.es/" className="bg-white rounded-xl border-t-4 border-eu-teal border border-eu-border p-6 shadow-sm flex flex-col hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-eu-teal rounded-lg flex items-center justify-center text-white font-bold text-sm">
                   AU
@@ -172,7 +173,7 @@ export default function Home({ setActiveTab }: HomeProps) {
               </div>
               <p className="text-sm text-gray-600 flex-1 mb-4">{t('home.platforms.aules.desc')}</p>
               <span className="self-start text-xs font-bold px-2 py-1 bg-eu-bg rounded text-eu-teal">{t('home.platforms.aules.tag')}</span>
-            </a>
+            </ExternalAnchor>
 
             {/* Network */}
             <div className="bg-white rounded-xl border-t-4 border-eu-blue border border-eu-border p-6 shadow-sm flex flex-col">
