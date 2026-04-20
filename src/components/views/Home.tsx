@@ -1,4 +1,4 @@
-import { ArrowRight, Users, BookOpen, Layers, Zap, Globe, Award, CheckCircle, XCircle, ArrowRightCircle } from 'lucide-react';
+import { ArrowRight, Users, BookOpen, Layers, Zap, Globe, Award, CheckCircle, XCircle, Link2 } from 'lucide-react';
 import { Tab } from '../../App';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -125,20 +125,23 @@ export default function Home({ setActiveTab }: HomeProps) {
       <section className="px-6 py-12 bg-eu-bg border-b border-eu-border">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-eu-text mb-6">{enredBlock?.heading}</h2>
-          <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex flex-col md:flex-row items-stretch gap-4">
             <div className="flex-1 bg-white rounded-xl border border-eu-border p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{enredBlock?.enredLabel}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{enredBlock?.enredLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {['Cooperación interregional EU', 'Intercambio buenas prácticas', 'Visitas institucionales', 'Internacionalización educativa'].map((tag) => (
+                {(enredBlock?.enredTags || []).map((tag: string) => (
                   <span key={tag} className="text-xs bg-eu-bg border border-eu-border rounded px-2 py-1 text-gray-600">{tag}</span>
                 ))}
               </div>
             </div>
-            <ArrowRightCircle className="w-8 h-8 text-eu-blue shrink-0 rotate-90 md:rotate-0" />
+            <div className="flex flex-col items-center justify-center gap-1 shrink-0 py-4">
+              <Link2 className="w-6 h-6 text-eu-blue/50" />
+              <span className="text-xs font-bold text-eu-blue/50 uppercase tracking-wider hidden md:block" style={{writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>{enredBlock?.synergyLabel}</span>
+            </div>
             <div className="flex-1 bg-white rounded-xl border-2 border-eu-blue p-6 shadow-md">
-              <p className="text-xs font-bold uppercase tracking-widest text-eu-blue mb-2">{enredBlock?.networkLabel}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-eu-blue mb-3">{enredBlock?.networkLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {['IA & STEAM', 'Triple Transición', 'FP/VET Transfer', 'Formación Docente', 'AI-SECRETT Track B'].map((tag) => (
+                {(enredBlock?.networkTags || []).map((tag: string) => (
                   <span key={tag} className="text-xs bg-eu-blue/10 border border-eu-blue/30 rounded px-2 py-1 text-eu-blue font-semibold">{tag}</span>
                 ))}
               </div>
