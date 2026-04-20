@@ -452,6 +452,7 @@ es: {
 - `d7cb46e`: Unify stakeholder adhesion flow
 - `3c3f8f3`: Refine contribution participation CTA
 - `27682ea`: Fix governance distributed nodes country count
+- `a26e094`: Remove AI-SECRETT task reference from governance copy
 
 ### Estado Final
 - Rama activa: `main`
@@ -460,6 +461,7 @@ es: {
 - ConsensUE queda descrito como espacio de deliberación, validación, aprobación y trazabilidad cuando proceda, no como canal universal de entrada.
 - Aules queda reservado para formación estructurada, recursos docentes, certificación o actividades educativas cuando proceda.
 - Gobernanza muestra 12 países en los nodos distribuidos del consorcio, con LAUREA incluida como ejemplo.
+- Gobernanza elimina referencias internas a tareas AI-SECRETT como "Tarea 3.6" en cards públicas.
 
 ### Tareas Pendientes
 - Ninguna tarea funcional pendiente identificada.
