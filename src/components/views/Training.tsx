@@ -149,7 +149,7 @@ export default function Training() {
               href="https://aules.edu.gva.es/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-eu-teal text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-eu-purple transition-colors"
+              className="flex min-h-11 items-center gap-2 rounded-lg border-none bg-eu-orange px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-eu-purple focus:outline-none focus:ring-2 focus:ring-eu-yellow focus:ring-offset-2 focus:ring-offset-eu-blue"
             >
               <BookOpen className="w-4 h-4" /> {trainingT?.accessAules} <ExternalLink className="w-3 h-3" />
             </a>
