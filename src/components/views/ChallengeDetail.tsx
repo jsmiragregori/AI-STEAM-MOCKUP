@@ -1,5 +1,5 @@
 import { ArrowLeft, Calendar, Users, Tag, Building2, Clock, CheckCircle, FileText, Star, ChevronRight, Download, MessageSquare, Target, Database, Award, Route, FlaskConical, Handshake } from 'lucide-react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { challengeExtras } from '../../challengeExtras';
 
@@ -572,11 +572,22 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
   const languageContext = useContext(LanguageContext);
   const currentLanguage = languageContext?.language || 'es';
   const t = languageContext?.translations[currentLanguage]?.challengeDetail || {};
+  const [showParticipationForm, setShowParticipationForm] = useState(false);
+  const [participationSent, setParticipationSent] = useState(false);
 
   // Get challenge data in current language
   const extra = challengeExtras[currentLanguage as keyof typeof challengeExtras]?.[challenge.id as keyof typeof challengeExtras.es] ||
     challengeExtras.es[challenge.id as keyof typeof challengeExtras.es];
   const st = statusStyles[challenge.status];
+  const participationCtas = t.participationCtas || {};
+  const participationButton = participationCtas[challenge.contributionType || 'Challenge'] || t.requestParticipationButton || 'Solicitar participación →';
+  const openParticipationForm = () => {
+    setShowParticipationForm(true);
+    setParticipationSent(false);
+    window.setTimeout(() => {
+      document.getElementById('challenge-participation-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
+  };
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -645,8 +656,8 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
             <div className="flex items-center gap-3">
               <Users className="w-4 h-4 text-eu-yellow shrink-0" />
               <div>
-                <p className="text-xs text-white/50 uppercase font-bold">{t.teamsEnrolled || 'Equipos inscritos'}</p>
-                <p className="font-bold text-white">{challenge.teams} {challenge.teams === 1 ? (t.team || 'equipo') : (t.teams || 'equipos')}</p>
+                <p className="text-xs text-white/50 uppercase font-bold">{t.teamsEnrolled || 'Participaciones activas'}</p>
+                <p className="font-bold text-white">{challenge.teams} {challenge.teams === 1 ? (t.participationSingular || 'participación') : (t.participationPlural || 'participaciones')}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -675,8 +686,8 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
               </div>
             )}
             {challenge.status === 'Abierto' && (
-              <button className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
-                {t.enrollButton || 'Inscribir mi equipo →'}
+              <button onClick={openParticipationForm} className="mt-2 w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
+                {participationButton}
               </button>
             )}
             {challenge.status === 'En Resolución' && (
@@ -693,6 +704,112 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
         </div>
       </div>
 
+      {showParticipationForm && challenge.status === 'Abierto' && (
+        <div id="challenge-participation-form" className="bg-eu-bg border-b border-eu-border px-6 py-8">
+          <div className="max-w-4xl mx-auto bg-white rounded-xl border-2 border-eu-orange shadow-sm overflow-hidden">
+            <div className="bg-eu-orange/10 border-b border-eu-orange/30 px-6 py-4">
+              <p className="text-xs font-extrabold uppercase text-eu-orange mb-1">{t.consensuePreferredLabel || 'ConsensUE · trazabilidad participativa'}</p>
+              <h2 className="text-lg font-bold text-eu-text">{t.participationFormTitle || 'Formulario de solicitud de participación'}</h2>
+              <p className="text-sm text-gray-600 mt-2">{t.participationFormIntro}</p>
+            </div>
+            <form
+              className="p-6 space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setParticipationSent(true);
+              }}
+            >
+              {participationSent && (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-sm text-green-800 font-semibold">
+                  {t.participationConfirmation}
+                </div>
+              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.name}</label>
+                  <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.email}</label>
+                  <input type="email" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.organization}</label>
+                  <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.language}</label>
+                  <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
+                    <option>ES</option>
+                    <option>EN</option>
+                    <option>VA</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.country}</label>
+                  <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.region}</label>
+                  <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[13px] font-bold text-eu-text mb-2">{t.participationFields?.role}</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {(t.participationRoles || []).map((role: string) => (
+                      <label key={role} className="flex items-center gap-2 text-sm text-gray-700 bg-eu-bg border border-eu-border rounded-md px-3 py-2">
+                        <input type="checkbox" className="rounded border-eu-border" /> {role}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[13px] font-bold text-eu-text mb-2">{t.participationFields?.participationType}</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {(t.participationTypes || []).map((type: string) => (
+                      <label key={type} className="flex items-center gap-2 text-sm text-gray-700 bg-eu-bg border border-eu-border rounded-md px-3 py-2">
+                        <input type="checkbox" className="rounded border-eu-border" /> {type}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.preferredPathway}</label>
+                  <select className="w-full border border-eu-border rounded-md p-2.5 text-sm bg-white focus:outline-none focus:border-eu-blue">
+                    {(t.participationPathways || []).map((pathway: string) => (
+                      <option key={pathway}>{pathway}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.context}</label>
+                  <textarea rows={4} className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue resize-none" placeholder={t.participationPlaceholders?.context}></textarea>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[13px] font-bold text-eu-text mb-1">{t.participationFields?.availability}</label>
+                  <input type="text" className="w-full border border-eu-border rounded-md p-2.5 text-sm focus:outline-none focus:border-eu-blue" placeholder={t.participationPlaceholders?.availability} />
+                </div>
+              </div>
+              <div className="space-y-2 border-t border-eu-border pt-4">
+                {(t.participationEthics || []).map((item: string) => (
+                  <label key={item} className="flex items-start gap-2 text-xs text-gray-600">
+                    <input type="checkbox" className="mt-0.5 rounded border-eu-border" /> {item}
+                  </label>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row justify-end gap-3">
+                <button type="button" onClick={() => setShowParticipationForm(false)} className="px-5 py-2 rounded-md border border-eu-border text-eu-text text-sm font-bold hover:bg-eu-bg transition-colors cursor-pointer">
+                  {t.cancel || 'Cancelar'}
+                </button>
+                <button type="submit" className="bg-eu-orange text-white px-6 py-2.5 rounded-md font-bold border-none hover:bg-eu-purple transition-colors cursor-pointer">
+                  {t.submitParticipation || 'Enviar solicitud'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {/* Main content */}
@@ -701,7 +818,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {/* Descripción */}
           <section className="bg-white rounded-xl border border-eu-border shadow-sm p-7">
             <h2 className="text-lg font-bold text-eu-text mb-3 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-eu-blue" /> {t.descriptionTitle || 'Descripción del Reto'}
+              <FileText className="w-5 h-5 text-eu-blue" /> {t.descriptionTitle || 'Descripción'}
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed mb-4">{extra?.fullDescription ?? challenge.description}</p>
             {extra?.context && (
@@ -848,7 +965,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.milestones && (
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-eu-blue" /> {t.milestonesTitle || 'Hitos del Reto'}
+                <Calendar className="w-4 h-4 text-eu-blue" /> {t.milestonesTitle || 'Hitos'}
               </h3>
               <div className="relative">
                 <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-eu-border"></div>
@@ -873,7 +990,7 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {extra?.mentors && (
             <div className="bg-white rounded-xl border border-eu-border shadow-sm p-6">
               <h3 className="font-bold text-eu-text mb-4 flex items-center gap-2">
-                <Users className="w-4 h-4 text-eu-blue" /> {t.mentorsTitle || 'Mentores del Reto'}
+                <Users className="w-4 h-4 text-eu-blue" /> {t.mentorsTitle || 'Mentores'}
               </h3>
               <div className="space-y-4">
                 {extra.mentors.map((m, i) => (
@@ -928,11 +1045,12 @@ export default function ChallengeDetail({ challenge, onBack }: ChallengeDetailPr
           {/* CTA bottom */}
           {challenge.status === 'Abierto' && (
             <div className="bg-eu-blue rounded-xl p-6 text-white text-center">
-              <p className="font-bold mb-1">{t.interestCTA || '¿Te interesa este reto?'}</p>
-              <p className="text-xs text-white/70 mb-4">{t.enrollBeforeDeadline || 'Inscríbete antes del'} {challenge.deadline}</p>
-              <button className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
-                {t.enrollButton || 'Inscribir mi equipo →'}
+              <p className="font-bold mb-1">{t.interestCTA || '¿Quieres participar en este reto?'}</p>
+              <p className="text-xs text-white/70 mb-4">{t.requestBeforeDeadline || 'Abierto a centros, profesorado, FP, stakeholders y socios de la red hasta el'} {challenge.deadline}.</p>
+              <button onClick={openParticipationForm} className="w-full bg-eu-orange text-white font-bold py-2.5 rounded-lg hover:bg-eu-purple transition-colors border-none cursor-pointer text-sm">
+                {participationButton}
               </button>
+              <p className="text-xs text-white/60 mt-3">{t.requestReviewNote}</p>
             </div>
           )}
         </div>
