@@ -655,7 +655,7 @@ export const translations = {
         uvegSubtitle: 'Universitat de València · Track A',
         uvegRoles: [
           { label: 'Garante académico', desc: 'Responsable de la calidad académica del Máster AI-SECRETT, los ECTS y la evaluación de competencias. Coordina con Laurea el Espacio Académico.' },
-          { label: 'Contenido del Máster', desc: 'Gestiona el LMS, la matriculación de estudiantes y la carga y gestión de materiales docentes (Tarea 3.6).' },
+          { label: 'Contenido del Máster', desc: 'Gestiona el LMS, la matriculación de estudiantes y la carga y gestión de materiales docentes.' },
           { label: 'Datos académicos', desc: 'Actúa como Responsable del Tratamiento de los expedientes académicos de estudiantes del Máster (RGPD).' },
           { label: 'Infraestructura académica', desc: 'Provee el hardware, la seguridad y la plataforma de gestión académica del Máster.' },
         ],
@@ -1531,7 +1531,7 @@ export const translations = {
         uvegSubtitle: 'Universitat de València · Track A',
         uvegRoles: [
           { label: 'Academic Guarantor', desc: 'Responsible for academic quality of the Master AI-SECRETT, ECTS credits, and competency evaluation. Coordinates with Laurea the Academic Space.' },
-          { label: 'Master Content', desc: 'Manages LMS, student registration, and uploading/managing educational materials (Task 3.6).' },
+          { label: 'Master Content', desc: 'Manages LMS, student registration, and uploading/managing educational materials.' },
           { label: 'Academic Data', desc: 'Acts as Data Controller for Master student academic records (GDPR).' },
           { label: 'Academic Infrastructure', desc: 'Provides hardware, security, and academic management platform for the Master.' },
         ],
@@ -2388,7 +2388,7 @@ export const translations = {
         uvegSubtitle: 'Universitat de València · Track A',
         uvegRoles: [
           { label: 'Garant acadèmic', desc: 'Responsable de la qualitat acadèmica del Màster AI-SECRETT, els crèdits ECTS i l\'avaluació de competències. Coordina amb Laurea l\'Espai Acadèmic.' },
-          { label: 'Contingut del Màster', desc: 'Gestiona l\'LMS, la matriculació d\'estudiants i la càrrega i gestió de materials docents (Tasca 3.6).' },
+          { label: 'Contingut del Màster', desc: 'Gestiona l\'LMS, la matriculació d\'estudiants i la càrrega i gestió de materials docents.' },
           { label: 'Dades acadèmiques', desc: 'Actua com a Responsable del Tractament dels expedients acadèmics dels estudiants del Màster (RGPD).' },
           { label: 'Infraestructura acadèmica', desc: 'Proporciona el maquinari, la seguretat i la plataforma de gestió acadèmica del Màster.' },
         ],
