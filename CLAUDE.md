@@ -356,3 +356,109 @@ es: {
 3. Todas las traducciones multilingües están integradas (ES, EN, VA) en `src/translations.ts`. Si dicho fichero crece mucho, modularizar.
 4. El sistema de transferencia AI-SECRETT es claro ("Track A vs Track B"). Respetar los límites si se agregan nuevos copys en el futuro.
 5. El Mockup es seguro para demostraciones a terceros y stakeholders. Revisar anchos muy pequeños (<360px) en producciones reales.
+
+---
+
+## ✅ Sesión de Ajustes UX/CTA y Coherencia Editorial (2026-04-20)
+
+### Cambios Realizados
+
+#### 1. Contribuciones del Ecosistema
+- Se amplió la sección antes centrada en "Retos y Casos" para representar mejor la variedad real de aportaciones de la AI-STEAM Network.
+- Se añadieron contribuciones demo de tipo:
+  - Validación
+  - Mentoría
+  - Pilotaje
+  - Recurso
+- El encabezado del marketplace pasó a "Contribuciones del Ecosistema" / "Ecosystem Contributions" / "Contribucions de l'Ecosistema".
+- Se mantuvo la narrativa segura: contenido demo, Track B como vía principal y Track A solo cuando proceda.
+- **Commit:** `d6234a7` - `Refine contribution mockup and remove private access`
+
+#### 2. Formulario de Propuesta de Contribución
+- El formulario del mockup se mantiene como demo.
+- Se aclaró que el canal real estará vinculado a ConsensUE para propuestas de miembros/stakeholders cuando proceda.
+- Se explicitó que no es un formulario público abierto para cualquier usuario.
+- **Commit:** `d6234a7`
+
+#### 3. Eliminación del Acceso al Área Privada
+- Eliminado el botón "Acceso Área Privada" del header en desktop, tablet y móvil.
+- Eliminada referencia visible al Área Privada en la CTA de detalle de retos.
+- **Commit:** `d6234a7`
+
+#### 4. Formación
+- Corregido contraste del botón "Acceder a Aules" manteniendo coherencia con CTAs sobre fondo azul: `bg-eu-orange`, `text-white`, hover `bg-eu-purple`.
+- Corregida estadística de países en Formación: `11` → `12`.
+- **Commits:**
+  - `347661e` - `Align Aules CTA styling in training`
+  - `d7cb46e` - `Unify stakeholder adhesion flow`
+
+#### 5. Stakeholder Adhesion Flow
+- Se unificó el formulario de adhesión: existe solo en "La Red".
+- La CTA de "Sectores" ahora lleva al formulario de adhesión de "La Red", abre la pestaña de stakeholders y despliega el formulario.
+- El formulario añadió campos útiles para ubicar al stakeholder:
+  - Región / territorio
+  - Tipo de aportación prevista
+- Se aclaró que, tras la solicitud, un miembro del consorcio contactará con la organización para completar el proceso según país, región, sector y tipo de aportación.
+- **Commit:** `d7cb46e`
+
+#### 6. Normalización Terminológica
+- Corregido uso en castellano de `PYMES`:
+  - `PIMES` / `PYMEs` → `PYMES`
+  - Singular `PYME` ya estaba correcto.
+- Se respetó `PIME/PIMES` en valenciano.
+- **Commit:** `d7cb46e`
+
+#### 7. CTA de Participación en Detalle de Contribuciones
+- Sustituida la lógica "Inscribe tu equipo" por una solicitud de participación revisada.
+- Nueva CTA principal:
+  - ES: "Solicitar participación"
+  - EN: "Request participation"
+  - VA: "Sol·licitar participació"
+- La CTA se adapta al tipo de contribución:
+  - Reto: solicitar participación
+  - Caso: usar o validar caso
+  - Validación: contribuir a validación
+  - Mentoría: ofrecer mentoría
+  - Pilotaje: solicitar pilotaje
+  - Recurso: proponer o reutilizar recurso
+- Se añadió formulario de solicitud de participación en el detalle, con:
+  - Datos de contacto
+  - Rol
+  - Tipo de participación
+  - Vía preferente
+  - Contexto
+  - Disponibilidad
+  - Confirmaciones éticas y de datos
+- Se aclaró que la solicitud no implica aceptación automática.
+- Se ajustó ConsensUE: no es necesariamente la vía de entrada, sino el espacio al que la solicitud se eleva cuando requiere debate, validación comunitaria, aprobación formal, trazabilidad o seguimiento.
+- **Commit:** `3c3f8f3` - `Refine contribution participation CTA`
+
+#### 8. Lenguaje Neutro en Detalle
+- Como la ficha puede mostrar retos, casos, validaciones, mentorías, pilotajes o recursos, se eliminaron etiquetas genéricas con "del reto":
+  - "Descripción del Reto" → "Descripción"
+  - "Hitos del Reto" → "Hitos"
+  - "Mentores del Reto" → "Mentores"
+  - "Reto completado" → "Contribución completada"
+- **Commit:** `3c3f8f3`
+
+### Verificación
+- `npm run build` ejecutado correctamente tras los cambios.
+- Único aviso persistente: warning habitual de Vite por chunk JS >500 kB.
+- Todos los cambios funcionales fueron pusheados a `origin/main`.
+
+### Commits de Esta Sesión
+- `d6234a7`: Refine contribution mockup and remove private access
+- `347661e`: Align Aules CTA styling in training
+- `d7cb46e`: Unify stakeholder adhesion flow
+- `3c3f8f3`: Refine contribution participation CTA
+
+### Estado Final
+- Rama activa: `main`
+- Working tree limpio antes de actualizar esta memoria de cierre.
+- Mockup mantiene separación Track B / Track A.
+- ConsensUE queda descrito como espacio de deliberación, validación, aprobación y trazabilidad cuando proceda, no como canal universal de entrada.
+- Aules queda reservado para formación estructurada, recursos docentes, certificación o actividades educativas cuando proceda.
+
+### Tareas Pendientes
+- Ninguna tarea funcional pendiente identificada.
+- Deuda técnica conocida: `translations.ts` sigue creciendo y convendría modularizar si continúan las iteraciones.
