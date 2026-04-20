@@ -24,7 +24,7 @@ export default function Home({ setActiveTab }: HomeProps) {
     { id: 2, name: t('home.stats.totalChallenges'), value: '127', icon: Zap },
     { id: 3, name: t('home.stats.consortiumMembers'), value: '23', icon: BookOpen },
     { id: 4, name: t('home.stats.microCredentials'), value: '1.200', icon: Award },
-    { id: 5, name: t('home.stats.countries'), value: '11', icon: Globe },
+    { id: 5, name: t('home.stats.countries'), value: '12', icon: Globe },
     { id: 6, name: t('home.stats.trainingModules'), value: '68', icon: Layers },
   ];
 
