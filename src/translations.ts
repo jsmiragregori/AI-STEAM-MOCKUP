@@ -62,7 +62,7 @@ export const translations = {
         isItems: [
           'Track B de AI-SECRETT: comunidad y capa de transferencia',
           'Activación de stakeholders, transferencia FP/VET, formación docente',
-          'Generador de evidencias sectoriales (CEICE) para hitos como el Milestone 14 y entregables D2.2, D4.2 y D6.2 de AI-SECRETT',
+          'Generador de evidencias sectoriales que proporciona datos e indicadores para validar el impacto educativo y sectorial del programa',
         ],
         isNotTitle: 'No es',
         isNotItems: [
@@ -86,7 +86,7 @@ export const translations = {
       dualFocus: 'Foco Educativo Dual',
       dualFocusDesc: 'La red alimenta simultáneamente dos niveles de formación reglada coordinados por CEICE.',
       master: { title: 'Máster AI-SECRETT', coordinator: 'Coordinado por UVEG', desc: 'Máster universitario internacional sobre IA aplicada a la creatividad y la triple transición. Contenidos co-creados con los socios de la red en 12 países europeos.', item1: '2 ediciones anuales (formato blended)', item2: 'Certificación TÜV Thüringen (TUV.IT)', item3: 'Créditos ECTS y Credencial Digital Europea', item4: 'Retos reales del Banco de Retos como TFM' },
-      fp: { title: 'FP y Ciclos Formativos CEICE', coordinator: 'Coordinado por CEICE', desc: 'Los retos y conocimientos de la red nutren directamente los módulos de FP: ciclos formativos y cursos de especialización de la Conselleria d\'Educació.', item1: 'Cursos de Especialización en IA para sectores STEAM', item2: 'ABP: retos de empresa en el aula', item3: 'FCT tutorizada con socios de la red', item4: 'Materiales OER para docentes (CC-BY-SA)' },
+      fp: { title: 'FP y Ciclos Formativos', coordinator: 'Coordinado por CEICE', desc: 'Los retos y conocimientos de la red nutren directamente los módulos de FP: ciclos formativos y cursos de especialización de la Conselleria d\'Educació.', item1: 'Cursos de Especialización en IA para sectores STEAM', item2: 'ABP: retos de empresa en el aula', item3: 'FCT tutorizada con socios de la red', item4: 'Materiales OER para docentes (CC-BY-SA)' },
       latestChallenges: 'Últimos Retos Publicados',
       viewAll: 'Ver todos',
       challengeLabel: 'Reto',
@@ -962,7 +962,7 @@ export const translations = {
         isItems: [
           'AI-SECRETT Track B: community and transfer layer',
           'Stakeholder activation, VET/FP transfer, teacher training, sectoral evidence',
-          'Sectoral evidence generator (CEICE) for milestones such as Milestone 14 and AI-SECRETT deliverables D2.2, D4.2 and D6.2',
+          'Sectoral evidence generator that provides data and indicators to validate the educational and sectoral impact of the program',
         ],
         isNotTitle: 'Is not',
         isNotItems: [
@@ -986,7 +986,7 @@ export const translations = {
       dualFocus: 'Dual Educational Focus',
       dualFocusDesc: 'The network simultaneously feeds two levels of formal education coordinated by CEICE.',
       master: { title: 'Master AI-SECRETT', coordinator: 'Coordinated by UVEG', desc: 'International university master\'s degree on AI applied to creativity and the triple transition. Content co-created with network partners in 12 European countries.', item1: '2 annual editions (blended format)', item2: 'TÜV Thüringen certification (TUV.IT)', item3: 'ECTS credits and European Digital Credentials', item4: 'Real challenges from the Challenge Bank as final projects' },
-      fp: { title: 'VET and CEICE Training Cycles', coordinator: 'Coordinated by CEICE', desc: 'Network challenges and knowledge directly feed VET modules: training cycles and specialization courses from the Department of Education.', item1: 'Specialization Courses in AI for STEAM sectors', item2: 'PBL: business challenges in the classroom', item3: 'Tutored internships with network partners', item4: 'OER materials for teachers (CC-BY-SA)' },
+      fp: { title: 'VET and Training Cycles', coordinator: 'Coordinated by CEICE', desc: 'Network challenges and knowledge directly feed VET modules: training cycles and specialization courses from the Department of Education.', item1: 'Specialization Courses in AI for STEAM sectors', item2: 'PBL: business challenges in the classroom', item3: 'Tutored internships with network partners', item4: 'OER materials for teachers (CC-BY-SA)' },
       latestChallenges: 'Latest Published Challenges',
       viewAll: 'View all',
       challengeLabel: 'Challenge',
@@ -1838,7 +1838,7 @@ export const translations = {
         isItems: [
           'Track B d\'AI-SECRETT: comunitat i capa de transferència',
           'Activació de stakeholders, transferència FP/VET, formació docent, evidència sectorial',
-          'Generador d\'evidències sectorials (CEICE) per a fites com el Milestone 14 i lliurables D2.2, D4.2 i D6.2 d\'AI-SECRETT',
+          'Generador d\'evidències sectorials que proporciona dades i indicadors per a validar l\'impacte educatiu i sectorial del programa',
         ],
         isNotTitle: 'No és',
         isNotItems: [
@@ -1862,7 +1862,7 @@ export const translations = {
       dualFocus: 'Doble Focus Educatiu',
       dualFocusDesc: 'La xarxa alimenta simultàniament dos nivells de formació reglada coordinats per CEICE.',
       master: { title: 'Màster AI-SECRETT', coordinator: 'Coordinat per UVEG', desc: 'Màster universitari internacional sobre IA aplicada a la creativitat i la triple transició. Continguts co-creats amb els socis de la xarxa en 12 països europeus.', item1: '2 edicions anuals (format blended)', item2: 'Certificació TÜV Thüringen (TUV.IT)', item3: 'Crèdits ECTS i Credencials Digitals Europees', item4: 'Reptes reals del Banc de Reptes com TFM' },
-      fp: { title: 'FP i Cicles Formatius CEICE', coordinator: 'Coordinat per CEICE', desc: 'Els reptes i coneixements de la xarxa alimenten directament els mòduls de FP: cicles formatius i cursos d\'especialització de la Conselleria d\'Educació.', item1: 'Cursos d\'Especialització en IA per a sectors STEAM', item2: 'ABP: reptes d\'empresa a l\'aula', item3: 'FCT tutorada amb socis de la xarxa', item4: 'Materials OER per a docents (CC-BY-SA)' },
+      fp: { title: 'FP i Cicles Formatius', coordinator: 'Coordinat per CEICE', desc: 'Els reptes i coneixements de la xarxa alimenten directament els mòduls de FP: cicles formatius i cursos d\'especialització de la Conselleria d\'Educació.', item1: 'Cursos d\'Especialització en IA per a sectors STEAM', item2: 'ABP: reptes d\'empresa a l\'aula', item3: 'FCT tutorada amb socis de la xarxa', item4: 'Materials OER per a docents (CC-BY-SA)' },
       latestChallenges: 'Últims Reptes Publicats',
       viewAll: 'Veure tots',
       challengeLabel: 'Repte',
