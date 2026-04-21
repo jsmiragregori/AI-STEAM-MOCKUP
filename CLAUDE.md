@@ -1,7 +1,22 @@
 # Guía de Contexto - AI-STEAM Mockup
 
-**Última actualización:** 2026-04-20 (Sesión QA - ENRED alignment, statistics homogenization)  
+**Última actualización:** 2026-04-21 (Content Cleanup & Branch Synchronization)  
 **Estado:** ✅ Proyecto Mockup, Reestructuración y QA Finalizados (ES, VA, EN)
+
+---
+
+## 📌 IMPORTANTE: Memoria de Desarrollo
+
+**Para información de la sesión más reciente, lee:**  
+👉 **[MEMORIA_DESARROLLO.md](./MEMORIA_DESARROLLO.md)** 
+
+Contiene:
+- Últimos cambios (2026-04-21): limpieza de referencias internas, reordenamientos, sincronización de branches
+- Guía para retomar desde otro PC
+- Estado de ambas ramas (main, offline-ready)
+- Decisiones de diseño y razonamiento
+
+---
 
 ---
 
