@@ -307,22 +307,6 @@ export default function Training() {
             </div>
           </div>
         )}
-
-        {/* Credentials Framework */}
-        <div className="bg-white rounded-xl border border-eu-border shadow-sm p-7 mt-10">
-          <h2 className="text-xl font-bold text-eu-text mb-2">{trainingT?.credentialsFramework}</h2>
-          <p className="text-sm text-gray-600 mb-2">{trainingT?.credentialsDesc}</p>
-          <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-6">{trainingT?.credentialsDisclaimer}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {credentialFrameworks.map((cf) => (
-              <div key={cf.name} className="bg-eu-bg border border-eu-border rounded-lg p-4">
-                <span className="text-2xl block mb-2">{cf.logo}</span>
-                <p className="font-bold text-eu-text text-sm mb-1">{cf.name}</p>
-                <p className="text-xs text-gray-500">{cf.org}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

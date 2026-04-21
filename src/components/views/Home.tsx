@@ -242,26 +242,6 @@ export default function Home({ setActiveTab }: HomeProps) {
           <h2 className="text-2xl font-bold text-eu-text mb-2">{t('home.dualFocus')}</h2>
           <p className="text-gray-600 mb-8 text-sm max-w-2xl">{t('home.dualFocusDesc')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Master */}
-            <div className="bg-linear-to-br from-purple-50 to-purple-100/50 border border-purple-200 rounded-xl p-7">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm">M</div>
-                <div>
-                  <h3 className="font-bold text-eu-text text-lg">{t('home.master.title')}</h3>
-                  <p className="text-xs text-purple-600 font-semibold">{t('home.master.coordinator')}</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-700 mb-5">
-                {t('home.master.desc')}
-              </p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item1')}</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item2')}</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item3')}</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item4')}</li>
-              </ul>
-            </div>
-
             {/* FP */}
             <div className="bg-linear-to-br from-orange-50 to-orange-100/50 border border-eu-yellow rounded-xl p-7">
               <div className="flex items-center gap-3 mb-4">
@@ -279,6 +259,26 @@ export default function Home({ setActiveTab }: HomeProps) {
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-eu-orange rounded-full inline-block"></span> {t('home.fp.item2')}</li>
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-eu-orange rounded-full inline-block"></span> {t('home.fp.item3')}</li>
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-eu-orange rounded-full inline-block"></span> {t('home.fp.item4')}</li>
+              </ul>
+            </div>
+
+            {/* Master */}
+            <div className="bg-linear-to-br from-purple-50 to-purple-100/50 border border-purple-200 rounded-xl p-7">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm">M</div>
+                <div>
+                  <h3 className="font-bold text-eu-text text-lg">{t('home.master.title')}</h3>
+                  <p className="text-xs text-purple-600 font-semibold">{t('home.master.coordinator')}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 mb-5">
+                {t('home.master.desc')}
+              </p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item1')}</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item2')}</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item3')}</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-purple-600 rounded-full inline-block"></span> {t('home.master.item4')}</li>
               </ul>
             </div>
           </div>

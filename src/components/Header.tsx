@@ -19,8 +19,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
     { id: 'banco-retos', key: 'nav.bancoRetos' },
     { id: 'formacion', key: 'nav.formacion' },
     { id: 'conocimiento', key: 'nav.conocimiento' },
-    { id: 'actualidad', key: 'nav.actualidad' },
     { id: 'gobernanza', key: 'nav.gobernanza' },
+    { id: 'actualidad', key: 'nav.actualidad' },
   ];
 
   const handleNavClick = (tab: Tab) => {
